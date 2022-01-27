@@ -1,4 +1,4 @@
-SELECT * FROM crittrdb.animal;
+SELECT * FROM crittrDB.animal;
 
 INSERT INTO animal VALUES (1, '1990-03-25', 'Tim', 'Turtle'); 
 INSERT INTO animal VALUES (2, '2021-05-30', 'Geertje', 'Goat');
