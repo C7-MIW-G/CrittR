@@ -21,13 +21,13 @@ public class Animal {
 
     @Id
     @GeneratedValue
-    private long animalId;
+    protected long animalId;
 
-    private String species;
+    protected String species;
 
-    private String name;
+    protected String name;
 
-    private LocalDate birthDate;
+    protected LocalDate birthDate;
 
     public int getAge () {
         return Period.between(LocalDate.now(), birthDate).getYears();

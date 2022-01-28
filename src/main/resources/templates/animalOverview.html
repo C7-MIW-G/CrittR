@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Animal overview</title>
+</head>
+<body>
+<h1>An overview of all the animals</h1>
+<div class="container">
+    <table>
+        <tr>
+            <th> </th>
+        </tr>
+        <tr th:each="animal : ${allAnimals}">
+            <td th:text="${animal.name}"></td>
+            <td th:text="${animal.species}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<div>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</div>
+</html>
