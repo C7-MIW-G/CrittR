@@ -7,7 +7,7 @@
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
     <h1>An overview of all the animals</h1>
-    <div class="container">
+    <div>
         <table>
             <tr>
                 <th>Name</th>
@@ -22,6 +22,7 @@
         </table>
     </div>
     <a th:href="@{/animals/new}" role="button">Add animal</a>
+</div>
 </body>
 <footer th:replace="fragments/general :: footer"></footer>
 <div th:replace="fragments/general :: bottomscripts"></div>
