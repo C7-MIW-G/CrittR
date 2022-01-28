@@ -2,6 +2,7 @@ package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,7 @@ public class Animal {
 
     protected String name;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected LocalDate birthDate;
 
     public int getAge () {

@@ -9,14 +9,18 @@
 <div class="container">
     <table>
         <tr>
-            <th> </th>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Age</th>
         </tr>
         <tr th:each="animal : ${allAnimals}">
             <td th:text="${animal.name}"></td>
             <td th:text="${animal.species}"></td>
+            <td th:text="${animal.getAge()}"></td>
         </tr>
     </table>
 </div>
+<a th:href="@{/animals/new}" role="button">Add animal</a>
 </body>
 
 <div>
