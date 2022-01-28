@@ -32,6 +32,6 @@ public class Animal {
     protected LocalDate birthDate;
 
     public int getAge () {
-        return Period.between(LocalDate.now(), birthDate).getYears();
+        return Period.between(birthDate, LocalDate.now()).getYears();
     }
 }
