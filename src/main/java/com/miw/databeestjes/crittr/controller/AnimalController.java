@@ -41,7 +41,6 @@ public class AnimalController {
         if(!result.hasErrors()){
             animalRepository.save(animal);
         }
-        System.out.println(result.getAllErrors());
         return "redirect:/animals";
     }
 }
