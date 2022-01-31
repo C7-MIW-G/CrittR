@@ -2,6 +2,7 @@ package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.repository.AnimalRepository;
+import com.miw.databeestjes.crittr.service.AnimalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,15 +19,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AnimalController {
 
-    private AnimalRepository animalRepository;
+    private AnimalService animalService;
 
-    public AnimalController(AnimalRepository animalRepository) {
-        this.animalRepository = animalRepository;
+    public AnimalController(AnimalService animalService) {
+        this.animalService = animalService;
     }
 
     @GetMapping("/animals")
     protected String showAnimalOverview (Model model) {
-        model.addAttribute("allAnimals", animalRepository.findAll());
+        model.addAttribute("allAnimals", animalService.getAll());
         return "animalOverview";
     }
 
@@ -39,7 +40,7 @@ public class AnimalController {
     @PostMapping("/animals/new")
     protected String saveUpdateAnimal(@ModelAttribute("animal") Animal animal , BindingResult result){
         if(!result.hasErrors()){
-            animalRepository.save(animal);
+            animalService.save(animal);
         }
         return "redirect:/animals";
     }
