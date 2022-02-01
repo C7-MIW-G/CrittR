@@ -67,6 +67,7 @@ public class AnimalController {
             return "redirect:/animals";
         }
         model.addAttribute("animal", animal.get());
+        model.addAttribute("allSpecies", speciesService.getAll());
         return "animalForm";
     }
 
