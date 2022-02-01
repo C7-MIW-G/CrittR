@@ -12,5 +12,7 @@ public interface AnimalService {
 
     void save (Animal animal);
 
+    void delete (Animal animal);
+
     Optional<Animal> findByAnimalId(long animalId);
 }
