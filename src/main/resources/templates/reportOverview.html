@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/general :: baseheader(~{:: title})">
+    <title>Reports</title>
+</head>
+<body>
+<div class="container">
+    <h1>Overview of Reports</h1>
+    <table>
+        <tr>
+            <th>Report nr</th>
+            <th>Animal</th>
+            <th>Issue</th>
+        </tr>
+        <tr th:each="report : ${allReports}">
+            <td th:text="${report.reportId}"></td>
+            <td th:text="${report.animal.name}"></td>
+            <td th:text="${report.issue}"></td>
+        </tr>
+    </table>
+    <button onclick="window.location.href='/reports/new';">Make report</button>
+
+    <footer th:replace="fragments/general :: footer"></footer>
+    <div th:replace="fragments/general :: bottomscripts"></div>
+</div>
+</body>
+</html>

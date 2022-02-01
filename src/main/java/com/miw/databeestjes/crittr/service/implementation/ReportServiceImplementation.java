@@ -9,7 +9,12 @@ import java.util.List;
 
 @Service
 public class ReportServiceImplementation implements ReportService {
-    private ReportRepository reportRepository;
+
+    ReportRepository reportRepository;
+
+    public ReportServiceImplementation(ReportRepository reportRepository) {
+        this.reportRepository = reportRepository;
+    }
 
     @Override
     public List<Report> getAll() {
