@@ -16,7 +16,7 @@
             </tr>
             <tr th:each="animal : ${allAnimals}">
                 <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
-                <td th:text="${animal.species}"></td>
+                <td th:text="${animal.species.toString()}"></td>
                 <td th:text="${animal.getAge()}"></td>
 
             </tr>

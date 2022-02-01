@@ -17,7 +17,9 @@
                 </tr>
                 <tr>
                     <td><label for="animalSpecies">Species</label></td>
-                    <td><input id="animalSpecies" type="text" th:field="*{species}"/> </td>
+                    <td><select multiple id="animalSpecies" th:field="*{species}" >
+                        <option th:each="species : ${allSpecies}" th:value="${species.species}" th:text="${species.species}"></option>
+                    </select> </td>
                 </tr>
                 <tr>
                     <td><label for="animalBirthdate">Birthdate</label></td>

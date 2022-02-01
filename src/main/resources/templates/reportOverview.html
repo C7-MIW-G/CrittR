@@ -10,12 +10,12 @@
     <table>
         <tr>
             <th>Report nr</th>
-            <th>Animal</th>
+            <th>Species</th>
             <th>Issue</th>
         </tr>
         <tr th:each="report : ${allReports}">
             <td th:text="${report.reportId}"></td>
-            <td th:text="${report.animal.name}"></td>
+            <td th:text="${report.species}"></td>
             <td th:text="${report.issue}"></td>
         </tr>
     </table>

@@ -11,6 +11,13 @@
         <input type="hidden" th:field="*{reportId}"/>
         <table>
             <tr>
+                <td><label for="SpeciesInput">Species:</label></td>
+                <td> <select multiple id="SpeciesInput" th:field="*{species}" >
+                    <option th:each="species : ${allSpecies}" th:value="${species.species}" th:text="${species.species}"></option>
+                </select>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     <label for="AnimalNameInput">Animal: </label>
                 </td>

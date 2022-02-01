@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.repository.AnimalRepository;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import com.miw.databeestjes.crittr.service.SpeciesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,9 +21,11 @@ import java.util.Optional;
 public class AnimalController {
 
     private AnimalService animalService;
+    private SpeciesService speciesService;
 
-    public AnimalController(AnimalService animalService) {
+    public AnimalController(AnimalService animalService, SpeciesService speciesService) {
         this.animalService = animalService;
+        this.speciesService = speciesService;
     }
 
     @GetMapping("/animals")
@@ -34,6 +37,7 @@ public class AnimalController {
     @GetMapping("/animals/new")
     protected String showAnimalForm (Model model) {
         model.addAttribute("animal", new Animal());
+        model.addAttribute("allSpecies", speciesService.getAll());
         return "animalForm";
     }
 
