@@ -2,6 +2,7 @@ package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -18,5 +19,6 @@ public class Report {
     @ManyToOne
     protected Animal animal;
 
+    @Column(nullable = true)
     protected String description;
 }
