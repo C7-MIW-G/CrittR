@@ -18,6 +18,8 @@
                 <td th:text="${animal.species}"></td>
                 <td th:text="${animal.birthDate}"></td>
                 <td th:text="${animal.getAge()}"></td>
+                <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Update</a></td>
+                <td><a th:href="@{/animals/delete/{animalId}(animalId=${animal.animalId})}">Delete</a></td>
             </tr>
         </table>
     </div>
