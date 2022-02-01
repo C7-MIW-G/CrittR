@@ -15,12 +15,12 @@ public class Report {
 
     protected String issue;
 
-    @ManyToOne(optional = true)
+    @ManyToOne
     protected Animal animal;
 
     @ManyToOne(optional = false)
     protected Species species;
 
-    @Column(nullable = true)
+    @Column
     protected String description;
 }
