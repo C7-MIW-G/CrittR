@@ -7,8 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Set;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -27,6 +29,9 @@ public class Animal {
     protected String species;
 
     protected String name;
+
+    @OneToMany(mappedBy = "animal")
+    protected Set<Report> reports;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected LocalDate birthDate;
