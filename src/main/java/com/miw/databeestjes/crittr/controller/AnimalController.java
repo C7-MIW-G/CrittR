@@ -1,7 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Animal;
-import com.miw.databeestjes.crittr.repository.AnimalRepository;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.SpeciesService;
 import org.springframework.stereotype.Controller;
@@ -72,7 +71,7 @@ public class AnimalController {
     }
 
     @GetMapping("animals/delete/{animalId}")
-    protected String deleteAnimal(@PathVariable("animalId") long animalId, Model model) {
+    protected String deleteAnimal(@PathVariable("animalId") long animalId) {
         Animal animal = animalService.findByAnimalId(animalId).orElseThrow(()
                 -> new IllegalArgumentException("invalid animal id: " + animalId));
         animalService.delete(animal);
