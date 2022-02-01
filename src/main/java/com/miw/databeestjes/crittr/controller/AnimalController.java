@@ -37,6 +37,17 @@ public class AnimalController {
         return "animalForm";
     }
 
+    @GetMapping("/animals/details/{animalId}")
+    protected String showAnimalDetails(@PathVariable("animalId") long animalId, Model model){
+        Optional<Animal> animal = animalService.findByAnimalId(animalId);
+        if (animal.isEmpty()){
+            return "redirect:/animals";
+        }
+        model.addAttribute("animal", animal.get());
+        return "animalDetails";
+    }
+
+
     @PostMapping("/animals/new")
     protected String saveUpdateAnimal(@ModelAttribute("animal") Animal animal , BindingResult result){
         if(!result.hasErrors()){
