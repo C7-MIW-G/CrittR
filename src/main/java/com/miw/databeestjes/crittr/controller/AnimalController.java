@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -44,4 +47,15 @@ public class AnimalController {
         }
         return "redirect:/animals";
     }
+
+    @GetMapping("/animals/update/{animalId}")
+    protected String showAnimalForm(@PathVariable("animalId") long animalId, Model model) {
+        Optional<Animal> animal = animalService.findByAnimalId(animalId);
+        if (animal.isEmpty()){
+            return "redirect:/animals";
+        }
+        model.addAttribute("animal", animal.get());
+        return "animalForm";
+    }
+
 }

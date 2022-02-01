@@ -18,6 +18,7 @@
                 <td th:text="${animal.name}"></td>
                 <td th:text="${animal.species}"></td>
                 <td th:text="${animal.getAge()}"></td>
+                <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Update</a></td>
             </tr>
         </table>
     </div>
