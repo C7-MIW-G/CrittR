@@ -12,7 +12,7 @@
         <table>
             <tr>
                 <td><label for="SpeciesInput">Species:</label></td>
-                <td> <select multiple id="SpeciesInput" th:field="*{species}" >
+                <td> <select multiple id="SpeciesInput" th:field="*{species}">
                     <option th:each="species : ${allSpecies}" th:value="${species.species}" th:text="${species.species}"></option>
                 </select>
                 </td>
@@ -23,8 +23,8 @@
                 </td>
                 <td>
                     <select multiple id="AnimalNameInput" th:field="*{animal}" >
-                    <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
-                </select>
+                        <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
+                    </select>
                 </td>
             </tr>
             <tr>
