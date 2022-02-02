@@ -15,6 +15,7 @@
                 <a class="nav-link px-2 link-dark" th:href="@{/}">Home</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/animals}">Animals</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/reports}">Reports</a>
+                <a class="nav-link px-2 link-dark " th:href="@{/caretaker/animals}">Caretaker Animal Overview</a>
             </nav>
         </div>
     </div>
@@ -22,8 +23,8 @@
 <main>
 
 </main>
-<footer th:fragment="footer" class="text-black-50">
-    <p>Databeestjes 2022 &copy;</p>
+<footer th:fragment="footer" class="py-3 my-4">
+    <p class="text-center text-black-50 border-top">Databeestjes 2022 &copy;</p>
 </footer>
 <div th:fragment="bottomscripts">
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
