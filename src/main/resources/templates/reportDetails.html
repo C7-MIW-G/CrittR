@@ -7,21 +7,31 @@
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
     <main>
-        <h1>Report nr <span th:text="${report.reportId}"></span></h1>
-        <table>
-            <tr>
-                <th>Animal</th>
-                <th>Species</th>
-                <th>Issue</th>
-            </tr>
-            <tr>
-                <td th:text="${animalName}"></td>
-                <td th:text="${report.species}"></td>
-                <td th:text="${report.issue}"></td>
-            </tr>
-        </table>
-        <label for="reportDescription">Description</label><br>
-        <textarea id="reportDescription" readonly th:text="${report.description}"></textarea>
+        <section class="py-3 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Report nr <span th:text="${report.reportId}"></span></h1>
+                </div>
+            </div>
+        </section>
+        <div class="overview py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <ul class="list-group">
+                        <li class="list-group-item">Species</li>
+                        <li class="list-group-item">Animal</li>
+                        <li class="list-group-item">Issue</li>
+                        <li class="list-group-item">Description</li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:text="${report.species}"></li>
+                        <li class="list-group-item" th:text="${animalName}"></li>
+                        <li class="list-group-item" th:text="${report.issue}"></li>
+                        <li class="list-group-item" th:text="${report.description}"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
