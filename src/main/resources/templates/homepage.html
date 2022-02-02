@@ -7,9 +7,13 @@
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
     <main>
-        <h1>WELCOME TO CRITTR</h1>
-        <a th:href="@{/animals}">Overview of the animals</a>
-
+        <div class="container py-3 text-center">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">CrittR</h1>
+                <h3 class="text-muted">Welcome to your CrittR Petting Zoo!</h3><br>
+                <a th:href="@{/animals}" class="btn btn-primary my-2" role="button">View all animals</a>
+            </div>
+        </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
