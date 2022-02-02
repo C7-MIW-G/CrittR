@@ -6,42 +6,43 @@
 <body>
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
-    <h1>File Report</h1>
-    <form th:action="@{/reports/new}" method="post" th:object="${report}">
-        <input type="hidden" th:field="*{reportId}"/>
-        <table>
-            <tr>
-                <td><label for="SpeciesInput">Species:</label></td>
-                <td> <select multiple id="SpeciesInput" th:field="*{species}">
-                    <option th:each="species : ${allSpecies}" th:value="${species.species}" th:text="${species.species}"></option>
-                </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="AnimalNameInput">Animal: </label>
-                </td>
-                <td>
-                    <select multiple id="AnimalNameInput" th:field="*{animal}" >
-                        <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
+    <main>
+        <h1>File Report</h1>
+        <form th:action="@{/reports/new}" method="post" th:object="${report}">
+            <input type="hidden" th:field="*{reportId}"/>
+            <table>
+                <tr>
+                    <td><label for="SpeciesInput">Species:</label></td>
+                    <td> <select multiple id="SpeciesInput" th:field="*{species}">
+                        <option th:each="species : ${allSpecies}" th:value="${species.species}" th:text="${species.species}"></option>
                     </select>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="IssueInput">Issue:</label></td>
-                <td><input type="text" id="IssueInput" th:field="*{issue}"/></td>
-            </tr>
-            <tr>
-                <td><label for="DescriptionInput">Description</label></td>
-                <td><textarea id="DescriptionInput" name="description" th:field="*{description}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="AnimalNameInput">Animal: </label>
+                    </td>
+                    <td>
+                        <select multiple id="AnimalNameInput" th:field="*{animal}" >
+                            <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="IssueInput">Issue:</label></td>
+                    <td><input type="text" id="IssueInput" th:field="*{issue}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="DescriptionInput">Description</label></td>
+                    <td><textarea id="DescriptionInput" name="description" th:field="*{description}">
                     Add a more detailed description
                 </textarea></td>
-            </tr>
-        </table>
-        <input value="Save" type="submit"/>
-    </form>
+                </tr>
+            </table>
+            <input value="Save" type="submit"/>
+        </form>
 
-
+    </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
 </div>

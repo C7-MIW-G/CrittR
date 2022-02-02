@@ -6,23 +6,41 @@
 <body>
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
-    <h1>Overview of Reports</h1>
-    <table>
-        <tr>
-            <th>Report nr</th>
-            <th>Species</th>
-            <th>Issue</th>
-            <th>Date made</th>
-        </tr>
-        <tr th:each="report : ${allReports}">
-            <td><a th:text="${report.reportId}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
-            <td th:text="${report.species}"></td>
-            <td th:text="${report.issue}"></td>
-            <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
-        </tr>
-    </table>
-    <button onclick="window.location.href='/reports/new';">Make report</button>
-
+    <main>
+        <section class="py-3 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Overview of Reports</h1>
+                    <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p><a th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Make report</a></p>
+                </div>
+            </div>
+        </section>
+        <div class="overview py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <table class="table table-hover table-wrap">
+                        <thead>
+                        <tr>
+                            <th scope="col">Report nr</th>
+                            <th scope="col">Species</th>
+                            <th scope="col">Issue</th>
+                            <th scope="col">Date made</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="report : ${allReports}">
+                            <td><a th:text="${report.reportId}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
+                            <td th:text="${report.species}"></td>
+                            <td th:text="${report.issue}"></td>
+                            <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
 </div>

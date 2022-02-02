@@ -21,24 +21,22 @@
         <div class="overview py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Species</th>
-                                <th scope="col">Age</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="animal : ${allAnimals}">
-                                <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
-                                <td th:text="${animal.species.toString()}"></td>
-                                <td th:text="${animal.getAge()}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Species</th>
+                            <th scope="col">Age</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="animal : ${allAnimals}">
+                            <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
+                            <td th:text="${animal.species.toString()}"></td>
+                            <td th:text="${animal.getAge()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

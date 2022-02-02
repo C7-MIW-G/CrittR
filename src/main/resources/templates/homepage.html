@@ -6,10 +6,11 @@
 <body>
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
-    <h1>WELCOME TO CRITTR</h1>
-    <a th:href="@{/animals}">Overview of the animals</a>
+    <main>
+        <h1>WELCOME TO CRITTR</h1>
+        <a th:href="@{/animals}">Overview of the animals</a>
 
-
+    </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
 </div>
