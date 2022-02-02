@@ -12,11 +12,13 @@
             <th>Report nr</th>
             <th>Species</th>
             <th>Issue</th>
+            <th>Date made</th>
         </tr>
         <tr th:each="report : ${allReports}">
             <td th:text="${report.reportId}"></td>
             <td th:text="${report.species}"></td>
             <td th:text="${report.issue}"></td>
+            <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
         </tr>
     </table>
     <button onclick="window.location.href='/reports/new';">Make report</button>

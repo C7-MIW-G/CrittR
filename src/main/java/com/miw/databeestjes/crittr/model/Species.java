@@ -19,13 +19,13 @@ import java.util.List;
 public class Species {
 
     @Id
-    protected String species;
+    private String species;
 
     @OneToMany(mappedBy = "species")
-    protected List<Animal> animals;
+    private List<Animal> animals;
 
     @OneToMany(mappedBy = "species")
-    protected List<Report> reports;
+    private List<Report> reports;
 
     @Override
     public String toString() {
