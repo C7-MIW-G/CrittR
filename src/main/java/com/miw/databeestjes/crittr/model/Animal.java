@@ -23,8 +23,7 @@ public class Animal {
     @GeneratedValue
     protected long animalId;
 
-    @ManyToOne
-    protected Species species;
+    protected String species;
 
     protected String name;
 

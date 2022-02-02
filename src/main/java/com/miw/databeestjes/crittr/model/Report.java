@@ -20,8 +20,8 @@ public class Report {
     @ManyToOne
     private Animal animal;
 
-    @ManyToOne(optional = false)
-    private Species species;
+    @Column(nullable = false)
+    private String species;
 
     @Column
     private String description;

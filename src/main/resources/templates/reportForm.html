@@ -13,9 +13,8 @@
             <table>
                 <tr>
                     <td><label for="SpeciesInput">Species:</label></td>
-                    <td> <select multiple id="SpeciesInput" th:field="*{species}">
-                        <option th:each="species : ${allSpecies}" th:value="${species.species}" th:text="${species.species}"></option>
-                    </select>
+                    <td>
+                        <input id="SpeciesInput" type="text" th:field="*{species}">
                     </td>
                 </tr>
                 <tr>

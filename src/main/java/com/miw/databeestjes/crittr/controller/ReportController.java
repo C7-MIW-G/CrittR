@@ -1,10 +1,8 @@
 package com.miw.databeestjes.crittr.controller;
 
-import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
-import com.miw.databeestjes.crittr.service.SpeciesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,12 +25,11 @@ public class ReportController {
 
     private ReportService reportService;
     private AnimalService animalService;
-    private SpeciesService speciesService;
 
-    public ReportController(ReportService reportService, AnimalService animalService, SpeciesService speciesService) {
+
+    public ReportController(ReportService reportService, AnimalService animalService) {
         this.reportService = reportService;
         this.animalService = animalService;
-        this.speciesService = speciesService;
     }
 
     @GetMapping("/reports")
@@ -45,7 +42,6 @@ public class ReportController {
     protected String showReportForm (Model model) {
         model.addAttribute("report", new Report());
         model.addAttribute("allAnimals", animalService.getAll());
-        model.addAttribute("allSpecies", speciesService.getAll());
         return "reportForm";
     }
 
