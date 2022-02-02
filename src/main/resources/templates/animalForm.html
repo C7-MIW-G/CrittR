@@ -8,24 +8,24 @@
     <header th:replace="fragments/general :: navbar"></header>
     <main>
         <div>
-            <h1>Add a new animal</h1>
-            <form th:action="@{/animals/new}" method="post" th:object="${animal}">
-                <input type="hidden" th:field="*{animalId}" />
-                <table>
-                    <tr>
-                        <td><label for="animalName">Name</label></td>
-                        <td><input id="animalName" type="text" th:field="*{name}"/> </td>
-                    </tr>
-                    <tr>
-                        <td><label for="animalSpecies">Species</label></td>
-                        <td><input id="animalSpecies" type="text" th:field="*{species}"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="animalBirthdate">Birthdate</label></td>
-                        <td><input id="animalBirthdate" type="date" th:field="*{birthDate}"/> </td>
-                    </tr>
-                </table>
-                <input value="Save" type="submit"/>
+            <h1>Animal Form</h1>
+            <form class="row g-3" th:action="@{/animals/new}" method="post" th:object="${animal}">
+                <input type="hidden" th:field="*{animalId}"/>
+                <div class="col-6">
+                    <label class="form-label" for="animalName">Name</label>
+                    <input class="form-control" placeholder="Name" id="animalName" type="text" th:field="*{name}"/>
+                </div><br>
+                <div class="col-6">
+                    <label class="form-label" for="animalSpecies">Species</label>
+                    <input class="form-control" placeholder="Species" id="animalSpecies" type="text" th:field="*{species}">
+                </div><br>
+                <div class="col-6">
+                    <label class="form-label" for="animalBirthdate">Birthdate</label>
+                    <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
+                </div><br>
+                <div class="col-10">
+                    <input value="Save" type="submit" class="btn btn-primary"/>
+                </div>
             </form>
         </div>
     </main>
