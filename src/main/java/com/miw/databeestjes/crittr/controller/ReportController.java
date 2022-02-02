@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
@@ -9,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @author Annemiek Blaauwgeers <a.blaauwgeers@st.hanze.nl>
@@ -50,6 +55,23 @@ public class ReportController {
             reportService.save(report);
          }
          return "redirect:/reports";
+    }
+
+    @GetMapping("/reports/details/{reportId}")
+    protected String showReportDetails(@PathVariable("reportId") long reportId, Model model) {
+        Optional<Report> report = reportService.getByReportId(reportId);
+        if (report.isEmpty()){
+            return "redirect:/reports";
+        }
+        Report certainReport = report.get();
+        if(Objects.isNull(certainReport.getAnimal())) {
+            model.addAttribute("animalName", "Unknown");
+        } else {
+            model.addAttribute("animalName", certainReport.getAnimal().getName());
+        }
+        model.addAttribute("report", certainReport);
+
+        return "reportDetails";
     }
 
 }

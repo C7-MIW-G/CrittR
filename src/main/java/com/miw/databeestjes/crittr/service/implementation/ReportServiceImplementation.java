@@ -6,6 +6,7 @@ import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReportServiceImplementation implements ReportService {
@@ -24,5 +25,10 @@ public class ReportServiceImplementation implements ReportService {
     @Override
     public void save(Report report) {
         reportRepository.save(report);
+    }
+
+    @Override
+    public Optional<Report> getByReportId(long reportId) {
+        return reportRepository.findByReportId(reportId);
     }
 }

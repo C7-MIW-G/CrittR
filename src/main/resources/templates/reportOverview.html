@@ -15,7 +15,7 @@
             <th>Date made</th>
         </tr>
         <tr th:each="report : ${allReports}">
-            <td th:text="${report.reportId}"></td>
+            <td><a th:text="${report.reportId}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
             <td th:text="${report.species}"></td>
             <td th:text="${report.issue}"></td>
             <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
