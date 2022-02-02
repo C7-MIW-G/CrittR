@@ -72,4 +72,22 @@ public class AnimalController {
         animalService.delete(animal);
         return "redirect:/animals";
     }
+
+    @GetMapping("/caretaker/animals")
+    protected String showAnimalOverviewCaretaker (Model model) {
+        model.addAttribute("allAnimals", animalService.getAll());
+        return "animalOverviewCaretaker";
+    }
+
+    @GetMapping("/caretaker/animals/details/{animalId}")
+    protected String showAnimalDetailsCaretaker(@PathVariable("animalId") long animalId, Model model){
+        Optional<Animal> animal = animalService.findByAnimalId(animalId);
+        if (animal.isEmpty()){
+            return "redirect:/caretaker/animals";
+        }
+        model.addAttribute("animal", animal.get());
+        return "animalDetailsCaretaker";
+    }
+
+
 }
