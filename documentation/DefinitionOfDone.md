@@ -1,0 +1,7 @@
+- Satisfies the needs of the Customer
+- Complies with coding standards and maintainability rules.
+- Changes have been integrated in the main branch and have been manually tested.
+- Code should be peer-reviewed.
+- Functionality should be tested by the peer reviewer.
+- Front-end should be consistent throughout the Application.
+- Changes should not introduce new bugs or know problems.
