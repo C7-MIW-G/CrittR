@@ -8,39 +8,35 @@
     <header th:replace="fragments/general :: navbar"></header>
     <main>
         <h1>File Report</h1>
-        <form th:action="@{/reports/new}" method="post" th:object="${report}">
+        <form class="row g-3" th:action="@{/reports/new}" method="post" th:object="${report}">
             <input type="hidden" th:field="*{reportId}"/>
-            <table>
-                <tr>
-                    <td><label for="SpeciesInput">Species:</label></td>
-                    <td>
-                        <input id="SpeciesInput" type="text" th:field="*{species}">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="AnimalNameInput">Animal: </label>
-                    </td>
-                    <td>
-                        <select multiple id="AnimalNameInput" th:field="*{animal}" >
-                            <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="IssueInput">Issue:</label></td>
-                    <td><input type="text" id="IssueInput" th:field="*{issue}"/></td>
-                </tr>
-                <tr>
-                    <td><label for="DescriptionInput">Description</label></td>
-                    <td><textarea id="DescriptionInput" name="description" th:field="*{description}">
-                    Add a more detailed description
-                </textarea></td>
-                </tr>
-            </table>
-            <input value="Save" type="submit"/>
+            <div class="col-6">
+                <label class="form-label" for="SpeciesInput">Species:*</label>
+                <input class="form-control" id="SpeciesInput" type="text" th:field="*{species}">
+            </div><br>
+            <div class="col-6">
+                <label class="form-label" for="AnimalNameInput">Animal:</label>
+                <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
+                    <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
+                </select>
+            </div><br>
+            <div class="col-6">
+                <label class="form-label" for="IssueInput">Issue:*</label>
+                <input class="form-control" type="text" id="IssueInput" th:field="*{issue}"/>
+            </div><br>
+            <div class="col-6">
+                <label class="form-label" for="DescriptionInput">Description:</label>
+                <textarea class="form-control" id="DescriptionInput" name="description" th:field="*{description}">
+                    Tell us more
+                </textarea>
+            </div><br>
+            <div class="col-10">
+                <input value="Send" type="submit" class="btn btn-primary"/>
+            </div><br>
+            <div class="col-10">
+                <p class="text-black-50">*Mandatory</p>
+            </div>
         </form>
-
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
