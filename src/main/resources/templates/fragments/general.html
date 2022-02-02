@@ -8,16 +8,20 @@
     <title th:replace="${title}">TITLE</title>
 </head>
 <body>
-<header th:fragment="navbar">
-    <div>
-        <nav class="nav">
-            <a class="nav-link" th:href="@{/}">Home</a>
-            <a class="nav-link" th:href="@{/animals}">Animals</a>
-            <a class="nav-link" th:href="@{/reports}">Reports</a>
-        </nav>
+<header th:fragment="navbar" class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <nav class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <a class="nav-link px-2 link-dark" th:href="@{/}">Home</a>
+                <a class="nav-link px-2 link-dark" th:href="@{/animals}">Animals</a>
+                <a class="nav-link px-2 link-dark" th:href="@{/reports}">Reports</a>
+            </nav>
+        </div>
     </div>
 </header>
+<main>
 
+</main>
 <footer th:fragment="footer" class="text-black-50">
     <p>Databeestjes 2022 &copy;</p>
 </footer>
