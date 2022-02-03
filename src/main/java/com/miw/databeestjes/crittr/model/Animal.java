@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -31,9 +32,11 @@ public class Animal {
     protected List<Report> reports;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = false)
     protected LocalDate birthDate;
 
     public int getAge () {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
+
 }

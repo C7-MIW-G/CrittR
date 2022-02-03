@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -49,10 +50,13 @@ public class AnimalController {
 
     @PostMapping("/animals/new")
     protected String saveUpdateAnimal(@ModelAttribute("animal") Animal animal , BindingResult result){
-        if(!result.hasErrors()){
+        if(!result.hasErrors()
+        && !animal.getName().isEmpty()
+        && !animal.getSpecies().isEmpty()
+        && !(animal.getBirthDate() == null)){
             animalService.save(animal);
         }
-        return "redirect:/animals";
+        return "redirect:/caretaker/animals";
     }
 
     @GetMapping("/animals/update/{animalId}")
