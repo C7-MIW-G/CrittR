@@ -12,19 +12,22 @@
             <form class="row g-3" th:action="@{/animals/new}" method="post" th:object="${animal}">
                 <input type="hidden" th:field="*{animalId}"/>
                 <div class="col-8">
-                    <label class="form-label" for="animalName">Name</label>
+                    <label class="form-label" for="animalName">Name:*</label>
                     <input class="form-control" placeholder="Name" id="animalName" type="text" th:field="*{name}"/>
                 </div><br>
                 <div class="col-8">
-                    <label class="form-label" for="animalSpecies">Species</label>
+                    <label class="form-label" for="animalSpecies">Species:*</label>
                     <input class="form-control" placeholder="Species" id="animalSpecies" type="text" th:field="*{species}">
                 </div><br>
                 <div class="col-8">
-                    <label class="form-label" for="animalBirthdate">Birthdate</label>
+                    <label class="form-label" for="animalBirthdate">Birthdate:*</label>
                     <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
                 </div><br>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>
+                </div>
+                <div class="col-10">
+                    <p class="text-black-50">*Mandatory</p>
                 </div>
             </form>
         </div>
