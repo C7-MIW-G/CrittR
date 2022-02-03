@@ -17,18 +17,26 @@
         <div class="overview py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <ul class="list-group">
-                        <li class="list-group-item">Species</li>
-                        <li class="list-group-item">Animal</li>
-                        <li class="list-group-item">Issue</li>
-                        <li class="list-group-item">Description</li>
-                    </ul>
-                    <ul class="list-group">
-                        <li class="list-group-item" th:text="${report.species}"></li>
-                        <li class="list-group-item" th:text="${animalName}"></li>
-                        <li class="list-group-item" th:text="${report.issue}"></li>
-                        <li class="list-group-item" th:text="${report.description}"></li>
-                    </ul>
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th scope="row">Species</th>
+                            <td class="list-group-item" th:text="${report.species}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Animal</th>
+                            <td class="list-group-item" th:text="${animalName}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Issue</th>
+                            <td class="list-group-item" th:text="${report.issue}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td class="list-group-item" th:text="${report.description}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
