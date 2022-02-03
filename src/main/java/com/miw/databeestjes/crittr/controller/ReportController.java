@@ -23,7 +23,6 @@ import java.util.Optional;
 @Controller
 public class ReportController {
 
-    private static final String DEFAULT_REPORT_STATUS = "Pending";
     private static final String REPORT_STATUS_ACCEPTED = "Accepted";
     private static final String REPORT_STATUS_REJECTED = "Discarded";
     private ReportService reportService;
@@ -81,7 +80,7 @@ public class ReportController {
     private String getReport(@ModelAttribute("report") Report report, String reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
         if(optionalReport.isEmpty()) {
-            return "redirect:/reports/details/{" +report.getReportId() + "}";
+            return "redirect:/reports/details/{" + report.getReportId() + "}";
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
@@ -94,4 +93,6 @@ public class ReportController {
     protected String discardReport(@ModelAttribute("report") Report report){
         return getReport(report, REPORT_STATUS_REJECTED);
     }
+
+
 }
