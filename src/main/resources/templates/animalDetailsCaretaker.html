@@ -7,30 +7,51 @@
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
     <main>
-        <h1>Details of <span th:text="${animal.name}"></span></h1>
-        <div>
-            <table>
-                <tr>
-                    <th>Species</th>
-                    <th>Date of Birth</th>
-                    <th>Age</th>
-                </tr>
-                <tr>
-                    <td th:text="${animal.species}"></td>
-                    <td th:text="${animal.birthDate}"></td>
-                    <td th:text="${animal.getAge()}"></td>
-                    <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Update</a></td>
-                    <td><a th:href="@{/animals/delete/{animalId}(animalId=${animal.animalId})}">Delete</a></td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                <th>Reports</th>
-                </tr>
-                <tr th:each="report : ${animal.reports}">
-                    <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a> </td>
-                </tr>
-            </table>
+        <section class="py-3 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1>Details of <span th:text="${animal.name}"></span></h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="overview py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Species</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">Age</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${animal.species}"></td>
+                            <td th:text="${animal.birthDate}"></td>
+                            <td th:text="${animal.getAge()}"></td>
+                            <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Update</a></td>
+                            <td><a th:href="@{/animals/delete/{animalId}(animalId=${animal.animalId})}">Delete</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th scope="col">Reports</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="report : ${animal.reports}">
+                            <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
