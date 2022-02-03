@@ -48,6 +48,12 @@
                         <form method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-secondary" type="submit" value="Discard"/>
                         </form>
+                        <form method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
+                            <input class="btn btn-secondary" type="submit" value="Under observation"/>
+                        </form>
+                        <form method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
+                            <input class="btn btn-secondary" type="submit" value="Close"/>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -23,8 +23,12 @@ import java.util.Optional;
 @Controller
 public class ReportController {
 
-    private static final String REPORT_STATUS_ACCEPTED = "Accepted";
+    private static final String REPORT_STATUS_ACCEPTED = "Open issue";
     private static final String REPORT_STATUS_REJECTED = "Discarded";
+    private static final String REPORT_STATUS_OBSERVED = "Under observation";
+    private static final String REPORT_STATUS_CLOSED = "Closed";
+
+
     private ReportService reportService;
     private AnimalService animalService;
 
@@ -94,5 +98,13 @@ public class ReportController {
         return getReport(report, REPORT_STATUS_REJECTED);
     }
 
+    @PostMapping("/reports/details/observation/{reportId}")
+    protected String monitorReport(@ModelAttribute("report") Report report){
+        return getReport(report, REPORT_STATUS_OBSERVED);
+    }
 
+    @PostMapping("/reports/details/closed/{reportId}")
+    protected String closeReport(@ModelAttribute("report") Report report){
+        return getReport(report, REPORT_STATUS_CLOSED);
+    }
 }
