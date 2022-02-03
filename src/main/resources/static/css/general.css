@@ -1,3 +1,7 @@
 body {
     background-color: white;
 }
+
+.reportStatusButton{
+    display:inline-block;
+}

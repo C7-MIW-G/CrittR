@@ -35,8 +35,18 @@
                             <th scope="row">Description</th>
                             <td class="list-group-item" th:text="${report.description}"></td>
                         </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td class="list-group-item" th:text="${report.status}"></td>
+                        </tr>
                         </tbody>
                     </table>
+                    <form class="reportStatusButton" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
+                        <input type="submit" value="Accept"/>
+                    </form>
+                    <form class="reportStatusButton" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
+                        <input type="submit" value="Discard"/>
+                    </form>
                 </div>
             </div>
         </div>

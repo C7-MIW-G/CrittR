@@ -4,4 +4,4 @@
 - Code should be peer-reviewed.
 - Functionality should be tested by the peer reviewer.
 - Front-end should be consistent throughout the Application.
-- Changes should not introduce new bugs or know problems.
+- Changes should not introduce new bugs or known problems.

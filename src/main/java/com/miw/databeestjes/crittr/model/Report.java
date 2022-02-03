@@ -11,11 +11,14 @@ import java.time.LocalDateTime;
 @Getter @Setter
 public class Report {
 
+    private static final String DEFAULT_REPORT_STATUS = "Pending";
     @Id
     @GeneratedValue
     private long reportId;
 
     private String issue;
+
+    private String status = DEFAULT_REPORT_STATUS;
 
     @ManyToOne
     private Animal animal;

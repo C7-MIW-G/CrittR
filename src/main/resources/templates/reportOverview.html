@@ -26,6 +26,7 @@
                             <th scope="col">Species</th>
                             <th scope="col">Issue</th>
                             <th scope="col">Date made</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,7 @@
                             <td th:text="${report.species}"></td>
                             <td th:text="${report.issue}"></td>
                             <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
+                            <td th:text="${report.status}"></td>
                         </tr>
                         </tbody>
                     </table>
