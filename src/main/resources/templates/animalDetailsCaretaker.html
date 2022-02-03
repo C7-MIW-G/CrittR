@@ -31,22 +31,8 @@
                             <td th:text="${animal.species}"></td>
                             <td th:text="${animal.birthDate}"></td>
                             <td th:text="${animal.getAge()}"></td>
-                            <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Update</a></td>
+                            <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Edit</a></td>
                             <td><a th:href="@{/animals/delete/{animalId}(animalId=${animal.animalId})}">Delete</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th scope="col">Reports</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="report : ${animal.reports}">
-                            <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
                         </tr>
                         </tbody>
                     </table>

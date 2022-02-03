@@ -47,7 +47,6 @@ public class ReportController {
     @GetMapping("reports/new")
     protected String showReportForm (Model model) {
         model.addAttribute("report", new Report());
-        model.addAttribute("allAnimals", animalService.getAll());
         return "reportForm";
     }
 
@@ -66,10 +65,10 @@ public class ReportController {
             return "redirect:/reports";
         }
         Report certainReport = report.get();
-        if(Objects.isNull(certainReport.getAnimal())) {
+        if(Objects.isNull(certainReport.getAnimalName())) {
             model.addAttribute("animalName", "Unknown");
         } else {
-            model.addAttribute("animalName", certainReport.getAnimal().getName());
+            model.addAttribute("animalName", certainReport.getAnimalName());
         }
         model.addAttribute("report", certainReport);
 

@@ -28,9 +28,6 @@ public class Animal {
 
     protected String name;
 
-    @OneToMany(mappedBy = "animal", cascade = CascadeType.REMOVE)
-    protected List<Report> reports;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
     protected LocalDate birthDate;

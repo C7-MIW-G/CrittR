@@ -16,10 +16,8 @@
                     <input class="form-control" id="SpeciesInput" type="text" th:field="*{species}">
                 </div><br>
                 <div class="col-8">
-                    <label class="form-label" for="AnimalNameInput">Animal:</label>
-                    <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
-                        <option th:each="animal : ${allAnimals}" th:value="${animal.animalId}" th:text="${animal.name}"></option>
-                    </select>
+                    <label class="form-label" for="animalInput">Animal name:</label>
+                    <input class="form-control" id="animalInput" type="text" th:field="*{animalName}">
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="IssueInput">Issue:*</label>

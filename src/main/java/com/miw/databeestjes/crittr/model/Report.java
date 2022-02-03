@@ -20,8 +20,7 @@ public class Report {
 
     private String status = DEFAULT_REPORT_STATUS;
 
-    @ManyToOne
-    private Animal animal;
+    private String animalName;
 
     @Column(nullable = false)
     private String species;
