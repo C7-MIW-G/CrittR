@@ -52,7 +52,7 @@ public class ReportController {
 
     @PostMapping("reports/new")
     protected String createUpdateReport(@ModelAttribute("report") Report report, BindingResult result){
-        if(!result.hasErrors() && !report.getSpecies().isEmpty()){
+        if(!result.hasErrors() && !report.getSpecies().isEmpty() && !report.getIssue().isEmpty()){
             reportService.save(report);
          }
          return "redirect:/reports";
