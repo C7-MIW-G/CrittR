@@ -16,7 +16,7 @@
         </section>
         <div class="overview py-5 bg-light">
             <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 g-3">
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
@@ -41,12 +41,14 @@
                         </tr>
                         </tbody>
                     </table>
-                    <form class="reportStatusButton" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
-                        <input type="submit" value="Accept"/>
-                    </form>
-                    <form class="reportStatusButton" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
-                        <input type="submit" value="Discard"/>
-                    </form>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <form method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
+                            <input class="btn btn-primary" type="submit" value="Accept"/>
+                        </form>
+                        <form method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
+                            <input class="btn btn-secondary" type="submit" value="Discard"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

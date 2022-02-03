@@ -2,10 +2,6 @@ body {
     background-color: white;
 }
 
-.reportStatusButton{
-    display:inline-block;
-}
-
 .th-sm {
-    max-width: 1.5rem;
+    width: 10rem;
 }
