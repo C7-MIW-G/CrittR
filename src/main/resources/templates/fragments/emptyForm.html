@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>EMPTY FORM</title>
+<head th:replace="fragments/general :: baseheader(~{:: title})">
+    <title>TITLE</title>
 </head>
 <body>
-<div>
-    <h1></h1>
-    <form>
-        <input type="hidden"/>
-        <table>
-            <tr>
-                <td>
+<div class="container">
+    <header th:replace="fragments/general :: navbar"></header>
 
-                </td>
+    <main>
+        <div class="col-lg-8">
+            <h1>HEADER</h1>
+            <form class="row g-3" th:action="@{}" method="post" th:object="${}">
+                <input type="hidden" th:field="*{}"/>
+                <div class="col-8">
+                    <label class="form-label" for="">TABLEHEAD</label>
+                    <input class="form-control" placeholder="" id="" type="" th:field="*{}"/>
+                </div><br>
+                <div class="col-8">
+                    <label class="form-label" for="">TABLEHEAD</label>
+                    <input class="form-control" placeholder="" id="animalSpecies" type="" th:field="*{}">
+                </div><br>
+                <div class="col-8">
+                    <label class="form-label" for="">TABLEHEAD</label>
+                    <input class="form-control" id="" type="" th:field="*{}"/>
+                </div><br>
+                <div class="col-10">
+                    <input value="" type="" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
+    </main>
 
-            </tr>
-        </table>
-        <input value="Save" type="submit"/>
-    </form>
+    <footer th:replace="fragments/general :: footer"></footer>
+    <div th:replace="fragments/general :: bottomscripts"></div>
 </div>
-
 </body>
 </html>
