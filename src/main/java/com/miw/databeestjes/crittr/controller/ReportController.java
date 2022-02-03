@@ -1,7 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Report;
-import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.Objects;
 import java.util.Optional;
 
@@ -30,12 +28,9 @@ public class ReportController {
 
 
     private ReportService reportService;
-    private AnimalService animalService;
 
-
-    public ReportController(ReportService reportService, AnimalService animalService) {
+    public ReportController(ReportService reportService) {
         this.reportService = reportService;
-        this.animalService = animalService;
     }
 
     @GetMapping("/reports")
