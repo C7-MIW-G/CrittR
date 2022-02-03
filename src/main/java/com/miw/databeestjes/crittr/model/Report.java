@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter @Setter
 public class Report {
 
-    private static final String DEFAULT_REPORT_STATUS = "Pending";
+    private static final String DEFAULT_REPORT_STATUS = "New";
     @Id
     @GeneratedValue
     private long reportId;
