@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>EMPTY PAGE</title>
+<head th:replace="fragments/general :: baseheader(~{:: title})">
+    <title>TITLE</title>
 </head>
 <body>
-<h1>HEADER</h1>
 <div class="container">
-<table>
-    <tr>
-        <th> </th>
-    </tr>
-    <tr th:each=" : ${}"></tr>
-    <td th:text="${}"></td>
-    <td th:text="${}"></td>
+    <header th:replace="fragments/general :: navbar"></header>
+    <main>
 
-</table>
+        <section class="py-3 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">HEADER</h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="overview py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">TABLE HEAD 1</th>
+                            <th scope="col">TABLE HEAD 2</th>
+                            <th scope="col">TABLE HEAD 3</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each=" : ${}">
+                            <td><a th:text="${}" th:href="@{}"></a></td>
+                            <td th:text="${}"></td>
+                            <td th:text="${}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer th:replace="fragments/general :: footer"></footer>
+    <div th:replace="fragments/general :: bottomscripts"></div>
 </div>
 </body>
 </html>
