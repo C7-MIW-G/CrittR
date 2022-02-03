@@ -5,3 +5,7 @@ body {
 .reportStatusButton{
     display:inline-block;
 }
+
+.th-sm {
+    max-width: 1.5rem;
+}
