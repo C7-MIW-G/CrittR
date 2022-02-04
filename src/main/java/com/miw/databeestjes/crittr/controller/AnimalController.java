@@ -52,7 +52,7 @@ public class AnimalController {
         if(!result.hasErrors()
         && !animal.getName().isEmpty()
         && !animal.getSpecies().isEmpty()
-        && !(animal.getBirthDate() == null)){
+        && animal.getBirthDate() != null){
             animalService.save(animal);
         }
         return "redirect:/caretaker/animals";
