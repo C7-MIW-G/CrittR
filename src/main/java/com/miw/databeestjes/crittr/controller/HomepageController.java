@@ -14,6 +14,6 @@ public class HomepageController {
 
     @GetMapping({"/", "/home"})
     protected String showHomePage () {
-        return "homepage";
+        return "index";
     }
 }
