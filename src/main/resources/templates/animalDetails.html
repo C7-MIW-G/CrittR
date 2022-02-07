@@ -28,7 +28,7 @@
                         <tbody>
                         <tr>
                             <td th:text="${animal.species}"></td>
-                            <td th:text="${animal.birthDate}"></td>
+                            <td th:text="${#temporals.format(animal.birthDate, 'dd-MM-yyyy')}"></td>
                             <td th:text="${animal.getAge()}"></td>
                         </tr>
                         </tbody>
