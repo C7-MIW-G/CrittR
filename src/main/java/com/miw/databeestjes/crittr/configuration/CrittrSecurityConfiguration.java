@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
  * <p>
- * Вот, что программа делает
+ * This class configures the basic security settings
  */
 @Configuration
 @EnableWebSecurity
