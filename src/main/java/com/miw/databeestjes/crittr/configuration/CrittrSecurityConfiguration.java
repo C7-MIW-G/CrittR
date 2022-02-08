@@ -51,7 +51,7 @@ public class CrittrSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/css/**", "/webjars/**").permitAll()
-                .antMatchers("/", "/home", "/animals", "/animals/details/**").permitAll()
+                .antMatchers("/", "/home", "/animals", "/animals/details/**", "/users/new").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().and()
                 .logout().logoutSuccessUrl("/home");
