@@ -5,3 +5,7 @@ body {
 .th-sm {
     width: 10rem;
 }
+
+.errormessage {
+    -webkit-text-fill-color: #ff0000;
+}

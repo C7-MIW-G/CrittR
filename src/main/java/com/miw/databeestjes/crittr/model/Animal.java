@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -24,12 +26,15 @@ public class Animal {
     @GeneratedValue
     protected long animalId;
 
+    @NotEmpty
     protected String species;
 
+    @NotEmpty
     protected String name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
+    @NotNull
     protected LocalDate birthDate;
 
     public int getAge () {

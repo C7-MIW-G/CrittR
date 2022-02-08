@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 /**
@@ -48,12 +49,14 @@ public class AnimalController {
 
 
     @PostMapping("/animals/new")
-    protected String saveUpdateAnimal(@ModelAttribute("animal") Animal animal , BindingResult result){
+    protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
         if(!result.hasErrors()
         && !animal.getName().isEmpty()
         && !animal.getSpecies().isEmpty()
         && animal.getBirthDate() != null){
             animalService.save(animal);
+        } else {
+            return "animalForm";
         }
         return "redirect:/caretaker/animals";
     }

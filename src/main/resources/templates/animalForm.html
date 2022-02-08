@@ -14,14 +14,17 @@
                 <div class="col-8">
                     <label class="form-label" for="animalName">Name:*</label>
                     <input class="form-control" placeholder="Name" id="animalName" type="text" th:field="*{name}"/>
+                    <p class="errormessage" th:if="${#fields.hasErrors('name')}" >Please give this animal a name</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="animalSpecies">Species:*</label>
                     <input class="form-control" placeholder="Species" id="animalSpecies" type="text" th:field="*{species}">
+                    <p class="errormessage" th:if="${#fields.hasErrors('species')}" >Please state the animal's species</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="animalBirthdate">Birthdate:*</label>
                     <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
+                    <p class="errormessage" th:if="${#fields.hasErrors('birthDate')}" >Please state the animal's birthdate</p>
                 </div><br>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>
