@@ -27,6 +27,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Species</th>
                             <th scope="col">Age</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,7 @@
                             <td><a th:text="${animal.name}" th:href="@{/caretaker/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
                             <td th:text="${animal.species.toString()}"></td>
                             <td th:text="${animal.getAge()}"></td>
+                            <td th:text="${animal.getStatus()}"></td>
                         </tr>
                         </tbody>
                     </table>

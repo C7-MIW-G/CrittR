@@ -32,12 +32,21 @@ public class Animal {
     @NotEmpty
     protected String name;
 
+    protected AnimalStatus status = AnimalStatus.PRESENT;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
     protected LocalDate birthDate;
 
     public int getAge () {
         return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+    enum AnimalStatus {
+        INCOMING,
+        PRESENT,
+        DEPARTED,
+        DECEASED
     }
 
 }
