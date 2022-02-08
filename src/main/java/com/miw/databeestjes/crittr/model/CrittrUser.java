@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +32,10 @@ public class CrittrUser implements UserDetails {
     private long userId;
 
     @Column(unique = true)
+    @NotEmpty
+    @Pattern(regexp=".+@.+\\..+")
+    private String email;
+
     @NotEmpty
     private String username;
 

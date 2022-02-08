@@ -13,17 +13,25 @@
             <form class="row g-3" th:action="@{/users/new}" method="post" th:object="${newUser}">
                 <input type="hidden" th:field="*{userId}"/>
                 <div class="col-8">
-                    <label class="form-label" for="username">Username</label>
-                    <input class="form-control" placeholder="Username" id="username" type="text" th:field="*{username}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter a username</p>
+                    <label class="form-label" for="email">Email*</label>
+                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
+                    <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter a valid email address</p>
                 </div><br>
                 <div class="col-8">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label" for="username">Name*</label>
+                    <input class="form-control" placeholder="Name" id="username" type="text" th:field="*{username}"/>
+                    <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
+                </div><br>
+                <div class="col-8">
+                    <label class="form-label" for="password">Password*</label>
                     <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}">
                     <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a password</p>
                 </div><br>
                 <div class="col-10">
                     <input value="Create account" type="submit" class="btn btn-primary"/>
+                </div><br>
+                <div class="col-10">
+                    <p class="text-black-50">*Mandatory</p>
                 </div>
             </form>
         </div>
