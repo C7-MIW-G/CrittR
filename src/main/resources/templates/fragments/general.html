@@ -10,13 +10,15 @@
 <body>
 <header th:fragment="navbar" class="p-3 mb-3 border-bottom">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <nav class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <div class="d-flex flex-wrap">
+            <nav class="nav me-auto">
                 <a class="nav-link px-2 link-dark" th:href="@{/}">Home</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/animals}">Animals</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/reports}">Reports</a>
+            </nav>
+            <nav class="nav">
                 <a class="nav-link px-2 link-dark" th:href="@{/caretaker/animals}">Caretaker Animal Overview</a>
-                <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}" >Account</a>
+                <a sec:authorize="hasRole('MEMBER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}" >Account</a>
                 <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}" >Logout</a>
                 <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}" >Login</a>
                 <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/users/new}">Register</a>
