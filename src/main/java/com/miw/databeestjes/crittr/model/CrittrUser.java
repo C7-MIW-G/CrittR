@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -29,9 +30,11 @@ public class CrittrUser implements UserDetails {
     @GeneratedValue
     private long userId;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
+    @NotEmpty
     private String username;
 
+    @NotEmpty
     private String password;
 
     private String role = "ROLE_MEMBER";

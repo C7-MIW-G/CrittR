@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class CrittrUserController {
 
@@ -28,8 +30,8 @@ public class CrittrUserController {
     }
 
     @PostMapping("/users/new")
-    protected String saveUpdateUser(@ModelAttribute("newUser") CrittrUser user, BindingResult result) {
-        if (!result.hasErrors() && !user.getUsername().isEmpty() && !user.getPassword().isEmpty()) {
+    protected String saveUpdateUser(@ModelAttribute("newUser") @Valid CrittrUser user, BindingResult result) {
+        if (!result.hasErrors()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             crittrUserRepository.save(user);
             return "redirect:/";
