@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -32,8 +33,9 @@ public class CrittrUser implements UserDetails {
     private long userId;
 
     @Column(unique = true)
-    @NotEmpty
-    @Pattern(regexp=".+@.+\\..+")
+//    @NotEmpty
+//    @Pattern(regexp=".+@.+\\..+")
+    @Email(regexp = ".+@.+\\..+")
     private String email;
 
     @NotEmpty

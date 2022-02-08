@@ -15,7 +15,7 @@
                 <div class="col-8">
                     <label class="form-label" for="email">Email*</label>
                     <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter a valid email address</p>
+                    <p class="errormessage" th:if="${#fields.hasErrors('email')}">Please enter a valid email address</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="username">Name*</label>
