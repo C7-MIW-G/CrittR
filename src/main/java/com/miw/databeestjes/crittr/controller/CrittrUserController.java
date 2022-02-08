@@ -33,12 +33,18 @@ public class CrittrUserController {
         return "userForm";
     }
 
+    protected String showUserFormWithError(Model model) {
+        model.addAttribute("newUser", new CrittrUser());
+        model.addAttribute("UniquenessError", "This email already exists");
+        return "userForm";
+    }
+
     @PostMapping("/users/new")
-    protected String saveUpdateUser(@ModelAttribute("newUser") @Valid CrittrUser user, BindingResult result) {
+    protected String saveUpdateUser(@ModelAttribute("newUser") @Valid CrittrUser user, BindingResult result, Model model) {
         List<CrittrUser> userList = crittrUserRepository.listByEmail(user.getEmail());
         if(userList.size() > 0) {
             result.addError(new ObjectError("UniquenessViolation", "value is not unique"));
-            return "userForm";
+            return showUserFormWithError(model);
         }
         if (!result.hasErrors()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));

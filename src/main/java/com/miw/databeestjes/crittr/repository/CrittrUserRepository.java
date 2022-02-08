@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface CrittrUserRepository extends JpaRepository<CrittrUser, Long> {
     Optional<CrittrUser> findByEmail(String email);
 
-    @Query("SELECT c FROM CrittrUser c WHERE c.email LIKE %?1%")
+    @Query("SELECT c FROM CrittrUser c WHERE c.email LIKE ?1")
     List<CrittrUser> listByEmail(String email);
 }
