@@ -38,15 +38,8 @@ public class Animal {
     @NotNull
     protected LocalDate birthDate;
 
-    public int getAge () {
+    public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
-    }
-
-    enum AnimalStatus {
-        INCOMING,
-        PRESENT,
-        DEPARTED,
-        DECEASED
     }
 
 }
