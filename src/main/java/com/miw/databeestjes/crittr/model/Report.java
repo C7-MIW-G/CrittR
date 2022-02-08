@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 
@@ -16,6 +17,7 @@ public class Report {
     @GeneratedValue
     private long reportId;
 
+    @NotEmpty
     private String issue;
 
     private String status = DEFAULT_REPORT_STATUS;
@@ -23,6 +25,7 @@ public class Report {
     private String animalName;
 
     @Column(nullable = false)
+    @NotEmpty
     private String species;
 
     @Column

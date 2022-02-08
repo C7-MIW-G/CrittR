@@ -14,6 +14,7 @@
                 <div class="col-8">
                     <label class="form-label" for="SpeciesInput">Species:*</label>
                     <input class="form-control" id="SpeciesInput" type="text" th:field="*{species}">
+                    <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please enter the species</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="animalInput">Animal name:</label>
@@ -22,6 +23,7 @@
                 <div class="col-8">
                     <label class="form-label" for="IssueInput">Issue:*</label>
                     <input class="form-control" type="text" id="IssueInput" th:field="*{issue}"/>
+                    <p class="errormessage" th:if="${#fields.hasErrors('issue')}">Please state the issue</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="DescriptionInput">Description:</label>

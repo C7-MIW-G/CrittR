@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -46,10 +48,12 @@ public class ReportController {
     }
 
     @PostMapping("reports/new")
-    protected String createUpdateReport(@ModelAttribute("report") Report report, BindingResult result){
+    protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result){
         if(!result.hasErrors() && !report.getSpecies().isEmpty() && !report.getIssue().isEmpty()){
             reportService.save(report);
-         }
+         } else {
+            return "reportForm";
+        }
          return "redirect:/reports";
     }
 
