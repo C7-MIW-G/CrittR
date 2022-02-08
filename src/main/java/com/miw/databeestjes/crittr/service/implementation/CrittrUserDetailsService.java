@@ -22,8 +22,8 @@ public class CrittrUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return crittrUserRepository.findByUsername(username)
-                        .orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " was not found."));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return crittrUserRepository.findByEmail(email)
+                        .orElseThrow(() -> new UsernameNotFoundException("User with name " + email + " was not found."));
     }
 }

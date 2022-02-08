@@ -53,7 +53,8 @@ public class CrittrSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/css/**", "/webjars/**").permitAll()
                 .antMatchers("/", "/home", "/animals", "/animals/details/**", "/users/new").permitAll()
                 .anyRequest().authenticated().and()
-                .formLogin().and()
+                .formLogin().usernameParameter("email").permitAll()
+                .and()
                 .logout().logoutSuccessUrl("/home");
     }
 }
