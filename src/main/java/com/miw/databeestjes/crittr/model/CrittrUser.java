@@ -33,8 +33,6 @@ public class CrittrUser implements UserDetails {
     private long userId;
 
     @Column(unique = true)
-//    @NotEmpty
-//    @Pattern(regexp=".+@.+\\..+")
     @Email(regexp = ".+@.+\\..+")
     private String email;
 

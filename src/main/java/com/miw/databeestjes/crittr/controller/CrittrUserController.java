@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class CrittrUserController {
@@ -37,5 +39,15 @@ public class CrittrUserController {
             return "redirect:/";
         }
         return "userForm";
+    }
+
+    @GetMapping("user/details/{userId}")
+    protected String showUserDetails (@PathVariable("userId") long userId, Model model) {
+        Optional<CrittrUser> user = crittrUserRepository.findById(userId);
+        if(user.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("user", user.get());
+        return "userDetails";
     }
 }

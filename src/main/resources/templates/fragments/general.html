@@ -16,6 +16,7 @@
                 <a class="nav-link px-2 link-dark" th:href="@{/animals}">Animals</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/reports}">Reports</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/caretaker/animals}">Caretaker Animal Overview</a>
+                <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}" >Account</a>
                 <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}" >Logout</a>
                 <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}" >Login</a>
                 <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/users/new}">Register</a>
