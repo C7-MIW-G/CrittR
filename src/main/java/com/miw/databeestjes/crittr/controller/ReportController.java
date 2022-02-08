@@ -49,12 +49,11 @@ public class ReportController {
 
     @PostMapping("reports/new")
     protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result){
-        if(!result.hasErrors() && !report.getSpecies().isEmpty() && !report.getIssue().isEmpty()){
-            reportService.save(report);
-         } else {
+        if(result.hasErrors()){
             return "reportForm";
         }
-         return "redirect:/reports";
+        reportService.save(report);
+        return "redirect:/reports";
     }
 
     @GetMapping("/reports/details/{reportId}")
