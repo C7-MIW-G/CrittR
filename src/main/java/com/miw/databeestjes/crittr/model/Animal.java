@@ -33,7 +33,6 @@ public class Animal {
     protected String name;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(nullable = false)
     @NotNull
     protected LocalDate birthDate;
 

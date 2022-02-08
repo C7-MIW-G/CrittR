@@ -50,10 +50,7 @@ public class AnimalController {
 
     @PostMapping("/animals/new")
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
-        if(!result.hasErrors()
-        && !animal.getName().isEmpty()
-        && !animal.getSpecies().isEmpty()
-        && animal.getBirthDate() != null){
+        if(!result.hasErrors()){
             animalService.save(animal);
         } else {
             return "animalForm";
