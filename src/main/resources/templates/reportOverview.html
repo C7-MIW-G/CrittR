@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title})">
-    <title>Reports</title>
+    <title>CrittR - Reports</title>
 </head>
 <body>
 <div class="container">
@@ -10,9 +10,9 @@
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Overview of Reports</h1>
-                    <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p><a th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Make report</a></p>
+                    <h1 class="fw-light">Reports</h1>
+                    <p class="lead text-muted">All the reports that have been submitted</p>
+                    <p><a th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report Issue</a></p>
                 </div>
             </div>
         </section>
@@ -22,10 +22,10 @@
                     <table class="table table-hover table-wrap">
                         <thead>
                         <tr>
-                            <th scope="col">Report nr</th>
+                            <th scope="col">#</th>
                             <th scope="col">Species</th>
                             <th scope="col">Issue</th>
-                            <th scope="col">Date made</th>
+                            <th scope="col">Date submitted</th>
                             <th scope="col">Status</th>
                         </tr>
                         </thead>

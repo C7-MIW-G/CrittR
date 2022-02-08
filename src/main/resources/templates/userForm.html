@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title})">
-    <title>New user</title>
+    <title>CrittR - Sign Up</title>
 </head>
 <body onload="setErrorField()">
 <script type="text/javascript" >
@@ -36,10 +36,10 @@
                 <div class="col-8">
                     <label class="form-label" for="password">Password*</label>
                     <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}">
-                    <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a password</p>
+                    <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
                 </div><br>
                 <div class="col-10">
-                    <input value="Create account" type="submit" class="btn btn-primary"/>
+                    <input value="Sign up" type="submit" class="btn btn-primary"/>
                 </div><br>
                 <div class="col-10">
                     <p class="text-black-50">*Mandatory</p>

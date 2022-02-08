@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title})">
-    <title>Add Animal</title>
+    <title>CrittR - New Animal</title>
 </head>
 <body>
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
     <main>
         <div class="col-lg-8">
-            <h1>Animal Form</h1>
+            <h1>New animal</h1>
             <form class="row g-3" th:action="@{/animals/new}" method="post" th:object="${animal}">
                 <input type="hidden" th:field="*{animalId}"/>
                 <div class="col-8">
                     <label class="form-label" for="animalName">Name:*</label>
                     <input class="form-control" placeholder="Name" id="animalName" type="text" th:field="*{name}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('name')}" >Please give this animal a name</p>
+                    <p class="errormessage" th:if="${#fields.hasErrors('name')}">Please provide a valid name</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="animalSpecies">Species:*</label>
                     <input class="form-control" placeholder="Species" id="animalSpecies" type="text" th:field="*{species}">
-                    <p class="errormessage" th:if="${#fields.hasErrors('species')}" >Please state the animal's species</p>
+                    <p class="errormessage" th:if="${#fields.hasErrors('species')}" >Please provide the species</p>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="animalBirthdate">Birthdate:*</label>
                     <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('birthDate')}" >Please state the animal's birthdate</p>
+                    <p class="errormessage" th:if="${#fields.hasErrors('birthDate')}" >Please provide a birthdate</p>
                 </div><br>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>

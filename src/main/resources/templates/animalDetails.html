@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title})">
-    <title>Animal Details</title>
+    <title>CrittR - Animal Details</title>
 </head>
 <body>
 <div class="container">
@@ -10,7 +10,7 @@
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Details of <span th:text="${animal.name}"></span></h1>
+                    <h1 class="fw-light"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
                 </div>
             </div>
         </section>
@@ -21,13 +21,13 @@
                         <thead>
                         <tr>
                             <th scope="col">Species</th>
-                            <th scope="col">Date of Birth</th>
+                            <th scope="col">Birthday</th>
                             <th scope="col">Age</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td th:text="${animal.species}"></td>
+                            <td  th:text="${animal.species}"></td>
                             <td th:text="${#temporals.format(animal.birthDate, 'dd-MM-yyyy')}"></td>
                             <td th:text="${animal.getAge()}"></td>
                         </tr>

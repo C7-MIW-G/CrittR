@@ -18,10 +18,10 @@
                 <a class="nav-link px-2 link-dark" th:href="@{/reports}">Reports</a>
             </nav>
             <nav class="nav">
-                <a sec:authorize="hasRole('MEMBER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}" >Account</a>
-                <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}" >Logout</a>
-                <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}" >Login</a>
-                <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/users/new}">Register</a>
+                <a sec:authorize="hasRole('MEMBER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Account</a>
+                <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}">Logout</a>
+                <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}">Login</a>
+                <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/users/new}">Sign up</a>
             </nav>
         </div>
     </div>
