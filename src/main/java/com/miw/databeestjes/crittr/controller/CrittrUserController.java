@@ -29,7 +29,7 @@ public class CrittrUserController {
 
     @PostMapping("/users/new")
     protected String saveUpdateUser(@ModelAttribute("newUser") CrittrUser user, BindingResult result) {
-        if (!result.hasErrors()) {
+        if (!result.hasErrors() && !user.getUsername().isEmpty() && !user.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             crittrUserRepository.save(user);
             return "redirect:/";
