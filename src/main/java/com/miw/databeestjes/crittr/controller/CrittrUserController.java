@@ -29,18 +29,18 @@ public class CrittrUserController {
 
     @GetMapping("/users/new")
     protected String showUserForm(Model model) {
-        model.addAttribute("newUser", new CrittrUser());
+        model.addAttribute("user", new CrittrUser());
         return "userForm";
     }
 
     protected String showUserFormWithError(Model model) {
-        model.addAttribute("newUser", new CrittrUser());
+        model.addAttribute("user", new CrittrUser());
         model.addAttribute("uniquenessError", EXISTING_EMAIL);
         return "userForm";
     }
 
     @PostMapping("/users/new")
-    protected String saveUpdateUser(@ModelAttribute("newUser") @Valid CrittrUser user, BindingResult result, Model model) {
+    protected String saveUpdateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result, Model model) {
         List<CrittrUser> userList = crittrUserRepository.listByEmail(user.getEmail());
         if(userList.size() > 0) {
             return showUserFormWithError(model);
@@ -53,7 +53,7 @@ public class CrittrUserController {
         return "userForm";
     }
 
-    @GetMapping("user/details/{userId}")
+    @GetMapping("/user/details/{userId}")
     protected String showUserDetails (@PathVariable("userId") long userId, Model model) {
         Optional<CrittrUser> user = crittrUserRepository.findById(userId);
         if(user.isEmpty()) {
@@ -61,5 +61,15 @@ public class CrittrUserController {
         }
         model.addAttribute("user", user.get());
         return "userDetails";
+    }
+
+    @GetMapping("/user/details/edit/{userId}")
+    protected String showUserForm(@PathVariable("userId") long userId, Model model) {
+        Optional<CrittrUser> user = crittrUserRepository.findById(userId);
+        if (user.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("user", user.get());
+        return "userEditForm";
     }
 }
