@@ -36,7 +36,7 @@
                         <th>Your reports</th>
                         </tr>
                         <tr th:each="report : ${user.reports}">
-                            <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"</td>
+                            <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
                         </tr>
                     </table>
                 </div>
