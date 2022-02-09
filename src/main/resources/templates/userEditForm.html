@@ -1,19 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title})">
-    <title>CrittR - Sign Up</title>
+    <title>CrittR - Edit Account</title>
 </head>
-<body onload="setErrorField()">
-<script type="text/javascript" >
-    function setErrorField() {
-        const uniquenessError = document.getElementById('uniquenessError');
-        if (uniquenessError.innerHTML === "") {
-            uniquenessError.style.display = 'none'
-        } else {
-            uniquenessError.style.display = 'block'
-        }
-    }
-</script>
+<body>
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
 
@@ -23,10 +13,8 @@
             <form class="row g-3" th:action="@{/users/new}" method="post" th:object="${user}">
                 <input type="hidden" th:field="*{userId}"/>
                 <div class="col-8">
-                    <label class="form-label" for="email">Email*</label>
-                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
-                    <p class="errormessage" id="uniquenessError" th:text="${uniquenessError}" />
-                    <p class="errormessage" th:if="${#fields.hasErrors('email')}">Please enter a valid email address</p>
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}" readonly/>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="username">Name*</label>
@@ -39,7 +27,7 @@
                     <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
                 </div><br>
                 <div class="col-10">
-                    <input value="Sign up" type="submit" class="btn btn-primary"/>
+                    <input value="Save" type="submit" class="btn btn-primary"/>
                 </div><br>
                 <div class="col-10">
                     <p class="text-black-50">*Mandatory</p>
