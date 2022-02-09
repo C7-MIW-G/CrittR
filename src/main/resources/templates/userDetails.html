@@ -31,6 +31,14 @@
                     <div>
                     <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
                     </div>
+                    <table>
+                        <tr>
+                        <th>Your reports</th>
+                        </tr>
+                        <tr th:each="report : ${user.reports}">
+                            <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
