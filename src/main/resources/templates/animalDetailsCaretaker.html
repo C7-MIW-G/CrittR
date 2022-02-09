@@ -32,7 +32,6 @@
                             <td th:text="${#temporals.format(animal.birthDate, 'dd-MM-yyyy')}"></td>
                             <td th:text="${animal.getAge()}"></td>
                             <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Edit</a></td>
-                            <td><a th:href="@{/animals/delete/{animalId}(animalId=${animal.animalId})}">Delete</a></td>
                         </tr>
                         </tbody>
                     </table>
