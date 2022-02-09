@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Report;
+import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +23,6 @@ import java.util.Optional;
 
 @Controller
 public class ReportController {
-
-    private static final String REPORT_STATUS_ACCEPTED = "Open issue";
-    private static final String REPORT_STATUS_REJECTED = "Discarded";
-    private static final String REPORT_STATUS_OBSERVED = "Under observation";
-    private static final String REPORT_STATUS_CLOSED = "Closed";
-
 
     private ReportService reportService;
 
@@ -75,10 +70,10 @@ public class ReportController {
 
     @PostMapping("/reports/details/accept/{reportId}")
     protected String acceptReport(@ModelAttribute("report") Report report){
-        return getReport(report, REPORT_STATUS_ACCEPTED);
+        return getReport(report, ReportStatus.OPEN_ISSUE);
     }
 
-    private String getReport(@ModelAttribute("report") Report report, String reportStatus) {
+    private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
         if(optionalReport.isEmpty()) {
             return "redirect:/reports/details/{" + report.getReportId() + "}";
@@ -92,16 +87,16 @@ public class ReportController {
 
     @PostMapping("/reports/details/discard/{reportId}")
     protected String discardReport(@ModelAttribute("report") Report report){
-        return getReport(report, REPORT_STATUS_REJECTED);
+        return getReport(report, ReportStatus.DISCARDED);
     }
 
     @PostMapping("/reports/details/observation/{reportId}")
     protected String monitorReport(@ModelAttribute("report") Report report){
-        return getReport(report, REPORT_STATUS_OBSERVED);
+        return getReport(report, ReportStatus.UNDER_OBSERVATION);
     }
 
     @PostMapping("/reports/details/closed/{reportId}")
     protected String closeReport(@ModelAttribute("report") Report report){
-        return getReport(report, REPORT_STATUS_CLOSED);
+        return getReport(report, ReportStatus.CLOSED);
     }
 }

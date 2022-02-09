@@ -35,7 +35,7 @@
                             <td th:text="${report.species}"></td>
                             <td th:text="${report.issue}"></td>
                             <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
-                            <td th:text="${report.status}"></td>
+                            <td th:text="${report.status.getDisplayName()}"></td>
                         </tr>
                         </tbody>
                     </table>
