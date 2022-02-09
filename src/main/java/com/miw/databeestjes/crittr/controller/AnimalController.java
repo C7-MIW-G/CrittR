@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Animal;
+import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,6 @@ public class AnimalController {
         return "animalDetails";
     }
 
-
     @PostMapping("/animals/new")
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
         if(result.hasErrors()){
@@ -67,14 +67,6 @@ public class AnimalController {
         return "animalForm";
     }
 
-    @GetMapping("animals/delete/{animalId}")
-    protected String deleteAnimal(@PathVariable("animalId") long animalId) {
-        Animal animal = animalService.findByAnimalId(animalId).orElseThrow(()
-                -> new IllegalArgumentException("invalid animal id: " + animalId));
-        animalService.delete(animal);
-        return "redirect:/animals";
-    }
-
     @GetMapping("/caretaker/animals")
     protected String showAnimalOverviewCaretaker (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
@@ -91,5 +83,35 @@ public class AnimalController {
         return "animalDetailsCaretaker";
     }
 
+    private String getAnimal(@ModelAttribute("animal") Animal animal, AnimalStatus status){
+        Optional<Animal> optionalAnimal = animalService.findByAnimalId(animal.getAnimalId());
+        if (optionalAnimal.isEmpty()){
+            return "redirect:/caretaker/animals/details/{" + animal.getAnimalId() + "}";
+        }
+        Animal certainAnimal = optionalAnimal.get();
+        certainAnimal.setStatus(status);
+        animalService.save(certainAnimal);
+        return "redirect:/caretaker/animals";
+    }
+
+    @PostMapping("/caretaker/animals/details/incoming/{animalId}")
+    protected String setToIncoming(@ModelAttribute("animal") Animal animal){
+        return getAnimal(animal, AnimalStatus.INCOMING);
+    }
+
+    @PostMapping("/caretaker/animals/details/present/{animalId}")
+    protected String setToPresent(@ModelAttribute("animal") Animal animal){
+        return getAnimal(animal, AnimalStatus.PRESENT);
+    }
+
+    @PostMapping("/caretaker/animals/details/departed/{animalId}")
+    protected String setToDeparted(@ModelAttribute("animal") Animal animal){
+        return getAnimal(animal, AnimalStatus.DEPARTED);
+    }
+
+    @PostMapping("/caretaker/animals/details/deceased/{animalId}")
+    protected String setToDeceased(@ModelAttribute("animal") Animal animal){
+        return getAnimal(animal, AnimalStatus.DECEASED);
+    }
 
 }
