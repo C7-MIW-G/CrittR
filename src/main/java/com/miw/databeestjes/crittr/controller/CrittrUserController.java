@@ -52,7 +52,7 @@ public class CrittrUserController {
         if (!result.hasErrors()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             crittrUserRepository.save(user);
-            return "redirect:/";
+            return "redirect:/login";
         }
         return "userForm";
     }
