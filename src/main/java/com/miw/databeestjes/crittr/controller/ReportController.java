@@ -65,7 +65,7 @@ public class ReportController {
             return "redirect:/reports";
         }
         Report certainReport = report.get();
-        if(Objects.isNull(certainReport.getAnimalName())) {
+        if(certainReport.getAnimalName().equals("")) {
             model.addAttribute("animalName", "Unknown");
         } else {
             model.addAttribute("animalName", certainReport.getAnimalName());
