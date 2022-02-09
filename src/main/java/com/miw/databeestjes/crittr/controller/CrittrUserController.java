@@ -6,7 +6,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +18,7 @@ import java.util.Optional;
 @Controller
 public class CrittrUserController {
 
+    public static final String EXISTING_EMAIL = "This email is already in use";
     CrittrUserRepository crittrUserRepository;
     PasswordEncoder passwordEncoder;
 
@@ -35,7 +35,7 @@ public class CrittrUserController {
 
     protected String showUserFormWithError(Model model) {
         model.addAttribute("newUser", new CrittrUser());
-        model.addAttribute("UniquenessError", "This email already exists");
+        model.addAttribute("uniquenessError", EXISTING_EMAIL);
         return "userForm";
     }
 
@@ -43,12 +43,10 @@ public class CrittrUserController {
     protected String saveUpdateUser(@ModelAttribute("newUser") @Valid CrittrUser user, BindingResult result, Model model) {
         List<CrittrUser> userList = crittrUserRepository.listByEmail(user.getEmail());
         if(userList.size() > 0) {
-            result.addError(new ObjectError("UniquenessViolation", "value is not unique"));
             return showUserFormWithError(model);
         }
         if (!result.hasErrors()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-
             crittrUserRepository.save(user);
             return "redirect:/";
         }

@@ -25,7 +25,7 @@
                 <div class="col-8">
                     <label class="form-label" for="email">Email*</label>
                     <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
-                    <p class="errormessage" id="uniquenessError" th:text="${UniquenessError}" />
+                    <p class="errormessage" id="uniquenessError" th:text="${uniquenessError}" />
                     <p class="errormessage" th:if="${#fields.hasErrors('email')}">Please enter a valid email address</p>
                 </div><br>
                 <div class="col-8">
