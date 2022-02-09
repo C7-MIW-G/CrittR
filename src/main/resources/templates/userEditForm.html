@@ -6,7 +6,6 @@
 <body>
 <div class="container">
     <header th:replace="fragments/general :: navbar"></header>
-
     <main>
         <div class="col-lg-8">
             <h1>Edit Account</h1>
@@ -14,7 +13,7 @@
                 <input type="hidden" th:field="*{userId}"/>
                 <div class="col-8">
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}" readonly/>
+                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="username">Name*</label>
@@ -42,10 +41,8 @@
             </div><br>
         </div>
     </main>
-
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
 </div>
 </body>
-
 </html>
