@@ -4,11 +4,15 @@ import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -91,6 +95,15 @@ public class CrittrUserController {
         }
         CrittrUser crittrUser = userOptional.get();
         crittrUserDetailsService.delete(crittrUser.getUserId());
+        logout();
         return "redirect:/";
+    }
+
+    public void logout() {
+        HttpServletRequest request =
+                ((ServletRequestAttributes) RequestContextHolder
+                        .getRequestAttributes())
+                        .getRequest();
+        new SecurityContextLogoutHandler().logout(request, null, null);
     }
 }
