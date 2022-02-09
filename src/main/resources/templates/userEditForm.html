@@ -10,7 +10,7 @@
     <main>
         <div class="col-lg-8">
             <h1>Edit Account</h1>
-            <form class="row g-3" th:action="@{/users/new}" method="post" th:object="${user}">
+            <form class="row g-3" th:action="@{/user/details/edit/{userId}}" method="post" th:object="${user}">
                 <input type="hidden" th:field="*{userId}"/>
                 <div class="col-8">
                     <label class="form-label" for="email">Email</label>

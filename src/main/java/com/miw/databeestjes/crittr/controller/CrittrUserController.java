@@ -72,4 +72,14 @@ public class CrittrUserController {
         model.addAttribute("user", user.get());
         return "userEditForm";
     }
+
+    @PostMapping("/user/details/edit/{userId}")
+    protected String UpdateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result, Model model) {
+        if (!result.hasErrors()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            crittrUserRepository.save(user);
+            return "userDetails";
+        }
+        return "redirect:/";
+    }
 }
