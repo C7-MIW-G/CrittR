@@ -36,6 +36,20 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/incoming/{animalId}(animalId = ${animal.animalId})}">
+                            <input class="btn btn-primary" type="submit" value="Incoming"/>
+                        </form>
+                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/present/{animalId}(animalId = ${animal.animalId})}">
+                            <input class="btn btn-secondary" type="submit" value="Present"/>
+                        </form>
+                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/departed/{animalId}(animalId = ${animal.animalId})}">
+                            <input class="btn btn-secondary" type="submit" value="Departed"/>
+                        </form>
+                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/deceased/{animalId}(animalId = ${animal.animalId})}">
+                            <input class="btn btn-secondary" type="submit" value="Deceased"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
