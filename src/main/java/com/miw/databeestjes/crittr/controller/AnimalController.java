@@ -104,9 +104,9 @@ public class AnimalController {
         return getAnimal(animal, AnimalStatus.PRESENT);
     }
 
-    @PostMapping("/caretaker/animals/details/departed/{animalId}")
-    protected String setToDeparted(@ModelAttribute("animal") Animal animal){
-        return getAnimal(animal, AnimalStatus.DEPARTED);
+    @PostMapping("/caretaker/animals/details/relocated/{animalId}")
+    protected String setToRelocated(@ModelAttribute("animal") Animal animal){
+        return getAnimal(animal, AnimalStatus.RELOCATED);
     }
 
     @PostMapping("/caretaker/animals/details/deceased/{animalId}")

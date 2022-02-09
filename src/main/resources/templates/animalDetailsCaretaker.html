@@ -10,7 +10,7 @@
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1>Details of <span th:text="${animal.name}"></span></h1>
+                    <h1 class="fw-light">Details of <span th:text="${animal.name}"></span></h1>
                 </div>
             </div>
         </section>
@@ -40,10 +40,10 @@
                             <input class="btn btn-primary" type="submit" value="Incoming"/>
                         </form>
                         <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/present/{animalId}(animalId = ${animal.animalId})}">
-                            <input class="btn btn-secondary" type="submit" value="Present"/>
+                            <input class="btn btn-primary" type="submit" value="Present"/>
                         </form>
-                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/departed/{animalId}(animalId = ${animal.animalId})}">
-                            <input class="btn btn-secondary" type="submit" value="Departed"/>
+                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/relocated/{animalId}(animalId = ${animal.animalId})}">
+                            <input class="btn btn-secondary" type="submit" value="Relocated"/>
                         </form>
                         <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/deceased/{animalId}(animalId = ${animal.animalId})}">
                             <input class="btn btn-secondary" type="submit" value="Deceased"/>
