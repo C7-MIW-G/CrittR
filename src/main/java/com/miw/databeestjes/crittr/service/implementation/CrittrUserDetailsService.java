@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -19,6 +20,11 @@ public class CrittrUserDetailsService implements UserDetailsService {
 
     public CrittrUserDetailsService(CrittrUserRepository crittrUserRepository) {
         this.crittrUserRepository = crittrUserRepository;
+    }
+
+    @Transactional
+    public void delete(long userId) {
+        crittrUserRepository.deleteByUserId(userId);
     }
 
     @Override

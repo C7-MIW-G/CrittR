@@ -33,6 +33,13 @@
                     <p class="text-black-50">*Mandatory</p>
                 </div>
             </form>
+            <div class="col-10">
+                <form class="row g-3" th:action="@{/user/details/delete/{userId}(userId=${user.userId})}" method="get" th:object="${user}">
+                    <div>
+                        <input value="Delete account" type="submit" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div><br>
         </div>
     </main>
 
