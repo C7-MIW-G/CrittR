@@ -1,8 +1,11 @@
 package com.miw.databeestjes.crittr.controller;
 
+import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.ReportService;
+import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,9 +28,11 @@ import java.util.Optional;
 public class ReportController {
 
     private ReportService reportService;
+    private CrittrUserDetailsService userDetailsService;
 
-    public ReportController(ReportService reportService) {
+    public ReportController(ReportService reportService, CrittrUserDetailsService userDetailsService) {
         this.reportService = reportService;
+        this.userDetailsService = userDetailsService;
     }
 
     @GetMapping("/reports")
@@ -43,10 +48,12 @@ public class ReportController {
     }
 
     @PostMapping("reports/new")
-    protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result){
+    protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result,
+                                        @AuthenticationPrincipal CrittrUser user){
         if(result.hasErrors()){
             return "reportForm";
         }
+        report.setReporter(user);
         reportService.save(report);
         return "redirect:/reports";
     }

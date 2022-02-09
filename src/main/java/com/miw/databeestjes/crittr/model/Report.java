@@ -32,5 +32,8 @@ public class Report {
 
     private LocalDateTime reportDate = LocalDateTime.now();
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private CrittrUser reporter;
 
 }

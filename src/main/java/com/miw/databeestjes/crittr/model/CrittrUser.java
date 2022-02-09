@@ -3,10 +3,7 @@ package com.miw.databeestjes.crittr.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -43,6 +40,9 @@ public class CrittrUser implements UserDetails {
 
     private String role = "ROLE_MEMBER";
 
+    @OneToMany(mappedBy = "reporter")
+    private List<Report> reports;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
@@ -51,6 +51,7 @@ public class CrittrUser implements UserDetails {
 
         return grantedAuthorityList;
     }
+
 
     @Override
     public String getUsername() {
