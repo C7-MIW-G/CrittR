@@ -52,12 +52,10 @@ public class CrittrUser implements UserDetails {
         return grantedAuthorityList;
     }
 
-
     @Override
     public String getUsername() {
         return this.username;
     }
-
 
     @Override
     public boolean isAccountNonExpired() {

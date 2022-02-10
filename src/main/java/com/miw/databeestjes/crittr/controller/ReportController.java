@@ -28,11 +28,9 @@ import java.util.Optional;
 public class ReportController {
 
     private ReportService reportService;
-    private CrittrUserDetailsService userDetailsService;
 
-    public ReportController(ReportService reportService, CrittrUserDetailsService userDetailsService) {
+    public ReportController(ReportService reportService) {
         this.reportService = reportService;
-        this.userDetailsService = userDetailsService;
     }
 
     @GetMapping("/reports")

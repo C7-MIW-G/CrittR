@@ -1,7 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
@@ -57,7 +56,6 @@ public class CrittrUserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         crittrUserRepository.save(user);
         return "redirect:/login";
-
     }
 
     @GetMapping("/user/details/{userId}")
