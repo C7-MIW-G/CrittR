@@ -21,9 +21,8 @@
                     <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
                 </div><br>
                 <div class="col-8">
-                    <label class="form-label" for="password">Password*</label>
+                    <label class="form-label" for="password">Password</label>
                     <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}">
-                    <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
                 </div><br>
                 <div sec:authorize="hasRole('ADMIN')">
                 <div class="form-check">

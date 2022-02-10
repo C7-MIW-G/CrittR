@@ -88,7 +88,23 @@ public class CrittrUserController {
             crittrUserRepository.save(user);
             return "redirect:/user/details/" + user.getUserId();
         }
-        return "redirect:/";
+        if (user.getPassword().equals("") && !user.getUsername().equals("") && !user.getEmail().equals("")) {
+            return saveExistingUser(user);
+        }
+        return "userEditForm";
+    }
+
+    private String saveExistingUser(CrittrUser user) {
+        Optional<CrittrUser> optionalUser = crittrUserRepository.findById(user.getUserId());
+        if(optionalUser.isPresent()){
+            CrittrUser certainUser = optionalUser.get();
+            certainUser.setEmail(user.getEmail());
+            certainUser.setUsername(user.getUsername());
+            certainUser.setRole(user.getRole());
+            crittrUserRepository.save(certainUser);
+            return "redirect:/user/details/" + user.getUserId();
+        }
+        return "userEditForm";
     }
 
     @GetMapping("/user/details/delete/{userId}")
