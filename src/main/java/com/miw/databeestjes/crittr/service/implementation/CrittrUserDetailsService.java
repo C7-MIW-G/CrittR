@@ -1,11 +1,14 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
+import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -25,6 +28,10 @@ public class CrittrUserDetailsService implements UserDetailsService {
     @Transactional
     public void delete(long userId) {
         crittrUserRepository.deleteByUserId(userId);
+    }
+
+    public List<CrittrUser> getAll() {
+        return crittrUserRepository.findAll();
     }
 
     @Override

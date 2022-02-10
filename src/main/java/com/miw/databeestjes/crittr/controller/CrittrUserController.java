@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -105,5 +106,12 @@ public class CrittrUserController {
                         .getRequestAttributes())
                         .getRequest();
         new SecurityContextLogoutHandler().logout(request, null, null);
+    }
+
+    @GetMapping("/accounts/users")
+    @Secured("ROLE_ADMIN")
+    protected String showAllAccounts(Model model) {
+        model.addAttribute("allAccounts", crittrUserDetailsService.getAll());
+        return "adminAccountOverview";
     }
 }

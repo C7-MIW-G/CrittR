@@ -38,7 +38,7 @@ public class CrittrUser implements UserDetails {
     @NotEmpty
     private String password;
 
-    private String role = "ROLE_MEMBER";
+    private UserRoleStatus role = UserRoleStatus.ROLE_MEMBER;
 
     @OneToMany(mappedBy = "reporter")
     private List<Report> reports;
@@ -47,7 +47,7 @@ public class CrittrUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
 
-        grantedAuthorityList.add(new SimpleGrantedAuthority(this.role));
+        grantedAuthorityList.add(new SimpleGrantedAuthority(role.getDisplayName()));
 
         return grantedAuthorityList;
     }
