@@ -31,7 +31,7 @@
                         <tr th:each="account : ${allAccounts}">
                             <td><a th:text="${account.email}"></a></td>
                             <td th:text="${account.username}"></td>
-                            <td th:text="${account.getRole()}"></td>
+                            <td th:text="${account.getRole().getDisplayName()}"></td>
                         </tr>
                         </tbody>
                     </table>

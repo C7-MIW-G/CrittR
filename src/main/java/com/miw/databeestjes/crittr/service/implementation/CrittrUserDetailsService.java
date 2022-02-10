@@ -30,9 +30,6 @@ public class CrittrUserDetailsService implements UserDetailsService {
         crittrUserRepository.deleteByUserId(userId);
     }
 
-    public List<CrittrUser> getAll() {
-        return crittrUserRepository.findAll();
-    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

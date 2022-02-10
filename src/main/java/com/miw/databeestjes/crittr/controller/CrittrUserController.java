@@ -117,7 +117,7 @@ public class CrittrUserController {
     @GetMapping("/accounts/users")
     @Secured("ROLE_ADMIN")
     protected String showAllAccounts(Model model) {
-        model.addAttribute("allAccounts", crittrUserDetailsService.getAll());
+        model.addAttribute("allAccounts", crittrUserRepository.findAll());
         return "adminAccountOverview";
     }
 }
