@@ -4,6 +4,7 @@ import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,7 @@ public class AnimalController {
 
     protected String showAnimalOverview (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
+        System.out.println();
         return "animalOverview";
     }
 

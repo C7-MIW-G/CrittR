@@ -47,7 +47,7 @@ public class CrittrUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
 
-        grantedAuthorityList.add(new SimpleGrantedAuthority(role.getDisplayName()));
+        grantedAuthorityList.add(new SimpleGrantedAuthority(role.toString()));
 
         return grantedAuthorityList;
     }
