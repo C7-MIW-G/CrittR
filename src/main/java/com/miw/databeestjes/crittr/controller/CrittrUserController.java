@@ -61,6 +61,7 @@ public class CrittrUserController {
     }
 
     @GetMapping("/user/details/{userId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String showUserDetails(@PathVariable("userId") long userId, Model model) {
         Optional<CrittrUser> user = crittrUserRepository.findById(userId);
         if (user.isEmpty()) {
@@ -71,6 +72,7 @@ public class CrittrUserController {
     }
 
     @GetMapping("/user/details/edit/{userId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String showUserForm(@PathVariable("userId") long userId, Model model) {
         Optional<CrittrUser> user = crittrUserRepository.findById(userId);
         if (user.isEmpty()) {
@@ -81,6 +83,7 @@ public class CrittrUserController {
     }
 
     @PostMapping("/user/details/edit/{userId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String updateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result) {
         if (!result.hasErrors()) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -91,6 +94,7 @@ public class CrittrUserController {
     }
 
     @GetMapping("/user/details/delete/{userId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String deleteUser(@PathVariable("userId") long userId) {
         Optional<CrittrUser> userOptional = crittrUserRepository.findById(userId);
         if (userOptional.isEmpty()) {

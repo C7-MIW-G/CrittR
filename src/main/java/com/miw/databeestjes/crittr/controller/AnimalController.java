@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,12 +28,14 @@ public class AnimalController {
     }
 
     @GetMapping("/animals")
+
     protected String showAnimalOverview (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
         return "animalOverview";
     }
 
     @GetMapping("/animals/new")
+    @Secured("ROLE_CARETAKER")
     protected String showAnimalForm (Model model) {
         model.addAttribute("animal", new Animal());
         return "animalForm";
@@ -49,6 +52,7 @@ public class AnimalController {
     }
 
     @PostMapping("/animals/new")
+    @Secured("ROLE_CARETAKER")
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
         if(result.hasErrors()){
             return "animalForm";
@@ -58,6 +62,7 @@ public class AnimalController {
     }
 
     @GetMapping("/animals/update/{animalId}")
+    @Secured("ROLE_CARETAKER")
     protected String showAnimalForm(@PathVariable("animalId") long animalId, Model model) {
         Optional<Animal> animal = animalService.findByAnimalId(animalId);
         if (animal.isEmpty()){
@@ -68,12 +73,14 @@ public class AnimalController {
     }
 
     @GetMapping("/caretaker/animals")
+    @Secured("ROLE_CARETAKER")
     protected String showAnimalOverviewCaretaker (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
         return "animalOverviewCaretaker";
     }
 
     @GetMapping("/caretaker/animals/details/{animalId}")
+    @Secured("ROLE_CARETAKER")
     protected String showAnimalDetailsCaretaker(@PathVariable("animalId") long animalId, Model model){
         Optional<Animal> animal = animalService.findByAnimalId(animalId);
         if (animal.isEmpty()){
@@ -95,21 +102,25 @@ public class AnimalController {
     }
 
     @PostMapping("/caretaker/animals/details/incoming/{animalId}")
+    @Secured("ROLE_CARETAKER")
     protected String setToIncoming(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.INCOMING);
     }
 
     @PostMapping("/caretaker/animals/details/present/{animalId}")
+    @Secured("ROLE_CARETAKER")
     protected String setToPresent(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.PRESENT);
     }
 
     @PostMapping("/caretaker/animals/details/relocated/{animalId}")
+    @Secured("ROLE_CARETAKER")
     protected String setToRelocated(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.RELOCATED);
     }
 
     @PostMapping("/caretaker/animals/details/deceased/{animalId}")
+    @Secured("ROLE_CARETAKER")
     protected String setToDeceased(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.DECEASED);
     }
