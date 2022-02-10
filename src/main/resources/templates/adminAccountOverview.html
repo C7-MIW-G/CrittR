@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="account : ${allAccounts}">
-                            <td><a th:text="${account.email}"></a></td>
+                            <td><a th:href="@{/user/details/edit/{userId}(userId=${account.userId})}" th:text="${account.email}"></a></td>
                             <td th:text="${account.username}"></td>
                             <td th:text="${account.getRole().getDisplayName()}"></td>
                         </tr>

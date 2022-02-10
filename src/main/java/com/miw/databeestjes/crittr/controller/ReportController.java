@@ -56,7 +56,7 @@ public class ReportController {
         }
         report.setReporter(user);
         reportService.save(report);
-        return "redirect:/reports";
+        return "redirect:/user/details/" + user.getUserId();
     }
 
     @GetMapping("/reports/details/{reportId}")
