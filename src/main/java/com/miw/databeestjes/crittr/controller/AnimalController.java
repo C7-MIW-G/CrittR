@@ -35,7 +35,7 @@ public class AnimalController {
     }
 
     @GetMapping("/animals/new")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showAnimalForm (Model model) {
         model.addAttribute("animal", new Animal());
         return "animalForm";
@@ -52,7 +52,7 @@ public class AnimalController {
     }
 
     @PostMapping("/animals/new")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
         if(result.hasErrors()){
             return "animalForm";
@@ -62,7 +62,7 @@ public class AnimalController {
     }
 
     @GetMapping("/animals/update/{animalId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showAnimalForm(@PathVariable("animalId") long animalId, Model model) {
         Optional<Animal> animal = animalService.findByAnimalId(animalId);
         if (animal.isEmpty()){
@@ -73,14 +73,14 @@ public class AnimalController {
     }
 
     @GetMapping("/caretaker/animals")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showAnimalOverviewCaretaker (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
         return "animalOverviewCaretaker";
     }
 
     @GetMapping("/caretaker/animals/details/{animalId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showAnimalDetailsCaretaker(@PathVariable("animalId") long animalId, Model model){
         Optional<Animal> animal = animalService.findByAnimalId(animalId);
         if (animal.isEmpty()){
@@ -102,25 +102,25 @@ public class AnimalController {
     }
 
     @PostMapping("/caretaker/animals/details/incoming/{animalId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String setToIncoming(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.INCOMING);
     }
 
     @PostMapping("/caretaker/animals/details/present/{animalId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String setToPresent(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.PRESENT);
     }
 
     @PostMapping("/caretaker/animals/details/relocated/{animalId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String setToRelocated(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.RELOCATED);
     }
 
     @PostMapping("/caretaker/animals/details/deceased/{animalId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String setToDeceased(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.DECEASED);
     }

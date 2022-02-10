@@ -36,21 +36,21 @@ public class ReportController {
     }
 
     @GetMapping("/reports")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showReportOverview (Model model) {
         model.addAttribute("allReports", reportService.getAll());
         return "reportOverview";
     }
 
     @GetMapping("reports/new")
-    @Secured("ROLE_MEMBER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
     protected String showReportForm (Model model) {
         model.addAttribute("report", new Report());
         return "reportForm";
     }
 
     @PostMapping("reports/new")
-    @Secured("ROLE_MEMBER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
     protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result,
                                         @AuthenticationPrincipal CrittrUser user){
         if(result.hasErrors()){
@@ -62,7 +62,7 @@ public class ReportController {
     }
 
     @GetMapping("/reports/details/{reportId}")
-    @Secured({"ROLE_MEMBER", "ROLE_CARETAKER"})
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
     protected String showReportDetails(@PathVariable("reportId") long reportId, Model model) {
         Optional<Report> report = reportService.getByReportId(reportId);
         if (report.isEmpty()){
@@ -80,7 +80,7 @@ public class ReportController {
     }
 
     @PostMapping("/reports/details/accept/{reportId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String acceptReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.OPEN_ISSUE);
     }
@@ -98,19 +98,19 @@ public class ReportController {
     }
 
     @PostMapping("/reports/details/discard/{reportId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String discardReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.DISCARDED);
     }
 
     @PostMapping("/reports/details/observation/{reportId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String monitorReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.UNDER_OBSERVATION);
     }
 
     @PostMapping("/reports/details/closed/{reportId}")
-    @Secured("ROLE_CARETAKER")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String closeReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.CLOSED);
     }
