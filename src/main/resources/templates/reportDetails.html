@@ -41,7 +41,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <div sec:authorize="hasRole('CARETAKER')" class="d-grid gap-2 d-md-flex justify-content-md-start">
                         <form method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-primary" type="submit" value="Accept"/>
                         </form>

@@ -5,6 +5,7 @@ import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.ReportService;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,18 +36,21 @@ public class ReportController {
     }
 
     @GetMapping("/reports")
+    @Secured("ROLE_CARETAKER")
     protected String showReportOverview (Model model) {
         model.addAttribute("allReports", reportService.getAll());
         return "reportOverview";
     }
 
     @GetMapping("reports/new")
+    @Secured("ROLE_MEMBER")
     protected String showReportForm (Model model) {
         model.addAttribute("report", new Report());
         return "reportForm";
     }
 
     @PostMapping("reports/new")
+    @Secured("ROLE_MEMBER")
     protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result,
                                         @AuthenticationPrincipal CrittrUser user){
         if(result.hasErrors()){
@@ -58,6 +62,7 @@ public class ReportController {
     }
 
     @GetMapping("/reports/details/{reportId}")
+    @Secured({"ROLE_MEMBER", "ROLE_CARETAKER"})
     protected String showReportDetails(@PathVariable("reportId") long reportId, Model model) {
         Optional<Report> report = reportService.getByReportId(reportId);
         if (report.isEmpty()){
@@ -75,6 +80,7 @@ public class ReportController {
     }
 
     @PostMapping("/reports/details/accept/{reportId}")
+    @Secured("ROLE_CARETAKER")
     protected String acceptReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.OPEN_ISSUE);
     }
@@ -92,16 +98,19 @@ public class ReportController {
     }
 
     @PostMapping("/reports/details/discard/{reportId}")
+    @Secured("ROLE_CARETAKER")
     protected String discardReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.DISCARDED);
     }
 
     @PostMapping("/reports/details/observation/{reportId}")
+    @Secured("ROLE_CARETAKER")
     protected String monitorReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.UNDER_OBSERVATION);
     }
 
     @PostMapping("/reports/details/closed/{reportId}")
+    @Secured("ROLE_CARETAKER")
     protected String closeReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.CLOSED);
     }
