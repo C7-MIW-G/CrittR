@@ -86,7 +86,7 @@ public class AnimalController {
     private String getAnimal(@ModelAttribute("animal") Animal animal, AnimalStatus status){
         Optional<Animal> optionalAnimal = animalService.findByAnimalId(animal.getAnimalId());
         if (optionalAnimal.isEmpty()){
-            return "redirect:/caretaker/animals/details/{" + animal.getAnimalId() + "}";
+            return "redirect:/caretaker/animals/details/" + animal.getAnimalId();
         }
         Animal certainAnimal = optionalAnimal.get();
         certainAnimal.setStatus(status);

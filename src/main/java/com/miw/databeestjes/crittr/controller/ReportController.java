@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -83,7 +82,7 @@ public class ReportController {
     private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
         if(optionalReport.isEmpty()) {
-            return "redirect:/reports/details/{" + report.getReportId() + "}";
+            return "redirect:/reports/details/" + report.getReportId();
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
