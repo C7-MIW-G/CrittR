@@ -83,17 +83,15 @@ public class CrittrUserController {
 
     @PostMapping("/user/details/edit/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
-    protected String updateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result,
-                                @AuthenticationPrincipal CrittrUser currentUser) {
+    protected String updateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result) {
 
         if (!result.hasErrors()) {
             return crittrUserDetailsService.saveWithPassword(user, passwordEncoder.encode(user.getPassword()));
         }
-
         if (user.getPassword().equals("")
                 && !user.getUsername().equals("")
                 && !user.getEmail().equals("")) {
-           return crittrUserDetailsService.saveWithoutPassword(user, currentUser);
+           return crittrUserDetailsService.saveWithoutPassword(user);
         }
         return "userEditForm";
     }
