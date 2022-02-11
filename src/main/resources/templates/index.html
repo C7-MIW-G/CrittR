@@ -12,7 +12,8 @@
                 <h1 class="fw-light">CrittR</h1>
                 <h3 class="text-muted">Welcome to your CrittR Petting Zoo!</h3><br>
                 <a th:href="@{/animals}" class="btn btn-primary my-2" role="button">View animals</a>
-                <a th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">New Report</a></p>
+                <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
+                <a sec:authorize="isAnonymous()" th:href="@{/users/new}" role="button" class="btn btn-primary my-2">Report issue</a>
             </div>
         </div>
     </main>
