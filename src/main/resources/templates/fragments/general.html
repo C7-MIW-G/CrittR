@@ -12,7 +12,10 @@
     <div class="container">
         <div class="d-flex flex-wrap">
             <nav class="nav me-auto">
-                <a class="nav-link px-2 link-dark" th:href="@{/}">Home</a>
+                <a class="nav-link px-2 link-dark" th:href="@{/home}">
+                    <img src="../static/assets/CrittrLogoWhite.png" th:src="@{assets/CrittrLogoWhite.png}" alt="CrittR-Logo" width="50" class="d-inline-block align-text-top">
+                </a>
+                <a class="nav-link px-2 link-dark" th:href="@{/home}">CrittR</a>
                 <a class="nav-link px-2 link-dark" th:href="@{/animals}">Animals</a>
                 <a class="nav-link px-2 link-dark" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals (C)</a>
                 <a class="nav-link px-2 link-dark" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a>
