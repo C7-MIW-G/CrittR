@@ -4,7 +4,6 @@ import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -91,11 +90,10 @@ public class CrittrUserController {
         if (user.getPassword().equals("")
                 && !user.getUsername().equals("")
                 && !user.getEmail().equals("")) {
-           return crittrUserDetailsService.saveWithoutPassword(user);
+            return crittrUserDetailsService.saveWithoutPassword(user);
         }
         return "userEditForm";
     }
-
 
     @GetMapping("/user/details/delete/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
