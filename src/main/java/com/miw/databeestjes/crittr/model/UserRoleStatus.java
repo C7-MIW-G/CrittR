@@ -2,7 +2,8 @@ package com.miw.databeestjes.crittr.model;
 
 public enum UserRoleStatus {
     ROLE_MEMBER("Member"),
-    ROLE_CARETAKER("Caretaker");
+    ROLE_CARETAKER("Caretaker"),
+    ROLE_ADMIN("Admin");
 
     private String displayName;
 

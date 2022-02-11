@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
  * <p>
@@ -41,10 +43,14 @@ public class CrittrUserDetailsService implements UserDetailsService {
         return "redirect:/user/details/" + user.getUserId();
     }
 
-    public String saveWithoutPassword(CrittrUser user, CrittrUser currentUser) {
-        user.setPassword(currentUser.getPassword());
-        crittrUserRepository.save(user);
-        return "redirect:/user/details/" + user.getUserId();
+    public String saveWithoutPassword(CrittrUser user) {
+        Optional<CrittrUser> optionalUser = crittrUserRepository.findById(user.getUserId());
+        if(optionalUser.isPresent()) {
+            user.setPassword(optionalUser.get().getPassword());
+            crittrUserRepository.save(user);
+            return "redirect:/user/details/" + user.getUserId();
+        }
+        return "userEditForm";
     }
 
     public void save(CrittrUser user) {
