@@ -4,7 +4,6 @@ import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.ReportService;
-import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -37,7 +36,7 @@ public class ReportController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showReportOverview (Model model) {
         model.addAttribute("allReports", reportService.getAll());
-        return "reportOverview";
+        return "caretakerReportOverview";
     }
 
     @GetMapping("reports/new")

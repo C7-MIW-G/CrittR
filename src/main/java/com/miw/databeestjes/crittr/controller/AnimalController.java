@@ -38,7 +38,7 @@ public class AnimalController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showAnimalForm (Model model) {
         model.addAttribute("animal", new Animal());
-        return "animalForm";
+        return "caretakerAnimalForm";
     }
 
     @GetMapping("/animals/details/{animalId}")
@@ -55,7 +55,7 @@ public class AnimalController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
         if(result.hasErrors()){
-            return "animalForm";
+            return "caretakerAnimalForm";
         }
         animalService.save(animal);
         return "redirect:/caretaker/animals";
@@ -69,14 +69,14 @@ public class AnimalController {
             return "redirect:/animals";
         }
         model.addAttribute("animal", animal.get());
-        return "animalForm";
+        return "caretakerAnimalForm";
     }
 
     @GetMapping("/caretaker/animals")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showAnimalOverviewCaretaker (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
-        return "animalOverviewCaretaker";
+        return "caretakerAnimalOverview";
     }
 
     @GetMapping("/caretaker/animals/details/{animalId}")
@@ -87,7 +87,7 @@ public class AnimalController {
             return "redirect:/caretaker/animals";
         }
         model.addAttribute("animal", animal.get());
-        return "animalDetailsCaretaker";
+        return "caretakerAnimalDetails";
     }
 
     private String getAnimal(@ModelAttribute("animal") Animal animal, AnimalStatus status){
