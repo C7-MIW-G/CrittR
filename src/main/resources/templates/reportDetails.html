@@ -4,8 +4,8 @@
     <title>CrittR - Report Details</title>
 </head>
 <body>
+<header th:replace="fragments/general :: navbar"></header>
 <div class="container">
-    <header th:replace="fragments/general :: navbar"></header>
     <main>
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
@@ -37,7 +37,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Status</th>
-                            <td class="list-group-item" th:text="${report.status}"></td>
+                            <td class="list-group-item" th:text="${report.status.displayName}"></td>
                         </tr>
                         </tbody>
                     </table>

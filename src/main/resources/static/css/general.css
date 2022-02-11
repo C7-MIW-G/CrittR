@@ -9,3 +9,17 @@ body {
 .errormessage {
     -webkit-text-fill-color: #ff0000;
 }
+
+header {
+    background-color: #ACD199;
+}
+
+.nav-link {
+    border: black;
+    border-radius: 12px;
+    margin-right: 4px;
+    color: white;
+}
+
+
+
