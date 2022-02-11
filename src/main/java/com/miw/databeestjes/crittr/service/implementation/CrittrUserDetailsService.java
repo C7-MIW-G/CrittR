@@ -8,8 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
  * <p>
@@ -35,5 +33,21 @@ public class CrittrUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return crittrUserRepository.findByEmail(email)
                         .orElseThrow(() -> new UsernameNotFoundException("User with name " + email + " was not found."));
+    }
+
+    public String saveWithPassword(CrittrUser user, String passwordHash) {
+        user.setPassword(passwordHash);
+        crittrUserRepository.save(user);
+        return "redirect:/user/details/" + user.getUserId();
+    }
+
+    public String saveWithoutPassword(CrittrUser user, CrittrUser currentUser) {
+        user.setPassword(currentUser.getPassword());
+        crittrUserRepository.save(user);
+        return "redirect:/user/details/" + user.getUserId();
+    }
+
+    public void save(CrittrUser user) {
+        crittrUserRepository.save(user);
     }
 }

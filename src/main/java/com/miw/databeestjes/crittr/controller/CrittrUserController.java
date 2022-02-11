@@ -4,6 +4,7 @@ import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -82,30 +83,21 @@ public class CrittrUserController {
 
     @PostMapping("/user/details/edit/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
-    protected String updateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result) {
+    protected String updateUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result,
+                                @AuthenticationPrincipal CrittrUser currentUser) {
+
         if (!result.hasErrors()) {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            crittrUserRepository.save(user);
-            return "redirect:/user/details/" + user.getUserId();
+            return crittrUserDetailsService.saveWithPassword(user, passwordEncoder.encode(user.getPassword()));
         }
-        if (user.getPassword().equals("") && !user.getUsername().equals("") && !user.getEmail().equals("")) {
-            return saveExistingUser(user);
+
+        if (user.getPassword().equals("")
+                && !user.getUsername().equals("")
+                && !user.getEmail().equals("")) {
+           return crittrUserDetailsService.saveWithoutPassword(user, currentUser);
         }
         return "userEditForm";
     }
 
-    private String saveExistingUser(CrittrUser user) {
-        Optional<CrittrUser> optionalUser = crittrUserRepository.findById(user.getUserId());
-        if(optionalUser.isPresent()){
-            CrittrUser certainUser = optionalUser.get();
-            certainUser.setEmail(user.getEmail());
-            certainUser.setUsername(user.getUsername());
-            certainUser.setRole(user.getRole());
-            crittrUserRepository.save(certainUser);
-            return "redirect:/user/details/" + user.getUserId();
-        }
-        return "userEditForm";
-    }
 
     @GetMapping("/user/details/delete/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
