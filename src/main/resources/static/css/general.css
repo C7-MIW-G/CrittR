@@ -35,6 +35,9 @@ header {
     background-color: #8DAD7D;
 }
 
-
+.btn-secondary {
+    background-color: #a8b4bf;
+    border: none;
+}
 
 
