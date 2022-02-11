@@ -10,16 +10,31 @@ body {
     -webkit-text-fill-color: #ff0000;
 }
 
-header {
-    background-color: #ACD199;
-}
-
 .nav-link {
     border: black;
     border-radius: 12px;
     margin-right: 4px;
     color: white;
 }
+
+header {
+    background-color: #ACD199;
+}
+
+.btn-primary{
+    background-color: #ACD199;
+    border: none;
+}
+
+.nav-link:hover{
+    background-color: #848DC2;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #848DC2;
+}
+
 
 
 
