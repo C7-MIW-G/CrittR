@@ -24,7 +24,7 @@
             </nav>
             <nav class="nav">
                 <div class="d-flex mt-2">
-                <a sec:authorize="hasRole('MEMBER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Account</a>
+                <a sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Account</a>
                 <a sec:authorize="hasRole('ADMIN')" class="nav-link px-2 link-dark" th:href="@{/accounts/users}">Accounts</a>
                 <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}">Logout</a>
                 <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}">Login</a>
