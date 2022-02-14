@@ -8,7 +8,15 @@
 <div class="container">
     <main>
         <h1 class="fw-light">Oops! Something went wrong...</h1>
-        <h3 class="text-muted">You seem to have broken through the fence</h3><br>
+        <h3 th:switch="${status}">
+            <h3 th:case="'401'" class="text-muted">You're in the wrong pasture now</h3>
+            <h3 th:case="'400'" class="text-muted">The cow is eating the chickens</h3>
+            <h3 th:case="'403'" class="text-muted">This is the pigs' private lounge. No humans allowed!</h3>
+            <h3 th:case="'404'" class="text-muted">You seem to have lost the herd</h3>
+            <h3 th:case="'500'" class="text-muted">You seem to have broken through the fence</h3>
+            <h3 th:case="'418'" class="text-muted">Would you like a sugarcube?</h3>
+            <h3 th:case="'*'" class="text-muted">Oh deer, how did we get here?</h3>
+        </h3><br>
         <h5 class="text-black-50" th:text="${status} + ': ' + ${error}"></h5><br>
         <a class="btn btn-primary" role="button" th:href="@{/home}">Back to safety</a>
     </main>
