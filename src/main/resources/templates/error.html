@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+<head th:replace="fragments/general :: baseheader(~{:: title})">
+    <title>CrittR - Animal Details</title>
+</head>
+<body>
+<header th:replace="fragments/general :: navbar"></header>
+<div class="container">
+    <main>
+        <h1 class="fw-light">Oops! Something went wrong...</h1>
+        <h3 class="text-muted">You seem to have broken through the fence</h3><br>
+        <h5 class="text-black-50" th:text="${status} + ': ' + ${error}"></h5><br>
+        <a class="btn btn-primary" role="button" th:href="@{/home}">Back to safety</a>
+    </main>
+    <footer th:replace="fragments/general :: footer"></footer>
+    <div th:replace="fragments/general :: bottomscripts"></div>
+</div>
+</body>
+</html>
