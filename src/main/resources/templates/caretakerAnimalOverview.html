@@ -35,7 +35,7 @@
                             <td><a th:text="${animal.name}" th:href="@{/caretaker/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
                             <td th:text="${animal.species.toString()}"></td>
                             <td th:text="${animal.getAge()}"></td>
-                            <td th:text="${animal.getStatus()}"></td>
+                            <td th:text="${animal.getStatus().getDisplayName()}"></td>
                         </tr>
                         </tbody>
                     </table>
