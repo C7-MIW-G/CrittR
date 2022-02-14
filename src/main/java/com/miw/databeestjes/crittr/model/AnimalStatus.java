@@ -1,10 +1,10 @@
 package com.miw.databeestjes.crittr.model;
 
 public enum AnimalStatus {
-    INCOMING ("Incoming"),
-    PRESENT ("Present"),
-    RELOCATED ("Relocated"),
-    DECEASED ("Deceased");
+    INCOMING("Incoming"),
+    PRESENT("Present"),
+    RELOCATED("Relocated"),
+    DECEASED("Deceased");
 
     private String displayName;
 
