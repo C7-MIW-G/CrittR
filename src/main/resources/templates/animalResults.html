@@ -7,37 +7,54 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Search Results</h1>
-                    <p class="lead text-muted">Animals found for the query '<span th:text="${keyword}"></span>'</p>
-                    <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
-                </div>
+        <td th:switch="${#lists.size(foundAnimals)}">
+            <div th:case="0">
+                <section class="py-3 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Oh no!</h1>
+                            <p class="lead text-muted">No animals found for the query '<span th:text="${keyword}"></span>' :(</p>
+                            <a th:href="@{/animals}" role="button" class="btn btn-primary my-2">Back to animals</a>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
-        <div class="overview py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Species</th>
-                            <th scope="col">Age</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="animal : ${foundAnimals}">
-                            <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
-                            <td th:text="${animal.species.toString()}"></td>
-                            <td th:text="${animal.getAge()}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <div th:case="*">
+                <section class="py-3 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="fw-light">Search Results</h1>
+                            <p class="lead text-muted">Animals found for the query '<span th:text="${keyword}"></span>'</p>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
+                            <a th:href="@{/animals}" role="button" class="btn btn-primary my-2">Back to animals</a>
+                        </div>
+                    </div>
+                </section>
+                <div class="overview py-5 bg-light">
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Species</th>
+                                    <th scope="col">Age</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="animal : ${foundAnimals}">
+                                    <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
+                                    <td th:text="${animal.species.toString()}"></td>
+                                    <td th:text="${animal.getAge()}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-        </div>
+        </td>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
