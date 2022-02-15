@@ -73,7 +73,7 @@ public class ReportController {
         }
         model.addAttribute("report", certainReport);
 
-        return "reportDetails";
+        return "caretakerReportDetails";
     }
 
     @PostMapping("/reports/details/accept/{reportId}")

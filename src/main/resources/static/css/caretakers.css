@@ -1,0 +1,31 @@
+.nav-link {
+    border: black;
+    border-radius: 12px;
+    margin-right: 4px;
+    color: white;
+}
+
+header {
+    background-color: #b6d2e0;
+}
+
+.btn-primary{
+    background-color: #b6d2e0;
+    border: none;
+}
+
+.nav-link:hover{
+    background-color: #8FAFBF;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #8FAFBF;
+}
+
+.btn-secondary {
+    background-color: #a8b4bf;
+    border: none;
+}
+
+
