@@ -1,7 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,12 +21,11 @@ import java.util.Optional;
 public class CrittrUserController {
 
     public static final String EXISTING_EMAIL = "This email is already in use";
-    CrittrUserRepository crittrUserRepository;
+
     PasswordEncoder passwordEncoder;
     CrittrUserDetailsService crittrUserDetailsService;
 
-    public CrittrUserController(CrittrUserRepository crittrUserRepository, PasswordEncoder passwordEncoder, CrittrUserDetailsService crittrUserDetailsService) {
-        this.crittrUserRepository = crittrUserRepository;
+    public CrittrUserController(PasswordEncoder passwordEncoder, CrittrUserDetailsService crittrUserDetailsService) {
         this.passwordEncoder = passwordEncoder;
         this.crittrUserDetailsService = crittrUserDetailsService;
     }
@@ -46,7 +44,7 @@ public class CrittrUserController {
 
     @PostMapping("/users/new")
     protected String saveUser(@ModelAttribute("user") @Valid CrittrUser user, BindingResult result, Model model) {
-        List<CrittrUser> userList = crittrUserRepository.listByEmail(user.getEmail());
+        List<CrittrUser> userList = crittrUserDetailsService.listByEmail(user.getEmail());
         if (userList.size() > 0) {
             return showUserFormWithError(model);
         }
@@ -54,14 +52,14 @@ public class CrittrUserController {
             return "userForm";
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        crittrUserRepository.save(user);
+        crittrUserDetailsService.save(user);
         return "redirect:/login";
     }
 
     @GetMapping("/user/details/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String showUserDetails(@PathVariable("userId") long userId, Model model) {
-        Optional<CrittrUser> user = crittrUserRepository.findById(userId);
+        Optional<CrittrUser> user = crittrUserDetailsService.findById(userId);
         if (user.isEmpty()) {
             return "redirect:/";
         }
@@ -72,7 +70,7 @@ public class CrittrUserController {
     @GetMapping("/user/details/edit/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String showUserForm(@PathVariable("userId") long userId, Model model) {
-        Optional<CrittrUser> user = crittrUserRepository.findById(userId);
+        Optional<CrittrUser> user = crittrUserDetailsService.findById(userId);
         if (user.isEmpty()) {
             return "redirect:/";
         }
@@ -98,7 +96,7 @@ public class CrittrUserController {
     @GetMapping("/user/details/delete/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String deleteUser(@PathVariable("userId") long userId) {
-        Optional<CrittrUser> userOptional = crittrUserRepository.findById(userId);
+        Optional<CrittrUser> userOptional = crittrUserDetailsService.findById(userId);
         if (userOptional.isEmpty()) {
             return "userDetails";
         }
@@ -119,7 +117,7 @@ public class CrittrUserController {
     @GetMapping("/accounts/users")
     @Secured("ROLE_ADMIN")
     protected String showAllAccounts(Model model) {
-        model.addAttribute("allAccounts", crittrUserRepository.findAll());
+        model.addAttribute("allAccounts", crittrUserDetailsService.findAll());
         return "adminAccountOverview";
     }
 }

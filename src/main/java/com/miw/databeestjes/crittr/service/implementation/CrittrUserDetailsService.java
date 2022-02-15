@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -55,5 +56,17 @@ public class CrittrUserDetailsService implements UserDetailsService {
 
     public void save(CrittrUser user) {
         crittrUserRepository.save(user);
+    }
+
+    public List<CrittrUser> listByEmail(String email) {
+       return crittrUserRepository.listByEmail(email);
+    }
+
+    public Optional<CrittrUser> findById(long userId) {
+        return crittrUserRepository.findById(userId);
+    }
+
+    public List<CrittrUser> findAll() {
+        return crittrUserRepository.findAll();
     }
 }
