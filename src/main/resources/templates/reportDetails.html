@@ -3,7 +3,24 @@
 <head th:replace="fragments/general :: baseheader(~{:: title})">
     <title>CrittR - Report Details</title>
 </head>
-<body>
+<body onload="setButtons()">
+<script type="text/javascript">
+    function setButtons() {
+        const currentStatus = document.getElementById('status-display').innerHTML;
+        switch (currentStatus) {
+            case 'New' : document.getElementById('accept-form').style.display = 'block';
+                break;
+            case 'Open Issue' : document.getElementById('observe-form').style.display = 'block';
+                break;
+            case 'Discarded' : document.getElementById('accept-form').style.display = 'block';
+                break;
+            case 'Under Observation' : document.getElementById('close-form').style.display = 'block';
+                break;
+            case 'Closed' : document.getElementById('accept-form').style.display = 'block';
+                break;
+        }
+    }
+</script>
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
@@ -37,21 +54,21 @@
                         </tr>
                         <tr>
                             <th scope="row">Status</th>
-                            <td class="list-group-item" th:text="${report.status.displayName}"></td>
+                            <td id="status-display" class="list-group-item" th:text="${report.status.displayName}"></td>
                         </tr>
                         </tbody>
                     </table>
                     <div sec:authorize="hasRole('CARETAKER')" class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <form method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
+                        <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-primary" type="submit" value="Accept"/>
                         </form>
-                        <form method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
+                        <form id="discard-form" style="display : block" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-secondary" type="submit" value="Discard"/>
                         </form>
-                        <form method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
+                        <form id="observe-form" style="display : none"  method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-secondary" type="submit" value="Under observation"/>
                         </form>
-                        <form method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
+                        <form id="close-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-secondary" type="submit" value="Close"/>
                         </form>
                     </div>
