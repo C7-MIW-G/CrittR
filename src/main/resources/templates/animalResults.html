@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title})">
-    <title>Animal overview</title>
+    <title>Found Animals</title>
 </head>
 <body>
 <header th:replace="fragments/general :: navbar"></header>
@@ -10,27 +10,12 @@
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Animals</h1>
-                    <p class="lead text-muted">These are all the animals in the Petting Zoo</p>
+                    <h1 class="fw-light">Search Results</h1>
+                    <p class="lead text-muted">Animals found for the query '<span th:text="${keyword}"></span>'</p>
                     <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
                 </div>
             </div>
         </section>
-        <div>
-            <form th:action="@{/animals/results}">
-                Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
-                &nbsp;
-                <input type="submit" value="Search" />
-                &nbsp;
-                <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
-            </form>
-            <script type="text/javascript">
-                function clearSearch() {
-                    window.location = "[[@{/animals}]]";
-                }
-            </script>
-        </div>
-
         <div class="overview py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -43,7 +28,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="animal : ${allAnimals}">
+                        <tr th:each="animal : ${foundAnimals}">
                             <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
                             <td th:text="${animal.species.toString()}"></td>
                             <td th:text="${animal.getAge()}"></td>

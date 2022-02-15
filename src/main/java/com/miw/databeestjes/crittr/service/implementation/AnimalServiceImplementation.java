@@ -29,6 +29,15 @@ public class AnimalServiceImplementation implements AnimalService{
     }
 
     @Override
+    public List<Animal> getAll(String keyword) {
+        if (keyword != null) {
+            return animalRepository.search(keyword);
+        }
+        return animalRepository.findAll();
+    }
+
+
+    @Override
     public void save(Animal animal) {
         animalRepository.save(animal);
     }

@@ -10,6 +10,8 @@ public interface AnimalService {
 
     List<Animal> getAll();
 
+    List<Animal> getAll(String keyword);
+
     void save (Animal animal);
 
     void delete (Animal animal);

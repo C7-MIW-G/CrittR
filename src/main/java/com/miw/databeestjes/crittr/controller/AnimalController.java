@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,7 +32,6 @@ public class AnimalController {
     @GetMapping("/animals")
     protected String showAnimalOverview (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
-        System.out.println();
         return "animalOverview";
     }
 
@@ -123,6 +124,14 @@ public class AnimalController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String setToDeceased(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.DECEASED);
+    }
+
+    @RequestMapping("/animals/results")
+    public String viewAnimalResults(Model model, @Param("keyword") String keyword) {
+        List<Animal> foundAnimals = animalService.getAll(keyword);
+        model.addAttribute("foundAnimals", foundAnimals);
+        model.addAttribute("keyword", keyword);
+        return "animalResults";
     }
 
 }
