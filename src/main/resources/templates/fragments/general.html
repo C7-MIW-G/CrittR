@@ -8,29 +8,25 @@
     <title th:replace="${title}">TITLE</title>
 </head>
 <body>
-<header th:fragment="navbar" class="p-3 mb-3 border-bottom">
+<header th:fragment="navbar" class="p-2 mb-3 border-bottom">
     <div class="container">
-        <div class="d-flex flex-wrap">
-            <nav class="nav me-auto">
-                <a class="nav-link px-2 link-dark" th:href="@{/home}">
-                    <img src="../static/assets/CrittrLogoWhite.png" th:src="@{/assets/CrittrLogoWhite.png}" alt="CrittR-Logo" width="50" class="d-inline-block align-text-top">
-                </a>
-                <div class="d-flex mt-2">
-                <a class="nav-link px-2 link-dark fw-bold" th:href="@{/home}">CrittR</a>
-                <a class="nav-link px-2 link-dark fw-bold" th:href="@{/animals}">Animals</a>
-                <a class="nav-link px-2 link-dark fw-bold" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals (C)</a>
-                <a class="nav-link px-2 link-dark fw-bold" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a>
-                </div>
-            </nav>
-            <nav class="nav">
-                <div class="d-flex mt-2">
-                <a sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Account</a>
-                <a sec:authorize="hasRole('ADMIN')" class="nav-link px-2 link-dark" th:href="@{/accounts/users}">Accounts</a>
-                <a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}">Logout</a>
-                <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}">Login</a>
-                <a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/users/new}">Sign up</a>
-                </div>
-            </nav>
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="nav-link px-2 link-dark" th:href="@{/home}">
+                <img src="../static/assets/CrittrLogoWhite.png" th:src="@{/assets/CrittrLogoWhite.png}" alt="CrittR-Logo" width="50" class="d-inline-block align-text-top">
+            </a>
+            <ul class="nav me-auto">
+                <li><a class="nav-link px-2 link-dark fw-bold" th:href="@{/home}">CrittR</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold" th:href="@{/animals}">Animals</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals (C)</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a></li>
+            </ul>
+            <ul class="nav">
+                <li><a sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')" class="nav-link px-2 link-dark" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Account</a></li>
+                <li><a sec:authorize="hasRole('ADMIN')" class="nav-link px-2 link-dark" th:href="@{/accounts/users}">Accounts</a></li>
+                <li><a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark" th:href="@{/logout}">Logout</a></li>
+                <li><a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/login}">Login</a></li>
+                <li><a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark" th:href="@{/users/new}">Sign up</a></li>
+            </ul>
         </div>
     </div>
 </header>
