@@ -10,16 +10,24 @@
         const currentStatus = [(${report.status.ordinal()})];
         switch (currentStatus) {
             case 0 : document.getElementById('accept-form').style.display = 'block';
+                    document.getElementById('discard-form').style.display = 'block';
                 break;
             case 1 : document.getElementById('observe-form').style.display = 'block';
+                     document.getElementById('close-form').style.display = 'block';
                 break;
-            case 2 : document.getElementById('accept-form').style.display = 'block';
+            case 2 : setReopenButton();
                 break;
             case 3 : document.getElementById('close-form').style.display = 'block';
+                     setReopenButton();
                 break;
-            case 4 : document.getElementById('accept-form').style.display = 'block';
+            case 4 : setReopenButton();
                 break;
         }
+    }
+
+    function setReopenButton() {
+        document.getElementById('accept-form').style.display = 'block';
+        document.getElementById('accept-button').value = 'Reopen';
     }
 </script>
 <header th:replace="fragments/general :: navbar"></header>
@@ -61,9 +69,9 @@
                     </table>
                     <div sec:authorize="hasRole('CARETAKER')" class="d-grid gap-2 d-md-flex justify-content-md-start">
                         <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
-                            <input class="btn btn-primary" type="submit" value="Accept"/>
+                            <input class="btn btn-primary" type="submit" id="accept-button" value="Accept"/>
                         </form>
-                        <form id="discard-form" style="display : block" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
+                        <form id="discard-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-secondary" type="submit" value="Discard"/>
                         </form>
                         <form id="observe-form" style="display : none"  method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
