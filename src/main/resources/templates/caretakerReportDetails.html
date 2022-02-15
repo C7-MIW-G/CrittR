@@ -7,17 +7,17 @@
 <body onload="setButtons()">
 <script type="text/javascript">
     function setButtons() {
-        const currentStatus = document.getElementById('status-display').innerHTML;
+        const currentStatus = [(${report.status.ordinal()})];
         switch (currentStatus) {
-            case 'New' : document.getElementById('accept-form').style.display = 'block';
+            case 0 : document.getElementById('accept-form').style.display = 'block';
                 break;
-            case 'Open Issue' : document.getElementById('observe-form').style.display = 'block';
+            case 1 : document.getElementById('observe-form').style.display = 'block';
                 break;
-            case 'Discarded' : document.getElementById('accept-form').style.display = 'block';
+            case 2 : document.getElementById('accept-form').style.display = 'block';
                 break;
-            case 'Under Observation' : document.getElementById('close-form').style.display = 'block';
+            case 3 : document.getElementById('close-form').style.display = 'block';
                 break;
-            case 'Closed' : document.getElementById('accept-form').style.display = 'block';
+            case 4 : document.getElementById('accept-form').style.display = 'block';
                 break;
         }
     }
