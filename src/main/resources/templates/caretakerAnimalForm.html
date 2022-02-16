@@ -27,6 +27,10 @@
                     <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
                     <p class="errormessage" th:if="${#fields.hasErrors('birthDate')}" >Please provide a birthdate</p>
                 </div><br>
+                <div class="col-8">
+                    <label class="form-label" for="animalBio">Biography:</label>
+                    <textarea class="form-control" id="animalBio" placeholder="Some fun facts or the entire life history of the animal" name="animalBio" th:field="*{biography}"></textarea>
+                </div><br>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>
                 </div>

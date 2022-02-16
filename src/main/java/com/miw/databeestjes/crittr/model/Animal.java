@@ -40,6 +40,8 @@ public class Animal {
     @OneToMany(mappedBy = "animal")
     private List<Report> reports;
 
+    private String biography;
+
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
