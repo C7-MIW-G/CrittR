@@ -19,7 +19,7 @@
                 </div>
             </div>
         </section>
-        <div class="overview py-5 bg-light">
+        <div class="overview py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <table class="table table-hover">
@@ -32,8 +32,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="animal : ${allAnimals}">
-                            <td><a th:text="${animal.name}" th:href="@{/caretaker/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
+                        <tr style="position: relative" th:each="animal : ${allAnimals}">
+                            <td><a class="stretched-link" th:text="${animal.name}" th:href="@{/caretaker/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
                             <td th:text="${animal.species.toString()}"></td>
                             <td th:text="${animal.getAge()}"></td>
                             <td th:text="${animal.getStatus().getDisplayName()}"></td>

@@ -31,8 +31,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="report : ${allReports}">
-                            <td><a th:text="${report.reportId}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
+                        <tr style="position: relative" th:each="report : ${allReports}">
+                            <td><a class="stretched-link" th:text="${report.reportId}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
                             <td th:text="${report.species}"></td>
                             <td th:text="${report.issue}"></td>
                             <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
