@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -35,5 +36,8 @@ public class Report {
     @ManyToOne
     @JoinColumn(nullable = false)
     private CrittrUser reporter;
+
+    @ManyToOne
+    private Animal animal;
 
 }
