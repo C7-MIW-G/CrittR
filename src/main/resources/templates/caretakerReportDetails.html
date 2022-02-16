@@ -18,7 +18,7 @@
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Report nr <span th:text="${report.reportId}"></span></h1>
+                    <h1 class="fw-light">Report nr <span th:text="${report.reportNumber}"></span></h1>
                 </div>
             </div>
         </section>
@@ -63,7 +63,7 @@
                             <input class="btn btn-secondary" type="submit" value="Close"/>
                         </form>
                     </div>
-                    <div>
+                    <div th:if="${report.status.ordinal() == 0}">
                         <a th:href="@{/reports/details/edit/{reportId}(reportId=${report.reportId})}" class="btn btn-primary my-2" role="button">Edit</a>
                     </div>
                 </div>

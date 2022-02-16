@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service
 public class ReportServiceImplementation implements ReportService {
 
+    public static final long INITIAL_REPORT_NUMBER = 10000;
     ReportRepository reportRepository;
 
     public ReportServiceImplementation(ReportRepository reportRepository) {
@@ -35,6 +36,22 @@ public class ReportServiceImplementation implements ReportService {
     @Override
     public List<Report> findByAnimalName(String animalName) {
         return reportRepository.findByAnimalName(animalName);
+    }
+
+    public long getNextNumber() {
+        Optional<Long> lastNumber = reportRepository.lastReport();
+        if(lastNumber.isEmpty()) {
+            return INITIAL_REPORT_NUMBER;
+        }
+        return getNextValue(lastNumber.get());
+    }
+
+    private long getNextValue(long lastNumber) {
+        if(lastNumber < INITIAL_REPORT_NUMBER) {
+            return INITIAL_REPORT_NUMBER;
+        } else {
+            return ++lastNumber;
+        }
     }
 
 }

@@ -62,5 +62,11 @@ header {
     margin-left: 140px;
 }
 
+#text-biography {
+    word-wrap: break-word;
+    width: 500px;
+    margin-left: 80px;
+}
+
 
 
