@@ -4,33 +4,15 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/caretakers.css}">
     <title>CrittR - Report Details</title>
 </head>
-<body onload="setButtons()">
+<body onload="doButtonChange()">
 <script type="text/javascript">
-    function setButtons() {
+    function doButtonChange () {
         const currentStatus = [(${report.status.ordinal()})];
-        switch (currentStatus) {
-            case 0 : document.getElementById('accept-form').style.display = 'block';
-                    document.getElementById('discard-form').style.display = 'block';
-                break;
-            case 1 : document.getElementById('observe-form').style.display = 'block';
-                     document.getElementById('close-form').style.display = 'block';
-                break;
-            case 2 : setReopenButton();
-                break;
-            case 3 : document.getElementById('close-form').style.display = 'block';
-                     setReopenButton();
-                break;
-            case 4 : setReopenButton();
-                break;
-        }
-    }
-
-    function setReopenButton() {
-        document.getElementById('accept-form').style.display = 'block';
-        document.getElementById('accept-button').value = 'Reopen';
+        setButtons(currentStatus);
     }
 </script>
 <header th:replace="fragments/general :: navbar"></header>
+<input type="hidden" th:value="${report.status.ordinal()}" id="reportStatusHack">
 <div class="container">
     <main>
         <section class="py-3 text-center container">
