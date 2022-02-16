@@ -31,6 +31,14 @@ header {
     color: white;
 }
 
+.animalProfilePic{
+    border-radius: 50%;
+}
+
+.animalProfile{
+    text-align: center;
+}
+
 .btn-primary:hover {
     background-color: #8DAD7D;
 }
