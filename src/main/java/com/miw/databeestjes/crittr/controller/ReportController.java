@@ -55,6 +55,7 @@ public class ReportController {
             return "reportForm";
         }
         report.setReporter(user);
+        report.setReportNumber(reportService.getNextNumber());
         reportService.save(report);
         return "redirect:/user/details/" + user.getUserId();
     }

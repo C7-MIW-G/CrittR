@@ -12,4 +12,7 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
 
     @Query("SELECT r FROM Report r WHERE r.animalName = ?1")
     List<Report> findByAnimalName(String animalName);
+
+    @Query("SELECT MAX (r.reportNumber) FROM Report r")
+    Optional<Long> lastReport();
 }

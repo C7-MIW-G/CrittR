@@ -15,6 +15,8 @@ public class Report {
     @GeneratedValue
     private long reportId;
 
+    private long reportNumber;
+
     @NotEmpty
     private String issue;
 
@@ -34,4 +36,5 @@ public class Report {
     @ManyToOne
     @JoinColumn(nullable = false)
     private CrittrUser reporter;
+
 }
