@@ -36,8 +36,4 @@ public class Report {
     @ManyToOne
     @JoinColumn(nullable = false)
     private CrittrUser reporter;
-
-    @ManyToOne
-    private Animal animal;
-
 }

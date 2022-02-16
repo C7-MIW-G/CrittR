@@ -113,36 +113,23 @@ public class ReportController {
         return getReport(report, ReportStatus.CLOSED);
     }
 
-    @PostMapping("/reports/details/add/animal/{reportId}")
-    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String addAnimalToReport(@ModelAttribute("linkedAnimal") Animal animal,
-                                       @ModelAttribute("report") Report report,
-                                       BindingResult result){
-        if(!result.hasErrors()){
-            report.setAnimal(animal);
-            report.setAnimalName(animal.getName());
-             reportService.save(report);
-        }
-         return "redirect:/reports/details/" + report.getReportId();
-    }
-
     @GetMapping("/reports/details/edit/{reportId}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showEditReportForm (@PathVariable("reportId") long reportId, Model model) {
         Optional<Report> optionalReport = reportService.getByReportId(reportId);
         if(optionalReport.isPresent()){
             model.addAttribute("report", optionalReport.get());
-            return "caretakerEditReportForm";
+            return "caretakerReportEditForm";
         }
         return "redirect:/";
     }
 
     @PostMapping("/reports/details/edit/{reportId}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String updateReport(@ModelAttribute("report") Report report , BindingResult result){
+    protected String updateReport(@ModelAttribute("report") Report report, BindingResult result){
         if(!result.hasErrors()){
             reportService.save(report);
          }
-        return "redirect:/reports/details" + report.getReportId();
+        return "redirect:/reports/details/" + report.getReportId();
     }
 }

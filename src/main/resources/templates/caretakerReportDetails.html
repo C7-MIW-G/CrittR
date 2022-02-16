@@ -63,6 +63,9 @@
                             <input class="btn btn-secondary" type="submit" value="Close"/>
                         </form>
                     </div>
+                    <div>
+                        <a th:href="@{/reports/details/edit/{reportId}(reportId=${report.reportId})}" class="btn btn-primary my-2" role="button">Edit</a>
+                    </div>
                 </div>
             </div>
         </div>
