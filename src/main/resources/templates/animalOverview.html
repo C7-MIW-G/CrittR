@@ -35,34 +35,15 @@
         <div class="overview py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col-lg-4 animalProfile" th:each="animal : ${allAnimals}" >
-
-
-
-                        <img class="animalProfilePic"  src="../static/assets/goat2.png" th:src="@{/assets/goat2.png}" width="140" height="140"
-                        preserveAspectRatio="xMidYMid slice">
-                        <h2 th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}">></h2>
-                        <p th:text="${animal.species.toString()}"></p>
-                        <p th:text="${animal.getAge()}"></p>
-
+                    <div class="card" style="width: 18rem" th:each="animal : ${allAnimals}" >
+                        <img class="card-img-top" src="../static/assets/goat2.png" th:src="@{/assets/goat2.png}" width="140" height="140">
+                        <div class="card-body">
+                            <h2 class="card-title" th:text="${animal.name}"></h2>
+                            <p class="card-text" th:text="${animal.species.toString()}"></p>
+                            <p class="card-text" th:text="${animal.getAge()}"></p>
+                            <a th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}" class="btn btn-primary stretched-link">See details</a>
+                        </div>
                     </div>
-
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Species</th>
-                            <th scope="col">Age</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="animal : ${allAnimals}">
-                            <td><a th:text="${animal.name}" th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}"></a></td>
-                            <td th:text="${animal.species.toString()}"></td>
-                            <td th:text="${animal.getAge()}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

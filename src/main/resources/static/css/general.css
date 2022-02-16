@@ -31,11 +31,11 @@ header {
     color: white;
 }
 
-.animalProfilePic{
+.animalCardImg{
     border-radius: 50%;
 }
 
-.animalProfile{
+.animalCard{
     text-align: center;
 }
 
@@ -46,6 +46,11 @@ header {
 .btn-secondary {
     background-color: #a8b4bf;
     border: none;
+}
+
+.container::after {
+    display: block;
+    clear: both;
 }
 
 
