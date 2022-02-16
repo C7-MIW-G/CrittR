@@ -31,4 +31,10 @@ public class ReportServiceImplementation implements ReportService {
     public Optional<Report> getByReportId(long reportId) {
         return reportRepository.findByReportId(reportId);
     }
+
+    @Override
+    public List<Report> findByAnimalName(String animalName) {
+        return reportRepository.findByAnimalName(animalName);
+    }
+
 }

@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,11 @@ import java.util.Optional;
 public class AnimalController {
 
     private AnimalService animalService;
+    private ReportService reportService;
 
-    public AnimalController(AnimalService animalService) {
+    public AnimalController(AnimalService animalService, ReportService reportService) {
         this.animalService = animalService;
+        this.reportService = reportService;
     }
 
     @GetMapping("/animals")
@@ -87,7 +90,9 @@ public class AnimalController {
         if (animal.isEmpty()){
             return "redirect:/caretaker/animals";
         }
-        model.addAttribute("animal", animal.get());
+        Animal certainAnimal = animal.get();
+        model.addAttribute("animal", certainAnimal);
+        model.addAttribute("allReports", reportService.findByAnimalName(certainAnimal.getName()));
         return "caretakerAnimalDetails";
     }
 

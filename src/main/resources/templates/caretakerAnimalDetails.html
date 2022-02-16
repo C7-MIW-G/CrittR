@@ -51,6 +51,16 @@
                         </form>
                     </div>
                 </div>
+                <div>
+                <table>
+                    <tr>
+                        <th>Reports</th>
+                    </tr>
+                    <tr th:each="report : ${allReports}">
+                        <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
+                    </tr>
+                </table>
+                </div>
             </div>
         </div>
     </main>
