@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportStatus;
@@ -110,5 +111,18 @@ public class ReportController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String closeReport(@ModelAttribute("report") Report report){
         return getReport(report, ReportStatus.CLOSED);
+    }
+
+    @PostMapping("/reports/details/add/animal/{reportId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
+    protected String addAnimalToReport(@ModelAttribute("linkedAnimal") Animal animal,
+                                       @ModelAttribute("report") Report report,
+                                       BindingResult result){
+        if(!result.hasErrors()){
+            report.setAnimal(animal);
+            report.setAnimalName(animal.getName());
+             reportService.save(report);
+        }
+         return "redirect:/reports/details/" + report.getReportId();
     }
 }

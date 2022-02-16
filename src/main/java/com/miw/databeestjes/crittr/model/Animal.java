@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -36,8 +37,12 @@ public class Animal {
     @NotNull
     protected LocalDate birthDate;
 
+    @OneToMany(mappedBy = "animal")
+    private List<Report> reports;
+
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
+
 
 }
