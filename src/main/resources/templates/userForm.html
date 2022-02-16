@@ -14,6 +14,27 @@
             uniquenessError.style.display = 'block'
         }
     }
+
+    function checkPassword() {
+
+        const message = document.getElementById('message');
+        const signUpButton = document.getElementById('signUpButton')
+
+        if (document.getElementById('password').value ===
+            document.getElementById('confirm_password').value) {
+            message.style.visibility = 'hidden';
+            signUpButton.disabled = false;
+            signUpButton.classList.remove("btn-secondary");
+            signUpButton.classList.add("btn-primary");
+
+        } else {
+            message.style.color = 'red';
+            message.style.visibility = 'visible';
+            signUpButton.disabled = true;
+            signUpButton.classList.add("btn-secondary");
+            signUpButton.classList.remove("btn-primary");
+        }
+    }
 </script>
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
@@ -35,11 +56,16 @@
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="password">Password*</label>
-                    <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}">
+                    <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}" onkeyup='checkPassword()'>
                     <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
                 </div><br>
+                <div class="col-8">
+                    <label class="form-label" for="confirm_password">Confirm Password*</label>
+                    <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
+                </div><br>
+                <div><p id='message' style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
                 <div class="col-10">
-                    <input value="Sign up" type="submit" class="btn btn-primary"/>
+                    <input id="signUpButton" value="Sign up" type="submit" class="btn btn-secondary" disabled/>
                 </div><br>
                 <div class="col-10">
                     <p class="text-black-50">*Mandatory</p>
