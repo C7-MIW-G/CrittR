@@ -15,6 +15,7 @@ public class Report {
     @GeneratedValue
     private long reportId;
 
+    @Column(unique = true)
     private long reportNumber;
 
     @NotEmpty
