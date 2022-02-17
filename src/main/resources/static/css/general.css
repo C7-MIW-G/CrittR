@@ -68,5 +68,14 @@ header {
     margin-left: 80px;
 }
 
+.link-table-rows {
+    color: black;
+    text-decoration: none;
+}
+
+.link-table-rows:hover {
+    color: black;
+}
+
 
 

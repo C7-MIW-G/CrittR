@@ -38,7 +38,7 @@
                             <h2 class="card-title" th:text="${animal.name}"></h2>
                             <p class="card-text" th:text="${animal.species.toString()}"></p>
                             <p class="card-text" th:text="${animal.getAge()}"></p>
-                            <a th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}" class="btn btn-primary stretched-link">See details</a>
+                            <a th:href="@{/animals/details/{animalId}(animalId=${animal.animalId})}" class="btn btn-primary stretched-link link-table-rows">See details</a>
                         </div>
                     </div>
                 </div>

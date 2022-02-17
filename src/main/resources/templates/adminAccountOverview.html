@@ -17,7 +17,7 @@
             </div>
         </section>
 
-        <div class="overview py-5 bg-light">
+        <div class="overview py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <table class="table table-hover">
@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                         <tr style="position: relative" th:each="account : ${allAccounts}">
-                            <td><a class="stretched-link" th:href="@{/user/details/edit/{userId}(userId=${account.userId})}" th:text="${account.email}"></a></td>
+                            <td><a class="stretched-link link-table-rows" th:href="@{/user/details/edit/{userId}(userId=${account.userId})}" th:text="${account.email}"></a></td>
                             <td th:text="${account.username}"></td>
                             <td th:text="${account.getRole().getDisplayName()}"></td>
                         </tr>
