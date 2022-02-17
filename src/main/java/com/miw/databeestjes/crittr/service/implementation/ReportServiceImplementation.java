@@ -54,4 +54,8 @@ public class ReportServiceImplementation implements ReportService {
         }
     }
 
+    public Optional<Report> getByReportNumber(long reportNumber) {
+        return reportRepository.findByReportNumber(reportNumber);
+    }
+
 }

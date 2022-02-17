@@ -14,6 +14,8 @@ public interface ReportService {
 
     Optional<Report> getByReportId(long reportId);
 
+    Optional<Report> getByReportNumber(long reportNumber);
+
     List<Report> findByAnimalName(String animalName);
 
     long getNextNumber();

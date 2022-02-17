@@ -60,10 +60,10 @@ public class ReportController {
         return "redirect:/user/details/" + user.getUserId();
     }
 
-    @GetMapping("/reports/details/{reportId}")
+    @GetMapping("/reports/details/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
-    protected String showReportDetails(@PathVariable("reportId") long reportId, Model model) {
-        Optional<Report> report = reportService.getByReportId(reportId);
+    protected String showReportDetails(@PathVariable("reportNr") long reportNr, Model model) {
+        Optional<Report> report = reportService.getByReportNumber(reportNr);
         if (report.isEmpty()){
             return "redirect:/reports";
         }
@@ -87,7 +87,7 @@ public class ReportController {
     private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
         if(optionalReport.isEmpty()) {
-            return "redirect:/reports/details/" + report.getReportId();
+            return "redirect:/reports/details/" + report.getReportNumber();
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
@@ -114,10 +114,10 @@ public class ReportController {
         return getReport(report, ReportStatus.CLOSED);
     }
 
-    @GetMapping("/reports/details/edit/{reportId}")
+    @GetMapping("/reports/details/edit/{reportNumber}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String showEditReportForm (@PathVariable("reportId") long reportId, Model model) {
-        Optional<Report> optionalReport = reportService.getByReportId(reportId);
+    protected String showEditReportForm (@PathVariable("reportNumber") long reportnr, Model model) {
+        Optional<Report> optionalReport = reportService.getByReportNumber(reportnr);
         if(optionalReport.isPresent()){
             model.addAttribute("report", optionalReport.get());
             return "caretakerReportEditForm";
@@ -125,12 +125,12 @@ public class ReportController {
         return "redirect:/";
     }
 
-    @PostMapping("/reports/details/edit/{reportId}")
+    @PostMapping("/reports/details/edit/{reportNumber}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String updateReport(@ModelAttribute("report") Report report, BindingResult result){
         if(!result.hasErrors()){
             reportService.save(report);
          }
-        return "redirect:/reports/details/" + report.getReportId();
+        return "redirect:/reports/details/" + report.getReportNumber();
     }
 }

@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface ReportRepository extends JpaRepository<Report, Long> {
     Optional<Report> findByReportId(long reportId);
 
+    Optional<Report> findByReportNumber(long reportNumber);
+
     @Query("SELECT r FROM Report r WHERE r.animalName = ?1")
     List<Report> findByAnimalName(String animalName);
 
