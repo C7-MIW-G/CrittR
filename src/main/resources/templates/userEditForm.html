@@ -22,9 +22,15 @@
                     <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
                 </div><br>
                 <div class="col-8">
-                    <label class="form-label" for="password">Password</label>
-                    <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}">
+                    <label class="form-label" for="password">Password*</label>
+                    <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}" onkeyup='checkPassword()'>
+                    <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
                 </div><br>
+                <div class="col-8">
+                    <label class="form-label" for="confirm_password">Confirm Password*</label>
+                    <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
+                </div><br>
+                <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
                 <div sec:authorize="hasRole('ADMIN')" th:each="userRole : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="userRoleRadio" id="userRoleMember" th:value="${userRole}" th:field="*{role}" >
@@ -32,7 +38,7 @@
                 </div>
                 </div>
                 <div class="col-10">
-                    <input value="Save" type="submit" class="btn btn-primary"/>
+                    <input id="saveButton" value="Save" type="submit" class="btn btn-primary buttonDisableable"/>
                 </div><br>
                 <div class="col-10">
                     <p class="text-black-50">*Mandatory</p>

@@ -20,3 +20,30 @@ function setReopenButton() {
     document.getElementById('accept-form').style.display = 'block';
     document.getElementById('accept-button').value = 'Reopen';
 }
+
+function setErrorField() {
+    const uniquenessError = document.getElementById('uniquenessError');
+    if (uniquenessError.innerHTML === "") {
+        uniquenessError.style.display = 'none'
+    } else {
+        uniquenessError.style.display = 'block'
+    }
+}
+
+function checkPassword() {
+
+    const message = document.getElementById('message');
+    const buttonDisableableCollection = document.getElementsByClassName('buttonDisableable');
+    const buttonDisableable = buttonDisableableCollection[0];
+    if (document.getElementById('password').value ===
+        document.getElementById('confirm_password').value) {
+        message.style.visibility = 'hidden';
+        buttonDisableable.disabled = false;
+        buttonDisableable.classList.replace("btn-secondary", "btn-primary");
+
+    } else {
+        message.style.visibility = 'visible';
+        buttonDisableable.disabled = true;
+        buttonDisableable.classList.replace("btn-primary", "btn-secondary");
+    }
+}

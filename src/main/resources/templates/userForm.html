@@ -5,37 +5,6 @@
     <title>CrittR - Sign Up</title>
 </head>
 <body onload="setErrorField()">
-<script type="text/javascript" >
-    function setErrorField() {
-        const uniquenessError = document.getElementById('uniquenessError');
-        if (uniquenessError.innerHTML === "") {
-            uniquenessError.style.display = 'none'
-        } else {
-            uniquenessError.style.display = 'block'
-        }
-    }
-
-    function checkPassword() {
-
-        const message = document.getElementById('message');
-        const signUpButton = document.getElementById('signUpButton')
-
-        if (document.getElementById('password').value ===
-            document.getElementById('confirm_password').value) {
-            message.style.visibility = 'hidden';
-            signUpButton.disabled = false;
-            signUpButton.classList.remove("btn-secondary");
-            signUpButton.classList.add("btn-primary");
-
-        } else {
-            message.style.color = 'red';
-            message.style.visibility = 'visible';
-            signUpButton.disabled = true;
-            signUpButton.classList.add("btn-secondary");
-            signUpButton.classList.remove("btn-primary");
-        }
-    }
-</script>
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
@@ -63,9 +32,9 @@
                     <label class="form-label" for="confirm_password">Confirm Password*</label>
                     <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
                 </div><br>
-                <div><p id='message' style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
+                <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
                 <div class="col-10">
-                    <input id="signUpButton" value="Sign up" type="submit" class="btn btn-secondary" disabled/>
+                    <input id="signUpButton" value="Sign up" type="submit" class="btn btn-secondary buttonDisableable" disabled/>
                 </div><br>
                 <div class="col-10">
                     <p class="text-black-50">*Mandatory</p>
@@ -73,10 +42,8 @@
             </form>
         </div>
     </main>
-
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
 </div>
 </body>
-
 </html>
