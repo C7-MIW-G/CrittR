@@ -15,8 +15,7 @@
                 </div>
             </div>
         </section>
-
-        <div class="overview py-5 bg-light">
+        <div class="overview py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <table class="table">
@@ -32,7 +31,7 @@
                             <td th:text="${animal.species}"></td>
                             <td th:text="${#temporals.format(animal.birthDate, 'dd-MM-yyyy')}"></td>
                             <td th:text="${animal.getAge()}"></td>
-                            <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}">Edit</a></td>
+                            <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}" class="btn btn-sm btn-secondary" role="button">Edit</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -50,16 +49,12 @@
                             <input class="btn btn-secondary" type="submit" value="Deceased"/>
                         </form>
                     </div>
-                </div>
-                <div>
-                <table>
-                    <tr>
-                        <th>Reports</th>
-                    </tr>
-                    <tr th:each="report : ${allReports}">
-                        <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
-                    </tr>
-                </table>
+                </div><br>
+                <div style="width: 18rem">
+                    <div class="card-header">Reports</div>
+                    <ul class="list-group list-group-flush" th:each="report : ${allReports}">
+                        <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
