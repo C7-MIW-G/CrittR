@@ -32,10 +32,10 @@
                 </div><br>
                 <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
                 <div sec:authorize="hasRole('ADMIN')" th:each="userRole : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="userRoleRadio" id="userRoleMember" th:value="${userRole}" th:field="*{role}" >
-                    <label class="form-check-label" for="userRoleMember" th:text="${userRole.displayName}"></label>
-                </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="userRoleRadio" id="userRoleMember" th:value="${userRole}" th:field="*{role}">
+                        <label class="form-check-label" for="userRoleMember" th:text="${userRole.displayName}"></label>
+                    </div>
                 </div>
                 <div class="col-10">
                     <input id="saveButton" value="Save" type="submit" class="btn btn-primary buttonDisableable"/>

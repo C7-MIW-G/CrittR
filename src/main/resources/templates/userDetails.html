@@ -13,36 +13,35 @@
                 <h1 class="fw-light">Your personal information</h1>
             </div>
         </div>
-        <div class="overview py-5 bg-light">
+        <div class="overview py-5">
             <div class="container">
-                <div class="row row-cols-1 g-3">
-                    <table class="table table-bordered">
-                        <tbody>
-                        <tr>
-                            <th class="th-sm" scope="row">Name</th>
-                            <td class="list-group-item" th:text="${user.username}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">Email</th>
-                            <td class="list-group-item" th:text="${user.email}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="row row-cols-3 g-3 justify-content-around">
                     <div>
-                    <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th class="th-sm" scope="row">Name</th>
+                                <td th:text="${user.username}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">Email</th>
+                                <td th:text="${user.email}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
+                        </div>
                     </div>
-                    <table>
-                        <tr>
-                        <th>Your reports</th>
-                        </tr>
-                        <tr th:each="report : ${user.reports}">
-                            <td><a th:text="${report.issue}" th:href="@{/reports/details/{reportId}(reportId=${report.reportId})}"></a></td>
-                        </tr>
-                    </table>
+                    <div style="width: 18rem">
+                        <div class="card-header">Your Reports</div>
+                        <ul class="list-group list-group-flush" th:each="report : ${user.reports}">
+                            <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
