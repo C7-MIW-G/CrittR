@@ -69,4 +69,8 @@ public class CrittrUserDetailsService implements UserDetailsService {
     public List<CrittrUser> findAll() {
         return crittrUserRepository.findAll();
     }
+
+    public List<CrittrUser> searchByEmail(String email) {
+        return crittrUserRepository.searchByEmail(email);
+    }
 }
