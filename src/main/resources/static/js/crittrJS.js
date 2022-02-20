@@ -47,3 +47,64 @@ function checkPassword() {
         buttonDisableable.classList.replace("btn-primary", "btn-secondary");
     }
 }
+
+$('body').addEventListener('load', searchUsers());
+
+function searchUsers() {
+
+    const searchObject = {};
+
+    searchObject['email'] = $("#user-search-input").val();
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/users/search",
+        data: JSON.stringify(searchObject),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#accountsTable');
+            const innerhtml = buildHtmlString(data);
+            tBody.empty();
+            tBody.append(innerhtml);
+            // for (let dto of data.dtos) {
+            //     // appendTableRows(dto, tBody)
+            // }
+        }//,
+        // error: function (e) {
+        //     console.log(e.responseText);
+        // }
+    })
+
+}
+function buildHtmlString(data) {
+    let htmlString = "";
+    for (const dto of data.dtos) {
+        const username = dto.username;
+        const email = dto.email;
+        const role = dto.role;
+        htmlString +=
+            '<tr style="position: relative">' +
+            '<td><a class="stretched-link hyperlink-no-styling"' +
+            ' href="/user/details/edit/' + dto.userId + '"></a>' + email + '</td>' +
+            '<td>'+ username + '</td>' +
+            '<td>'+ role + '</td></tr>'
+        ;
+    }
+    return htmlString;
+}
+
+// function appendTableRows(dto, tBody) {
+//     let username = dto.username;
+//     let email = dto.email;
+//     let role = dto.role;
+//     tBody.append(
+//         '<tr style="position: relative">' +
+//         '<td><a class="stretched-link hyperlink-no-styling"' +
+//         ' href="/user/details/edit/' + dto.userId + '"></a>' + email + '</td>' +
+//         '<td>'+ username + '</td>' +
+//         '<td>'+ role + '</td></tr>'
+//     );
+// }

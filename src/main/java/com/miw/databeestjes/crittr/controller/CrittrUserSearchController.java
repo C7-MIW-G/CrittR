@@ -37,7 +37,6 @@ public class CrittrUserSearchController {
 //    @Secured("ROLE_ADMIN")
     protected ResponseEntity<?> showUsersFound(@Valid @RequestBody CrittrUserCriteria email, Errors errors) {
         CrittrUserSearchResponse response = new CrittrUserSearchResponse();
-        System.out.println(email.getEmail());
 
         if (errors.hasErrors()) {
             response.setMsg(errors.getAllErrors()

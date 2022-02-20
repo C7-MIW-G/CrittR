@@ -8,42 +8,8 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-<<<<<<< HEAD
+        <label for="user-search-input">Filter:</label>
         <input type="text" id="user-search-input" oninput="searchUsers()">
-        <script type="text/javascript">
-
-
-            function searchUsers() {
-
-                const searchObject = {};
-
-                searchObject['email'] = $("#user-search-input").val();
-
-
-                $.ajax({
-                    type: "POST",
-                    contentType: "application/json",
-                    url: "/api/users/search",
-                    data: JSON.stringify(searchObject),
-                    dataType: 'json',
-                    cache: false,
-                    timeout : 600000,
-                    succes: function (data) {
-                       let json = JSON.parse(data);
-                       data.dtos.forEach(
-                           let tableRow = '<tr></tr>';
-                           let tableCell = '<td></td>';
-                           let userName =
-
-                           )
-                       )
-                    },
-                    error: function (e) {
-                        console.log(e);
-                    }
-                })
-            }
-        </script>
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -63,11 +29,6 @@
                         </tr>
                         </thead>
                         <tbody id="accountsTable">
-                        <tr style="position: relative" th:each="account : ${allAccounts}">
-                            <td><a class="stretched-link hyperlink-no-styling" th:href="@{/user/details/edit/{userId}(userId=${account.userId})}" th:text="${account.email}"></a></td>
-                            <td th:text="${account.username}"></td>
-                            <td th:text="${account.getRole().getDisplayName()}"></td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>

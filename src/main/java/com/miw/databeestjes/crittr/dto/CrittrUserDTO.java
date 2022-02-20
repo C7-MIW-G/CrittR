@@ -27,8 +27,6 @@ import java.util.List;
 @Getter @Setter
 public class CrittrUserDTO {
 
-    private CrittrUser user;
-
     private long userId;
 
     private String email;
@@ -37,16 +35,13 @@ public class CrittrUserDTO {
 
     private String password;
 
-    private UserRoleStatus role;
-
-    private List<Report> reports;
+    private String role;
 
     public CrittrUserDTO(CrittrUser user) {
-        this.user = user;
         this.userId = user.getUserId();
         this.email = user.getEmail();
+        this.username = user.getUsername();
         this.password = user.getPassword();
-        this.role = user.getRole();
-        this.reports = user.getReports();
+        this.role = user.getRole().getDisplayName();
     }
 }
