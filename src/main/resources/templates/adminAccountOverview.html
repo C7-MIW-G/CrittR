@@ -3,11 +3,15 @@
 <head th:replace="fragments/general :: baseheader(~{:: title}, ~{:: link})">
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>CrittR - Accounts</title>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
+        <label for="user-search-input">Filter:</label>
+        <input type="text" id="user-search-input" oninput="searchUsers()">
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -18,7 +22,7 @@
         <div class="overview py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table class="table table-hover">
+                    <table class="table table-hover" >
                         <thead>
                         <tr>
                             <th scope="col">Email</th>
@@ -26,12 +30,7 @@
                             <th scope="col">Role</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr style="position: relative" th:each="account : ${allAccounts}">
-                            <td><a class="stretched-link hyperlink-no-styling" th:href="@{/user/details/edit/{userId}(userId=${account.userId})}" th:text="${account.email}"></a></td>
-                            <td th:text="${account.username}"></td>
-                            <td th:text="${account.getRole().getDisplayName()}"></td>
-                        </tr>
+                        <tbody id="accountsTable">
                         </tbody>
                     </table>
                 </div>

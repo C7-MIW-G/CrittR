@@ -14,4 +14,7 @@ public interface CrittrUserRepository extends JpaRepository<CrittrUser, Long> {
     List<CrittrUser> listByEmail(String email);
 
     void deleteByUserId(long userId);
+
+    @Query("SELECT c FROM CrittrUser c WHERE c.email LIKE %?1%")
+    List<CrittrUser> searchByEmail(String email);
 }

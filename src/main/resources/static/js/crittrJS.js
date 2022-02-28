@@ -47,3 +47,57 @@ function checkPassword() {
         buttonDisableable.classList.replace("btn-primary", "btn-secondary");
     }
 }
+
+$('body').addEventListener('load', searchUsers());
+
+function searchUsers() {
+
+    const searchObject = {};
+
+    searchObject['email'] = $("#user-search-input").val();
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/users/search",
+        data: JSON.stringify(searchObject),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#accountsTable');
+            const innerhtml = buildHtmlString(data);
+            tBody.empty();
+            tBody.append(innerhtml);
+        },
+        error: function () {
+           tbody.append(
+               '<tr><td>Oops, something went wrong</td></tr>'
+               )
+        }
+    })
+
+}
+function buildHtmlString(data) {
+    let htmlString = "";
+    if(data.dtos.length == 0) {
+        htmlString +=
+            '<tr style="position: relative"><td>' + data.msg + '</td></tr>'
+        return htmlString;
+    }
+
+    for (const dto of data.dtos) {
+        const username = dto.username;
+        const email = dto.email;
+        const role = dto.role;
+        htmlString +=
+            '<tr style="position: relative">' +
+            '<td><a class="stretched-link hyperlink-no-styling"' +
+            ' href="/user/details/edit/' + dto.userId + '"></a>' + email + '</td>' +
+            '<td>'+ username + '</td>' +
+            '<td>'+ role + '</td></tr>'
+        ;
+    }
+    return htmlString;
+}
+

@@ -66,6 +66,9 @@ header {
 .hyperlink-no-styling:hover {
     color: black;
 }
+.style-caretaker header {
+    background-color: #0000ff;
+}
 
 .card-header {
     background-color: #ACD199;
