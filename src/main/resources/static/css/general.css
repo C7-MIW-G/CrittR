@@ -58,16 +58,6 @@ header {
     margin-left: 20px;
 }
 
-.table-animal-info {
-    margin-left: 140px;
-}
-
-#text-biography {
-    word-wrap: break-word;
-    width: 500px;
-    margin-left: 80px;
-}
-
 .hyperlink-no-styling {
     color: black;
     text-decoration: none;
@@ -86,6 +76,11 @@ header {
 .list-group-flush {
     border-bottom: 1px solid;
     border-bottom-color: #dee2e6;
+}
+
+.img-fluid {
+    max-width: 30%;
+    height: auto;
 }
 
 
