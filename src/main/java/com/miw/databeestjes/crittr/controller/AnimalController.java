@@ -130,13 +130,4 @@ public class AnimalController {
     protected String setToDeceased(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.DECEASED);
     }
-
-    @RequestMapping("/animals/results")
-    public String viewAnimalResults(Model model, @Param("keyword") String keyword) {
-        List<Animal> foundAnimals = animalService.getAll(keyword);
-        model.addAttribute("foundAnimals", foundAnimals);
-        model.addAttribute("keyword", keyword);
-        return "animalResults";
-    }
-
 }
