@@ -31,6 +31,10 @@
                     <label class="form-label" for="animalBio">Biography:</label>
                     <textarea class="form-control" id="animalBio" placeholder="Some fun facts or the entire life history of the animal" name="animalBio" th:field="*{biography}"></textarea>
                 </div><br>
+                <div>
+                    <label for="animalPicture" class="form-label">Upload a picture:</label>
+                    <input class="form-control" type="file" id="animalPicture" th:field="*{picture}"/>
+                </div>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>
                 </div>

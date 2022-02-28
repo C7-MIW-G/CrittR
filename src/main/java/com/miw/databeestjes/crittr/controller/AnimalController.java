@@ -1,9 +1,11 @@
 package com.miw.databeestjes.crittr.controller;
 
+import com.miw.databeestjes.crittr.configuration.ImageUtil;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +58,7 @@ public class AnimalController {
             return "redirect:/animals";
         }
         model.addAttribute("animal", animal.get());
+        model.addAttribute("imageUtil", new ImageUtil());
         return "animalDetails";
     }
 
@@ -137,6 +144,19 @@ public class AnimalController {
         model.addAttribute("foundAnimals", foundAnimals);
         model.addAttribute("keyword", keyword);
         return "animalResults";
+    }
+
+    @GetMapping("/animals/details/{animalId}/image")
+    public String animalImage(@PathVariable Long animalId, HttpServletResponse response) throws IOException {
+        Optional<Animal> animal = animalService.findByAnimalId(animalId);
+        if (animal.isEmpty()){
+            return "redirect:/caretaker/animals";
+        }
+        byte[] pictureDecompressed = ImageUtil.decompressBytes(animal.get().getPicture());
+        response.setContentType("image/jpeg");
+        InputStream inputStream = new ByteArrayInputStream(pictureDecompressed);
+        IOUtils.copy(inputStream, response.getOutputStream());
+        return "caretakerAnimalDetails";
     }
 
 }

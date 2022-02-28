@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -37,6 +38,9 @@ public class Animal {
     protected LocalDate birthDate;
 
     private String biography;
+
+    @Lob
+    private byte[] picture;
 
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
