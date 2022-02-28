@@ -48,4 +48,9 @@ header {
     border-bottom-color: #dee2e6;
 }
 
+.animal-search-bar {
+    margin: -100px auto 20px;
+    display: block;
+}
+
 
