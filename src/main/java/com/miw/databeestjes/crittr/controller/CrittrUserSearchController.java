@@ -34,7 +34,7 @@ public class CrittrUserSearchController {
     }
 
     @PostMapping("/api/users/search")
-//    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     protected ResponseEntity<?> showUsersFound(@Valid @RequestBody CrittrUserCriteria email, Errors errors) {
         CrittrUserSearchResponse response = new CrittrUserSearchResponse();
 

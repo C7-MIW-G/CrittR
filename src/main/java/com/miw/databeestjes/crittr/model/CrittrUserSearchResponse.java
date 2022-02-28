@@ -14,9 +14,7 @@ import java.util.List;
 
 @Getter @Setter
 public class CrittrUserSearchResponse {
-
     String msg;
     List<CrittrUserDTO> dtos;
-
 
 }

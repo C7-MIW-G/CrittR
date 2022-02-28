@@ -33,15 +33,12 @@ public class CrittrUserDTO {
 
     private String username;
 
-    private String password;
-
     private String role;
 
     public CrittrUserDTO(CrittrUser user) {
         this.userId = user.getUserId();
         this.email = user.getEmail();
         this.username = user.getUsername();
-        this.password = user.getPassword();
         this.role = user.getRole().getDisplayName();
     }
 }

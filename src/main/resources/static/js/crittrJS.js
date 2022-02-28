@@ -69,18 +69,23 @@ function searchUsers() {
             const innerhtml = buildHtmlString(data);
             tBody.empty();
             tBody.append(innerhtml);
-            // for (let dto of data.dtos) {
-            //     // appendTableRows(dto, tBody)
-            // }
-        }//,
-        // error: function (e) {
-        //     console.log(e.responseText);
-        // }
+        },
+        error: function () {
+           tbody.append(
+               '<tr><td>Oops, something went wrong</td></tr>'
+               )
+        }
     })
 
 }
 function buildHtmlString(data) {
     let htmlString = "";
+    if(data.dtos.length == 0) {
+        htmlString +=
+            '<tr style="position: relative"><td>' + data.msg + '</td></tr>'
+        return htmlString;
+    }
+
     for (const dto of data.dtos) {
         const username = dto.username;
         const email = dto.email;
@@ -96,15 +101,3 @@ function buildHtmlString(data) {
     return htmlString;
 }
 
-// function appendTableRows(dto, tBody) {
-//     let username = dto.username;
-//     let email = dto.email;
-//     let role = dto.role;
-//     tBody.append(
-//         '<tr style="position: relative">' +
-//         '<td><a class="stretched-link hyperlink-no-styling"' +
-//         ' href="/user/details/edit/' + dto.userId + '"></a>' + email + '</td>' +
-//         '<td>'+ username + '</td>' +
-//         '<td>'+ role + '</td></tr>'
-//     );
-// }
