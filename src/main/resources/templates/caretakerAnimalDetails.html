@@ -16,42 +16,46 @@
             </div>
         </section>
         <div class="overview py-5">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Species</th>
-                            <th scope="col">Date of Birth</th>
-                            <th scope="col">Age</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td th:text="${animal.species}"></td>
-                            <td th:text="${#temporals.format(animal.birthDate, 'dd-MM-yyyy')}"></td>
-                            <td th:text="${animal.getAge()}"></td>
-                            <td><a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}" class="btn btn-sm btn-secondary" role="button">Edit</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/incoming/{animalId}(animalId = ${animal.animalId})}">
-                            <input class="btn btn-primary" type="submit" value="Incoming"/>
-                        </form>
-                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/present/{animalId}(animalId = ${animal.animalId})}">
-                            <input class="btn btn-primary" type="submit" value="Present"/>
-                        </form>
-                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/relocated/{animalId}(animalId = ${animal.animalId})}">
-                            <input class="btn btn-secondary" type="submit" value="Relocated"/>
-                        </form>
-                        <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/deceased/{animalId}(animalId = ${animal.animalId})}">
-                            <input class="btn btn-secondary" type="submit" value="Deceased"/>
-                        </form>
+            <div class="container row row-cols-3 g-3 justify-content-around">
+                <div>
+                    <div>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th class="th-sm" scope="row">Species</th>
+                                <td th:text="${animal.species}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">Date of Birth</th>
+                                <td th:text="${#temporals.format(animal.birthDate, 'dd-MM-yyyy')}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">Age</th>
+                                <td th:text="${animal.getAge()}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}" class="btn btn-sm btn-secondary" role="button">Edit</a>
+                        </div><br>
+                        <div class="gap-2 d-md-flex">
+                            <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/incoming/{animalId}(animalId = ${animal.animalId})}">
+                                <input class="btn btn-primary" type="submit" value="Incoming"/>
+                            </form>
+                            <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/present/{animalId}(animalId = ${animal.animalId})}">
+                                <input class="btn btn-primary" type="submit" value="Present"/>
+                            </form>
+                            <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/relocated/{animalId}(animalId = ${animal.animalId})}">
+                                <input class="btn btn-secondary" type="submit" value="Relocated"/>
+                            </form>
+                            <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/deceased/{animalId}(animalId = ${animal.animalId})}">
+                                <input class="btn btn-secondary" type="submit" value="Deceased"/>
+                            </form>
+                        </div>
                     </div>
-                </div><br>
+                </div>
                 <div style="width: 18rem">
-                    <div class="card-header">Reports</div>
+                    <div class="card-header"><span th:text="${animal.name}"></span>'s reports</div>
                     <ul class="list-group list-group-flush" th:each="report : ${allReports}">
                         <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                     </ul>
