@@ -13,41 +13,35 @@
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
                 </div>
+                <div class="py-5 mx-auto">
+                    <img class="img-fluid rounded-circle" th:src="@{'/animals/details/' + ${animal.animalId} + '/image'}" alt="This is a picture of this animal.">
+                </div>
             </div>
         </section>
-        <div class="overview py-5">
+        <div class="overview">
             <div class="container">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-5 col-sm-6">
-                                <div class="white-box">
-                                    <img src="../static/assets/goat2.png" th:src="@{/assets/goat2.png}" class="img-responsive">
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 col-sm-6">
-                                <h4 class="box-title mt-5">Biography</h4>
-                                <p id="text-biography" th:text="${animal.biography}"></p>
-                                <div class="col-lg-7 col-md-7 col-sm-6 table-animal-info">
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                        <tr>
-                                            <th class="th-sm" scope="row">Animal</th>
-                                            <td class="list-group-item" th:text="${animal.species}"></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="th-sm" scope="row">Age</th>
-                                            <td class="list-group-item" th:text="${animal.age}"></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="th-sm" scope="row">birthdate</th>
-                                            <td class="list-group-item" th:text="${animal.birthDate}"></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row row-cols-3 g-3 justify-content-around">
+                    <div class="border rounded-2 py-4 px-4">
+                        <h4>Biography</h4>
+                        <p th:text="${animal.biography}"></p>
                     </div>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <tbody>
+                        <tr>
+                            <th class="th-sm" scope="row">Animal</th>
+                            <td th:text="${animal.species}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">Age</th>
+                            <td th:text="${animal.age}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">birthdate</th>
+                            <td th:text="${animal.birthDate}"></td>
+                        </tr>
+                    </table>
+                </div>
                 </div>
             </div>
         </div>
