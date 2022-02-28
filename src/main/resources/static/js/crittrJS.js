@@ -173,6 +173,7 @@ function buildHtmlStringAnimalCaretaker(data) {
     }
 
     for (const dto of data.dtos) {
+        const animalId = dto.animalId;
         const name = dto.name;
         const species = dto.species;
         const age = dto.age;
@@ -180,7 +181,7 @@ function buildHtmlStringAnimalCaretaker(data) {
         htmlString +=
             '<tr style="position: relative">' +
             '<td><a class="stretched-link hyperlink-no-styling"' +
-            ' href="/animals/details/' + dto.animalId + '"></a>' + name + '</td>' +
+            ' href="/caretaker/animals/details/' + animalId + '"></a>' + name + '</td>' +
             '<td>'+ species + '</td>' +
             '<td>'+ age + '</td>' +
             '<td>'+ status + '</td></tr>';
