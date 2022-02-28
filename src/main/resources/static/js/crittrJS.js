@@ -31,16 +31,13 @@ function setErrorField() {
 }
 
 function checkPassword() {
-
     const message = document.getElementById('message');
-    const buttonDisableableCollection = document.getElementsByClassName('buttonDisableable');
-    const buttonDisableable = buttonDisableableCollection[0];
+    const buttonDisableable = document.getElementsByClassName('buttonDisableable')[0];
     if (document.getElementById('password').value ===
         document.getElementById('confirm_password').value) {
         message.style.visibility = 'hidden';
         buttonDisableable.disabled = false;
         buttonDisableable.classList.replace("btn-secondary", "btn-primary");
-
     } else {
         message.style.visibility = 'visible';
         buttonDisableable.disabled = true;
@@ -75,8 +72,8 @@ function searchUsers() {
                )
         }
     })
-
 }
+
 function buildHtmlString(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
