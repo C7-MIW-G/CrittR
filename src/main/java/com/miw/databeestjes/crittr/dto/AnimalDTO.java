@@ -1,7 +1,6 @@
 package com.miw.databeestjes.crittr.dto;
 
 import com.miw.databeestjes.crittr.model.Animal;
-import com.miw.databeestjes.crittr.model.AnimalStatus;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -66,7 +66,6 @@ function searchUsers() {
             tBody.append(innerhtml);
         },
         error: function () {
-
             $('#accountsTable').append(
                '<tr><td>Oops, something went wrong</td></tr>'
                )
@@ -96,8 +95,6 @@ function buildHtmlString(data) {
     }
     return htmlString;
 }
-
-$('body').addEventListener('load', searchAnimals());
 
 function searchAnimals() {
 

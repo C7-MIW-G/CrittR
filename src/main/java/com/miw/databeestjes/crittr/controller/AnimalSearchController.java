@@ -31,7 +31,6 @@ public class AnimalSearchController {
     }
 
     @PostMapping("/api/animals/search")
-//    @Secured("ROLE_ADMIN")
     protected ResponseEntity<?> showAnimalsFound(@Valid @RequestBody AnimalCriteria keyword, Errors errors) {
         AnimalSearchResponse response = new AnimalSearchResponse();
 
