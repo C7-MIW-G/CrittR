@@ -40,7 +40,7 @@ public class Animal {
     private String biography;
 
     @Lob
-    private byte[] picture;
+    private byte[] animalPicture;
 
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();

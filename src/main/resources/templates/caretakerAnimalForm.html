@@ -10,7 +10,7 @@
     <main>
         <div class="col-lg-8">
             <h1>New animal</h1>
-            <form class="row g-3" th:action="@{/animals/new}" method="post" th:object="${animal}">
+            <form class="row g-3" th:action="@{/animals/new}" method="post" th:object="${animal}" enctype="multipart/form-data">
                 <input type="hidden" th:field="*{animalId}"/>
                 <div class="col-8">
                     <label class="form-label" for="animalName">Name:*</label>
@@ -33,7 +33,7 @@
                 </div><br>
                 <div>
                     <label for="animalPicture" class="form-label">Upload a picture:</label>
-                    <input class="form-control" type="file" id="animalPicture" th:field="*{picture}"/>
+                    <input class="form-control" type="file" name="animalPictureInput" id="animalPicture" th:object="${animalPictureInput}" accept="image/png, image/jpeg, image/jpg"/>
                 </div>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>

@@ -1,24 +1,19 @@
 package com.miw.databeestjes.crittr.controller;
 
-import com.miw.databeestjes.crittr.configuration.ImageUtil;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import java.util.Base64;
 import java.util.Optional;
 
 /**
@@ -30,6 +25,7 @@ import java.util.Optional;
 @Controller
 public class AnimalController {
 
+    private static final long ONE_MEGABYTE = 1000000;
     private AnimalService animalService;
     private ReportService reportService;
 
@@ -57,19 +53,33 @@ public class AnimalController {
         if (animal.isEmpty()){
             return "redirect:/animals";
         }
+        model.addAttribute("currentAnimalPicture", Base64.getEncoder().encodeToString(animal.get().getAnimalPicture()));
         model.addAttribute("animal", animal.get());
-        model.addAttribute("imageUtil", new ImageUtil());
         return "animalDetails";
     }
 
     @PostMapping("/animals/new")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal , BindingResult result){
+    protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal,
+                                      @ModelAttribute("animalPictureInput") MultipartFile animalPictureInput, BindingResult result) {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
+
+        setAnimalPicture(animal, animalPictureInput);
         animalService.save(animal);
         return "redirect:/caretaker/animals";
+    }
+
+    private void setAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
+        try {
+            byte[] imageContent = animalPictureInput.getBytes();
+            if (animalPictureInput.getSize() < ONE_MEGABYTE) {
+                animal.setAnimalPicture(imageContent);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/animals/update/{animalId}")
@@ -136,18 +146,5 @@ public class AnimalController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String setToDeceased(@ModelAttribute("animal") Animal animal){
         return getAnimal(animal, AnimalStatus.DECEASED);
-    }
-
-    @GetMapping("/animals/details/{animalId}/image")
-    public String animalImage(@PathVariable Long animalId, HttpServletResponse response) throws IOException {
-        Optional<Animal> animal = animalService.findByAnimalId(animalId);
-        if (animal.isEmpty()){
-            return "redirect:/caretaker/animals";
-        }
-        byte[] pictureDecompressed = ImageUtil.decompressBytes(animal.get().getPicture());
-        response.setContentType("image/jpeg");
-        InputStream inputStream = new ByteArrayInputStream(pictureDecompressed);
-        IOUtils.copy(inputStream, response.getOutputStream());
-        return "caretakerAnimalDetails";
     }
 }
