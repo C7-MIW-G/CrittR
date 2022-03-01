@@ -4,6 +4,7 @@ import com.miw.databeestjes.crittr.model.Animal;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Lob;
 import java.time.LocalDate;
 
 /**
@@ -27,6 +28,9 @@ public class AnimalDTO {
 
     private int age;
 
+    @Lob
+    private byte[] picture;
+
     public AnimalDTO(Animal animal) {
         this.animalId = animal.getAnimalId();
         this.species = animal.getSpecies();
@@ -34,5 +38,6 @@ public class AnimalDTO {
         this.status = animal.getStatus().getDisplayName();
         this.birthDate = animal.getBirthDate();
         this.age = animal.getAge();
+        this.picture = animal.getAnimalPicture();
     }
 }

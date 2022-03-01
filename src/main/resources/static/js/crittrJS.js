@@ -144,14 +144,15 @@ function buildHtmlStringAnimal(data) {
         const name = dto.name;
         const species = dto.species;
         const age = dto.age;
+        let photo = 'data:image/jpeg;base64,'+ dto.picture;
         htmlString += '<div class="card" style="width: 18rem">' +
-            '<img class="card-img-top rounded-circle" src="/assets/goat2.png" th:src="@{/assets/goat2.png}" width="5">' +
+            '<img class="card-img-top rounded-circle" src="' + photo + '" th:src="@{/assets/goat2.png}" width="5" height="240">' +
                '<div class="card-body">' +
                     '<h2 class="card-title">' + name + '</h2>' +
                     '<p class="card-text">' + species + '</p>' +
                     '<p class="card-text">' + age + '</p>' +
                     '<a href="/animals/details/' + animalId + '"' +
-                    ' class="btn btn-primary stretched-link hyperlink-no-styling">See details</a>' +
+                    ' class="btn btn-primary stretched-link">See details</a>' +
                 '</div>' +
         '</div>'
     }
