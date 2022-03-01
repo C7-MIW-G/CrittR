@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import com.miw.databeestjes.crittr.service.FunFactService;
 import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -28,10 +29,12 @@ public class AnimalController {
     private static final long ONE_MEGABYTE = 1000000;
     private AnimalService animalService;
     private ReportService reportService;
+    private FunFactService funFactService;
 
-    public AnimalController(AnimalService animalService, ReportService reportService) {
+    public AnimalController(AnimalService animalService, ReportService reportService, FunFactService funFactService) {
         this.animalService = animalService;
         this.reportService = reportService;
+        this.funFactService = funFactService;
     }
 
     @GetMapping("/animals")
@@ -55,6 +58,7 @@ public class AnimalController {
         }
         model.addAttribute("currentAnimalPicture", Base64.getEncoder().encodeToString(animal.get().getAnimalPicture()));
         model.addAttribute("animal", animal.get());
+        model.addAttribute("funfact", funFactService.getRandomFact());
         return "animalDetails";
     }
 
