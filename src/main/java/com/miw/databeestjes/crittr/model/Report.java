@@ -2,6 +2,7 @@ package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -37,5 +38,7 @@ public class Report {
     @ManyToOne
     @JoinColumn(nullable = false)
     private CrittrUser reporter;
+
+    private ReportPriority priority = ReportPriority.UNASSIGNED;
 
 }
