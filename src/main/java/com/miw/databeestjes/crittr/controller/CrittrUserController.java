@@ -16,9 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class CrittrUserController {
@@ -133,7 +131,7 @@ public class CrittrUserController {
         if (animal.isEmpty()) {
             return "redirect:/animals";
         }
-        List<Animal> animals = new ArrayList<>();
+        Set<Animal> animals = new HashSet<>();
         animals.add(animal.get());
         user.setFavouriteAnimals(animals);
         return "redirect:/animals";

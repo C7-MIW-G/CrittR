@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.dto;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.UserRoleStatus;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -35,10 +37,13 @@ public class CrittrUserDTO {
 
     private String role;
 
+    private Set<Animal> favouriteAnimals;
+
     public CrittrUserDTO(CrittrUser user) {
         this.userId = user.getUserId();
         this.email = user.getEmail();
         this.username = user.getUsername();
         this.role = user.getRole().getDisplayName();
+        this.favouriteAnimals = user.getFavouriteAnimals();
     }
 }

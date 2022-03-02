@@ -41,8 +41,8 @@ public class CrittrUser implements UserDetails {
     @OneToMany(mappedBy = "reporter")
     private List<Report> reports;
 
-    @ManyToMany
-    private List<Animal> favouriteAnimals;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<Animal> favouriteAnimals = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

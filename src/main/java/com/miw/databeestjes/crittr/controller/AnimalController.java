@@ -2,7 +2,6 @@ package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
-import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.FunFactService;
 import com.miw.databeestjes.crittr.service.ReportService;
@@ -15,9 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 import java.util.Optional;
 
 /**
