@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
 import com.miw.databeestjes.crittr.model.Animal;
+import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.AnimalRepository;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,10 @@ public class AnimalServiceImplementation implements AnimalService{
         return animalRepository.findAll();
     }
 
+    @Override
+    public void addFavouriteAnimal(CrittrUser user, Animal animal) {
+
+    }
 
     @Override
     public void save(Animal animal) {
