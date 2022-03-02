@@ -72,7 +72,6 @@ public class AnimalController {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
-
         setAnimalPicture(animal, animalPictureInput);
         animalService.save(animal);
         return "redirect:/caretaker/animals";

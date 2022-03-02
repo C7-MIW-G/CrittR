@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title}, ~{:: link})" >
-    <link rel="stylesheet" type="text/css" th:href="@{/css/caretakers.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>CrittR - New Animal</title>
 </head>
 <body>
@@ -34,6 +34,7 @@
                 <div>
                     <label for="animalPicture" class="form-label">Upload a picture:</label>
                     <input class="form-control" type="file" name="animalPictureInput" id="animalPicture" th:object="${animalPictureInput}" accept="image/png, image/jpeg, image/jpg"/>
+                    <i class="text-black-50">*The file should not exceed 1mb in size</i>
                 </div>
                 <div class="col-10">
                     <input value="Save" type="submit" class="btn btn-primary"/>

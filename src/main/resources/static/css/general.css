@@ -66,9 +66,6 @@ header {
 .hyperlink-no-styling:hover {
     color: black;
 }
-.style-caretaker header {
-    background-color: #0000ff;
-}
 
 .card-header {
     background-color: #ACD199;
@@ -90,6 +87,41 @@ header {
     margin: -80px auto 20px;
     display: block;
 }
+
+/*styling for caretakers*/
+.style-caretaker header {
+    background-color: #b6d2e0;
+}
+
+.style-caretaker .nav-link {
+    border: black;
+    border-radius: 12px;
+    margin-right: 4px;
+    color: white;
+}
+
+.style-caretaker .btn-primary{
+    background-color: #b6d2e0;
+    border: none;
+}
+
+.style-caretaker .nav-link:hover{
+    background-color: #8FAFBF;
+    color: white;
+}
+
+.style-caretaker .btn-primary:hover {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .card-header {
+    background-color: #b6d2e0;
+    color: white;
+    font-size: larger;
+}
+
+
+
 
 
 

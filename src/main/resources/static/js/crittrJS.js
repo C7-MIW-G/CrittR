@@ -188,4 +188,21 @@ function buildHtmlStringAnimalCaretaker(data) {
     return htmlString;
 }
 
+$('body').on('load', setColourTheme())
 
+
+function setColourTheme() {
+    $.ajax({
+        type: 'GET',
+        contentType: "application/json",
+        url: '/api/colours',
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function(response) {
+            if(response.caretaker) {
+                $('body').addClass("style-caretaker");
+            }
+        }
+    })
+}
