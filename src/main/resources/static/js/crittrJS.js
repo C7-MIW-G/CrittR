@@ -184,7 +184,7 @@ function buildHtmlStringAnimalCaretaker(data) {
     return htmlString;
 }
 
-$('body').addEventListener('load', setColourTheme())
+$('body').on('load', setColourTheme())
 
 
 function setColourTheme() {
