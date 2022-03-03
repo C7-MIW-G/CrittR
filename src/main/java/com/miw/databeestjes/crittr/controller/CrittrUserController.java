@@ -120,4 +120,10 @@ public class CrittrUserController {
         model.addAttribute("allAccounts", crittrUserDetailsService.findAll());
         return "adminAccountOverview";
     }
+
+    @GetMapping("/login")
+    protected String showLoginPage() {
+        return "login";
+    }
+
 }

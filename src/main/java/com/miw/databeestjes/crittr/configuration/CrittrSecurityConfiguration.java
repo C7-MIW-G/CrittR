@@ -29,12 +29,12 @@ public class CrittrSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder () {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider () {
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(crittrUserDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -50,10 +50,13 @@ public class CrittrSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/**", "/js/**", "/webjars/**", "/favicon.ico", "/assets/**").permitAll()
-                .antMatchers("/", "/home", "/animals", "/animals/details/**", "/animals/results/**", "/users/new", "/api/**").permitAll()
-                .anyRequest().authenticated().and()
+        http.authorizeRequests()
+                .antMatchers("/css/**", "/js/**", "/webjars/**", "/favicon.ico", "/assets/**", "/api/**").permitAll()
+                .antMatchers("/", "/home", "/animals", "/animals/details/**", "/animals/results/**", "/users/new", "/users/login").permitAll()
+                .anyRequest().authenticated()
+                .and()
                 .formLogin().usernameParameter("email").permitAll()
+                .loginPage("/login").permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/home")
                 .and()
