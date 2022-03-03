@@ -37,13 +37,10 @@ public class CrittrUserDTO {
 
     private String role;
 
-    private Set<Animal> favouriteAnimals;
-
     public CrittrUserDTO(CrittrUser user) {
         this.userId = user.getUserId();
         this.email = user.getEmail();
         this.username = user.getUsername();
         this.role = user.getRole().getDisplayName();
-        this.favouriteAnimals = user.getFavouriteAnimals();
     }
 }
