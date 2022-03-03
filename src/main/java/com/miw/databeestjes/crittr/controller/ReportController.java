@@ -1,6 +1,5 @@
 package com.miw.databeestjes.crittr.controller;
 
-import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportStatus;
@@ -60,6 +59,20 @@ public class ReportController {
         return "redirect:/user/details/" + user.getUserId();
     }
 
+    @PostMapping("/reports/claim/{reportNr}")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
+    protected String claimReport(@PathVariable("reportNr") long reportNr,
+                                 @AuthenticationPrincipal CrittrUser crittrUser){
+        Optional<Report> report = reportService.getByReportNumber(reportNr);
+        if(report.isEmpty()){
+            return "redirect:/reports";
+        }
+        Report certainReport = report.get();
+        certainReport.setClaimer(crittrUser);
+        reportService.save(certainReport);
+        return "redirect:/reports/details/" + reportNr;
+    }
+
     @GetMapping("/reports/details/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
     protected String showReportDetails(@PathVariable("reportNr") long reportNr, Model model) {
@@ -73,15 +86,13 @@ public class ReportController {
         } else {
             model.addAttribute("animalName", certainReport.getAnimalName());
         }
+        if(certainReport.getClaimer() == null){
+            model.addAttribute("claimer", "No one yet");
+        } else {
+            model.addAttribute("claimer", certainReport.getClaimer().getEmail());
+        }
         model.addAttribute("report", certainReport);
-
         return "caretakerReportDetails";
-    }
-
-    @PostMapping("/reports/details/accept/{reportId}")
-    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String acceptReport(@ModelAttribute("report") Report report){
-        return getReport(report, ReportStatus.OPEN_ISSUE);
     }
 
     private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
@@ -92,9 +103,15 @@ public class ReportController {
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
         reportService.save(certainReport);
-
         return "redirect:/reports";
     }
+
+    @PostMapping("/reports/details/accept/{reportId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
+    protected String acceptReport(@ModelAttribute("report") Report report){
+        return getReport(report, ReportStatus.OPEN_ISSUE);
+    }
+
 
     @PostMapping("/reports/details/discard/{reportId}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
@@ -130,7 +147,7 @@ public class ReportController {
     protected String updateReport(@ModelAttribute("report") Report report, BindingResult result){
         if(!result.hasErrors()){
             reportService.save(report);
-         }
+        }
         return "redirect:/reports/details/" + report.getReportNumber();
     }
 }

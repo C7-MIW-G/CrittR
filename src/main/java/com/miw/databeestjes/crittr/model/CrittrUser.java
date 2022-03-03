@@ -41,6 +41,9 @@ public class CrittrUser implements UserDetails {
     @OneToMany(mappedBy = "reporter")
     private List<Report> reports;
 
+    @OneToMany(mappedBy = "claimer")
+    private List<Report> claimedReports;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Animal> favouriteAnimals = new HashSet<>();
 

@@ -41,4 +41,8 @@ public class Report {
 
     private ReportPriority priority = ReportPriority.UNASSIGNED;
 
+    @ManyToOne
+    @JoinColumn(nullable = true)
+    private CrittrUser claimer;
+
 }

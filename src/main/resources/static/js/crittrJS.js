@@ -6,12 +6,15 @@ function setButtons(currentStatus) {
         case 1 : document.getElementById('observe-form').style.display = 'block';
             document.getElementById('close-form').style.display = 'block';
             break;
-        case 2 : setReopenButton();
+        case 2 :
+            setReopenButton();
             break;
         case 3 : document.getElementById('close-form').style.display = 'block';
             setReopenButton();
             break;
-        case 4 : setReopenButton();
+        case 4 :
+            document.getElementById('assigned-to-tablerow').style.display = 'none';
+            setReopenButton();
             break;
     }
 }
