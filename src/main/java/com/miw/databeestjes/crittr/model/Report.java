@@ -39,6 +39,6 @@ public class Report {
     @JoinColumn(nullable = false)
     private CrittrUser reporter;
 
-    private ReportPriority priority = ReportPriority.UNASSIGNED;
+    private ReportPriority priority = ReportPriority.LOW;
 
 }

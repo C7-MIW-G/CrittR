@@ -20,7 +20,7 @@
         <div class="overview py-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table class="table table-hover table-wrap">
+                    <table class="table table-hover table-wrap align-middle">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -37,6 +37,11 @@
                             <td th:text="${report.issue}"></td>
                             <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
                             <td th:text="${report.status.getDisplayName()}"></td>
+                            <td id="priority-cell" th:switch="${report.priority.ordinal()}">
+                                <span class="priority-mark" id="priority-low" th:case="0"></span>
+                                <span class="priority-mark" id="priority-medium" th:case="1"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                                <span class="priority-mark" id="priority-high" th:case="2"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"> <img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

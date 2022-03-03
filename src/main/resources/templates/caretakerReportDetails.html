@@ -48,6 +48,14 @@
                             <th scope="row">Status</th>
                             <td id="status-display" th:text="${report.status.displayName}"></td>
                         </tr>
+                        <tr>
+                            <th>Priority</th>
+                            <td id="priority-display" th:switch="${report.priority.ordinal()}">
+                                <span class="priority-mark" id="priority-low" th:case="0"></span>
+                                <span class="priority-mark" id="priority-medium" th:case="1"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                                <span class="priority-mark" id="priority-high" th:case="2"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"> <img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                     </div>

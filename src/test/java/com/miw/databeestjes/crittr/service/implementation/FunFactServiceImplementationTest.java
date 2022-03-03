@@ -30,10 +30,6 @@ class FunFactServiceImplementationTest {
 
     @Test
     public void testRandomFact(){
-//        when(funFactRepository.findAll()).thenCallRealMethod();
-//        FunFact funFact = funFactService.getRandomFact();
-//        assertNotNull(funFact);
-
         when(funFactRepository.findAll()).thenReturn(new ArrayList<>());
         List<FunFact> testList = funFactRepository.findAll();
         testList.add(new FunFact());
