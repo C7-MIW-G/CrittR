@@ -18,6 +18,11 @@
                 </div>
             </div>
         </section>
+        <div style="z-index: 2; position: relative;">
+            <form th:action="@{/animals/favourite/{animalId}(animalId=${animal.animalId})}" method="post">
+            <input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/>
+            </form>
+        </div>
         <div class="overview">
             <div class="container">
                 <div class="row row-cols-3 g-3 justify-content-around">
@@ -29,23 +34,23 @@
                         <h4>Fun Fact:</h4>
                         <p th:text="${funfact.fact}"></p>
                     </div>
-                <div class="table-responsive">
-                    <table class="table align-middle">
-                        <tbody>
-                        <tr>
-                            <th class="th-sm" scope="row">Animal</th>
-                            <td th:text="${animal.species}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">Age</th>
-                            <td th:text="${animal.age}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">birthdate</th>
-                            <td th:text="${animal.birthDate}"></td>
-                        </tr>
-                    </table>
-                </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <tbody>
+                            <tr>
+                                <th class="th-sm" scope="row">Animal</th>
+                                <td th:text="${animal.species}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">Age</th>
+                                <td th:text="${animal.age}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">birthdate</th>
+                                <td th:text="${animal.birthDate}"></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

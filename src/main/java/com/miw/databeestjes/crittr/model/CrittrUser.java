@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -20,7 +21,7 @@ import java.util.*;
  */
 @Entity
 @Getter @Setter
-public class CrittrUser implements UserDetails {
+public class CrittrUser implements UserDetails, Serializable {
 
     @Id
     @GeneratedValue
@@ -41,8 +42,8 @@ public class CrittrUser implements UserDetails {
     @OneToMany(mappedBy = "reporter")
     private List<Report> reports;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Animal> favouriteAnimals = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<UserAnimalFavourites> likes;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

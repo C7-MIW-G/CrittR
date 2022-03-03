@@ -7,8 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +21,7 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter
-public class Animal {
+public class Animal implements Serializable {
 
     @Id
     @GeneratedValue
@@ -42,8 +44,8 @@ public class Animal {
     @Lob
     private byte[] animalPicture;
 
-    @ManyToMany(mappedBy = "favouriteAnimals")
-    private Set<CrittrUser> likes;
+    @OneToMany(mappedBy = "animal")
+    private Set<UserAnimalFavourites> likes;
 
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
