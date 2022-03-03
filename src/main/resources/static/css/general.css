@@ -88,6 +88,19 @@ header {
     display: block;
 }
 
+.priority-mark {
+    font-size: 20px;
+    font-weight: bold;
+}
+.bi-exclamation-diamond-fill {
+    text-shadow: 0 0 5px black;
+}
+
+.svg-img {
+    width: 25px;
+    height: 25px;
+}
+
 /*styling for caretakers*/
 .style-caretaker header {
     background-color: #b6d2e0;

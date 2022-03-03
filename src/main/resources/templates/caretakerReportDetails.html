@@ -26,34 +26,42 @@
             <div class="container row row-cols-2 g-3 justify-content-around">
                 <div>
                     <div class="table-responsive">
-                        <table class="table align-middle">
-                            <tbody>
-                            <tr>
-                                <th class="th-sm" scope="row">Species</th>
-                                <td th:text="${report.species}"></td>
-                            </tr>
-                            <tr>
-                                <th class="th-sm" scope="row">Animal</th>
-                                <td th:text="${animalName}"></td>
-                            </tr>
-                            <tr>
-                                <th class="th-sm" scope="row">Issue</th>
-                                <td th:text="${report.issue}"></td>
-                            </tr>
-                            <tr>
-                                <th class="th-sm" scope="row">Description</th>
-                                <td class="" th:text="${report.description}"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Status</th>
-                                <td id="status-display" th:text="${report.status.displayName}"></td>
-                            </tr>
-                            <tr id="assigned-to-tablerow">
-                                <th scope="row">Assigned to</th>
-                                <td id="claimed-by-display" th:text="${claimer}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <table class="table align-middle">
+                        <tbody>
+                        <tr>
+                            <th class="th-sm" scope="row">Species</th>
+                            <td th:text="${report.species}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">Animal</th>
+                            <td th:text="${animalName}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">Issue</th>
+                            <td th:text="${report.issue}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">Description</th>
+                            <td class="" th:text="${report.description}"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td id="status-display" th:text="${report.status.displayName}"></td>
+                        </tr>
+                        <tr>
+                            <th>Priority</th>
+                            <td id="priority-display" th:switch="${report.priority.ordinal()}">
+                                <span class="priority-mark" id="priority-low" th:case="0"></span>
+                                <span class="priority-mark" id="priority-medium" th:case="1"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                                <span class="priority-mark" id="priority-high" th:case="2"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"> <img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                            </td>
+                        </tr>
+                        <tr id="assigned-to-tablerow">
+                            <th scope="row">Assigned to</th>
+                            <td id="claimed-by-display" th:text="${claimer}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
                     </div>
                     <div sec:authorize="hasRole('CARETAKER')" class="gap-2 d-md-flex">
                         <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">

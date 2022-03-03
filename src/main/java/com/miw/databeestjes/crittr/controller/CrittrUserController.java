@@ -125,6 +125,11 @@ public class CrittrUserController {
         return "adminAccountOverview";
     }
 
+    @GetMapping("/login")
+    protected String showLoginPage() {
+        return "login";
+    }
+
     @RequestMapping("/animals/addFavourite")
     public String addFavouriteAnimal(@PathVariable("animalId") Long animalId, CrittrUser user) {
         Optional<Animal> animal = animalService.findByAnimalId(animalId);
