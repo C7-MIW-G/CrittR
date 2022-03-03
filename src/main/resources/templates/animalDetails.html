@@ -31,7 +31,7 @@
                         <p th:text="${animal.biography}"></p>
                     </div>
                     <div class="border rounded-2 py-4 px-4">
-                        <h4>Fun Fact:</h4>
+                        <h4>Fun Fact</h4>
                         <p th:text="${funfact.fact}"></p>
                     </div>
                     <div class="table-responsive">
@@ -50,9 +50,15 @@
                                 <td th:text="${animal.birthDate}"></td>
                             </tr>
                         </table>
+                        <div class="border rounded-2 py-4 px-4">
+                            <h4>Info for real scientists</h4>
+                            <dl th:each="info : ${eduInfo}">
+                                <dt th:text="${info.infoCategory.getDisplayName()}" />
+                                <dd th:text="${info.eduInfo}" />
+                            </dl>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>

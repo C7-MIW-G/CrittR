@@ -124,4 +124,8 @@ public class CrittrUserController {
         return "adminAccountOverview";
     }
 
+    @GetMapping("/login")
+    protected String showLoginPage() {
+        return "login";
+    }
 }

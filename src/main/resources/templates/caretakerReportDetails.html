@@ -48,6 +48,18 @@
                             <th scope="row">Status</th>
                             <td id="status-display" th:text="${report.status.displayName}"></td>
                         </tr>
+                        <tr>
+                            <th>Priority</th>
+                            <td id="priority-display" th:switch="${report.priority.ordinal()}">
+                                <span class="priority-mark" id="priority-low" th:case="0"></span>
+                                <span class="priority-mark" id="priority-medium" th:case="1"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                                <span class="priority-mark" id="priority-high" th:case="2"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"> <img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                            </td>
+                        </tr>
+                        <tr id="assigned-to-tablerow">
+                            <th scope="row">Assigned to</th>
+                            <td id="claimed-by-display" th:text="${claimer}"></td>
+                        </tr>
                         </tbody>
                     </table>
                     </div>
@@ -64,9 +76,15 @@
                         <form id="close-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
                             <input class="btn btn-secondary" type="submit" value="Close"/>
                         </form>
-                    </div>
-                    <div th:if="${report.status.ordinal() == 0}">
-                        <a th:href="@{/reports/details/edit/{reportNumber}(reportNumber=${report.reportNumber})}" class="btn btn-primary my-2" role="button">Edit</a>
+                        <div class="me-auto">
+                        <form style="display: block" class="claim-form" id="claim-form" method="post" th:object="${report}" th:action="@{/reports/claim/{reportNr}(reportNr = ${report.reportNumber})}">
+                            <input class="btn btn-primary" type="submit" value="Assign to me"/>
+                        </form>
+
+                        </div>
+                        <div  th:if="${report.status.ordinal() == 0}">
+                            <a th:href="@{/reports/details/edit/{reportNumber}(reportNumber=${report.reportNumber})}" class="btn btn-primary" role="button">Edit</a>
+                        </div>
                     </div>
                 </div>
             </div>

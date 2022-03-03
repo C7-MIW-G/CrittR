@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.HashSet;
 import java.util.Set;
 
 /**

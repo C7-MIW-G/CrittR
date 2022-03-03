@@ -45,6 +45,9 @@ public class CrittrUser implements UserDetails, Serializable {
     @OneToMany(mappedBy = "user")
     private Set<UserAnimalFavourites> likes;
 
+    @OneToMany(mappedBy = "claimer")
+    private List<Report> claimedReports;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
