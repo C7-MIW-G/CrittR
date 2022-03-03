@@ -1,9 +1,11 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
@@ -32,6 +34,12 @@ class CrittrUserDetailsServiceTest {
         testService = new CrittrUserDetailsService(testRepository);
         testUser = new CrittrUser();
         testUser.setUserId(-1);
+    }
+
+    @Test
+    @DisplayName("Test Favourite Animals")
+    void testFavouriteAnimals() {
+
     }
 
     @Test

@@ -36,7 +36,6 @@ public class AnimalServiceImplementation implements AnimalService{
         return animalRepository.findAll();
     }
 
-
     @Override
     public void save(Animal animal) {
         animalRepository.save(animal);

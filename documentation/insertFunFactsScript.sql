@@ -1,3 +1,4 @@
+use crittrDB;
 insert into fun_fact VALUES
                          ('Cows can sleep standing up, but they can only dream lying down.'),
                          ('Just like you, cows have best friends. Not only does companionship make cows happier, it also makes them smarter.'),

@@ -1,6 +1,8 @@
 package com.miw.databeestjes.crittr.controller;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
+import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,8 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class CrittrUserController {
@@ -24,10 +25,13 @@ public class CrittrUserController {
 
     PasswordEncoder passwordEncoder;
     CrittrUserDetailsService crittrUserDetailsService;
+    AnimalService animalService;
 
-    public CrittrUserController(PasswordEncoder passwordEncoder, CrittrUserDetailsService crittrUserDetailsService) {
+    public CrittrUserController(PasswordEncoder passwordEncoder, CrittrUserDetailsService crittrUserDetailsService,
+                                AnimalService animalService) {
         this.passwordEncoder = passwordEncoder;
         this.crittrUserDetailsService = crittrUserDetailsService;
+        this.animalService = animalService;
     }
 
     @GetMapping("/users/new")
@@ -126,4 +130,15 @@ public class CrittrUserController {
         return "login";
     }
 
+    @RequestMapping("/animals/addFavourite")
+    public String addFavouriteAnimal(@PathVariable("animalId") Long animalId, CrittrUser user) {
+        Optional<Animal> animal = animalService.findByAnimalId(animalId);
+        if (animal.isEmpty()) {
+            return "redirect:/animals";
+        }
+        Set<Animal> animals = new HashSet<>();
+        animals.add(animal.get());
+        user.setFavouriteAnimals(animals);
+        return "redirect:/animals";
+    }
 }

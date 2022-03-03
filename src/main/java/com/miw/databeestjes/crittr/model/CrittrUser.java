@@ -11,9 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
@@ -42,6 +40,9 @@ public class CrittrUser implements UserDetails {
 
     @OneToMany(mappedBy = "reporter")
     private List<Report> reports;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<Animal> favouriteAnimals = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

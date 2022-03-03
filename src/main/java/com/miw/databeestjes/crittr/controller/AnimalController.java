@@ -2,7 +2,9 @@ package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
+import com.miw.databeestjes.crittr.model.EduInfo;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import com.miw.databeestjes.crittr.service.EduInfoService;
 import com.miw.databeestjes.crittr.service.FunFactService;
 import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.security.access.annotation.Secured;
@@ -15,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,11 +34,14 @@ public class AnimalController {
     private AnimalService animalService;
     private ReportService reportService;
     private FunFactService funFactService;
+    private EduInfoService eduInfoService;
 
-    public AnimalController(AnimalService animalService, ReportService reportService, FunFactService funFactService) {
+    public AnimalController(AnimalService animalService, ReportService reportService,
+                            FunFactService funFactService, EduInfoService eduInfoService) {
         this.animalService = animalService;
         this.reportService = reportService;
         this.funFactService = funFactService;
+        this.eduInfoService = eduInfoService;
     }
 
     @GetMapping("/animals")
@@ -56,9 +63,12 @@ public class AnimalController {
         if (animal.isEmpty()){
             return "redirect:/animals";
         }
+        List<EduInfo> eduInfo = eduInfoService.getEduInfoBySpecies(animal.get().getSpecies());
+        Collections.sort(eduInfo);
         model.addAttribute("currentAnimalPicture", Base64.getEncoder().encodeToString(animal.get().getAnimalPicture()));
         model.addAttribute("animal", animal.get());
         model.addAttribute("funfact", funFactService.getRandomFact());
+        model.addAttribute("eduInfo", eduInfo);
         return "animalDetails";
     }
 
@@ -69,7 +79,6 @@ public class AnimalController {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
-
         setAnimalPicture(animal, animalPictureInput);
         animalService.save(animal);
         return "redirect:/caretaker/animals";
