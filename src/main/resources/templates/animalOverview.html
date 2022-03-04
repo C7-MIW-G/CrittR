@@ -8,16 +8,21 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="animal-container">
     <div class="button-column">
-        <ul>
-            <li th:each="species : ${allSpecies}"><button class="btn btn-primary" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'))" th:text="${species}"></button> </li>
+        <div class="card-header">
+            <span>Species</span>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'), '')" th:text="${species}"></a> </li>
         </ul>
-        <ul>
-            <li><button class="btn btn-primary" onclick="searchAnimals()">All</button></li>
-        </ul>
-
+        <div class="card-header">
+            <span>Where are they?</span>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}"  onclick="filterAnimalsByStatus(this.getAttribute('data-id'))" th:text="${status.displayName}"></a> </li>
+        </ul><br>
+        <a class="btn btn-primary" id="all-animals-button" onclick="searchAnimals()">All</a>
     </div>
 <div class="container">
-
     <main>
         <section class="py-3 text-center container">
             <div class="row py-lg-5">

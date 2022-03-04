@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
 import com.miw.databeestjes.crittr.model.Animal;
+import com.miw.databeestjes.crittr.model.AnimalStatus;
 import com.miw.databeestjes.crittr.repository.AnimalRepository;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import org.springframework.stereotype.Service;
@@ -52,8 +53,15 @@ public class AnimalServiceImplementation implements AnimalService{
     }
 
     @Override
+    public List<Animal> listByStatus(AnimalStatus status) {
+        return animalRepository.listByStatus(status);
+    }
+
+    @Override
     public void delete(Animal animal) {
         animalRepository.delete(animal);
     }
+
+
 
 }

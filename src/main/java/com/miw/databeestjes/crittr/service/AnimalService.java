@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.service;
 
 import com.miw.databeestjes.crittr.model.Animal;
+import com.miw.databeestjes.crittr.model.AnimalStatus;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,4 +20,6 @@ public interface AnimalService {
     Optional<Animal> findByAnimalId(long animalId);
 
     List<String> listSpecies();
+
+    List<Animal> listByStatus(AnimalStatus status);
 }

@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.repository;
 
 import com.miw.databeestjes.crittr.model.Animal;
+import com.miw.databeestjes.crittr.model.AnimalStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,5 +17,9 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     @Query("SELECT DISTINCT a.species FROM Animal a")
     List<String> listSpecies();
+
+    @Query("SELECT a FROM Animal a WHERE a.status=?1")
+    List<Animal> listByStatus(AnimalStatus status);
 }
+
 

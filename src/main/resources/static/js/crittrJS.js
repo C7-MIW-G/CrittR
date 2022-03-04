@@ -183,7 +183,7 @@ function setColourTheme() {
     })
 }
 
-function filterAnimalsByKeyword(keyword){
+function filterAnimalsByKeyword(keyword, status){
     const searchObject = {};
     searchObject['keyword'] = keyword;
     doAnimalSearch(searchObject);
@@ -218,6 +218,42 @@ function doAnimalSearch(searchObject) {
         }
     })
 }
+
+function filterAnimalsByStatus(status) {
+    const searchObject ={}
+    console.log(status)
+
+    searchObject['status'] = status;
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/animals/search-status",
+        data: JSON.stringify(searchObject),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#animalsTable');
+            let innerhtml = '';
+            const pageTitle = $('title');
+            if (pageTitle[0].innerHTML == 'Animal overview'){
+                innerhtml = buildHtmlStringAnimal(data);
+            } else {
+                innerhtml = buildHtmlStringAnimalCaretaker(data)
+            }
+
+            tBody.empty();
+            tBody.append(innerhtml);
+        },
+        error: function () {
+            $('#animalsTable').append(
+                '<tr><td>Oops, something went wrong</td></tr>'
+            )
+        }
+    })
+}
+
 
 
 
