@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * @author Bianca Burema <b.burema@st.hanze.nl>
  * <p>
- * This class creates the composite key for the animal favourites functionality.
+ * This class creates the composite key for the animal favourites join table.
  */
 
 @Embeddable
