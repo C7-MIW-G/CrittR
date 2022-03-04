@@ -19,7 +19,7 @@
             </div>
         </section>
         <div style="z-index: 2; position: relative;">
-            <form th:action="@{/animals/favourite/{animalId}(animalId=${animal.animalId})}" method="post">
+            <form th:action="@{/animals/details/{animalId}(animalId=${animal.animalId})}" method="post">
             <input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/>
             </form>
         </div>

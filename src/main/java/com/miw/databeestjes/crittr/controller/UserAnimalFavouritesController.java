@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.UserAnimalFavourites;
+import com.miw.databeestjes.crittr.model.UserAnimalFavouritesKey;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.UserAnimalFavouritesService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -33,18 +34,19 @@ public class UserAnimalFavouritesController {
         this.animalService = animalService;
     }
 
-    @PostMapping("/animals/favourite{animalId}")
-    public String addFavouriteAnimal(@PathVariable("animalId") long animalId,
-                                     @AuthenticationPrincipal CrittrUser user, Model model) {
-        Optional<Animal> animal = animalService.findByAnimalId(animalId);
-        if (animal.isEmpty()){
+    @PostMapping("/animals/details/{animalId}")
+    public String addFavouriteAnimal(@ModelAttribute("animalId") Animal animal,
+                                     @AuthenticationPrincipal CrittrUser user, BindingResult result) {
+
+        if (result.hasErrors()) {
             return "redirect:/animals";
         }
-        model.addAttribute(animal);
-
-        Animal certainAnimal = animal.get();
         UserAnimalFavourites userAnimalFavourites = new UserAnimalFavourites();
-        userAnimalFavourites.setAnimal(certainAnimal);
+        UserAnimalFavouritesKey userAnimalFavouritesKey = new UserAnimalFavouritesKey();
+        userAnimalFavouritesKey.setAnimalId(animal.getAnimalId());
+        userAnimalFavouritesKey.setUserId(user.getUserId());
+        userAnimalFavourites.setUserAnimalFavouritesKey(userAnimalFavouritesKey);
+        userAnimalFavourites.setAnimal(animal);
         userAnimalFavourites.setUser(user);
         userAnimalFavouritesService.save(userAnimalFavourites);
         return "redirect:/animals";
