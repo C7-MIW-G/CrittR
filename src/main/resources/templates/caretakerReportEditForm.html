@@ -36,8 +36,8 @@
                 <h6>Priority: </h6>
                 <div>
                     <div class="priority-radio form-check" th:each="priority : ${T(com.miw.databeestjes.crittr.model.ReportPriority).values()}">
-                        <input type="radio" class="form-check-input" th:field="*{priority}" th:value="${priority}" id="priority-input">
-                        <label class="form-check-label" for="priority-input" th:text="${priority.displayName}"></label>
+                        <input type="radio" class="form-check-input" th:field="*{priority}" th:value="${priority}" th:id="${priority} + '-input'">
+                        <label class="form-check-label" th:for="${priority} + '-input'" th:text="${priority.displayName}"></label>
                     </div>
                 </div>
                 <div class="col-10">
