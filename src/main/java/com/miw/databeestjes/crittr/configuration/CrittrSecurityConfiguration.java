@@ -57,6 +57,7 @@ public class CrittrSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().usernameParameter("email").permitAll()
                 .loginPage("/login").permitAll()
+                .failureUrl("/login?error=true")
                 .and()
                 .logout().logoutSuccessUrl("/home")
                 .and()
