@@ -1,4 +1,4 @@
-package com.miw.databeestjes.crittr.service.implementation;
+package com.miw.databeestjes.crittr.testing.unittesting;
 
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
@@ -6,6 +6,7 @@ import com.miw.databeestjes.crittr.model.UserAnimalFavourites;
 import com.miw.databeestjes.crittr.model.UserAnimalFavouritesKey;
 import com.miw.databeestjes.crittr.repository.UserAnimalFavouritesRepository;
 import com.miw.databeestjes.crittr.service.UserAnimalFavouritesService;
+import com.miw.databeestjes.crittr.service.implementation.UserAnimalFavouritesServiceImplementation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
