@@ -1,7 +1,6 @@
 package com.miw.databeestjes.crittr.model;
 
 import com.miw.databeestjes.crittr.dto.AnimalDTO;
-import com.miw.databeestjes.crittr.dto.CrittrUserDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +15,4 @@ import java.util.List;
 public class AnimalSearchResponse {
     String msg;
     List<AnimalDTO> dtos;
-
 }
