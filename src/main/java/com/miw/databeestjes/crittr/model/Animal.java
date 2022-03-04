@@ -20,7 +20,7 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter
-public class Animal implements Serializable {
+public class Animal {
 
     @Id
     @GeneratedValue

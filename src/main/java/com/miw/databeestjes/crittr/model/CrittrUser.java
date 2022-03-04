@@ -21,7 +21,7 @@ import java.util.*;
  */
 @Entity
 @Getter @Setter
-public class CrittrUser implements UserDetails, Serializable {
+public class CrittrUser implements UserDetails {
 
     @Id
     @GeneratedValue

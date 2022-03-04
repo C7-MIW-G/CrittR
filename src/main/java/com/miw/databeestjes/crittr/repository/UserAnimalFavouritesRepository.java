@@ -11,4 +11,6 @@ public interface UserAnimalFavouritesRepository extends JpaRepository<UserAnimal
     @Query("SELECT u FROM UserAnimalFavourites u WHERE u.user.userId = ?1")
     Optional<UserAnimalFavourites> findByUserId(Long userId);
 
+
+
 }

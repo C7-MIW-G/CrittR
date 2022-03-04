@@ -42,12 +42,11 @@
                         </ul>
                     </div>
                     <div>
-                        <div>
-                            <div>Your favourite animals</div>
-                            <ul class="list-group list-group-flush" th:each="animal : ${user.favouriteAnimals}">
-                                <li class="list-group-item list-group-item-action" th:text="${animal.name}"></li>
+                        <div style="width: 18rem">
+                            <div class="card-header" >Your favourite animals</div>
+                            <ul class="list-group list-group-flush" th:each="user : ${user.getLikes()}">
+                                <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${user.getAnimal().name}" th:href="@{/animals/details/{animalId}(animalId=${user.getAnimal.animalId})}"></a></li>
                             </ul>
-
                         </div>
                     </div>
                 </div>

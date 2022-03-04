@@ -49,9 +49,7 @@ function checkPassword() {
 }
 
 function searchUsers() {
-
     const searchObject = {};
-
     searchObject['email'] = $("#user-search-input").val();
 
     $.ajax({
@@ -100,38 +98,9 @@ function buildHtmlString(data) {
 }
 
 function searchAnimals() {
-
     const searchObject = {};
-
     searchObject['keyword'] = $("#animal-search-input").val();
-
-    $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: "/api/animals/search",
-        data: JSON.stringify(searchObject),
-        dataType: 'json',
-        cache: false,
-        timeout : 600000,
-        success: function (data) {
-            const tBody = $('#animalsTable');
-            let innerhtml = '';
-            const pageTitle = $('title');
-            if (pageTitle[0].innerHTML == 'Animal overview'){
-                innerhtml = buildHtmlStringAnimal(data);
-            } else {
-                innerhtml = buildHtmlStringAnimalCaretaker(data)
-            }
-
-            tBody.empty();
-            tBody.append(innerhtml);
-        },
-        error: function () {
-            $('#animalsTable').append(
-                '<tr><td>Oops, something went wrong</td></tr>'
-            )
-        }
-    })
+    doAnimalSearch(searchObject);
 }
 
 function buildHtmlStringAnimal(data) {
@@ -150,13 +119,10 @@ function buildHtmlStringAnimal(data) {
         let photo = 'data:image/jpeg;base64,'+ dto.picture;
         htmlString += '<div class="card" style="width: 18rem">' +
             '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
-            '<div style="z-index: 2; position: relative;">' +
-            '<form action="/animals/favourite" method="post" >' +
-            '<input type="hidden" id="' + animalId + '" />' +
-            '<button type="submit" class="bi bi-heart btn-outline-secondary my-2"> ' +
-            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart" viewBox="0 0 16 16" fill="currentColour">' +
-            '<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>' +
-            '</svg></button></form></div>' +
+            '<div style="z-index: 2; position: relative;"> ' +
+            '<form action="/animals/details/' + animalId + '" method="post"> ' +
+            '<input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/> ' +
+            '</form> </div>' +
                '<div class="card-body">' +
                     '<h2 class="card-title">' + name + '</h2>' +
                     '<p class="card-text">' + species + '</p>' +
@@ -216,4 +182,42 @@ function setColourTheme() {
         }
     })
 }
+
+function filterAnimalsByKeyword(keyword){
+    const searchObject = {};
+    searchObject['keyword'] = keyword;
+    doAnimalSearch(searchObject);
+}
+
+function doAnimalSearch(searchObject) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/animals/search",
+        data: JSON.stringify(searchObject),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#animalsTable');
+            let innerhtml = '';
+            const pageTitle = $('title');
+            if (pageTitle[0].innerHTML == 'Animal overview'){
+                innerhtml = buildHtmlStringAnimal(data);
+            } else {
+                innerhtml = buildHtmlStringAnimalCaretaker(data)
+            }
+
+            tBody.empty();
+            tBody.append(innerhtml);
+        },
+        error: function () {
+            $('#animalsTable').append(
+                '<tr><td>Oops, something went wrong</td></tr>'
+            )
+        }
+    })
+}
+
+
 

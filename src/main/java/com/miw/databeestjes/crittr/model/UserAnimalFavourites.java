@@ -2,6 +2,7 @@ package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,10 +15,10 @@ import java.io.Serializable;
 
 @Entity
 @Getter @Setter
-public class UserAnimalFavourites implements Serializable {
+public class UserAnimalFavourites {
 
     @EmbeddedId
-    private UserAnimalFavouritesKey id;
+    private UserAnimalFavouritesKey userAnimalFavouritesKey = new UserAnimalFavouritesKey();
 
     @ManyToOne
     @MapsId("animalId")

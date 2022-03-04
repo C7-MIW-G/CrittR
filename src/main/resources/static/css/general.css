@@ -101,6 +101,11 @@ header {
     height: 25px;
 }
 
+.animal-container {
+    display:flex;
+    flex-direction: row;
+}
+
 /*styling for caretakers*/
 .style-caretaker header {
     background-color: #b6d2e0;

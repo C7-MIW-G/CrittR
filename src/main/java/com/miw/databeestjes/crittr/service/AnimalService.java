@@ -17,4 +17,6 @@ public interface AnimalService {
     void delete (Animal animal);
 
     Optional<Animal> findByAnimalId(long animalId);
+
+    List<String> listSpecies();
 }
