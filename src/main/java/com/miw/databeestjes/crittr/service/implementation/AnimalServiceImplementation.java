@@ -47,7 +47,13 @@ public class AnimalServiceImplementation implements AnimalService{
     }
 
     @Override
+    public List<String> listSpecies() {
+       return animalRepository.listSpecies();
+    }
+
+    @Override
     public void delete(Animal animal) {
         animalRepository.delete(animal);
     }
+
 }

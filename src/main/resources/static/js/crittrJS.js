@@ -49,9 +49,7 @@ function checkPassword() {
 }
 
 function searchUsers() {
-
     const searchObject = {};
-
     searchObject['email'] = $("#user-search-input").val();
 
     $.ajax({
@@ -100,38 +98,9 @@ function buildHtmlString(data) {
 }
 
 function searchAnimals() {
-
     const searchObject = {};
-
     searchObject['keyword'] = $("#animal-search-input").val();
-
-    $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: "/api/animals/search",
-        data: JSON.stringify(searchObject),
-        dataType: 'json',
-        cache: false,
-        timeout : 600000,
-        success: function (data) {
-            const tBody = $('#animalsTable');
-            let innerhtml = '';
-            const pageTitle = $('title');
-            if (pageTitle[0].innerHTML == 'Animal overview'){
-                innerhtml = buildHtmlStringAnimal(data);
-            } else {
-                innerhtml = buildHtmlStringAnimalCaretaker(data)
-            }
-
-            tBody.empty();
-            tBody.append(innerhtml);
-        },
-        error: function () {
-            $('#animalsTable').append(
-                '<tr><td>Oops, something went wrong</td></tr>'
-            )
-        }
-    })
+    doAnimalSearch(searchObject);
 }
 
 function buildHtmlStringAnimal(data) {
@@ -216,4 +185,42 @@ function setColourTheme() {
         }
     })
 }
+
+function filterAnimalsByKeyword(keyword){
+    const searchObject = {};
+    searchObject['keyword'] = keyword;
+    doAnimalSearch(searchObject);
+}
+
+function doAnimalSearch(searchObject) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/animals/search",
+        data: JSON.stringify(searchObject),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#animalsTable');
+            let innerhtml = '';
+            const pageTitle = $('title');
+            if (pageTitle[0].innerHTML == 'Animal overview'){
+                innerhtml = buildHtmlStringAnimal(data);
+            } else {
+                innerhtml = buildHtmlStringAnimalCaretaker(data)
+            }
+
+            tBody.empty();
+            tBody.append(innerhtml);
+        },
+        error: function () {
+            $('#animalsTable').append(
+                '<tr><td>Oops, something went wrong</td></tr>'
+            )
+        }
+    })
+}
+
+
 

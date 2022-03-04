@@ -47,6 +47,7 @@ public class AnimalController {
     @GetMapping("/animals")
     protected String showAnimalOverview (Model model) {
         model.addAttribute("allAnimals", animalService.getAll());
+        model.addAttribute("allSpecies", animalService.listSpecies());
         return "animalOverview";
     }
 

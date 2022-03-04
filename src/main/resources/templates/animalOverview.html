@@ -6,7 +6,18 @@
 </head>
 <body onload="searchAnimals()">
 <header th:replace="fragments/general :: navbar"></header>
+<div class="animal-container">
+    <div class="button-column">
+        <ul>
+            <li th:each="species : ${allSpecies}"><button class="btn btn-primary" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'))" th:text="${species}"></button> </li>
+        </ul>
+        <ul>
+            <li><button class="btn btn-primary" onclick="searchAnimals()">All</button></li>
+        </ul>
+
+    </div>
 <div class="container">
+
     <main>
         <section class="py-3 text-center container">
             <div class="row py-lg-5">
@@ -27,6 +38,7 @@
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
+</div>
 </div>
 </body>
 </html>
