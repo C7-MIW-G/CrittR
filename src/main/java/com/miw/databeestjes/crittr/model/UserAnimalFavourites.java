@@ -2,15 +2,13 @@ package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author Bianca Burema <b.burema@st.hanze.nl>
  * <p>
- * Dit is wat het programma doet.
+ * This class create the join table for animal favourites.
  */
 
 @Entity

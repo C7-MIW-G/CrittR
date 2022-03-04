@@ -38,12 +38,6 @@ class CrittrUserDetailsServiceTest {
     }
 
     @Test
-    @DisplayName("Test Favourite Animals")
-    void testFavouriteAnimals() {
-
-    }
-
-    @Test
     public void testSave() {
        doAnswer(invocation -> {
            CrittrUser user = invocation.getArgument(0);
