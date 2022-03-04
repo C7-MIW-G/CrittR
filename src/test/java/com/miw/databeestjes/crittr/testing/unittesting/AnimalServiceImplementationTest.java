@@ -1,8 +1,9 @@
-package com.miw.databeestjes.crittr.service.implementation;
+package com.miw.databeestjes.crittr.testing.unittesting;
 
 
 import com.miw.databeestjes.crittr.repository.AnimalRepository;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import com.miw.databeestjes.crittr.service.implementation.AnimalServiceImplementation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

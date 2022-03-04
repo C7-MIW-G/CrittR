@@ -1,8 +1,9 @@
-package com.miw.databeestjes.crittr.service.implementation;
+package com.miw.databeestjes.crittr.testing.unittesting;
 
 import com.miw.databeestjes.crittr.model.FunFact;
 import com.miw.databeestjes.crittr.repository.FunFactRepository;
 import com.miw.databeestjes.crittr.service.FunFactService;
+import com.miw.databeestjes.crittr.service.implementation.FunFactServiceImplementation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

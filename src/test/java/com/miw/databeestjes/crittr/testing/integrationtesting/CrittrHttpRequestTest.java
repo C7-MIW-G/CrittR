@@ -1,4 +1,4 @@
-package com.miw.databeestjes.crittr.application;
+package com.miw.databeestjes.crittr.testing.integrationtesting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

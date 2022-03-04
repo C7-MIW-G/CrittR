@@ -1,4 +1,4 @@
-package com.miw.databeestjes.crittr.application;
+package com.miw.databeestjes.crittr.testing.integrationtesting;
 
 import com.miw.databeestjes.crittr.controller.HomepageController;
 import org.junit.jupiter.api.Test;
