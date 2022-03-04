@@ -12,13 +12,13 @@
             <span>Species</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'), '')" th:text="${species}"></a> </li>
+            <li class="list-group-item list-group-item-action" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'), '')" th:text="${species}"></a></li>
         </ul>
         <div class="card-header">
             <span>Status</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}"  onclick="filterAnimalsByStatus(this.getAttribute('data-id'))" th:text="${status.displayName}"></a> </li>
+            <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}"  onclick="filterAnimalsByStatus(this.getAttribute('data-id'))" th:text="${status.displayName}"></a></li>
         </ul><br>
         <a class="btn btn-primary" id="all-animals-button" onclick="searchAnimals()">All</a>
     </div>

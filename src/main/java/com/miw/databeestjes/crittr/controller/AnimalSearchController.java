@@ -39,14 +39,12 @@ public class AnimalSearchController {
 
             return ResponseEntity.badRequest().body(response);
         }
-
         List<Animal> animalList = animalService.getAll(keyword.getKeyword());
         List<AnimalDTO> animalDTOS = new ArrayList<>();
         setResponseData(animalDTOS, animalList, response);
 
         return ResponseEntity.ok(response);
     }
-
 
     @PostMapping("/api/animals/search-status")
     protected ResponseEntity<?> showAnimalsFoundByStatus(@Valid @RequestBody AnimalCriteria status, Errors errors) {
@@ -60,7 +58,7 @@ public class AnimalSearchController {
         }
         List<Animal> animalList = animalService.listByStatus(status.getStatus());
         List<AnimalDTO> animalDTOS = new ArrayList<>();
-         setResponseData(animalDTOS, animalList, response);
+        setResponseData(animalDTOS, animalList, response);
         return ResponseEntity.ok(response);
     }
 
@@ -75,5 +73,4 @@ public class AnimalSearchController {
         }
         response.setDtos(animalDTOS);
     }
-
 }

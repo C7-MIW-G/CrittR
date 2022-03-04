@@ -61,7 +61,4 @@ public class AnimalServiceImplementation implements AnimalService{
     public void delete(Animal animal) {
         animalRepository.delete(animal);
     }
-
-
-
 }
