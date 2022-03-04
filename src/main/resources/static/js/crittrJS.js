@@ -120,7 +120,7 @@ function buildHtmlStringAnimal(data) {
         htmlString += '<div class="card" style="width: 18rem">' +
             '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
             '<div style="z-index: 2; position: relative;"> ' +
-            '<form action="/animals/details/' + animalId + '" method="post"> ' +
+            '<form  action="/animals/details/' + animalId + '" method="post"> ' +
             '<input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/> ' +
             '</form> </div>' +
                '<div class="card-body">' +
@@ -133,10 +133,6 @@ function buildHtmlStringAnimal(data) {
         '</div>'
     }
     return htmlString;
-}
-
-function addFavourite() {
-
 }
 
 function buildHtmlStringAnimalCaretaker(data) {

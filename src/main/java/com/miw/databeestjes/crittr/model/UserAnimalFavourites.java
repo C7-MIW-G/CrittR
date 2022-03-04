@@ -19,14 +19,14 @@ public class UserAnimalFavourites {
     private UserAnimalFavouritesKey userAnimalFavouritesKey = new UserAnimalFavouritesKey();
 
     @ManyToOne
-    @MapsId("animalId")
-    @JoinColumn(name = "animal_id")
-    private Animal animal;
-
-    @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     private CrittrUser user;
+
+    @ManyToOne
+    @MapsId("animalId")
+    @JoinColumn(name = "animal_id")
+    private Animal animal;
 }
 
 

@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import java.util.Objects;
 
 @Embeddable
 @Getter @Setter
+@NoArgsConstructor
 public class UserAnimalFavouritesKey implements Serializable {
 
     @Column(name = "user_id")
