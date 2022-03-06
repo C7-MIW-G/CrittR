@@ -14,7 +14,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-@SQLInsert(sql="INSERT IGNORE INTO user_animal_favourites(user_id,animal_id) VALUES(?,?)")
+@SQLInsert(sql = "INSERT IGNORE INTO user_animal_favourites (animal_id, user_id) VALUES (? , ? )")
 public class UserAnimalFavourites {
 
     @EmbeddedId
