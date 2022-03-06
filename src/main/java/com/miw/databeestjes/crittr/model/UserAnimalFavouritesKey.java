@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLInsert;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
