@@ -6,7 +6,6 @@ import com.miw.databeestjes.crittr.service.UserAnimalFavouritesService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Bianca Burema <b.burema@st.hanze.nl>
@@ -30,7 +29,4 @@ public class UserAnimalFavouritesServiceImplementation implements UserAnimalFavo
         userAnimalFavouritesRepository.save(userAnimalFavourites);
     }
 
-    public Optional<UserAnimalFavourites> getByUserId(long userId) {
-        return userAnimalFavouritesRepository.findByUserId(userId);
-    }
 }

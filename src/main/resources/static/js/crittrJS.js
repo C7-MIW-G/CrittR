@@ -124,9 +124,8 @@ function buildHtmlStringAnimal(data) {
         htmlString += '<div class="card" style="width: 18rem">' +
             '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
             '<div style="z-index: 2; position: relative;"> ' +
-            '<form action="/animals/details/' + animalId + '" method="post"> ' +
-            '<input type="hidden" th:field="' + animalId + '"/>' +
-            '<input type="image" value="submit" src="/assets/heart-fill.svg" id="heart-img" class="heart-img" onclick="favouriteToggle(' + animalId + ')">' +
+            '<form  action="/animals/details/' + animalId + '" method="post"> ' +
+            '<input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/> ' +
             '</form> </div>' +
                '<div class="card-body">' +
                     '<h2 class="card-title">' + name + '</h2>' +
@@ -138,6 +137,10 @@ function buildHtmlStringAnimal(data) {
         '</div>'
     }
     return htmlString;
+}
+
+function addFavourite() {
+
 }
 
 function buildHtmlStringAnimalCaretaker(data) {
@@ -219,6 +222,42 @@ function doAnimalSearch(searchObject) {
         }
     })
 }
+
+function filterAnimalsByStatus(status) {
+    const searchObject ={}
+    console.log(status)
+
+    searchObject['status'] = status;
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/animals/search-status",
+        data: JSON.stringify(searchObject),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#animalsTable');
+            let innerhtml = '';
+            const pageTitle = $('title');
+            if (pageTitle[0].innerHTML == 'Animal overview'){
+                innerhtml = buildHtmlStringAnimal(data);
+            } else {
+                innerhtml = buildHtmlStringAnimalCaretaker(data)
+            }
+
+            tBody.empty();
+            tBody.append(innerhtml);
+        },
+        error: function () {
+            $('#animalsTable').append(
+                '<tr><td>Oops, something went wrong</td></tr>'
+            )
+        }
+    })
+}
+
 
 
 

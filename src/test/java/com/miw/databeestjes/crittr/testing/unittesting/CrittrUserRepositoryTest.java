@@ -1,6 +1,7 @@
-package com.miw.databeestjes.crittr.repository;
+package com.miw.databeestjes.crittr.testing.unittesting;
 
 import com.miw.databeestjes.crittr.model.CrittrUser;
+import com.miw.databeestjes.crittr.repository.CrittrUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -121,6 +121,22 @@ header {
     height: 20px;
 }
 
+.button-column {
+    width: 300px;
+    margin-left: 50px;
+    margin-right: -75px;
+    margin-top: 300px;
+}
+
+.button-column ul{
+    list-style-type: none;
+}
+#all-animals-button {
+    text-decoration: none;
+    width: 300px;
+    text-align: left;
+}
+
 /*styling for caretakers*/
 .style-caretaker header {
     background-color: #b6d2e0;
