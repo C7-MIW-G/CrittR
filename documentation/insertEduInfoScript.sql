@@ -30,11 +30,6 @@ insert into edu_info VALUES
     (28, '5 - 10 years', 'Rabbit', 2),
     (29, '20 - 40 cm', 'Rabbit', 3),
     (30, 'Herbivore', 'Rabbit', 4)
-    (31, 'Brontosaurus excelsus', 0),
-    (31, 'Brontosaurus excelsus', 0),
-    (31, 'Brontosaurus excelsus', 0),
-    (31, 'Brontosaurus excelsus', 0),
-    (31, 'Brontosaurus excelsus', 0),
 
 
     ;

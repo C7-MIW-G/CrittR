@@ -125,7 +125,7 @@ function buildHtmlStringAnimal(data) {
             '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
             '<div style="z-index: 2; position: relative;"> ' +
             '<form  action="/animals/details/' + animalId + '" method="post"> ' +
-            '<input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/> ' +
+            '<input type="submit" value="favourite" class="btn btn-primary my-2"/> ' +
             '</form> </div>' +
                '<div class="card-body">' +
                     '<h2 class="card-title">' + name + '</h2>' +
