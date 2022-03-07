@@ -106,6 +106,21 @@ header {
     flex-direction: row;
 }
 
+.heart-img{
+    width: 20px;
+    height: 20px;
+}
+
+.heart-img:hover{
+    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
+}
+
+.heart-img-clicked {
+    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
+    width: 20px;
+    height: 20px;
+}
+
 /*styling for caretakers*/
 .style-caretaker header {
     background-color: #b6d2e0;

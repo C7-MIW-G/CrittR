@@ -103,6 +103,10 @@ function searchAnimals() {
     doAnimalSearch(searchObject);
 }
 
+function favouriteToggle(animalId){
+    $("#heart-img").toggleClass("heart-img-clicked");
+}
+
 function buildHtmlStringAnimal(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
@@ -121,7 +125,8 @@ function buildHtmlStringAnimal(data) {
             '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
             '<div style="z-index: 2; position: relative;"> ' +
             '<form action="/animals/details/' + animalId + '" method="post"> ' +
-            '<input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/> ' +
+            '<input type="hidden" th:field="' + animalId + '"/>' +
+            '<input type="image" value="submit" src="/assets/heart-fill.svg" id="heart-img" class="heart-img" onclick="favouriteToggle(' + animalId + ')">' +
             '</form> </div>' +
                '<div class="card-body">' +
                     '<h2 class="card-title">' + name + '</h2>' +
@@ -133,10 +138,6 @@ function buildHtmlStringAnimal(data) {
         '</div>'
     }
     return htmlString;
-}
-
-function addFavourite() {
-
 }
 
 function buildHtmlStringAnimalCaretaker(data) {
