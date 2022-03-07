@@ -20,7 +20,7 @@
         </section>
         <div style="z-index: 2; position: relative;">
             <form th:action="@{/animals/details/{animalId}(animalId=${animal.animalId})}" method="post" sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')">
-            <input type="submit" value="favourite" class="bi bi-heart btn-outline-secondary my-2"/>
+            <input type="submit" value="favourite" class="btn btn-primary my-2"/>
             </form>
         </div>
         <div class="overview">
