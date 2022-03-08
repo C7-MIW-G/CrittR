@@ -14,4 +14,6 @@ import org.springframework.security.access.annotation.Secured;
 public class CrittrUserCriteria {
     String email;
 
+    UserRoleStatus role;
+
 }

@@ -5,11 +5,8 @@ import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.CrittrUserCriteria;
 import com.miw.databeestjes.crittr.model.CrittrUserSearchResponse;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +30,13 @@ public class CrittrUserSearchController {
         this.crittrUserDetailsService = crittrUserDetailsService;
     }
 
+
+    /* This method creates a response object consisting of a list of user-dto's and a message.
+    * If no role is selected, it assumes it is being accessed through the filter-bar and performs a search by email/username;
+    * Else, it lists users by role. Setting role to null in requests should be done in the front-end  */
     @PostMapping("/api/users/search")
     @Secured("ROLE_ADMIN")
-    protected ResponseEntity<?> showUsersFound(@Valid @RequestBody CrittrUserCriteria email, Errors errors) {
+    protected ResponseEntity<?> showUsersFound(@Valid @RequestBody CrittrUserCriteria request, Errors errors) {
         CrittrUserSearchResponse response = new CrittrUserSearchResponse();
 
         if (errors.hasErrors()) {
@@ -46,20 +47,26 @@ public class CrittrUserSearchController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        List<CrittrUser> userList = crittrUserDetailsService.searchByEmail(email.getEmail());
+        List<CrittrUser> userList;
+        if(request.getRole() == null) {
+            userList = crittrUserDetailsService.searchByEmail(request.getEmail());
+        } else {
+            userList = crittrUserDetailsService.listByRole(request.getRole());
+        }
+        setResponseBody(userList, response);
+        return ResponseEntity.ok(response);
+    }
+
+    private void setResponseBody(List<CrittrUser> userList, CrittrUserSearchResponse response) {
         List<CrittrUserDTO> userDTOS = new ArrayList<>();
         for (CrittrUser crittrUser : userList) {
             userDTOS.add(new CrittrUserDTO(crittrUser));
         }
-
         if(userDTOS.isEmpty()) {
             response.setMsg("No users found");
         } else {
             response.setMsg("Users found");
         }
-
         response.setDtos(userDTOS);
-        return ResponseEntity.ok(response);
     }
-
 }

@@ -131,10 +131,15 @@ header {
 .button-column ul{
     list-style-type: none;
 }
-#all-animals-button {
+.all-items-button {
     text-decoration: none;
     width: 300px;
     text-align: left;
+}
+
+.user-container {
+    display:flex;
+    flex-direction: row;
 }
 
 /*styling for caretakers*/

@@ -48,9 +48,10 @@ function checkPassword() {
     }
 }
 
-function searchUsers() {
+function searchUsers(role) {
     const searchObject = {};
     searchObject['email'] = $("#user-search-input").val();
+    searchObject['role'] = role;
 
     $.ajax({
         type: "POST",
@@ -68,8 +69,7 @@ function searchUsers() {
         },
         error: function () {
             $('#accountsTable').append(
-               '<tr><td>Oops, something went wrong</td></tr>'
-               )
+               '<tr><td>Oops, something went wrong</td></tr>')
         }
     })
 }
