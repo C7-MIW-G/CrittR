@@ -2,14 +2,9 @@ package com.miw.databeestjes.crittr.seeding;
 
 import com.miw.databeestjes.crittr.model.UserRoleStatus;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class CrittrUserSeeder {
