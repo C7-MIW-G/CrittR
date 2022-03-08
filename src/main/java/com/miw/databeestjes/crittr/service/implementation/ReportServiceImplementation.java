@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
+import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.repository.ReportRepository;
 import com.miw.databeestjes.crittr.service.ReportService;
@@ -44,6 +45,19 @@ public class ReportServiceImplementation implements ReportService {
             return INITIAL_REPORT_NUMBER;
         }
         return getNextValue(lastNumber.get());
+    }
+
+    @Override
+    public void addNew(String issue, String animalName, String species, String description,
+                       CrittrUser reporter) {
+        Report report = new Report();
+        report.setIssue(issue);
+        report.setAnimalName(animalName);
+        report.setSpecies(species);
+        report.setDescription(description);
+        report.setReporter(reporter);
+        report.setReportNumber(getNextNumber());
+        reportRepository.save(report);
     }
 
     private long getNextValue(long lastNumber) {
