@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.model;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,6 +20,7 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter
+@RequiredArgsConstructor
 public class Animal {
 
     @Id
