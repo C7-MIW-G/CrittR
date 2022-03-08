@@ -9,7 +9,7 @@
 <div class="animal-container">
     <div class="button-column">
         <div class="card-header">
-            <span>Species</span>
+            <span>Animal</span>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item list-group-item-action" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'), '')" th:text="${species}"></a></li>

@@ -6,6 +6,7 @@ import com.miw.databeestjes.crittr.repository.AnimalRepository;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,5 +61,15 @@ public class AnimalServiceImplementation implements AnimalService{
     @Override
     public void delete(Animal animal) {
         animalRepository.delete(animal);
+    }
+
+    public void addNewAnimal(String species, String name, LocalDate birthdate, String biography) {
+        Animal animal = new Animal();
+        animal.setSpecies(species);
+        animal.setName(name);
+        animal.setBirthDate(birthdate);
+        animal.setBiography(biography);
+
+        animalRepository.save(animal);
     }
 }

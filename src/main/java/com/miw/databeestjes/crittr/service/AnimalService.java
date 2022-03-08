@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.service;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,4 +23,6 @@ public interface AnimalService {
     List<String> listSpecies();
 
     List<Animal> listByStatus(AnimalStatus status);
+
+    void addNewAnimal(String species, String name, LocalDate birthdate, String biography);
 }
