@@ -48,7 +48,6 @@ function checkPassword() {
     }
 }
 
-
 function searchUsers(role) {
     const searchObject = {};
     searchObject['email'] = $("#user-search-input").val();

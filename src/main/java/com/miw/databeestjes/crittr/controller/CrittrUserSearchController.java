@@ -4,13 +4,9 @@ import com.miw.databeestjes.crittr.dto.CrittrUserDTO;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.CrittrUserCriteria;
 import com.miw.databeestjes.crittr.model.CrittrUserSearchResponse;
-import com.miw.databeestjes.crittr.model.UserRoleStatus;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,13 +62,11 @@ public class CrittrUserSearchController {
         for (CrittrUser crittrUser : userList) {
             userDTOS.add(new CrittrUserDTO(crittrUser));
         }
-
         if(userDTOS.isEmpty()) {
             response.setMsg("No users found");
         } else {
             response.setMsg("Users found");
         }
-
         response.setDtos(userDTOS);
     }
 }
