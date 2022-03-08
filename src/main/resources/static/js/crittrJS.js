@@ -103,6 +103,10 @@ function searchAnimals() {
     doAnimalSearch(searchObject);
 }
 
+function favouriteToggle(animalId){
+    $("#heart-img").toggleClass("heart-img-clicked");
+}
+
 function buildHtmlStringAnimal(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
@@ -133,6 +137,10 @@ function buildHtmlStringAnimal(data) {
         '</div>'
     }
     return htmlString;
+}
+
+function addFavourite() {
+
 }
 
 function buildHtmlStringAnimalCaretaker(data) {
@@ -179,7 +187,7 @@ function setColourTheme() {
     })
 }
 
-function filterAnimalsByKeyword(keyword, status){
+function filterAnimalsByKeyword(keyword){
     const searchObject = {};
     searchObject['keyword'] = keyword;
     doAnimalSearch(searchObject);

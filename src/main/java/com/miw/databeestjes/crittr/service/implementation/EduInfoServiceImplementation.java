@@ -1,6 +1,7 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
 import com.miw.databeestjes.crittr.model.EduInfo;
+import com.miw.databeestjes.crittr.model.EduInfoCategory;
 import com.miw.databeestjes.crittr.repository.EduInfoRepository;
 import com.miw.databeestjes.crittr.service.EduInfoService;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,21 @@ public class EduInfoServiceImplementation implements EduInfoService {
     }
 
     @Override
+    public List<EduInfo> getAll() {
+        return eduInfoRepository.findAll();
+    }
+
+    @Override
     public List<EduInfo> getEduInfoBySpecies(String species) {
         return eduInfoRepository.findEduInfoBySpecies(species);
+    }
+
+    @Override
+    public void addNewEduInfo(String eduInfo, String species, EduInfoCategory infoCategory) {
+        EduInfo eduInfoObject = new EduInfo();
+        eduInfoObject.setEduInfo(eduInfo);
+        eduInfoObject.setEduInfoSpecies(species);
+        eduInfoObject.setInfoCategory(infoCategory);
+        eduInfoRepository.save(eduInfoObject);
     }
 }

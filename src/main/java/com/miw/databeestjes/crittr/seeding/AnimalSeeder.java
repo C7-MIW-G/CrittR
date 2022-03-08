@@ -46,20 +46,19 @@ public class AnimalSeeder {
             animalService.addNewAnimal("Deer", "Dory", LocalDate.parse("2017-09-02"), "");
             animalService.addNewAnimal("Deer", "Dudley", LocalDate.parse("2014-03-14"), "");
 
-            animalService.addNewAnimal("Cow", "Clara", LocalDate.parse("2019-08-30"), "");
+            animalService.addNewAnimal("Cow", "Clara", LocalDate.parse("2017-08-30"), "Clara used to live on a dairy farm, where she was kept to produce milk. Clara is no longer able to get pregnant and can therefore no longer produce milk, so she came to live with us!");
             animalService.addNewAnimal("Cow", "Carol", LocalDate.parse("2016-04-15"), "");
 
             animalService.addNewAnimal("Pig", "Palpatine", LocalDate.parse("2010-11-20"), "");
-            animalService.addNewAnimal("Pig", "Peggy", LocalDate.parse("2012-03-25"), "");
+            animalService.addNewAnimal("Pig", "Peggy", LocalDate.parse("2012-03-25"), "Peggy is a very playful pig, she most likes to play with her ball! Peggy also really likes to lay in the mud to soak up the sun.");
             animalService.addNewAnimal("Pig", "Pepper", LocalDate.parse("2022-02-28"), "");
 
-            animalService.addNewAnimal("Rabbit", "Rory", LocalDate.parse("2020-07-20"), "");
-            animalService.addNewAnimal("Rabbit", "Roger", LocalDate.parse("2016-03-15"), "");
+            animalService.addNewAnimal("Rabbit", "Rory", LocalDate.parse("2020-07-20"), "Rory and Roger are a couple. They like to cuddle and Rory loves to make sure Roger is clean. Rory is very playful and loves to run and jump around!");
+            animalService.addNewAnimal("Rabbit", "Roger", LocalDate.parse("2016-03-15"), "Rory and Roger are a couple. They like to cuddle and Roger loves it when Rory cleans him. Roger is the sweetest rabbit, he loves to cuddle and his favourite spot is right behind his ears!");
 
-            animalService.addNewAnimal("Chicken", "Homer", LocalDate.parse("2016-08-30"), "");
-
-
+            animalService.addNewAnimal("Chicken", "Charlie", LocalDate.parse("2019-04-21"), "");
+            animalService.addNewAnimal("Chicken", "Charlotte", LocalDate.parse("2020-07-14"), "");
+            animalService.addNewAnimal("Chicken", "Charlize", LocalDate.parse("2021-05-13"), "");
         }
-
     }
 }

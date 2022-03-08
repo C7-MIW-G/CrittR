@@ -28,4 +28,14 @@ public class FunFactServiceImplementation implements FunFactService {
         int selectedFact = (int)(Math.random() * (factList.size()));
         return factList.get(selectedFact);
     }
+
+    public void addFunFact(String fact) {
+        FunFact funFact = new FunFact();
+        funFact.setFact(fact);
+        funFactRepository.save(funFact);
+    }
+
+    public List<FunFact> getAll() {
+        return funFactRepository.findAll();
+    }
 }
