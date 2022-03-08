@@ -44,7 +44,7 @@ public class Animal {
     private String biography;
 
     @Lob
-    private byte[] animalPicture;
+    private byte[] animalPicture = getDefaultPicture();
 
     @OneToMany(mappedBy = "animal")
     private Set<UserAnimalFavourites> likes;
