@@ -74,6 +74,7 @@ function searchUsers() {
     })
 }
 
+
 function buildHtmlString(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
@@ -105,7 +106,42 @@ function searchAnimals() {
 
 function favouriteToggle(animalId){
     $("#heart-img").toggleClass("heart-img-clicked");
+    // favouriteAnimal(animalId);
 }
+
+// function favouriteAnimal(animalId) {
+//
+//     const animalToFavourite = {};
+//     animalToFavourite['keyword'] = animalId;
+//
+//     $.ajax({
+//         type: "POST",
+//         contentType: "application/json",
+//         url: "/api/animals/favourite",
+//         data: JSON.stringify(searchObject),
+//         dataType: 'json',
+//         cache: false,
+//         timeout : 600000,
+//         success: function (data) {
+//             const tBody = $('#animalsTable');
+//             let innerhtml = '';
+//             const pageTitle = $('title');
+//             if (pageTitle[0].innerHTML == 'Animal overview'){
+//                 innerhtml = buildHtmlStringAnimal(data);
+//             } else {
+//                 innerhtml = buildHtmlStringAnimalCaretaker(data)
+//             }
+//
+//             tBody.empty();
+//             tBody.append(innerhtml);
+//         },
+//         error: function () {
+//             $('#animalsTable').append(
+//                 '<tr><td>Oops, something went wrong</td></tr>'
+//             )
+//         }
+//     })
+// }
 
 function buildHtmlStringAnimal(data) {
     let htmlString = "";
@@ -125,7 +161,8 @@ function buildHtmlStringAnimal(data) {
             '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
             '<div style="z-index: 2; position: relative;"> ' +
             '<form  action="/animals/details/' + animalId + '" method="post"> ' +
-            '<input type="submit" value="favourite" class="btn btn-primary my-2"/> ' +
+            '<input type="hidden" th:field="' + animalId + '" >' +
+            '<input id="" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
             '</form> </div>' +
                '<div class="card-body">' +
                     '<h2 class="card-title">' + name + '</h2>' +
@@ -137,10 +174,6 @@ function buildHtmlStringAnimal(data) {
         '</div>'
     }
     return htmlString;
-}
-
-function addFavourite() {
-
 }
 
 function buildHtmlStringAnimalCaretaker(data) {

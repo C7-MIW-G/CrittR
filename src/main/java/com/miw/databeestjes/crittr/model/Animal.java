@@ -8,6 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Set;
@@ -48,5 +51,16 @@ public class Animal {
 
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+    public byte[] getDefaultPicture() {
+        File file = new File("src/main/resources/static/assets/CrittrDefaultAnimalPicture.png");
+        byte[] defaultPicture = new byte[(int) file.length()];
+        try {
+            defaultPicture = new FileInputStream(file).readAllBytes();
+        } catch (IOException s) {
+            s.printStackTrace();
+        }
+        return defaultPicture;
     }
 }

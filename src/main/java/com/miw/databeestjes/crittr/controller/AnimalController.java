@@ -80,12 +80,17 @@ public class AnimalController {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
-        setAnimalPicture(animal, animalPictureInput);
+        if (!animalPictureInput.isEmpty()){
+            setAnimalPicture(animal, animalPictureInput);
+        } else {
+            animal.setAnimalPicture(animal.getDefaultPicture());
+        }
         animalService.save(animal);
         return "redirect:/caretaker/animals";
     }
 
     private void setAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
+
         try {
             byte[] imageContent = animalPictureInput.getBytes();
             if (animalPictureInput.getSize() < ONE_MEGABYTE) {
