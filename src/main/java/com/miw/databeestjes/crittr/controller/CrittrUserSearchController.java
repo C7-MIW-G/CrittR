@@ -4,6 +4,7 @@ import com.miw.databeestjes.crittr.dto.CrittrUserDTO;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.CrittrUserCriteria;
 import com.miw.databeestjes.crittr.model.CrittrUserSearchResponse;
+import com.miw.databeestjes.crittr.model.UserRoleStatus;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,29 @@ public class CrittrUserSearchController {
         }
 
         List<CrittrUser> userList = crittrUserDetailsService.searchByEmail(email.getEmail());
+        setResponseBody(userList, response);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("api/users/filter")
+    @Secured("ROLE_ADMIN")
+    public ResponseEntity<?> showUsersByRole(@Valid @RequestBody CrittrUserCriteria role, Errors errors) {
+        CrittrUserSearchResponse response = new CrittrUserSearchResponse();
+
+        if (errors.hasErrors()) {
+            response.setMsg(errors.getAllErrors()
+                    .stream().map(x -> x.getDefaultMessage())
+                    .collect(Collectors.joining(",")));
+
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        List<CrittrUser> userList = crittrUserDetailsService.listByRole(role.getRole());
+        setResponseBody(userList, response);
+        return ResponseEntity.ok(response);
+    }
+
+    private void setResponseBody(List<CrittrUser> userList, CrittrUserSearchResponse response) {
         List<CrittrUserDTO> userDTOS = new ArrayList<>();
         for (CrittrUser crittrUser : userList) {
             userDTOS.add(new CrittrUserDTO(crittrUser));
@@ -59,7 +83,6 @@ public class CrittrUserSearchController {
         }
 
         response.setDtos(userDTOS);
-        return ResponseEntity.ok(response);
-    }
 
+    }
 }

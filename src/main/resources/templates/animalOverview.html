@@ -20,7 +20,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}"  onclick="filterAnimalsByStatus(this.getAttribute('data-id'))" th:text="${status.displayName}"></a></li>
         </ul><br>
-        <a class="btn btn-primary" id="all-animals-button" onclick="searchAnimals()">All</a>
+        <a class="btn btn-secondary all-items-button" id="all-animals-button" onclick="searchAnimals()">All</a>
     </div>
 <div class="container">
     <main>

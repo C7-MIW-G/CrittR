@@ -74,6 +74,32 @@ function searchUsers() {
     })
 }
 
+function filterUsers(role) {
+    const searchBody = {};
+    searchBody["role"] = role;
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/users/filter",
+        data: JSON.stringify(searchBody),
+        dataType: 'json',
+        cache: false,
+        timeout : 600000,
+        success: function (data) {
+            const tBody = $('#accountsTable');
+            const innerhtml = buildHtmlString(data);
+            tBody.empty();
+            tBody.append(innerhtml);
+        },
+        error: function () {
+            $('#accountsTable').append(
+                '<tr><td>Oops, something went wrong</td></tr>'
+            )
+        }
+    })
+}
+
 function buildHtmlString(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {

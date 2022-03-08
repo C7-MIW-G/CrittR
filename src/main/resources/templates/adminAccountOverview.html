@@ -8,37 +8,48 @@
 </head>
 <body onload="searchUsers()">
 <header th:replace="fragments/general :: navbar"></header>
-<div class="container">
-    <main>
-        <label for="user-search-input">Filter:</label>
-        <input type="text" id="user-search-input" oninput="searchUsers()">
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Manage Accounts</h1>
-                </div>
-            </div>
-        </section>
-        <div class="overview py-5">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table class="table table-hover" >
-                        <thead>
-                        <tr>
-                            <th scope="col">Email</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Role</th>
-                        </tr>
-                        </thead>
-                        <tbody id="accountsTable">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<div class="user-container">
+    <div class="button-column">
+        <div class="card-header">
+            <span>Role</span>
         </div>
-    </main>
-    <footer th:replace="fragments/general :: footer"></footer>
-    <div th:replace="fragments/general :: bottomscripts"></div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action" th:each="role : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${role}"  onclick="filterUsers(this.getAttribute('data-id'))" th:text="${role.displayName}"></a></li>
+        </ul><br>
+        <a class="btn btn-secondary all-items-button"  id="all-users-button" onclick="searchUsers()">All</a>
+    </div>
+    <div class="container">
+        <main>
+            <label for="user-search-input">Filter:</label>
+            <input type="text" id="user-search-input" oninput="searchUsers()">
+            <section class="py-3 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <h1 class="fw-light">Manage Accounts</h1>
+                    </div>
+                </div>
+            </section>
+            <div class="overview py-5">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <table class="table table-hover" >
+                            <thead>
+                            <tr>
+                                <th scope="col">Email</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Role</th>
+                            </tr>
+                            </thead>
+                            <tbody id="accountsTable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer th:replace="fragments/general :: footer"></footer>
+        <div th:replace="fragments/general :: bottomscripts"></div>
+    </div>
 </div>
 </body>
 </html>

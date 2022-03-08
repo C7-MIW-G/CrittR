@@ -75,6 +75,10 @@ public class CrittrUserDetailsService implements UserDetailsService {
         return crittrUserRepository.searchByEmail(email);
     }
 
+    public List<CrittrUser> listByRole(UserRoleStatus role) {
+        return crittrUserRepository.listByRole(role);
+    }
+
     public void addCrittrUser(String email, String username, String password, UserRoleStatus role) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(password);
