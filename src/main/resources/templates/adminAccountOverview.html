@@ -6,7 +6,7 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
-<body onload="searchUsers()">
+<body onload="searchUsers(null)">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="user-container">
     <div class="button-column">
@@ -14,14 +14,14 @@
             <span>Role</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" th:each="role : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${role}"  onclick="filterUsers(this.getAttribute('data-id'))" th:text="${role.displayName}"></a></li>
+            <li class="list-group-item list-group-item-action" th:each="role : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${role}"  onclick="searchUsers(this.getAttribute('data-id'))" th:text="${role.displayName}"></a></li>
         </ul><br>
-        <a class="btn btn-secondary all-items-button"  id="all-users-button" onclick="searchUsers()">All</a>
+        <a class="btn btn-secondary all-items-button"  id="all-users-button" onclick="searchUsers(null)">All</a>
     </div>
     <div class="container">
         <main>
             <label for="user-search-input">Filter:</label>
-            <input type="text" id="user-search-input" oninput="searchUsers()">
+            <input type="text" id="user-search-input" oninput="searchUsers(null)">
             <section class="py-3 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">

@@ -34,9 +34,13 @@ public class CrittrUserSearchController {
         this.crittrUserDetailsService = crittrUserDetailsService;
     }
 
+
+    /* This method creates a response object consisting of a list of user-dto's and a message.
+    * If no role is selected, it assumes it is being accessed through the filter-bar and performs a search by email/username;
+    * Else, it lists users by role. Setting role to null in requests should be done in the front-end  */
     @PostMapping("/api/users/search")
     @Secured("ROLE_ADMIN")
-    protected ResponseEntity<?> showUsersFound(@Valid @RequestBody CrittrUserCriteria email, Errors errors) {
+    protected ResponseEntity<?> showUsersFound(@Valid @RequestBody CrittrUserCriteria request, Errors errors) {
         CrittrUserSearchResponse response = new CrittrUserSearchResponse();
 
         if (errors.hasErrors()) {
@@ -47,25 +51,12 @@ public class CrittrUserSearchController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        List<CrittrUser> userList = crittrUserDetailsService.searchByEmail(email.getEmail());
-        setResponseBody(userList, response);
-        return ResponseEntity.ok(response);
-    }
-
-    @PostMapping("api/users/filter")
-    @Secured("ROLE_ADMIN")
-    public ResponseEntity<?> showUsersByRole(@Valid @RequestBody CrittrUserCriteria role, Errors errors) {
-        CrittrUserSearchResponse response = new CrittrUserSearchResponse();
-
-        if (errors.hasErrors()) {
-            response.setMsg(errors.getAllErrors()
-                    .stream().map(x -> x.getDefaultMessage())
-                    .collect(Collectors.joining(",")));
-
-            return ResponseEntity.badRequest().body(response);
+        List<CrittrUser> userList;
+        if(request.getRole() == null) {
+            userList = crittrUserDetailsService.searchByEmail(request.getEmail());
+        } else {
+            userList = crittrUserDetailsService.listByRole(request.getRole());
         }
-
-        List<CrittrUser> userList = crittrUserDetailsService.listByRole(role.getRole());
         setResponseBody(userList, response);
         return ResponseEntity.ok(response);
     }
@@ -83,6 +74,5 @@ public class CrittrUserSearchController {
         }
 
         response.setDtos(userDTOS);
-
     }
 }
