@@ -13,8 +13,27 @@
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
                 </div>
-                <div class="py-5 mx-auto">
-                    <img class="details-img rounded-circle" th:unless="${currentAnimalPicture} == ''" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
+                <div class="py-5 mx-auto row align-items-center">
+                    <div class="col-md-6">
+                    <img class="details-img rounded-circle" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table align-middle">
+                        <tbody>
+                        <tr>
+                            <th class="th-sm" scope="row">Animal</th>
+                            <td th:text="${animal.species}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">Age</th>
+                            <td th:text="${animal.age}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">birthdate</th>
+                            <td th:text="${animal.birthDate}"></td>
+                        </tr>
+                    </table>
+                    </div>
                 </div>
             </div>
         </section>
@@ -35,21 +54,6 @@
                         <p th:text="${funfact.fact}"></p>
                     </div>
                     <div class="table-responsive">
-                        <table class="table align-middle">
-                            <tbody>
-                            <tr>
-                                <th class="th-sm" scope="row">Animal</th>
-                                <td th:text="${animal.species}"></td>
-                            </tr>
-                            <tr>
-                                <th class="th-sm" scope="row">Age</th>
-                                <td th:text="${animal.age}"></td>
-                            </tr>
-                            <tr>
-                                <th class="th-sm" scope="row">birthdate</th>
-                                <td th:text="${animal.birthDate}"></td>
-                            </tr>
-                        </table>
                         <div class="border rounded-2 py-4 px-4">
                             <h4>Info for real scientists</h4>
                             <dl th:each="info : ${eduInfo}">

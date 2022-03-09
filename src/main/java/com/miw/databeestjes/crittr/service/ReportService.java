@@ -1,8 +1,6 @@
 package com.miw.databeestjes.crittr.service;
 
-import com.miw.databeestjes.crittr.model.Animal;
-import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.model.Report;
+import com.miw.databeestjes.crittr.model.*;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -24,5 +22,5 @@ public interface ReportService {
 
     long getNextNumber();
 
-    void addNew(String issue, String animalName, String species, String description, CrittrUser reporter);
+    void addNew(String issue, Animal animal, String animalName, String species, String description, CrittrUser reporter, ReportPriority... priority);
 }

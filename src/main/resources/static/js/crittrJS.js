@@ -158,16 +158,14 @@ function buildHtmlStringAnimal(data) {
         const age = dto.age;
         let photo = 'data:image/jpeg;base64,'+ dto.picture;
         htmlString += '<div class="card" style="width: 18rem">' +
-            '<img class="card-img rounded-circle " src="' + photo + '" width="100px" >' +
+            '<img class="card-img rounded-circle " src="' + photo + '" >' +
             '<div style="z-index: 2; position: relative;"> ' +
             '<form  action="/animals/details/' + animalId + '" method="post"> ' +
             '<input type="hidden" th:field="' + animalId + '" >' +
-            '<input id="" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
+            '<input class="heart-img mt-2" id="" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
             '</form> </div>' +
                '<div class="card-body">' +
-                    '<h2 class="card-title">' + name + '</h2>' +
-                    '<p class="card-text">' + species + '</p>' +
-                    '<p class="card-text">' + age + '</p>' +
+                    '<h4 class="card-title">' + name + " the " + species + '</h4>' +
                     '<a style="z-index: 1" href="/animals/details/' + animalId + '"' +
                     ' class="btn btn-primary stretched-link">See details</a>' +
                 '</div>' +

@@ -151,8 +151,15 @@ public class ReportController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String updateReport(@ModelAttribute("report") Report report, BindingResult result){
         if(!result.hasErrors()){
+            changeName(report);
             reportService.save(report);
         }
         return "redirect:/reports/details/" + report.getReportNumber();
+    }
+
+    private void changeName(Report report) {
+        if(report.getAnimal() != null) {
+            report.setAnimalName(report.getAnimal().getName());
+        }
     }
 }
