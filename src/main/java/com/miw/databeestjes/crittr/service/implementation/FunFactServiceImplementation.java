@@ -25,6 +25,11 @@ public class FunFactServiceImplementation implements FunFactService {
     @Override
     public FunFact getRandomFactBySpecies(String species) {
         List<FunFact> factListOfSpecies = funFactRepository.findBySpecies(species);
+        if(factListOfSpecies.isEmpty()){
+            FunFact fact = new FunFact();
+            fact.setFact("No facts known yet about these animals");
+            return fact;
+        }
         int selectedFact = (int)(Math.random() * (factListOfSpecies.size()));
         return factListOfSpecies.get(selectedFact);
     }
