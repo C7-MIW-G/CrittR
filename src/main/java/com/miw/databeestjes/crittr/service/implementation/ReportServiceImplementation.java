@@ -1,8 +1,6 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
-import com.miw.databeestjes.crittr.model.Animal;
-import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.model.Report;
+import com.miw.databeestjes.crittr.model.*;
 import com.miw.databeestjes.crittr.repository.ReportRepository;
 import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.stereotype.Service;
@@ -54,14 +52,20 @@ public class ReportServiceImplementation implements ReportService {
     }
 
     @Override
-    public void addNew(String issue, String animalName, String species, String description,
-                       CrittrUser reporter) {
+    public void addNew(String issue, Animal animal, String animalName, String species, String description,
+                       CrittrUser reporter, ReportPriority... priority) {
         Report report = new Report();
         report.setIssue(issue);
+        report.setAnimal(animal);
         report.setAnimalName(animalName);
         report.setSpecies(species);
         report.setDescription(description);
         report.setReporter(reporter);
+
+        if(priority.length > 0) {
+            report.setPriority(priority[0]);
+        }
+
         report.setReportNumber(getNextNumber());
         reportRepository.save(report);
     }
