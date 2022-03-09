@@ -182,7 +182,20 @@ header {
     font-size: larger;
 }
 
+.detailpage-background {
+    background-color: #d6edca;
+}
 
+.header-info-table {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.info-table {
+    background-color: #c8e3ba;
+    border: #ACD199;
+    border-radius: 1px;
+}
 
 
 

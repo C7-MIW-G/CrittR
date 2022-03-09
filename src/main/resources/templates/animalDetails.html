@@ -8,31 +8,50 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
+        <section class="py-3 container">
+            <div class="row py-lg-3 detailpage-background shadow">
+                <div class="col-lg-5 col-md-8 text-center mt-4 header-info-table">
+                    <h1 class="fw"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
                 </div>
-                <div class="py-5 mx-auto row align-items-center">
-                    <div class="col-md-6">
-                    <img class="details-img rounded-circle" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
+                <div class="py-5 mx-2 row">
+                    <div class="col-5 align-items-center text-center ">
+                        <img class="details-img rounded-circle shadow" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
                     </div>
-                    <div class="col-md-6">
-                        <table class="table align-middle">
-                        <tbody>
-                        <tr>
-                            <th class="th-sm" scope="row">Animal</th>
-                            <td th:text="${animal.species}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">Age</th>
-                            <td th:text="${animal.age}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">birthdate</th>
-                            <td th:text="${animal.birthDate}"></td>
-                        </tr>
-                    </table>
+                    <div class="col-3 pe-5">
+                        <div class="row align-items-start">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th class="th-sm" scope="row">Animal</th>
+                                    <td th:text="${animal.species}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="th-sm" scope="row">Age</th>
+                                    <td th:text="${animal.age}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="th-sm" scope="row">birthdate</th>
+                                    <td th:text="${animal.birthDate}"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row mt-5">
+                            <h4>Biography</h4>
+                            <p th:text="${animal.biography}"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ps-5 text-center">
+                        <div class="info-table shadow">
+                            <h4 class="header-info-table">Info for real scientists</h4><br>
+                            <dl th:each="info : ${eduInfo}">
+                                <dt th:text="${info.infoCategory.getDisplayName()}" />
+                                <dd th:text="${info.eduInfo}" />
+                            </dl><br>
+                        </div>
+                    </div>
+                    <div class="col-8 pt-3 ms-5">
+                        <h4>Fun Fact</h4>
+                        <p th:text="${funfact.fact}"></p>
                     </div>
                 </div>
             </div>
@@ -42,27 +61,10 @@
                 <input type="submit" value="favourite" class="btn btn-primary my-2"/>
             </form>
         </div>
-        <div class="overview">
-            <div class="container">
-                <div class="row row-cols-3 g-3 justify-content-around">
-                    <div class="border rounded-2 py-4 px-4">
-                        <h4>Biography</h4>
-                        <p th:text="${animal.biography}"></p>
-                    </div>
-                    <div class="border rounded-2 py-4 px-4">
-                        <h4>Fun Fact</h4>
-                        <p th:text="${funfact.fact}"></p>
-                    </div>
-                    <div class="table-responsive">
-                        <div class="border rounded-2 py-4 px-4">
-                            <h4>Info for real scientists</h4>
-                            <dl th:each="info : ${eduInfo}">
-                                <dt th:text="${info.infoCategory.getDisplayName()}" />
-                                <dd th:text="${info.eduInfo}" />
-                            </dl>
-                        </div>
-                    </div>
-                </div>
+        <div class="container overview">
+            <div class="py-5 mx-auto row">
+
+
             </div>
         </div>
     </main>
