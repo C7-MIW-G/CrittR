@@ -150,6 +150,18 @@ header {
     flex-direction: row;
 }
 
+.aboutContactInfo {
+    display:flex;
+    flex-direction: row;
+}
+
+.aboutText {
+    padding-left: 50px;
+}
+.link-highlighted {
+    background-color: #8DAD7D;
+}
+
 /*styling for caretakers*/
 .style-caretaker header {
     background-color: #b6d2e0;
@@ -180,6 +192,9 @@ header {
     background-color: #b6d2e0;
     color: white;
     font-size: larger;
+}
+.style-caretaker .link-highlighted {
+    background-color: #8FAFBF;
 }
 
 .detailpage-background {

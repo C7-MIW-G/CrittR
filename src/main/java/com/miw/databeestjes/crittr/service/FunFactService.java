@@ -5,9 +5,10 @@ import com.miw.databeestjes.crittr.model.FunFact;
 import java.util.List;
 
 public interface FunFactService {
-    FunFact getRandomFact();
 
-    void addFunFact(String fact);
+    FunFact getRandomFactBySpecies(String species);
 
-    public List<FunFact> getAll();
+    void addFunFact(String fact, String species);
+
+    List<FunFact> getAll();
 }

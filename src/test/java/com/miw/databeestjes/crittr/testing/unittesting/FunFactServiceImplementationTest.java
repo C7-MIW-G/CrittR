@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,10 +32,10 @@ class FunFactServiceImplementationTest {
 
     @Test
     public void testRandomFact(){
-        when(funFactRepository.findAll()).thenReturn(new ArrayList<>());
-        List<FunFact> testList = funFactRepository.findAll();
+        when(funFactRepository.findBySpecies(anyString())).thenReturn(new ArrayList<>());
+        List<FunFact> testList = funFactRepository.findBySpecies("Goat");
         testList.add(new FunFact());
-        assertNotNull(funFactService.getRandomFact(), "Fact not found");
+        assertNotNull(funFactService.getRandomFactBySpecies("Goat"), "Fact not found");
         // There is no guarantee it's random but it has retrieved an object from the list
     }
 
