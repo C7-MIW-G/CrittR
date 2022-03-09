@@ -76,13 +76,19 @@ public class AnimalController {
     @PostMapping("/animals/new")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal,
-                                      @ModelAttribute("animalPictureInput") MultipartFile animalPictureInput, BindingResult result) {
+                                      @ModelAttribute("animalPictureInput") MultipartFile animalPictureInput,
+                                      @ModelAttribute("editAnimalPictureInput") MultipartFile editAnimalPictureInput,
+                                      BindingResult result) {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
 
         if (animal.getAnimalPicture() != null) {
-            animal.setAnimalPicture(animal.getAnimalPicture());
+            if (editAnimalPictureInput != null) {
+                setNewAnimalPicture(animal, editAnimalPictureInput);
+            } else {
+                animal.setAnimalPicture(animal.getAnimalPicture());
+            }
         } else if (!animalPictureInput.isEmpty()) {
             setNewAnimalPicture(animal, animalPictureInput);
         } else {
