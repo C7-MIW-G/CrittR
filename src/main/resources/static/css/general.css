@@ -146,6 +146,15 @@ header {
     flex-direction: row;
 }
 
+.aboutContactInfo {
+    display:flex;
+    flex-direction: row;
+}
+
+.aboutText {
+    padding-left: 50px;
+}
+
 /*styling for caretakers*/
 .style-caretaker header {
     background-color: #b6d2e0;
