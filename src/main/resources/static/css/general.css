@@ -31,12 +31,16 @@ header {
     color: white;
 }
 
-.animalCardImg{
-    border-radius: 50%;
+.card-img {
+    object-fit: cover;
+    width:230px;
+    height:230px;
 }
 
-.animalCard{
-    text-align: center;
+.details-img {
+    object-fit: cover;
+    width:400px;
+    height:400px;
 }
 
 .btn-primary:hover {

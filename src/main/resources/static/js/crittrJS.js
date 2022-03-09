@@ -158,7 +158,7 @@ function buildHtmlStringAnimal(data) {
         const age = dto.age;
         let photo = 'data:image/jpeg;base64,'+ dto.picture;
         htmlString += '<div class="card" style="width: 18rem">' +
-            '<img class="card-img-top rounded-circle" src="' + photo + '" width="5" height="240">' +
+            '<img class="card-img rounded-circle " src="' + photo + '" width="100px" >' +
             '<div style="z-index: 2; position: relative;"> ' +
             '<form  action="/animals/details/' + animalId + '" method="post"> ' +
             '<input type="hidden" th:field="' + animalId + '" >' +

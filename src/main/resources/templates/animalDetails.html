@@ -14,7 +14,7 @@
                     <h1 class="fw-light"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
                 </div>
                 <div class="py-5 mx-auto">
-                    <img class="img-fluid rounded-circle" th:unless="${currentAnimalPicture} == ''" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
+                    <img class="details-img rounded-circle" th:unless="${currentAnimalPicture} == ''" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
                 </div>
             </div>
         </section>
