@@ -10,8 +10,13 @@
     <main>
         <section class="py-3 container">
             <div class="row py-lg-3 detailpage-background shadow">
-                <div class="col-lg-5 col-md-8 text-center mt-4 header-info-table">
+                <div class="col-lg-5 text-center mt-4 header-info-table">
                     <h1 class="fw"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
+                </div>
+                <div class="col-lg-7 mt-4 text-end">
+                    <form th:action="@{/animals/details/{animalId}(animalId=${animal.animalId})}" method="post" sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')">
+                        <input type="submit" value="favourite" class="btn btn-primary my-2"/>
+                    </form>
                 </div>
                 <div class="py-5 mx-2 row">
                     <div class="col-5 align-items-center text-center ">
@@ -56,17 +61,6 @@
                 </div>
             </div>
         </section>
-        <div style="z-index: 2; position: relative;">
-            <form th:action="@{/animals/details/{animalId}(animalId=${animal.animalId})}" method="post" sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')">
-                <input type="submit" value="favourite" class="btn btn-primary my-2"/>
-            </form>
-        </div>
-        <div class="container overview">
-            <div class="py-5 mx-auto row">
-
-
-            </div>
-        </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
