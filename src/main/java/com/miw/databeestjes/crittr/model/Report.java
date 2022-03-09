@@ -23,7 +23,7 @@ public class Report {
 
     private ReportStatus status = ReportStatus.NEW;
 
-    private String animalName;
+    private String animalName = setDefaultName();
 
     @Column(nullable = false)
     @NotEmpty
@@ -46,5 +46,13 @@ public class Report {
 
     @ManyToOne
     private Animal animal;
+
+    private String setDefaultName() {
+        if(this.animal == null) {
+            return "";
+        } else {
+            return this.animal.getName();
+        }
+    }
 
 }

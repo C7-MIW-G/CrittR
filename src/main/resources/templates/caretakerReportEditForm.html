@@ -22,7 +22,7 @@
                 <div class="col-8">
                     <label class="form-label" for="animalInput">Animal name:</label>
                     <input class="form-control" id="animalInput" type="text"
-                           placeholder="leave empty if unknown" th:value="${report.animal.name}">
+                           placeholder="leave empty if unknown" th:field="*{animalName}">
                     <select style="display: none"  class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
                     </select>
                 </div><br>
