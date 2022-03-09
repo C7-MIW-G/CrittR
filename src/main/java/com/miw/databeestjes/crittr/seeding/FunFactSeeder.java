@@ -60,6 +60,18 @@ public class FunFactSeeder {
             funFactService.addFunFact("Each year, antlers fall off and regrow. As they regrow, they are covered in a furry coat called velvet. The velvet is rich in nerves and blood vessels, allowing the antlers to regrow quickly", "Deer");
             funFactService.addFunFact("A fawn can normally walk within half an hour of being born.", "Deer");
             funFactService.addFunFact("When most deer are born, they have white spots which disappear as they mature. The spots help fawns to blend into their background, acting as camouflage", "Deer");
+
+            funFactService.addFunFact("Horses can’t breathe through their mouth." +
+                    " Horses are “obligate nose breathers” meaning that they can only breathe through their nose, not through their mouth as humans can.", "Horse");
+            funFactService.addFunFact("Horses can sleep standing up." +
+                    " Horses have what’s called a “stay-apparatus” which is a system of tendons and ligaments that allows the horse to lock their legs in position so they can relax without falling over.", "Horse");
+            funFactService.addFunFact("Horses have lightning fast reflexes." +
+                    " Should a situation arise when they need to fight, they can go from standing still to delivering a powerful kick in just 0.3 seconds, whereas human reaction time is 1.6 seconds.", "Horse");
+            funFactService.addFunFact("Horses have 10 different muscles in their ears." +
+                    " This allows them to rotate nearly 180 degrees and move independently of one another. Humans only have three muscles in their ears.", "Horse");
+            funFactService.addFunFact("Horses have a nearly 360 degree field of vision." +
+                    " This is due to the positioning of their eyes on the sides of their head. However, they have two blind spots – one directly behind them, and the other just in-front and below their nose. " +
+                    "This means that they cannot see the grass they are grazing on, or the carrot you are sticking out to them! Instead they use their mobile and sensitive lips, whiskers and sense of smell to know what is in-front of them and decide if they want to eat it.", "Horse");
         }
     }
 }
