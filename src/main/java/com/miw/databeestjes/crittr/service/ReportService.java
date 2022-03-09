@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.service;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +19,8 @@ public interface ReportService {
     Optional<Report> getByReportNumber(long reportNumber);
 
     List<Report> findByAnimalName(String animalName);
+
+    List<Report> findByAnimal(Animal animal);
 
     long getNextNumber();
 

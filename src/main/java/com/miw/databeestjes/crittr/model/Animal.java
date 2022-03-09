@@ -48,6 +48,9 @@ public class Animal {
     @OneToMany(mappedBy = "animal")
     private Set<UserAnimalFavourites> likes;
 
+    @OneToMany(mappedBy = "animal")
+    private Set<Report> reports;
+
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
