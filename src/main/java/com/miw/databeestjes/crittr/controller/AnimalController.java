@@ -80,16 +80,20 @@ public class AnimalController {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
-        if (!animalPictureInput.isEmpty()){
-            setAnimalPicture(animal, animalPictureInput);
+
+        if (animal.getAnimalPicture() != null) {
+            animal.setAnimalPicture(animal.getAnimalPicture());
+        } else if (!animalPictureInput.isEmpty()) {
+            setNewAnimalPicture(animal, animalPictureInput);
         } else {
             animal.setAnimalPicture(animal.getDefaultPicture());
         }
+
         animalService.save(animal);
         return "redirect:/caretaker/animals";
     }
 
-    private void setAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
+    private void setNewAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
 
         try {
             byte[] imageContent = animalPictureInput.getBytes();
@@ -109,6 +113,7 @@ public class AnimalController {
             return "redirect:/animals";
         }
         model.addAttribute("animal", animal.get());
+        model.addAttribute("currentAnimalPicture", Base64.getEncoder().encodeToString(animal.get().getAnimalPicture()));
         return "caretakerAnimalForm";
     }
 
