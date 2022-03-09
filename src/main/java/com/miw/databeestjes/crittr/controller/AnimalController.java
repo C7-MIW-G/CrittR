@@ -68,7 +68,7 @@ public class AnimalController {
         Collections.sort(eduInfo);
         model.addAttribute("currentAnimalPicture", Base64.getEncoder().encodeToString(animal.get().getAnimalPicture()));
         model.addAttribute("animal", animal.get());
-        model.addAttribute("funfact", funFactService.getRandomFact());
+        model.addAttribute("funfact", funFactService.getRandomFactBySpecies(animal.get().getSpecies()));
         model.addAttribute("eduInfo", eduInfo);
         return "animalDetails";
     }
