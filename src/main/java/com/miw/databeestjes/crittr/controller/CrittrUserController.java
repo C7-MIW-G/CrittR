@@ -17,6 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
 
+/**
+ * @author Annemiek Blaauwgeers <a.blaauwgeers@st.hanze.nl>
+ * * All interactions with CrittrUsers.
+ */
+
 @Controller
 public class CrittrUserController {
 

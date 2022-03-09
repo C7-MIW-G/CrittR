@@ -6,6 +6,11 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Annemiek Blaauwgeers <a.blaauwgeers@st.hanze.nl>
+ * This class seeds the database with Crittrusers
+ */
+
 @Component
 public class CrittrUserSeeder {
     private CrittrUserDetailsService crittrUserDetailsService;
@@ -25,8 +30,11 @@ public class CrittrUserSeeder {
             crittrUserDetailsService.addCrittrUser("e.jones@member.com", "Emily Jones", "TemporaryPassword123", UserRoleStatus.ROLE_MEMBER);
             crittrUserDetailsService.addCrittrUser("j.obrien@member.com", "James O'Brien", "TemporaryPassword123", UserRoleStatus.ROLE_MEMBER);
             crittrUserDetailsService.addCrittrUser("w.wilson@member.com", "William Wilson", "TemporaryPassword123", UserRoleStatus.ROLE_MEMBER);
-            crittrUserDetailsService.addCrittrUser("l.evans@member.com", "Lily Evans", "TemporaryPassword123", UserRoleStatus.ROLE_MEMBER);
             crittrUserDetailsService.addCrittrUser("j.roberts@member.com", "Jessica Roberts", "TemporaryPassword123", UserRoleStatus.ROLE_MEMBER);
+            crittrUserDetailsService.addCrittrUser("l.evans@member.com", "Lily Evans", "TemporaryPassword123", UserRoleStatus.ROLE_MEMBER);
+            crittrUserDetailsService.addCrittrUser("c@c.c", "C", "c", UserRoleStatus.ROLE_CARETAKER);
+            crittrUserDetailsService.addCrittrUser("a@a.a", "A", "a", UserRoleStatus.ROLE_ADMIN);
+            crittrUserDetailsService.addCrittrUser("m@m.m", "M", "m", UserRoleStatus.ROLE_MEMBER);
         }
     }
 }
