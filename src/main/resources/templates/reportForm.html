@@ -19,8 +19,10 @@
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="animalInput">Animal name:</label>
-                    <input class="form-control" id="animalInput" type="text"
-                           placeholder="leave empty if unknown" th:field="*{animalName}">
+                    <input type="text" class="form-control" id="animalInput"
+                           placeholder="leave empty if unknown" th:field="*{animalName}" oninput="filterAnimalBox()">
+                    <select style="display: none"  class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
+                    </select>
                 </div><br>
                 <div class="col-8">
                     <label class="form-label" for="IssueInput">Issue:*</label>

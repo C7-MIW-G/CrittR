@@ -76,20 +76,30 @@ public class AnimalController {
     @PostMapping("/animals/new")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String saveUpdateAnimal(@ModelAttribute("animal") @Valid Animal animal,
-                                      @ModelAttribute("animalPictureInput") MultipartFile animalPictureInput, BindingResult result) {
+                                      @ModelAttribute("animalPictureInput") MultipartFile animalPictureInput,
+                                      @ModelAttribute("editAnimalPictureInput") MultipartFile editAnimalPictureInput,
+                                      BindingResult result) {
         if(result.hasErrors()){
             return "caretakerAnimalForm";
         }
-        if (!animalPictureInput.isEmpty()){
-            setAnimalPicture(animal, animalPictureInput);
+
+        if (animal.getAnimalPicture() != null) {
+            if (editAnimalPictureInput != null) {
+                setNewAnimalPicture(animal, editAnimalPictureInput);
+            } else {
+                animal.setAnimalPicture(animal.getAnimalPicture());
+            }
+        } else if (!animalPictureInput.isEmpty()) {
+            setNewAnimalPicture(animal, animalPictureInput);
         } else {
             animal.setAnimalPicture(animal.getDefaultPicture());
         }
+
         animalService.save(animal);
         return "redirect:/caretaker/animals";
     }
 
-    private void setAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
+    private void setNewAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
 
         try {
             byte[] imageContent = animalPictureInput.getBytes();
@@ -109,6 +119,7 @@ public class AnimalController {
             return "redirect:/animals";
         }
         model.addAttribute("animal", animal.get());
+        model.addAttribute("currentAnimalPicture", Base64.getEncoder().encodeToString(animal.get().getAnimalPicture()));
         return "caretakerAnimalForm";
     }
 

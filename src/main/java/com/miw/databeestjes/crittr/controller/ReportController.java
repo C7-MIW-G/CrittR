@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportStatus;
+import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,9 +28,11 @@ import java.util.Optional;
 public class ReportController {
 
     private ReportService reportService;
+    private AnimalService animalService;
 
-    public ReportController(ReportService reportService) {
+    public ReportController(ReportService reportService, AnimalService animalService) {
         this.reportService = reportService;
+        this.animalService = animalService;
     }
 
     @GetMapping("/reports")
@@ -42,6 +45,7 @@ public class ReportController {
     @GetMapping("reports/new")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
     protected String showReportForm (Model model) {
+        model.addAttribute("allAnimals", animalService.getAll());
         model.addAttribute("report", new Report());
         return "reportForm";
     }
@@ -51,6 +55,7 @@ public class ReportController {
     protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result,
                                         @AuthenticationPrincipal CrittrUser user){
         if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
             return "reportForm";
         }
         report.setReporter(user);

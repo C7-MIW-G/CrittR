@@ -31,9 +31,18 @@
                     <label class="form-label" for="animalBio">Biography:</label>
                     <textarea class="form-control" id="animalBio" placeholder="Some fun facts or the entire life history of the animal" name="animalBio" th:field="*{biography}"></textarea>
                 </div><br>
-                <div>
+                <div th:if="${animal.animalPicture == null}">
                     <label for="animalPicture" class="form-label">Upload a picture:</label>
                     <input class="form-control" type="file" name="animalPictureInput" id="animalPicture" th:object="${animalPictureInput}" accept="image/png, image/jpeg, image/jpg"/>
+                    <i class="text-black-50">*The file should not exceed 1mb in size</i>
+                </div>
+                <div th:if="${animal.animalPicture}">
+                    <img th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}">
+                    <input type="hidden" th:field="*{animalPicture}">
+                </div>
+                <div th:if="${animal.animalPicture}">
+                    <label for="editAnimalPicture" class="form-label">Change picture:</label>
+                    <input id="editAnimalPicture" class="form-control" type="file" name="editAnimalPictureInput" th:object="${editAnimalPictureInput}" accept="image/png, image/jpeg, image/jpg">
                     <i class="text-black-50">*The file should not exceed 1mb in size</i>
                 </div>
                 <div class="col-10">
