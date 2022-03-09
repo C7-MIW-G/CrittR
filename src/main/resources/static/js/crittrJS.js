@@ -295,7 +295,6 @@ $(document).ready(function() {
 
     for (const link of links) {
         let path = link.href.split('/');
-        console.log(path[3])
         if(path[3] === currentURL[3]){
             link.classList.add("link-highlighted");
         }
