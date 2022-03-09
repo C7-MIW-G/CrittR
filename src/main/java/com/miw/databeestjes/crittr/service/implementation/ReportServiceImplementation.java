@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.repository.ReportRepository;
@@ -37,6 +38,11 @@ public class ReportServiceImplementation implements ReportService {
     @Override
     public List<Report> findByAnimalName(String animalName) {
         return reportRepository.findByAnimalName(animalName);
+    }
+
+    @Override
+    public List<Report> findByAnimal(Animal animal) {
+        return reportRepository.findByAnimal(animal);
     }
 
     public long getNextNumber() {

@@ -133,7 +133,7 @@ public class AnimalController {
         }
         Animal certainAnimal = animal.get();
         model.addAttribute("animal", certainAnimal);
-        model.addAttribute("allReports", reportService.findByAnimalName(certainAnimal.getName()));
+        model.addAttribute("allReports", reportService.findByAnimal(certainAnimal));
         return "caretakerAnimalDetails";
     }
 
