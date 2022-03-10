@@ -1,6 +1,5 @@
 package com.miw.databeestjes.crittr.controller;
 
-import com.miw.databeestjes.crittr.dto.AnimalDTO;
 import com.miw.databeestjes.crittr.model.*;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.UserAnimalFavouritesService;
@@ -35,8 +34,8 @@ public class FavouriteRestController {
 
     @PostMapping("/api/animals/favourite")
     protected ResponseEntity<?> favouriteAnimal(@Valid @RequestBody AnimalFavouriteCriteria animalId,
-                                   Errors errors,
-                                   @AuthenticationPrincipal CrittrUser user) {
+                                                Errors errors,
+                                                @AuthenticationPrincipal CrittrUser user) {
 
         AnimalFavouriteResponse response = new AnimalFavouriteResponse();
 
@@ -48,17 +47,45 @@ public class FavouriteRestController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        Optional<Animal> optionalAnimal = animalService.findByAnimalId(animalId.getAnimalId());
-        if (optionalAnimal.isPresent()){
-            Animal animal = optionalAnimal.get();
-            UserAnimalFavourites userAnimalFavourites = new UserAnimalFavourites();
-            userAnimalFavourites.setAnimal(animal);
-            userAnimalFavourites.setUser(user);
-            userAnimalFavouritesService.save(userAnimalFavourites);
-            response.setFavourited(true);
-            response.setMessage("Animal favourited!");
-        }
+        List<UserAnimalFavourites> userFavourites = userAnimalFavouritesService.getByUser(user);
 
+        List<Animal> userFavouriteAnimals = getAnimalsFromAnimalFavourites(userFavourites);
+
+        Optional<Animal> optionalAnimal = animalService.findByAnimalId(animalId.getAnimalId());
+
+        if (optionalAnimal.isPresent()) {
+            Animal animal = optionalAnimal.get();
+            if (userFavouriteAnimals.contains(animal)) {
+                removeFromFavourites(user, animal);
+                response.setFavourited(false);
+                response.setMessage("Animal Unfavourited!");
+            }
+            else {
+                addToFavourites(user, animal);
+                response.setFavourited(true);
+                response.setMessage("Animal favourited!");
+            }
+        }
         return ResponseEntity.ok(response);
     }
+
+    private void addToFavourites(CrittrUser user, Animal animal) {
+        UserAnimalFavourites userAnimalFavourites = new UserAnimalFavourites();
+        userAnimalFavourites.setAnimal(animal);
+        userAnimalFavourites.setUser(user);
+        userAnimalFavouritesService.save(userAnimalFavourites);
+    }
+
+    private void removeFromFavourites(CrittrUser user, Animal animal) {
+        userAnimalFavouritesService.delete(userAnimalFavouritesService.getByUserAndAnimal(user, animal));
+    }
+
+    private List<Animal> getAnimalsFromAnimalFavourites(List<UserAnimalFavourites> userAnimalFavourites){
+        List<Animal> animalList = new ArrayList<>();
+        for (UserAnimalFavourites userAnimalFavourite : userAnimalFavourites) {
+            animalList.add(userAnimalFavourite.getAnimal());
+        }
+        return animalList;
+    }
 }
+

@@ -207,7 +207,6 @@ function doAnimalSearch(searchObject) {
             for (const dto of data.dtos) {
                 if(dto.favourited){
                     const heartId = '#heart-img-' + dto.animalId;
-                    console.log(heartId);
                     $(heartId).toggleClass("heart-img-clicked");
                 }
             }
