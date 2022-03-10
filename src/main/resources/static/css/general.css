@@ -82,6 +82,10 @@ header {
     border-bottom-color: #dee2e6;
 }
 
+.list-group-item-action:hover {
+    cursor: pointer;
+}
+
 .img-fluid {
     max-width: 30%;
     height: auto;
@@ -125,8 +129,8 @@ header {
 
 .heart-img-clicked {
     filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
 .button-column {
@@ -211,6 +215,20 @@ header {
     border: #ACD199;
     border-radius: 1px;
 }
+
+.overview-card:hover {
+    background-color: #8DAD7D
+}
+
+.animal-search-list {
+    width: 15%;
+}
+
+.all-animals-button {
+    width: 35%;
+}
+
+
 
 
 

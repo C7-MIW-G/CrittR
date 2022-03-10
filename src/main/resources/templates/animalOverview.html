@@ -7,7 +7,7 @@
 <body onload="searchAnimals()">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="animal-container">
-    <div class="button-column">
+    <div class="button-column animal-search-list">
         <div class="card-header">
             <span>Animal</span>
         </div>
@@ -20,23 +20,23 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}"  onclick="filterAnimalsByStatus(this.getAttribute('data-id'))" th:text="${status.displayName}"></a></li>
         </ul><br>
-        <a class="btn btn-secondary all-items-button" id="all-animals-button" onclick="searchAnimals()">All</a>
+        <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals()">See all</a>
     </div>
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
+        <section class="py-3 container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Animals</h1>
+                    <h1 class="fw">Animals</h1>
                     <p class="lead text-muted">These are all the animals in the Petting Zoo</p>
                     <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
                 </div>
             </div>
         </section>
-        <div class="overview py-5">
+        <div class="py-5">
             <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals()"/>
-            <div class="container">
-                <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row py-lg-3 detailpage-background shadow">
+                <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
                 </div>
             </div>
         </div>
