@@ -109,40 +109,6 @@ function favouriteToggle(animalId){
     // favouriteAnimal(animalId);
 }
 
-// function favouriteAnimal(animalId) {
-//
-//     const animalToFavourite = {};
-//     animalToFavourite['keyword'] = animalId;
-//
-//     $.ajax({
-//         type: "POST",
-//         contentType: "application/json",
-//         url: "/api/animals/favourite",
-//         data: JSON.stringify(searchObject),
-//         dataType: 'json',
-//         cache: false,
-//         timeout : 600000,
-//         success: function (data) {
-//             const tBody = $('#animalsTable');
-//             let innerhtml = '';
-//             const pageTitle = $('title');
-//             if (pageTitle[0].innerHTML == 'Animal overview'){
-//                 innerhtml = buildHtmlStringAnimal(data);
-//             } else {
-//                 innerhtml = buildHtmlStringAnimalCaretaker(data)
-//             }
-//
-//             tBody.empty();
-//             tBody.append(innerhtml);
-//         },
-//         error: function () {
-//             $('#animalsTable').append(
-//                 '<tr><td>Oops, something went wrong</td></tr>'
-//             )
-//         }
-//     })
-// }
-
 function buildHtmlStringAnimal(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
