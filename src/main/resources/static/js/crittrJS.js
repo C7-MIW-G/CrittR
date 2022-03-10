@@ -104,11 +104,6 @@ function searchAnimals() {
     doAnimalSearch(searchObject);
 }
 
-function favouriteToggle(animalId){
-    $("#heart-img").toggleClass("heart-img-clicked");
-    // favouriteAnimal(animalId);
-}
-
 function buildHtmlStringAnimal(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
