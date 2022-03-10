@@ -1,11 +1,13 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
+import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.UserAnimalFavourites;
 import com.miw.databeestjes.crittr.repository.UserAnimalFavouritesRepository;
 import com.miw.databeestjes.crittr.service.UserAnimalFavouritesService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Bianca Burema <b.burema@st.hanze.nl>
@@ -23,6 +25,11 @@ public class UserAnimalFavouritesServiceImplementation implements UserAnimalFavo
 
     public List<UserAnimalFavourites> getAll() {
         return userAnimalFavouritesRepository.findAll();
+    }
+
+    @Override
+    public List<UserAnimalFavourites> getByUser(CrittrUser user) {
+        return userAnimalFavouritesRepository.getByUser(user);
     }
 
     public void save(UserAnimalFavourites userAnimalFavourites) {

@@ -1,11 +1,15 @@
 package com.miw.databeestjes.crittr.dto;
 
 import com.miw.databeestjes.crittr.model.Animal;
+import com.miw.databeestjes.crittr.model.CrittrUser;
+import com.miw.databeestjes.crittr.model.UserAnimalFavourites;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import javax.persistence.Lob;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
@@ -30,6 +34,8 @@ public class AnimalDTO {
 
     @Lob
     private byte[] picture;
+
+    private boolean favourited;
 
     public AnimalDTO(Animal animal) {
         this.animalId = animal.getAnimalId();

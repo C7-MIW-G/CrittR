@@ -161,10 +161,8 @@ function buildHtmlStringAnimal(data) {
             '<img class="card-img rounded-circle shadow ms-3" src="' + photo + '" >' +
                '<div class="card-body">' +
                     '<div style="z-index: 2; position: relative; left: 40%" class="w-25"> ' +
-                    '<form class="w-auto" action="/animals/details/' + animalId + '" method="post"> ' +
-                    '<input type="hidden" th:field="' + animalId + '" >' +
-                    '<input class="heart-img mt-2" id="" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
-                    '</form> </div>' +
+                  '<input class="heart-img mt-2" id="heart-img-' + animalId + '" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
+                     '</div>' +
                     '<h4 class="card-title">' + name + " the " + species + '</h4>' +
                     '<a style="z-index: 1" href="/animals/details/' + animalId + '"' +
                     ' class="stretched-link"></a>' +
@@ -245,6 +243,13 @@ function doAnimalSearch(searchObject) {
 
             tBody.empty();
             tBody.append(innerhtml);
+            for (const dto of data.dtos) {
+                if(dto.favourited){
+                    const heartId = '#heart-img-' + dto.animalId;
+                    console.log(heartId);
+                    $(heartId).toggleClass("heart-img-clicked");
+                }
+            }
         },
         error: function () {
             $('#animalsTable').append(
