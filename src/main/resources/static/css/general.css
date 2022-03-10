@@ -26,6 +26,20 @@ header {
     border: none;
 }
 
+.btn-cards-issue {
+    background-color: #ACD199;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.btn-cards-issue:hover {
+    background-color: #8DAD7D;
+}
+
 .nav-link:hover{
     background-color: #8DAD7D;
     color: white;

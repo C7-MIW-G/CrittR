@@ -23,26 +23,28 @@
         </ul><br>
         <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals()">See all</a>
     </div>
-<div class="container">
-    <main>
-        <section class="py-3 container">
-            <div class="row py-lg-3 detailpage-background shadow">
-                <div class="col-lg-5 text-center mt-4 header-info-table">
-                    <h1 class="fw">Animals</h1>
-                    <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
-                </div>
-                <div class="py-5">
-                    <div class="">
-                        <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+    <div class="container">
+        <main>
+            <section class="py-3 container">
+                <div class="row py-lg-3 detailpage-background shadow justify-content-between">
+                    <div class="col-5 mt-4 header-info-table">
+                        <h1 class="fw">Animals</h1>
+                    </div>
+                    <div class="col-2">
+                        <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-cards-issue my-2">Report issue</a>
+                    </div>
+                    <div class="py-5">
+                        <div class="">
+                            <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    <footer th:replace="fragments/general :: footer"></footer>
-    <div th:replace="fragments/general :: bottomscripts"></div>
-</div>
+            </section>
+        </main>
+        <footer th:replace="fragments/general :: footer"></footer>
+        <div th:replace="fragments/general :: bottomscripts"></div>
+    </div>
 </div>
 </body>
 </html>
