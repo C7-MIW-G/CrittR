@@ -10,11 +10,9 @@ function favouriteToggle(animalId){
         dataType: 'json',
         cache: false,
         timeout: 600000,
-        success: function (data){
+        success: function(){
             const heartId = "#heart-img-" + animalId;
-            if (data.favourited){
-                $(heartId).toggleClass("heart-img-clicked");
-            }
+            $(heartId).toggleClass("heart-img-clicked");
         },
         error: function () {
             console.log("something went wrong")
