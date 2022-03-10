@@ -157,17 +157,17 @@ function buildHtmlStringAnimal(data) {
         const species = dto.species;
         const age = dto.age;
         let photo = 'data:image/jpeg;base64,'+ dto.picture;
-        htmlString += '<div class="card" style="width: 18rem">' +
-            '<img class="card-img rounded-circle " src="' + photo + '" >' +
-            '<div style="z-index: 2; position: relative;"> ' +
-            '<form  action="/animals/details/' + animalId + '" method="post"> ' +
-            '<input type="hidden" th:field="' + animalId + '" >' +
-            '<input class="heart-img mt-2" id="" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
-            '</form> </div>' +
+        htmlString += '<div class="card col-lg-5 mt-4 header-info-table overview-card justify-content-center shadow" style="width: 18rem">' +
+            '<img class="card-img rounded-circle shadow ms-3" src="' + photo + '" >' +
                '<div class="card-body">' +
+                    '<div style="z-index: 2; position: relative; left: 40%" class="w-25"> ' +
+                    '<form class="w-auto" action="/animals/details/' + animalId + '" method="post"> ' +
+                    '<input type="hidden" th:field="' + animalId + '" >' +
+                    '<input class="heart-img mt-2" id="" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
+                    '</form> </div>' +
                     '<h4 class="card-title">' + name + " the " + species + '</h4>' +
                     '<a style="z-index: 1" href="/animals/details/' + animalId + '"' +
-                    ' class="btn btn-primary stretched-link">See details</a>' +
+                    ' class="stretched-link"></a>' +
                 '</div>' +
         '</div>'
     }
