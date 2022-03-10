@@ -26,7 +26,8 @@
             </ul>
             <ul class="nav">
                 <li><a class="nav-link px-2 link-dark nav-text-link" th:href="@{/about}">About</a></li>
-                <li><a sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a></li>
+                <li><a sec:authorize="hasRole('MEMBER')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a></li>
+                <li><a sec:authorize="hasRole('CARETAKER')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/account/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a></li>
                 <li><a sec:authorize="hasRole('ADMIN')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/accounts/users}">Accounts</a></li>
                 <li><a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark nav-text-link" th:href="@{/logout}">Logout</a></li>
                 <li><a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark nav-text-link" th:href="@{/login}">Login</a></li>

@@ -75,6 +75,17 @@ public class CrittrUserController {
         return "userDetails";
     }
 
+    @GetMapping("/account/details/{userId}")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
+    protected String showCaretakerUserDetails(@PathVariable("userId") long userId, Model model) {
+        Optional<CrittrUser> user = crittrUserDetailsService.findById(userId);
+        if (user.isEmpty()) {
+            return "redirect:/";
+        }
+        model.addAttribute("user", user.get());
+        return "caretakerUserDetails";
+    }
+
     @GetMapping("/user/details/edit/{userId}")
     @Secured({"ROLE_CARETAKER", "ROLE_MEMBER", "ROLE_ADMIN"})
     protected String showUserForm(@PathVariable("userId") long userId, Model model) {
