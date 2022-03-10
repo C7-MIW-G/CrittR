@@ -56,7 +56,7 @@ public class Animal {
     }
 
     public byte[] getDefaultPicture() {
-        File file = new File("src/main/resources/static/assets/CrittrDefaultAnimalPicture.png");
+        File file = new File("src/main/resources/static/assets/DefaultAnimalPicture.png");
         byte[] defaultPicture = new byte[(int) file.length()];
         try {
             defaultPicture = new FileInputStream(file).readAllBytes();
