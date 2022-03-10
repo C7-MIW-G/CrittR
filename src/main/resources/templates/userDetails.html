@@ -8,46 +8,42 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Your personal information</h1>
+        <section class="container d-flex py-3 justify-content-evenly text-center">
+            <div class="info-table shadow col-5">
+                <h4 class="header-info-table">Account details</h4>
+                <div class="py-2">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th class="th-sm" scope="row">Name</th>
+                            <td th:text="${user.username}"></td>
+                        </tr>
+                        <tr>
+                            <th class="th-sm" scope="row">Email</th>
+                            <td th:text="${user.email}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
+                <div class="mb-2">
+                    <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
+                </div>
+            </div>
+            <div sec:authorize="hasRole('MEMBER')" style="width: 18rem">
+                <div class="card-header">Your Reports</div>
+                <ul class="list-group list-group-flush" th:each="report : ${user.reports}">
+                    <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                </ul>
             </div>
         </section>
         <div class="overview py-5">
             <div class="container">
                 <div class="row row-cols-3 g-3 justify-content-around">
-                    <div>
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <th class="th-sm" scope="row">Name</th>
-                                <td th:text="${user.username}"></td>
-                            </tr>
-                            <tr>
-                                <th class="th-sm" scope="row">Email</th>
-                                <td th:text="${user.email}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div>
-                            <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
-                        </div>
-                    </div>
-                    <div style="width: 18rem">
-                        <div class="card-header">Your Reports</div>
-                        <ul class="list-group list-group-flush" th:each="report : ${user.reports}">
-                            <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                    <div sec:authorize="hasRole('MEMBER')" style="width: 18rem">
+                        <div class="card-header" >Your favourite animals</div>
+                        <ul class="list-group list-group-flush" th:each="user : ${user.getLikes()}">
+                            <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${user.getAnimal().name}" th:href="@{/animals/details/{animalId}(animalId=${user.getAnimal.animalId})}"></a></li>
                         </ul>
-                    </div>
-                    <div>
-                        <div style="width: 18rem">
-                            <div class="card-header" >Your favourite animals</div>
-                            <ul class="list-group list-group-flush" th:each="user : ${user.getLikes()}">
-                                <li class="list-group-item list-group-item-action"><a class="stretched-link hyperlink-no-styling" th:text="${user.getAnimal().name}" th:href="@{/animals/details/{animalId}(animalId=${user.getAnimal.animalId})}"></a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
