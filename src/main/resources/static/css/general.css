@@ -211,7 +211,28 @@ header {
     color: white;
     font-size: larger;
 }
+
 .style-caretaker .link-highlighted {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .header-info-table {
+    background-color: #97b5c4;
+}
+
+.style-caretaker .header-info-table:hover {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .info-table {
+    background-color: #a5c7d9;
+}
+
+.style-caretaker .detailpage-background {
+    background-color: #c3dae6;
+}
+
+.style-caretaker .btn-cards-issue {
     background-color: #8FAFBF;
 }
 
