@@ -8,6 +8,7 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="animal-container">
     <div class="button-column animal-search-list">
+        <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals()"/>
         <div class="card-header">
             <span>Animal</span>
         </div>
@@ -25,21 +26,19 @@
 <div class="container">
     <main>
         <section class="py-3 container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
+            <div class="row py-lg-3 detailpage-background shadow">
+                <div class="col-lg-5 text-center mt-4 header-info-table">
                     <h1 class="fw">Animals</h1>
-                    <p class="lead text-muted">These are all the animals in the Petting Zoo</p>
                     <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
+                </div>
+                <div class="py-5">
+                    <div class="">
+                        <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <div class="py-5">
-            <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals()"/>
-            <div class="row py-lg-3 detailpage-background shadow">
-                <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
-                </div>
-            </div>
-        </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
