@@ -2,16 +2,12 @@ const animalTextInput = $('#animalInput');
 const animalListInput = $('#AnimalNameInput')
 
 animalTextInput.focusin(function() {
-    console.log("function called")
     const input = $('#AnimalNameInput');
     animalListInput.css('display', 'block');
     filterAnimalBox();
 })
 
 function filterAnimalBox() {
-    const textInput = $('#animalInput');
-    const objectInput = $('#AnimalNameInput');
-
     const searchObject = {};
     searchObject['keyword'] = animalTextInput.val();
 
@@ -24,7 +20,6 @@ function filterAnimalBox() {
         cache: false,
         timeout: 600000,
         success: function (data) {
-            // objectInput.css('display', 'block')
             let innerhtml = buildOptions(data)
             animalListInput.empty();
             animalListInput.append(innerhtml);
