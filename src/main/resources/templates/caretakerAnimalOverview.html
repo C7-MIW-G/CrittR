@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>Caretaker Animal overview</title>
 </head>
-<body onload="searchAnimals()">
+<body onload="searchAnimals(null, '')">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
@@ -20,7 +20,7 @@
             </div>
         </section>
         <div class="overview py-5">
-            <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals()">
+            <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <table class="table table-hover">

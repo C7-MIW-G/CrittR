@@ -79,8 +79,25 @@ public class ReportController {
     }
 
     @GetMapping("/reports/details/{reportNr}")
-    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN", "ROLE_MEMBER"})
-    protected String showReportDetails(@PathVariable("reportNr") long reportNr, Model model) {
+    @Secured("ROLE_MEMBER")
+    protected String showReportDetails(@PathVariable("reportNr") Long reportNr, Model model) {
+        Optional<Report> report = reportService.getByReportNumber(reportNr);
+        if (report.isEmpty()) {
+            return "userDetails";
+        }
+        Report certainReport = report.get();
+        if(certainReport.getAnimalName().equals("")) {
+            model.addAttribute("animalName", "Unknown");
+        } else {
+            model.addAttribute("animalName", certainReport.getAnimalName());
+        }
+        model.addAttribute("report", certainReport);
+        return "userReportDetails";
+    }
+
+    @GetMapping("/caretaker/reports/details/{reportNr}")
+    @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
+    protected String showCaretakerReportDetails(@PathVariable("reportNr") long reportNr, Model model) {
         Optional<Report> report = reportService.getByReportNumber(reportNr);
         if (report.isEmpty()){
             return "redirect:/reports";
