@@ -16,6 +16,7 @@ import java.util.List;
 @Service
 public class FunFactServiceImplementation implements FunFactService {
 
+    public static final String NO_FUN_FACTS_MESSAGE = "There are many fun facts about these animals, but we don't know any of them";
     FunFactRepository funFactRepository;
 
     public FunFactServiceImplementation(FunFactRepository funFactRepository) {
@@ -27,7 +28,7 @@ public class FunFactServiceImplementation implements FunFactService {
         List<FunFact> factListOfSpecies = funFactRepository.findBySpecies(species);
         if(factListOfSpecies.isEmpty()){
             FunFact fact = new FunFact();
-            fact.setFact("No facts known yet about these animals");
+            fact.setFact(NO_FUN_FACTS_MESSAGE);
             return fact;
         }
         int selectedFact = (int)(Math.random() * (factListOfSpecies.size()));
