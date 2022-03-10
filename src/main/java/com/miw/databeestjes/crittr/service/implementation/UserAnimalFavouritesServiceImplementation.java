@@ -1,5 +1,6 @@
 package com.miw.databeestjes.crittr.service.implementation;
 
+import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.UserAnimalFavourites;
 import com.miw.databeestjes.crittr.repository.UserAnimalFavouritesRepository;
@@ -32,8 +33,19 @@ public class UserAnimalFavouritesServiceImplementation implements UserAnimalFavo
         return userAnimalFavouritesRepository.getByUser(user);
     }
 
+    @Override
+    public UserAnimalFavourites getByUserAndAnimal(CrittrUser user, Animal animal) {
+        return userAnimalFavouritesRepository.getByUserAndAnimal(user, animal);
+    }
+
     public void save(UserAnimalFavourites userAnimalFavourites) {
         userAnimalFavouritesRepository.save(userAnimalFavourites);
     }
+
+    @Override
+    public void delete(UserAnimalFavourites userAnimalFavourites) {
+        userAnimalFavouritesRepository.delete(userAnimalFavourites);
+    }
+
 
 }

@@ -109,6 +109,7 @@ header {
 .animal-search-bar {
     margin-bottom: 10px;
     display: block;
+    width: 100%;
 }
 
 .priority-mark {
@@ -227,6 +228,7 @@ header {
     background-color: #c8e3ba;
     border: #ACD199;
     border-radius: 1px;
+    padding: 0px;
 }
 
 .overview-card:hover {
@@ -242,6 +244,36 @@ header {
     width: 35%;
 }
 
+.table {
+    border-color: transparent;
+}
+
+.submit-button {
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: #ACD199 solid;
+}
+
+.submit-button:hover {
+    border-style: solid;
+    border-color: #8DAD7D;
+    color: black;
+}
+
+.cancel-button {
+    background-color: transparent;
+    border-color: #ACD199;
+    border-style: solid;
+    color: black;
+}
+
+.cancel-button:hover {
+    border-style: solid;
+    border-color: #8DAD7D;
+    color: black;
+    background-color: transparent;
+}
 
 
 

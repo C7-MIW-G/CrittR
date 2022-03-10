@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.SecondaryTable;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -36,7 +33,7 @@ public class AnimalSearchController {
     }
 
     @PostMapping("/api/animals/search")
-    protected ResponseEntity<?> showAnimalsFound(@Valid @RequestBody AnimalCriteria keyword, Errors errors,
+    protected ResponseEntity<?> showAnimalsFound(@Valid @RequestBody AnimalCriteria keywords, Errors errors,
                                                  @AuthenticationPrincipal CrittrUser user) {
         AnimalSearchResponse response = new AnimalSearchResponse();
 
@@ -47,28 +44,18 @@ public class AnimalSearchController {
 
             return ResponseEntity.badRequest().body(response);
         }
-        List<Animal> animalList = animalService.getAll(keyword.getKeyword());
+
+        List<Animal> animalList;
+
+        if(keywords.getStatus() == null){
+            animalList = animalService.getAll(keywords.getKeyword());
+        } else {
+            animalList = animalService.listByStatus(keywords.getStatus());
+        }
         List<AnimalDTO> animalDTOS = new ArrayList<>();
         setResponseData(animalDTOS, animalList, response);
         setFavouritedStatus(user, response);
 
-        return ResponseEntity.ok(response);
-    }
-
-    @PostMapping("/api/animals/search-status")
-    protected ResponseEntity<?> showAnimalsFoundByStatus(@Valid @RequestBody AnimalCriteria status, Errors errors,
-                                                         @AuthenticationPrincipal CrittrUser user) {
-        AnimalSearchResponse response = new AnimalSearchResponse();
-        if (errors.hasErrors()) {
-            response.setMsg(errors.getAllErrors()
-                    .stream().map(x -> x.getDefaultMessage())
-                    .collect(Collectors.joining(",")));
-
-            return ResponseEntity.badRequest().body(response);
-        }
-        List<Animal> animalList = animalService.listByStatus(status.getStatus());
-        List<AnimalDTO> animalDTOS = new ArrayList<>();
-        setResponseData(animalDTOS, animalList, response);
         return ResponseEntity.ok(response);
     }
 

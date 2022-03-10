@@ -4,24 +4,24 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>Animal overview</title>
 </head>
-<body onload="searchAnimals()">
+<body onload="searchAnimals(null, '')">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="animal-container">
     <div class="button-column animal-search-list">
-        <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals()"/>
+        <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
         <div class="card-header">
             <span>Animal</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="filterAnimalsByKeyword(this.getAttribute('data-id'), '')" th:text="${species}"></a></li>
+            <li class="list-group-item list-group-item-action species-list-link" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="searchAnimals(null, this.getAttribute('data-id'))" th:text="${species}"></a></li>
         </ul>
         <div class="card-header">
             <span>Status</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}"  onclick="filterAnimalsByStatus(this.getAttribute('data-id'))" th:text="${status.displayName}"></a></li>
+            <li class="list-group-item list-group-item-action status-list-link" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}" onclick="searchAnimals(this.getAttribute('data-id'), '')" th:text="${status.displayName}"></a></li>
         </ul><br>
-        <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals()">See all</a>
+        <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals(null, '')">See all</a>
     </div>
     <div class="container">
         <main>
