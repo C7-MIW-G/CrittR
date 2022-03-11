@@ -60,6 +60,7 @@ public class ReportController {
         }
         report.setReporter(user);
         report.setReportNumber(reportService.getNextNumber());
+        changeName(report);
         reportService.save(report);
         return "redirect:/user/details/" + user.getUserId();
     }

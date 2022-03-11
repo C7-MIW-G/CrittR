@@ -24,10 +24,8 @@
                                     <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please provide the species</p>
                                 </div><br>
                                 <div class="col-9">
-                                    <label class="form-label fw-bold" for="animalInput">Animal name:</label>
-                                    <input type="text" class="form-control" id="animalInput"
-                                           placeholder="leave empty if unknown" th:field="*{animalName}" oninput="filterAnimalBox()">
-                                    <select style="display: none"  class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
+                                    <label class="form-label fw-bold" for="animalNameInput">Animal:</label>
+                                    <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}" oninput="filterAnimalBox()">
                                     </select>
                                 </div><br>
                                 <div class="col-9">
