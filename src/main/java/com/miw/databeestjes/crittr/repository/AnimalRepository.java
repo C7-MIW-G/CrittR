@@ -20,6 +20,9 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     @Query("SELECT a FROM Animal a WHERE a.status=?1")
     List<Animal> listByStatus(AnimalStatus status);
+
+    List<Animal> findBySpeciesAndStatus(String species, AnimalStatus status);
+
 }
 
 
