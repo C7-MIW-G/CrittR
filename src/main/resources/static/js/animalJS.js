@@ -21,9 +21,9 @@ function doAnimalSearch(searchObject) {
             if (pageTitle[0].innerHTML == 'Animal overview'){
                 innerhtml = buildHtmlStringAnimal(data);
             } else if (pageTitle[0].innerHTML == "Account Details") {
+                data.msg = "You have no favourite animals yet ...";
                 data.dtos = data.dtos.filter((item) => item.favourited === true)
                 innerhtml = buildHtmlStringAnimal(data);
-                console.log("function called");
             } else {
                 innerhtml = buildHtmlStringAnimalCaretaker(data);
             }
