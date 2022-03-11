@@ -1,6 +1,8 @@
 package com.miw.databeestjes.crittr.controller;
 
+import com.miw.databeestjes.crittr.model.FunFact;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -13,7 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomepageController {
 
     @GetMapping({"/", "/home"})
-    protected String showHomePage () {
+    protected String showHomePage (Model model) {
+        model.addAttribute("funfact", new FunFact());
         return "index";
     }
 }
