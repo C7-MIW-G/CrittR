@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>CrittR - New Report</title>
 </head>
-<body>
+<body onload="filterAnimalBox()">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
@@ -25,7 +25,7 @@
                                 </div><br>
                                 <div class="col-9">
                                     <label class="form-label fw-bold" for="animalNameInput">Animal:</label>
-                                    <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}" oninput="filterAnimalBox()">
+                                    <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
                                     </select>
                                 </div><br>
                                 <div class="col-9">
