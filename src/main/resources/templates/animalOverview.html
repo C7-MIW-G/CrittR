@@ -12,14 +12,14 @@
         <div class="card-header">
             <span>Animal</span>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action species-list-link" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="searchAnimals(null, this.getAttribute('data-id'))" th:text="${species}"></a></li>
+        <ul class="list-group list-group-flush" id="species-list">
+            <li class="list-group-item list-group-item-action species-list-link" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" th:text="${species}"></a></li>
         </ul>
         <div class="card-header">
             <span>Status</span>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action status-list-link" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}" onclick="searchAnimals(this.getAttribute('data-id'), '')" th:text="${status.displayName}"></a></li>
+        <ul class="list-group list-group-flush" id="status-list">
+            <li class="list-group-item list-group-item-action status-list-link" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:value="${status}" th:text="${status.displayName}"></a></li>
         </ul><br>
         <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals(null, '')">See all</a>
     </div>
