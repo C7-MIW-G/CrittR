@@ -120,7 +120,7 @@ public class ReportController {
     private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
         if(optionalReport.isEmpty()) {
-            return "redirect:/reports/details/" + report.getReportNumber();
+            return "redirect:/caretaker/reports/details/" + report.getReportNumber();
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
@@ -171,7 +171,7 @@ public class ReportController {
             changeName(report);
             reportService.save(report);
         }
-        return "redirect:/reports/details/" + report.getReportNumber();
+        return "redirect:/caretaker/reports/details/" + report.getReportNumber();
     }
 
     private void changeName(Report report) {
