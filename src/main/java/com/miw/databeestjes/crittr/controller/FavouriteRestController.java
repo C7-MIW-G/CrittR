@@ -55,18 +55,22 @@ public class FavouriteRestController {
 
         if (optionalAnimal.isPresent()) {
             Animal animal = optionalAnimal.get();
-            if (userFavouriteAnimals.contains(animal)) {
-                removeFromFavourites(user, animal);
-                response.setFavourited(false);
-                response.setMessage("Animal Unfavourited!");
-            }
-            else {
-                addToFavourites(user, animal);
-                response.setFavourited(true);
-                response.setMessage("Animal favourited!");
-            }
+            toggleFavourite(user, response, userFavouriteAnimals, animal);
         }
         return ResponseEntity.ok(response);
+    }
+
+    private void toggleFavourite(CrittrUser user, AnimalFavouriteResponse response, List<Animal> userFavouriteAnimals, Animal animal) {
+        if (userFavouriteAnimals.contains(animal)) {
+            removeFromFavourites(user, animal);
+            response.setFavourited(false);
+            response.setMessage("Animal Unfavourited!");
+        }
+        else {
+            addToFavourites(user, animal);
+            response.setFavourited(true);
+            response.setMessage("Animal favourited!");
+        }
     }
 
     private void addToFavourites(CrittrUser user, Animal animal) {
