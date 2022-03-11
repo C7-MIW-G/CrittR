@@ -1,13 +1,13 @@
+/*
+ * Base Structure
+ */
+
 body {
     background-color: white;
 }
 
-.th-sm {
-    width: 10rem;
-}
-
-.errormessage {
-    -webkit-text-fill-color: #ff0000;
+header {
+    background-color: #ACD199;
 }
 
 .nav-link {
@@ -17,53 +17,9 @@ body {
     color: white;
 }
 
-header {
-    background-color: #ACD199;
-}
-
-.btn-primary{
-    background-color: #ACD199;
-    border: none;
-}
-
-.btn-cards-issue {
-    background-color: #ACD199;
-    border: none;
-    color: black;
-    padding: 1rem 2rem;
-    border-radius: 0;
-    font-weight: 500;
-    font-size: 1.3rem;
-}
-
-.btn-cards-issue:hover {
-    background-color: #8DAD7D;
-}
-
 .nav-link:hover{
     background-color: #8DAD7D;
     color: white;
-}
-
-.card-img {
-    object-fit: cover;
-    width:230px;
-    height:230px;
-}
-
-.details-img {
-    object-fit: cover;
-    width:400px;
-    height:400px;
-}
-
-.btn-primary:hover {
-    background-color: #8DAD7D;
-}
-
-.btn-secondary {
-    background-color: #a8b4bf;
-    border: none;
 }
 
 .container::after {
@@ -71,11 +27,8 @@ header {
     clear: both;
 }
 
-.card{
-    padding: 20px;
-    text-align: center;
-    margin-left: 20px;
-    border: none;
+.errormessage {
+    -webkit-text-fill-color: #ff0000;
 }
 
 .hyperlink-no-styling {
@@ -87,227 +40,23 @@ header {
     color: black;
 }
 
-.card-header {
+
+/*
+ * General Buttons
+ */
+
+.btn-primary{
     background-color: #ACD199;
-    color: white;
-    font-size: larger;
-}
-
-.list-group-flush {
-    border-bottom: 1px solid;
-    border-bottom-color: #dee2e6;
-}
-
-.list-group-item-action:hover {
-    cursor: pointer;
-}
-
-.img-fluid {
-    max-width: 30%;
-    height: auto;
-}
-
-.animal-search-bar {
-    margin-bottom: 10px;
-    display: block;
-    width: 100%;
-}
-
-.priority-mark {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.bi-exclamation-diamond-fill {
-    text-shadow: 0 0 5px black;
-}
-
-.svg-img {
-    width: 25px;
-    height: 25px;
-}
-
-.animal-container {
-    display:flex;
-    flex-direction: row;
-}
-
-.heart-img{
-    width: 25px;
-    height: 25px;
-}
-
-.card-body {
-    padding-top: 1px;
-}
-
-.heart-img:hover{
-    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
-}
-
-.heart-img-clicked {
-    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
-    width: 25px;
-    height: 25px;
-}
-
-.button-column {
-    margin-left: 50px;
-    margin-top: 16px;
-}
-
-.button-column ul{
-    list-style-type: none;
-}
-
-.all-items-button {
-    text-decoration: none;
-    width: 300px;
-    text-align: left;
-}
-
-.user-container {
-    display:flex;
-    flex-direction: row;
-}
-
-.aboutContactInfo {
-    display:flex;
-    flex-direction: row;
-}
-
-.aboutText {
-    padding-left: 50px;
-}
-
-.link-highlighted {
-    background-color: #8DAD7D;
-}
-
-
-/*styling for caretakers*/
-.style-caretaker header {
-    background-color: #b6d2e0;
-}
-
-.style-caretaker .nav-link {
-    border: black;
-    border-radius: 12px;
-    margin-right: 4px;
-    color: white;
-}
-
-.style-caretaker .btn-primary{
-    background-color: #b6d2e0;
     border: none;
 }
 
-.style-caretaker .nav-link:hover{
-    background-color: #8FAFBF;
-    color: white;
-}
-
-.style-caretaker .btn-primary:hover {
-    background-color: #8FAFBF;
-}
-
-.style-caretaker .card-header {
-    background-color: #b8d6e6;
-    color: white;
-    font-size: larger;
-}
-
-.style-caretaker .link-highlighted {
-    background-color: #8FAFBF;
-}
-
-.style-caretaker .header-info-table {
-    background-color: #b8d6e6;
-}
-
-.style-caretaker .header-info-table:hover {
-    background-color: #a7c9db;
-}
-
-.style-caretaker .header-info-table-account {
-    background-color: #b8d6e6;
-    padding: 10px;
-}
-
-.style-caretaker .info-table {
-    background-color: #a5c7d9;
-}
-
-.style-caretaker .info-table-account {
-    background-color: #e9f2f7;
-    border: #a5c7d9;
-    border-radius: 1px;
-    padding: 0px;
-    height: fit-content;
-}
-
-.style-caretaker .list-group-account {
-    background-color: #e9f2f7;
-}
-
-.style-caretaker .list-group-account:hover {
-    background-color: #fff;
-}
-
-.style-caretaker .detailpage-background {
-    background-color: #dcecf5;
-}
-
-.style-caretaker .btn-cards-issue {
-    background-color: #b8d6e6;
-}
-
-.style-caretaker .btn-cards-issue:hover {
-    background-color: #a7c9db;
-}
-
-.detailpage-background {
-    background-color: #d6edca;
-}
-
-.header-info-table {
-    background-color: #ACD199;
-    padding: 10px;
-}
-
-.info-table {
-    background-color: #c8e3ba;
-    border: #ACD199;
-    border-radius: 1px;
-    padding: 0px;
-}
-
-.info-table-account {
-    background-color: #ecf7e6;
-    border: #ACD199;
-    border-radius: 1px;
-    padding: 0px;
-    height: fit-content;
-}
-
-.list-group-account {
-    background-color: #e9f2e4;
-}
-
-.overview-card:hover {
+.btn-primary:hover {
     background-color: #8DAD7D;
 }
 
-.animal-search-list {
-    width: 15%;
-}
-
-.all-animals-button {
-    width: 35%;
-}
-
-.table {
-    border-color: transparent;
+.btn-secondary {
+    background-color: #a8b4bf;
+    border: none;
 }
 
 .submit-button {
@@ -338,7 +87,291 @@ header {
 }
 
 
+/*
+ * Tables and Lists
+ */
+
+.table {
+    border-color: transparent;
+}
+
+.th-sm {
+    width: 10rem;
+}
+
+.list-group-flush {
+    border-bottom: 1px solid;
+    border-bottom-color: #dee2e6;
+}
+
+.list-group-item-action:hover {
+    cursor: pointer;
+}
 
 
+/*
+ * Animal Overview Page
+ */
+
+.animal-container {
+    display:flex;
+    flex-direction: row;
+}
+
+.heart-img{
+    width: 25px;
+    height: 25px;
+}
+
+.heart-img:hover{
+    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
+}
+
+.heart-img-clicked {
+    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
+    width: 25px;
+    height: 25px;
+}
 
 
+/*
+ * Animal Cards
+ */
+
+.card{
+    padding: 20px;
+    text-align: center;
+    margin-left: 20px;
+    border: none;
+}
+
+.card-header {
+    background-color: #ACD199;
+    color: white;
+    font-size: larger;
+}
+
+.overview-card:hover {
+    background-color: #8DAD7D;
+}
+
+.card-body {
+    padding-top: 1px;
+}
+
+.card-img {
+    object-fit: cover;
+    width:230px;
+    height:230px;
+}
+
+.btn-cards-issue {
+    background-color: #ACD199;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.btn-cards-issue:hover {
+    background-color: #8DAD7D;
+}
+
+
+/*
+ * Filter and Search Bar
+ */
+
+.button-column {
+    margin-left: 50px;
+    margin-top: 16px;
+}
+
+.button-column ul{
+    list-style-type: none;
+}
+
+.all-items-button {
+    text-decoration: none;
+    width: 300px;
+    text-align: left;
+}
+
+.all-animals-button {
+    width: 35%;
+}
+
+.animal-search-bar {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+}
+
+.animal-search-list {
+    width: 15%;
+}
+
+
+/*
+ * Animal Details Page
+ */
+
+.detailpage-background {
+    background-color: #d6edca;
+}
+
+.details-img {
+    object-fit: cover;
+    width:400px;
+    height:400px;
+}
+
+.header-info-table {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.info-table {
+    background-color: #c8e3ba;
+    border: #ACD199;
+    border-radius: 1px;
+    padding: 0px;
+}
+
+.info-table-account {
+    background-color: #ecf7e6;
+    border: #ACD199;
+    border-radius: 1px;
+    padding: 0px;
+    height: fit-content;
+}
+
+
+/*
+ * Report Status Icons
+ */
+
+.priority-mark {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bi-exclamation-diamond-fill {
+    text-shadow: 0 0 5px black;
+}
+
+.svg-img {
+    width: 25px;
+    height: 25px;
+}
+
+
+/*
+ * Account Details Page
+ */
+
+.user-container {
+    display:flex;
+    flex-direction: row;
+}
+
+.list-group-account {
+    background-color: #e9f2e4;
+}
+
+
+/*
+ * About Page
+ */
+
+.aboutContactInfo {
+    display:flex;
+    flex-direction: row;
+}
+
+.aboutText {
+    padding-left: 50px;
+}
+
+
+/*
+ * Caretaker styling
+ */
+
+.style-caretaker header {
+    background-color: #b6d2e0;
+}
+
+.style-caretaker .nav-link {
+    border: black;
+    border-radius: 12px;
+    margin-right: 4px;
+    color: white;
+}
+
+.style-caretaker .nav-link:hover{
+    background-color: #8FAFBF;
+    color: white;
+}
+
+.style-caretaker .btn-primary{
+    background-color: #b6d2e0;
+    border: none;
+}
+
+.style-caretaker .btn-primary:hover {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .card-header {
+    background-color: #b8d6e6;
+    color: white;
+    font-size: larger;
+}
+
+.style-caretaker .btn-cards-issue {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .btn-cards-issue:hover {
+    background-color: #a7c9db;
+}
+
+.style-caretaker .header-info-table {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .header-info-table:hover {
+    background-color: #a7c9db;
+}
+
+.style-caretaker .info-table {
+    background-color: #a5c7d9;
+}
+
+.style-caretaker .header-info-table-account {
+    background-color: #b8d6e6;
+    padding: 10px;
+}
+
+.style-caretaker .info-table-account {
+    background-color: #e9f2f7;
+    border: #a5c7d9;
+    border-radius: 1px;
+    padding: 0px;
+    height: fit-content;
+}
+
+.style-caretaker .list-group-account {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .list-group-account:hover {
+    background-color: #fff;
+}
+
+.style-caretaker .detailpage-background {
+    background-color: #dcecf5;
+}
