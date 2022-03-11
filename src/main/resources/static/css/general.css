@@ -70,6 +70,7 @@ header {
     display: block;
     clear: both;
 }
+
 .card{
     padding: 20px;
     text-align: center;
@@ -116,6 +117,7 @@ header {
     font-size: 20px;
     font-weight: bold;
 }
+
 .bi-exclamation-diamond-fill {
     text-shadow: 0 0 5px black;
 }
@@ -157,6 +159,7 @@ header {
 .button-column ul{
     list-style-type: none;
 }
+
 .all-items-button {
     text-decoration: none;
     width: 300px;
@@ -176,6 +179,7 @@ header {
 .aboutText {
     padding-left: 50px;
 }
+
 .link-highlighted {
     background-color: #8DAD7D;
 }
@@ -208,7 +212,7 @@ header {
 }
 
 .style-caretaker .card-header {
-    background-color: #b6d2e0;
+    background-color: #b8d6e6;
     color: white;
     font-size: larger;
 }
@@ -218,23 +222,48 @@ header {
 }
 
 .style-caretaker .header-info-table {
-    background-color: #97b5c4;
+    background-color: #b8d6e6;
 }
 
 .style-caretaker .header-info-table:hover {
-    background-color: #8FAFBF;
+    background-color: #a7c9db;
+}
+
+.style-caretaker .header-info-table-account {
+    background-color: #b8d6e6;
+    padding: 10px;
 }
 
 .style-caretaker .info-table {
     background-color: #a5c7d9;
 }
 
+.style-caretaker .info-table-account {
+    background-color: #e9f2f7;
+    border: #a5c7d9;
+    border-radius: 1px;
+    padding: 0px;
+    height: fit-content;
+}
+
+.style-caretaker .list-group-account {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .list-group-account:hover {
+    background-color: #fff;
+}
+
 .style-caretaker .detailpage-background {
-    background-color: #c3dae6;
+    background-color: #dcecf5;
 }
 
 .style-caretaker .btn-cards-issue {
-    background-color: #8FAFBF;
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .btn-cards-issue:hover {
+    background-color: #a7c9db;
 }
 
 .detailpage-background {
@@ -253,9 +282,20 @@ header {
     padding: 0px;
 }
 
+.info-table-account {
+    background-color: #ecf7e6;
+    border: #ACD199;
+    border-radius: 1px;
+    padding: 0px;
+    height: fit-content;
+}
+
+.list-group-account {
+    background-color: #e9f2e4;
+}
+
 .overview-card:hover {
     background-color: #8DAD7D;
-
 }
 
 .animal-search-list {
