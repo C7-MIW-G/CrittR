@@ -14,7 +14,42 @@
                 <h3 class="text-muted">Welcome to your CrittR Petting Zoo!</h3><br>
                 <a th:href="@{/animals}" class="btn btn-primary my-2" role="button">View animals</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
-                <a sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/facts/new}" role="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModal1">Add new fun fact</a>
+                <a sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" id="addFactButton" role="button" class="btn btn-primary my-2" >Add new fun fact</a>
+                <!-- Trigger/Open The Modal -->
+
+                <!-- The Modal -->
+                <div class="container">
+                    <div id="addFactModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2>Add a new fact</h2>
+                                <span class="close-modal-x">&times;</span>
+                            </div>
+                            <div class="modal-form">
+                                <form class="row g-3" th:action="@{/facts/new}" method="post" th:object="${funfact}">
+                                    <div class="col-12">
+                                        <label  class="form-label modal-label" for="funfact">Fun Fact</label>
+                                        <textarea class="form-control" placeholder="Enter a fun fact" id="funfact" th:field="*{fact}"></textarea>
+                                    </div><br>
+                                    <div class="col-12">
+                                        <label style="color: white" class="form-label modal-label" for="species">Species</label>
+                                        <input class="form-control" placeholder="e.g. Goat" id="Species" type="text" th:field="*{species}"/>
+                                    </div>
+                                    <br>
+                                    <div class="modal-buttons d-flex justify-content-between">
+                                    <div class="modal-cancel-button">
+                                        <a class="btn btn-primary my-2 modal-cancel-btn">Cancel</a>
+                                    </div>
+                                    <div class="modal-submit-button">
+                                        <input value="Add Fact" type="submit" class="btn btn-primary my-2"/>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

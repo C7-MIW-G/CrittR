@@ -30,16 +30,10 @@ public class FunFactController {
         this.funFactService = funFactService;
     }
 
-    @GetMapping({ "/facts/new"})
-    protected String showFunFactForm (Model model) {
-        model.addAttribute("funfact", new FunFact());
-        return "funFactForm";
-    }
-
     @PostMapping("/facts/new")
     protected String addFunFact(@ModelAttribute("funfact") FunFact funfact, BindingResult result){
         if(result.hasErrors()){
-        return "funFactForm" ;
+        return "redirect:/" ;
         }
         funFactService.addFunFact(funfact.getFact(), funfact.getSpecies());
         return "redirect:/";
