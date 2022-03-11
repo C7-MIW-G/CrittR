@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/caretakers}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title th:replace="${title}">TITLE</title>
 </head>
 <body>
@@ -22,10 +24,12 @@
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="animal-link" sec:authorize="hasRole('MEMBER') or hasRole('ADMIN') or isAnonymous()" th:href="@{/animals}">Animals</a></li>
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="animals-caretaker-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals</a></li>
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="report-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="report-issue-link" sec:authorize="hasRole('MEMBER')" th:href="@{/reports/new}" >Report issue</a></li>
             </ul>
             <ul class="nav">
                 <li><a class="nav-link px-2 link-dark nav-text-link" th:href="@{/about}">About</a></li>
-                <li><a sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a></li>
+                <li><a sec:authorize="hasRole('MEMBER')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a></li>
+                <li><a sec:authorize="hasRole('CARETAKER')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/account/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}"><span th:text="${#authentication.getPrincipal().getUsername()}"></span></a></li>
                 <li><a sec:authorize="hasRole('ADMIN')" class="nav-link px-2 link-dark nav-text-link" th:href="@{/accounts/users}">Accounts</a></li>
                 <li><a sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark nav-text-link" th:href="@{/logout}">Logout</a></li>
                 <li><a sec:authorize="isAnonymous()" class="nav-link px-2 link-dark nav-text-link" th:href="@{/login}">Login</a></li>

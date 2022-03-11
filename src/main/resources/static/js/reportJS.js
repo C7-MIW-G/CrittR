@@ -1,15 +1,17 @@
-const animalTextInput = $('#animalInput');
 const animalListInput = $('#AnimalNameInput')
 
-animalTextInput.focusin(function() {
-    const input = $('#AnimalNameInput');
-    animalListInput.css('display', 'block');
-    filterAnimalBox();
+animalListInput.select2({
+    placeholder: 'Leave empty if unknown',
+    allowClear: true,
+    readonly: false,
+    tags: true
 })
+
+$('.select2-selection').on('input', filterAnimalBox());
 
 function filterAnimalBox() {
     const searchObject = {};
-    searchObject['keyword'] = animalTextInput.val();
+    searchObject['keyword'] = animalListInput.val();
 
     $.ajax({
         type: "POST",
@@ -20,17 +22,12 @@ function filterAnimalBox() {
         cache: false,
         timeout: 600000,
         success: function (data) {
-            let innerhtml = buildOptions(data)
-            animalListInput.empty();
-            animalListInput.append(innerhtml);
+            for (const dto of data.dtos) {
+                let option = new Option(dto.name + ' (' + dto.species + ')', dto.animalId, false, false)
+                animalListInput.append(option).trigger('change');
+            }
         }
     })
 }
 
-function buildOptions(data) {
-    let optionString = "";
-    for (const dto of data.dtos) {
-        optionString += '<option value="' + dto.animalId + '">' + dto.name + ' (' + dto.species + ')</option>'
-    }
-    return optionString;
-}
+

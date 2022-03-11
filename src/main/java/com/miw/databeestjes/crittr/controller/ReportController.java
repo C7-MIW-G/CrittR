@@ -60,6 +60,7 @@ public class ReportController {
         }
         report.setReporter(user);
         report.setReportNumber(reportService.getNextNumber());
+        changeName(report);
         reportService.save(report);
         return "redirect:/user/details/" + user.getUserId();
     }
@@ -75,7 +76,7 @@ public class ReportController {
         Report certainReport = report.get();
         certainReport.setClaimer(crittrUser);
         reportService.save(certainReport);
-        return "redirect:/reports/details/" + reportNr;
+        return "redirect:/caretaker/reports/details/" + reportNr;
     }
 
     @GetMapping("/reports/details/{reportNr}")
@@ -120,7 +121,7 @@ public class ReportController {
     private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
         if(optionalReport.isEmpty()) {
-            return "redirect:/reports/details/" + report.getReportNumber();
+            return "redirect:/caretaker/reports/details/" + report.getReportNumber();
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
@@ -171,7 +172,7 @@ public class ReportController {
             changeName(report);
             reportService.save(report);
         }
-        return "redirect:/reports/details/" + report.getReportNumber();
+        return "redirect:/caretaker/reports/details/" + report.getReportNumber();
     }
 
     private void changeName(Report report) {
