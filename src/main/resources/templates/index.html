@@ -14,6 +14,7 @@
                 <h3 class="text-muted">Welcome to your CrittR Petting Zoo!</h3><br>
                 <a th:href="@{/animals}" class="btn btn-primary my-2" role="button">View animals</a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report issue</a>
+                <a sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/facts/new}" role="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModal1">Add new fun fact</a>
             </div>
         </div>
     </main>
