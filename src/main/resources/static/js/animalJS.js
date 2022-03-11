@@ -20,8 +20,12 @@ function doAnimalSearch(searchObject) {
             const pageTitle = $('title');
             if (pageTitle[0].innerHTML == 'Animal overview'){
                 innerhtml = buildHtmlStringAnimal(data);
+            } else if (pageTitle[0].innerHTML == "Account Details") {
+                data.dtos = data.dtos.filter((item) => item.favourited === true)
+                innerhtml = buildHtmlStringAnimal(data);
+                console.log("function called");
             } else {
-                innerhtml = buildHtmlStringAnimalCaretaker(data)
+                innerhtml = buildHtmlStringAnimalCaretaker(data);
             }
 
             tBody.empty();
@@ -59,7 +63,7 @@ function buildHtmlStringAnimal(data) {
             '<img class="card-img rounded-circle shadow ms-3" src="' + photo + '" >' +
             '<div class="card-body">' +
             '<div style="z-index: 2; position: relative; left: 40%" class="w-25"> ' +
-            '<input class="heart-img mt-2" id="heart-img-' + animalId + '" type="image" src="../assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
+            '<input class="heart-img mt-2" id="heart-img-' + animalId + '" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
             '</div>' +
             '<h4 class="card-title">' + name + " the " + species + '</h4>' +
             '<a style="z-index: 1" href="/animals/details/' + animalId + '"' +
