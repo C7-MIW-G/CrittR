@@ -21,4 +21,5 @@ public interface CrittrUserRepository extends JpaRepository<CrittrUser, Long> {
 
     @Query("SELECT c FROM CrittrUser c WHERE c.role = ?1")
     List<CrittrUser> listByRole(UserRoleStatus role);
+
 }

@@ -28,6 +28,8 @@ public class AnimalDTO {
 
     private String status;
 
+    private int age;
+
     @Lob
     private byte[] picture;
 
@@ -38,6 +40,7 @@ public class AnimalDTO {
         this.species = animal.getSpecies();
         this.name = animal.getName();
         this.status = animal.getStatus().getDisplayName();
+        this.age = animal.getAge();
         this.picture = animal.getAnimalPicture();
     }
 }
