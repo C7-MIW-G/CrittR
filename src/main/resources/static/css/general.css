@@ -62,6 +62,7 @@ header {
 .btn-secondary {
     background-color: #a8b4bf;
     border: none;
+    font-size: larger;
 }
 
 .submit-button {
@@ -112,8 +113,10 @@ header {
 .list-group-item-action:hover {
     cursor: pointer;
 }
+
 li.active{
-    background-color: #c7dcbb !important;
+    background-color: #d6edca !important;
+    border: none;
 }
 
 /*
@@ -484,6 +487,10 @@ li.active{
 
 .style-caretaker .btn-primary:hover {
     background-color: #8FAFBF;
+}
+
+.style-caretaker li.active{
+    background-color: #e9f2f7 !important;
 }
 
 .style-caretaker .animal-overview-background-card {
