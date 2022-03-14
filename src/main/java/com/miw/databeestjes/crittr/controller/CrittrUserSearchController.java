@@ -59,9 +59,7 @@ public class CrittrUserSearchController {
 
     private void setResponseBody(List<CrittrUser> userList, CrittrUserSearchResponse response) {
         List<CrittrUserDTO> userDTOS = new ArrayList<>();
-        for (CrittrUser crittrUser : userList) {
-            userDTOS.add(new CrittrUserDTO(crittrUser));
-        }
+        userList.forEach(user -> userDTOS.add(new CrittrUserDTO(user)));
         if(userDTOS.isEmpty()) {
             response.setMsg("No users found");
         } else {
