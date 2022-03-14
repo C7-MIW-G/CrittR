@@ -44,6 +44,10 @@ $('#all-animals-button').click(function(){
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
+$('#animal-search-input').focus(function() {
+    $('.filter-column li').removeClass('active');
+})
+
 function searchAnimals(status, keyword) {
     const searchObject = {}
     searchObject['status'] = status;
