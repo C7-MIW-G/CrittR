@@ -9,11 +9,12 @@
 <div class="container">
     <main>
         <section class="py-3 container">
-            <!--            <div class="row py-lg-3 detailpage-background shadow justify-content-between">-->
+            <!-- Alternative styling: blue background card? -->
+            <!-- <div class="row py-lg-3 account-background-card shadow justify-content-between"> -->
             <div class="row py-lg-3 justify-content-between">
                 <div class="container row py-4 justify-content-evenly">
-                    <div class="info-table-account shadow col-5 text-center">
-                        <h4 class="header-info-table-account">Account details</h4>
+                    <div class="account-info-table shadow col-5 text-center">
+                        <h4 class="account-info-table-header">Account details</h4>
                         <div class="mt-3 ms-4">
                             <table class="table text-start mb-2" style="font-size: large">
                                 <tbody>
@@ -35,7 +36,7 @@
                     <div class="col-4" style="width: 18rem">
                         <div class="card-header">Your claimed reports</div>
                         <ul class="list-group list-group-flush" th:each="report : ${user.claimedReports}">
-                            <li class="list-group-item list-group-item-action list-group-account"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                         </ul>
                     </div>
                 </div>

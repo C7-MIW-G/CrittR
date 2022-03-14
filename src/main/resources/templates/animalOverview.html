@@ -7,31 +7,31 @@
 <body onload="searchAnimals(null, '')">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="animal-container">
-    <div class="button-column animal-search-list">
+    <div class="filter-column animal-search-list">
         <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
         <div class="card-header">
             <span>Animal</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action species-list-link" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="searchAnimals(null, this.getAttribute('data-id'))" th:text="${species}"></a></li>
+            <li class="list-group-item list-group-item-action" th:each="species : ${allSpecies}"><a class="stretched-link hyperlink-no-styling" th:data-id="${species}" onclick="searchAnimals(null, this.getAttribute('data-id'))" th:text="${species}"></a></li>
         </ul>
         <div class="card-header">
             <span>Status</span>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action status-list-link" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}" onclick="searchAnimals(this.getAttribute('data-id'), '')" th:text="${status.displayName}"></a></li>
+            <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${status}" onclick="searchAnimals(this.getAttribute('data-id'), '')" th:text="${status.displayName}"></a></li>
         </ul><br>
         <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals(null, '')">See all</a>
     </div>
     <div class="container">
         <main>
             <section class="py-3 container">
-                <div class="row py-lg-3 detailpage-background shadow justify-content-between">
-                    <div class="col-5 mt-4 header-info-table">
+                <div class="row py-lg-3 animal-overview-background-card shadow justify-content-between">
+                    <div class="col-5 mt-4 animal-overview-header">
                         <h1 class="fw">Animals</h1>
                     </div>
                     <div class="col-2">
-                        <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn btn-cards-issue my-2">Report issue</a>
+                        <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report issue</a>
                     </div>
                     <div class="py-5">
                         <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">

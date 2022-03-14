@@ -59,7 +59,7 @@ function buildHtmlStringAnimal(data) {
         const species = dto.species;
         const age = dto.age;
         let photo = 'data:image/jpeg;base64,'+ dto.picture;
-        htmlString += '<div class="card col-lg-5 mt-4 header-info-table overview-card justify-content-center shadow" style="width: 18rem">' +
+        htmlString += '<div class="card col-lg-5 mt-4 animal-details-info-table-header overview-card justify-content-center shadow" style="width: 18rem">' +
             '<img class="card-img rounded-circle shadow ms-3" src="' + photo + '" >' +
             '<div class="card-body">' +
             '<div style="z-index: 2; position: relative; left: 40%" class="w-25"> ' +
