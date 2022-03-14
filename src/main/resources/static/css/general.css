@@ -112,7 +112,9 @@ header {
 .list-group-item-action:hover {
     cursor: pointer;
 }
-
+li.active{
+    background-color: #c7dcbb !important;
+}
 
 /*
  * Animal Overview Page

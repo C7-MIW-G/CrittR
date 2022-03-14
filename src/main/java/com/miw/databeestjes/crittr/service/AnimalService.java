@@ -24,5 +24,7 @@ public interface AnimalService {
 
     List<Animal> listByStatus(AnimalStatus status);
 
+    List<Animal> getBySpeciesAndStatus(String species, AnimalStatus status);
+
     void addNewAnimal(String species, String name, LocalDate birthdate, String biography, byte[] picture);
 }

@@ -49,8 +49,11 @@ public class AnimalSearchController {
 
         if(keywords.getStatus() == null){
             animalList = animalService.getAll(keywords.getKeyword());
-        } else {
+        } else if(keywords.getKeyword().equals("")) {
             animalList = animalService.listByStatus(keywords.getStatus());
+        } else {
+            animalList = animalService.getBySpeciesAndStatus(keywords.getKeyword(), keywords.getStatus());
+
         }
         List<AnimalDTO> animalDTOS = new ArrayList<>();
         setResponseData(animalDTOS, animalList, response);

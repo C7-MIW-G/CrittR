@@ -60,6 +60,11 @@ public class AnimalServiceImplementation implements AnimalService{
     }
 
     @Override
+    public List<Animal> getBySpeciesAndStatus(String species, AnimalStatus status) {
+        return animalRepository.findBySpeciesAndStatus(species, status);
+    }
+
+    @Override
     public void delete(Animal animal) {
         animalRepository.delete(animal);
     }
