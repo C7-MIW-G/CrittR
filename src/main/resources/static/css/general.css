@@ -62,6 +62,7 @@ header {
 .btn-secondary {
     background-color: #a8b4bf;
     border: none;
+    font-size: larger;
 }
 
 .submit-button {
@@ -112,8 +113,10 @@ header {
 .list-group-item-action:hover {
     cursor: pointer;
 }
+
 li.active{
-    background-color: #c7dcbb !important;
+    background-color: #d6edca !important;
+    border: none;
 }
 
 /*
@@ -384,9 +387,35 @@ li.active{
 }
 
 .aboutText {
-    padding-left: 50px;
+    padding-left: 40px;
 }
 
+.about-background-card {
+    background-color: #d6edca;
+}
+
+.about-info-table-header {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.about-img {
+    object-fit: cover;
+    width:400px;
+    height:400px;
+}
+
+.about-info-header {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.about-info-content {
+    background-color: #c8e3ba;
+    border: #ACD199;
+    border-radius: 1px;
+    padding: 0;
+}
 
 /*
  * Modal Page
@@ -496,6 +525,10 @@ li.active{
 
 .style-caretaker .btn-primary:hover {
     background-color: #8FAFBF;
+}
+
+.style-caretaker li.active{
+    background-color: #e9f2f7 !important;
 }
 
 .style-caretaker .animal-overview-background-card {

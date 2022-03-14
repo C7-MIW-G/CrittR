@@ -49,9 +49,10 @@ $('#animal-search-input').focus(function() {
 })
 
 function searchAnimals(status, keyword) {
-    const searchObject = {}
-    searchObject['status'] = status;
-    searchObject['keyword'] = keyword
+    const searchObject = {
+        status: status,
+        keyword: keyword
+    }
 
     $.ajax({
         type: "POST",
@@ -77,12 +78,7 @@ function searchAnimals(status, keyword) {
 
             tBody.empty();
             tBody.append(innerhtml);
-            for (const dto of data.dtos) {
-                if(dto.favourited){
-                    const heartId = '#heart-img-' + dto.animalId;
-                    $(heartId).toggleClass("heart-img-clicked");
-                }
-            }
+            setHearts(data);
         },
         error: function () {
             $('#animalsTable').append(
@@ -90,6 +86,14 @@ function searchAnimals(status, keyword) {
             )
         }
     })
+}
+
+function setHearts(data) {
+    data.dtos.forEach(dto => {
+        if(dto.favourited){
+        const heartId = '#heart-img-' + dto.animalId;
+        $(heartId).toggleClass("heart-img-clicked");
+    }})
 }
 
 function buildHtmlStringAnimal(data) {
@@ -100,24 +104,19 @@ function buildHtmlStringAnimal(data) {
         return htmlString;
     }
 
-    for (const dto of data.dtos) {
-        const animalId = dto.animalId;
-        const name = dto.name;
-        const species = dto.species;
-        const age = dto.age;
-        let photo = 'data:image/jpeg;base64,'+ dto.picture;
-        htmlString += '<div class="card col-lg-5 mt-4 overview-card justify-content-center shadow" style="width: 18rem">' +
-            '<img class="card-img rounded-circle shadow ms-3" src="' + photo + '" >' +
-            '<div class="card-body">' +
-            '<div style="z-index: 2; position: relative; left: 40%" class="w-25"> ' +
-            '<input class="heart-img mt-2" id="heart-img-' + animalId + '" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(' + animalId + ')"/> ' +
-            '</div>' +
-            '<h4 class="card-title">' + name + " the " + species + '</h4>' +
-            '<a style="z-index: 1" href="/animals/details/' + animalId + '"' +
-            ' class="stretched-link"></a>' +
-            '</div>' +
-            '</div>'
-    }
+    data.dtos.forEach(dto => htmlString +=
+        `<div class="card col-lg-5 mt-4 overview-card justify-content-center shadow" style="width: 18rem">` +
+        `<img class="card-img rounded-circle shadow ms-3" src="data:image/jpeg;base64,${dto.picture}">` +
+        `<div class="card-body">` +
+        `<div style="z-index: 2; position: relative; left: 40%" class="w-25">`+
+        `<input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/> ` +
+        `</div>` +
+        `<h4 class="card-title">${dto.name} the ${dto.species} </h4>` +
+        `<a style="z-index: 1" href="/animals/details/${dto.animalId}"` +
+        `class="stretched-link"></a>` +
+        `</div>` +
+        `</div>`);
+
     return htmlString;
 }
 
@@ -129,19 +128,13 @@ function buildHtmlStringAnimalCaretaker(data) {
         return htmlString;
     }
 
-    for (const dto of data.dtos) {
-        const animalId = dto.animalId;
-        const name = dto.name;
-        const species = dto.species;
-        const age = dto.age;
-        const status = dto.status;
-        htmlString +=
-            '<tr style="position: relative">' +
-            '<td><a class="stretched-link hyperlink-no-styling"' +
-            ' href="/caretaker/animals/details/' + animalId + '"></a>' + name + '</td>' +
-            '<td>'+ species + '</td>' +
-            '<td>'+ age + '</td>' +
-            '<td>'+ status + '</td></tr>';
-    }
+    data.dtos.forEach(dto => htmlString +=
+    `<tr style="position: relative">` +
+    `<td><a class="stretched-link hyperlink-no-styling"` +
+    ` href="/caretaker/animals/details/${dto.animalId}"></a>${dto.name}</td>` +
+    `<td>${dto.species}</td>` +
+    `<td>${dto.age}</td>` +
+    `<td>${dto.status}</td></tr>`)
+
     return htmlString;
 }

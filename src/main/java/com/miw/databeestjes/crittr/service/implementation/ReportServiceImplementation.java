@@ -43,6 +43,11 @@ public class ReportServiceImplementation implements ReportService {
         return reportRepository.findByAnimal(animal);
     }
 
+    @Override
+    public List<Report> getByReportPriority(ReportPriority priority) {
+        return reportRepository.findByReportPriority(priority);
+    }
+
     public long getNextNumber() {
         Optional<Long> lastNumber = reportRepository.lastReport();
         if(lastNumber.isEmpty()) {

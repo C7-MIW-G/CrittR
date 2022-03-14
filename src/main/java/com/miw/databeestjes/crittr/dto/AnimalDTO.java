@@ -28,8 +28,6 @@ public class AnimalDTO {
 
     private String status;
 
-    private LocalDate birthDate;
-
     private int age;
 
     @Lob
@@ -42,7 +40,6 @@ public class AnimalDTO {
         this.species = animal.getSpecies();
         this.name = animal.getName();
         this.status = animal.getStatus().getDisplayName();
-        this.birthDate = animal.getBirthDate();
         this.age = animal.getAge();
         this.picture = animal.getAnimalPicture();
     }

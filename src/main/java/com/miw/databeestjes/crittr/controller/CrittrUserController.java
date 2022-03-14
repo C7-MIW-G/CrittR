@@ -1,7 +1,9 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.CrittrUser;
+import com.miw.databeestjes.crittr.model.ReportPriority;
 import com.miw.databeestjes.crittr.service.AnimalService;
+import com.miw.databeestjes.crittr.service.ReportService;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,12 +32,13 @@ public class CrittrUserController {
     PasswordEncoder passwordEncoder;
     CrittrUserDetailsService crittrUserDetailsService;
     AnimalService animalService;
+    ReportService reportService;
 
-    public CrittrUserController(PasswordEncoder passwordEncoder, CrittrUserDetailsService crittrUserDetailsService,
-                                AnimalService animalService) {
+    public CrittrUserController(PasswordEncoder passwordEncoder, CrittrUserDetailsService crittrUserDetailsService, AnimalService animalService, ReportService reportService) {
         this.passwordEncoder = passwordEncoder;
         this.crittrUserDetailsService = crittrUserDetailsService;
         this.animalService = animalService;
+        this.reportService = reportService;
     }
 
     @GetMapping("/users/new")
@@ -83,6 +86,9 @@ public class CrittrUserController {
             return "redirect:/";
         }
         model.addAttribute("user", user.get());
+        model.addAttribute("allCriticalReports", reportService.getByReportPriority(ReportPriority.HIGH));
+        model.addAttribute("allMediumReports", reportService.getByReportPriority(ReportPriority.MEDIUM));
+        model.addAttribute("allNormalReports", reportService.getByReportPriority(ReportPriority.LOW));
         return "caretakerUserDetails";
     }
 
