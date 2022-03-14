@@ -55,12 +55,10 @@ public class ReportController {
     protected String createUpdateReport(@ModelAttribute("report") @Valid Report report, BindingResult result,
                                         @AuthenticationPrincipal CrittrUser user){
         if(result.hasErrors()){
-            System.out.println(result.getAllErrors());
             return "reportForm";
         }
         report.setReporter(user);
         report.setReportNumber(reportService.getNextNumber());
-        changeName(report);
         reportService.save(report);
         return "redirect:/user/details/" + user.getUserId();
     }

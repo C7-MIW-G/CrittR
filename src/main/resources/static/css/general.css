@@ -269,6 +269,18 @@ li.active{
     padding: 0;
 }
 
+/*
+ * Animal Details Comments
+ */
+
+.animal-comments{
+    background-color: #ACD199;
+    border-radius: 25px;
+    padding: 20px;
+    width: 400px;
+    height: 150px;
+}
+
 
 /*
  * Report Details Page
@@ -551,6 +563,10 @@ li.active{
 }
 
 .style-caretaker .animal-details-info-table {
+    background-color: #dcecf5;
+}
+
+.style-caretaker .animal-comments{
     background-color: #dcecf5;
 }
 

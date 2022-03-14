@@ -2,11 +2,9 @@ package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.AnimalStatus;
+import com.miw.databeestjes.crittr.model.Comment;
 import com.miw.databeestjes.crittr.model.EduInfo;
-import com.miw.databeestjes.crittr.service.AnimalService;
-import com.miw.databeestjes.crittr.service.EduInfoService;
-import com.miw.databeestjes.crittr.service.FunFactService;
-import com.miw.databeestjes.crittr.service.ReportService;
+import com.miw.databeestjes.crittr.service.*;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,13 +33,16 @@ public class AnimalController {
     private ReportService reportService;
     private FunFactService funFactService;
     private EduInfoService eduInfoService;
+    private CommentService commentService;
 
     public AnimalController(AnimalService animalService, ReportService reportService,
-                            FunFactService funFactService, EduInfoService eduInfoService) {
+                            FunFactService funFactService, EduInfoService eduInfoService,
+                            CommentService commentService) {
         this.animalService = animalService;
         this.reportService = reportService;
         this.funFactService = funFactService;
         this.eduInfoService = eduInfoService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/animals")
@@ -70,6 +71,8 @@ public class AnimalController {
         model.addAttribute("animal", animal.get());
         model.addAttribute("funfact", funFactService.getRandomFactBySpecies(animal.get().getSpecies()));
         model.addAttribute("eduInfo", eduInfo);
+        model.addAttribute("comment", new Comment());
+        model.addAttribute("allCommentsForAnimal", commentService.getAllByAnimalId(animalId));
         return "animalDetails";
     }
 
