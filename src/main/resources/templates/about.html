@@ -8,39 +8,54 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
   <main>
-    <div class="container py-3 text-center">
-      <div class="mb-5">
-        <h3>About CrittR Petting Zoo</h3><br>
-        <img class="rounded-1 shadow" width="300px" src="../static/assets/DefaultAnimalPicture.png" th:src="@{/assets/DefaultAnimalPicture.png}" alt="Petting zoo aerial photo">
+    <section class="py-3 container">
+      <div class="row py-lg-3 about-background-card shadow">
+        <div class="row py-lg-3 about-background-card shadow">
+          <div class="col-lg-5 text-center mt-4 about-info-table-header">
+            <h1 class="fw">About CrittR Petting Zoo</h1><br>
+          </div>
+        </div>
+        <div class="py-5 mx-2 justify-content-evenly row">
+          <div class="col-5 align-items-center text-center ">
+            <img class="about-img rounded-circle shadow" width="300px" src="../static/assets/DefaultAnimalPicture.png" th:src="@{/assets/DefaultAnimalPicture.png}" alt="Petting zoo aerial photo">
+          </div>
+          <div class="col-5">
+            <div class="mt-4 ms-5 flex-column">
+              <div class="about-info-content shadow mb-3">
+                <h3 class="about-info-header">Our mission</h3>
+                <div class="p-2 ps-3">
+                  <p>Bringing people and animals together</p>
+                  <p>Making sure all our animals can live their best life</p>
+                </div>
+              </div>
+              <div class="about-info-content shadow mb-3">
+                <div>
+                  <h3 class="about-info-header">Contact us</h3>
+                </div>
+                <div class="pt-1 ps-1 about-contact-info">
+                  <i class="bi bi-telephone"></i>
+                  <p class="aboutText">050 - 5357000</p>
+                </div>
+                <div class="ps-1 about-contact-info">
+                  <i class="bi bi-house"></i>
+                  <p class="aboutText">Boomlaan 14, 9710 AA, Groningen</p>
+                </div>
+              </div>
+              <div class="about-info-content shadow">
+                <div>
+                  <h3 class="about-info-header">Opening hours</h3>
+                </div>
+                <div class="pt-1 about-contact-info">
+                  <p class="ps-3">Monday to Friday:<br>9:00 - 17:00 </p>
+                  <p class="ps-5">Saturday:<br> 9:00 - 20:00 </p>
+                  <p class="ps-5">Sunday:<br> 11:00 - 17:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="row row-cols-3 g-3 justify-content-around">
-        <div class="border rounded-2 py-4 px-4">
-          <h3>Our mission</h3>
-          <br>
-          <p>Bringing people and animals together</p>
-          <p>Making sure all our animals can live their best life</p>
-        </div>
-        <div class="border rounded-2 py-4 px-4">
-          <h3>Contact us</h3>
-          <br>
-          <div class="about-contact-info">
-            <i class="bi bi-telephone"></i>
-            <p class="aboutText">050 - 5357000</p>
-          </div>
-          <div class="about-contact-info">
-            <i class="bi bi-house"></i>
-            <p class="aboutText">Boomlaan 14, 9710 AA, Groningen</p>
-          </div>
-        </div>
-          <div class="border rounded-2 py-4 px-4">
-            <h3>Opening hours</h3>
-            <br>
-            <p>Monday to Friday: 9:00 - 17:00 </p>
-            <p>Saturday: 9:00 - 20:00 </p>
-            <p>Sunday: 11:00 - 17:00</p>
-          </div>
-        </div>
-      </div>
+    </section>
   </main>
   <footer th:replace="fragments/general :: footer"></footer>
   <div th:replace="fragments/general :: bottomscripts"></div>
