@@ -1,26 +1,44 @@
 let chosenSpecies = "";
 let chosenStatus = null;
 
-$('.button-column li').click(function() {
-    $(this).parent().find('li.active').removeClass('active');
+function setChosenSpecies(element) {
+    let clickedSpecies = element.find('a').html();
+    if (chosenSpecies !== clickedSpecies) {
+        chosenSpecies = clickedSpecies;
+    } else {
+        chosenSpecies = "";
+       element.removeClass('active')
+    }
+}
+
+function setChosenStatus(element) {
+    let clickedStatus = element.find('a').attr('value');
+    if (chosenStatus !== clickedStatus) {
+        chosenStatus = clickedStatus;
+    } else {
+        chosenStatus = null;
+        element.removeClass('active');
+    }
+}
+
+$('#species-list li').click(function() {
+    $('#species-list').find('li.active').removeClass('active');
+    $(this).addClass('active')
+
+    setChosenSpecies($(this));
+    searchAnimals(chosenStatus, chosenSpecies);
+})
+
+$('#status-list li').click(function() {
+    $('#status-list').find('li.active').removeClass('active');
     $(this).addClass('active');
 
-    let speciesContent = document.getElementById('species-list')
-        .getElementsByClassName('active');
-
-    if(speciesContent.length > 0){
-            chosenSpecies = speciesContent[0].getElementsByTagName('a')[0].innerHTML;
-    }
-
-    let statusContent = document.getElementById('status-list').getElementsByClassName('active');
-    if(statusContent.length > 0) {
-            chosenStatus = statusContent[0].getElementsByTagName('a')[0].getAttribute('value');
-        }
+    setChosenStatus($(this));
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
 $('#all-animals-button').click(function(){
-    $('.button-column li').removeClass('active');
+    $('.filter-column li').removeClass('active');
     chosenSpecies = "";
     chosenStatus = null;
     searchAnimals(chosenStatus, chosenSpecies);
@@ -30,10 +48,7 @@ function searchAnimals(status, keyword) {
     const searchObject = {}
     searchObject['status'] = status;
     searchObject['keyword'] = keyword
-    doAnimalSearch(searchObject);
-}
 
-function doAnimalSearch(searchObject) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
