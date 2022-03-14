@@ -2,6 +2,7 @@ package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.CrittrUser;
 import com.miw.databeestjes.crittr.model.ReportPriority;
+import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
@@ -89,6 +90,7 @@ public class CrittrUserController {
         model.addAttribute("allCriticalReports", reportService.getByReportPriority(ReportPriority.HIGH));
         model.addAttribute("allMediumReports", reportService.getByReportPriority(ReportPriority.MEDIUM));
         model.addAttribute("allNormalReports", reportService.getByReportPriority(ReportPriority.LOW));
+        model.addAttribute("allNewReports", reportService.getByReportStatus(ReportStatus.NEW));
         return "caretakerUserDetails";
     }
 

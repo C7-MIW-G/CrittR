@@ -58,9 +58,9 @@
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header">Reports: no priority</div>
-                        <ul class="list-group list-group-flush" th:each="normalReport : ${allNormalReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${normalReport.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${normalReport.reportNumber})}"></a></li>
+                        <div class="card-header">Reports: new</div>
+                        <ul class="list-group list-group-flush" th:each="newReport : ${allNewReports}">
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${newReport.issue}" th:href="@{/reports/details/{reportNr}(reportNr=${newReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                 </div>

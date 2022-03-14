@@ -48,6 +48,11 @@ public class ReportServiceImplementation implements ReportService {
         return reportRepository.findByReportPriority(priority);
     }
 
+    @Override
+    public List<Report> getByReportStatus(ReportStatus status) {
+        return reportRepository.findByReportStatus(status);
+    }
+
     public long getNextNumber() {
         Optional<Long> lastNumber = reportRepository.lastReport();
         if(lastNumber.isEmpty()) {
