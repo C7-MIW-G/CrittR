@@ -1,3 +1,31 @@
+let chosenSpecies = "";
+let chosenStatus = null;
+
+$('.button-column li').click(function() {
+    $(this).parent().find('li.active').removeClass('active');
+    $(this).addClass('active');
+
+    let speciesContent = document.getElementById('species-list')
+        .getElementsByClassName('active');
+
+    if(speciesContent.length > 0){
+            chosenSpecies = speciesContent[0].getElementsByTagName('a')[0].innerHTML;
+    }
+
+    let statusContent = document.getElementById('status-list').getElementsByClassName('active');
+    if(statusContent.length > 0) {
+            chosenStatus = statusContent[0].getElementsByTagName('a')[0].getAttribute('value');
+        }
+    searchAnimals(chosenStatus, chosenSpecies);
+})
+
+$('#all-animals-button').click(function(){
+    $('.button-column li').removeClass('active');
+    chosenSpecies = "";
+    chosenStatus = null;
+    searchAnimals(chosenStatus, chosenSpecies);
+})
+
 function searchAnimals(status, keyword) {
     const searchObject = {}
     searchObject['status'] = status;
@@ -59,7 +87,7 @@ function buildHtmlStringAnimal(data) {
         const species = dto.species;
         const age = dto.age;
         let photo = 'data:image/jpeg;base64,'+ dto.picture;
-        htmlString += '<div class="card col-lg-5 mt-4 header-info-table overview-card justify-content-center shadow" style="width: 18rem">' +
+        htmlString += '<div class="card col-lg-5 mt-4 overview-card justify-content-center shadow" style="width: 18rem">' +
             '<img class="card-img rounded-circle shadow ms-3" src="' + photo + '" >' +
             '<div class="card-body">' +
             '<div style="z-index: 2; position: relative; left: 40%" class="w-25"> ' +

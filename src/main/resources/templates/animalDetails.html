@@ -9,8 +9,8 @@
 <div class="container">
     <main>
         <section class="py-3 container">
-            <div class="row py-lg-3 detailpage-background shadow">
-                <div class="col-lg-5 text-center mt-4 header-info-table">
+            <div class="row py-lg-3 animal-details-background-card shadow">
+                <div class="col-lg-5 text-center mt-4 animal-details-info-table-header">
                     <h1 class="fw"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
                 </div>
                 <div class="col-lg-7 mt-4 text-end">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="py-5 mx-2 row">
                     <div class="col-5 align-items-center text-center ">
-                        <img class="details-img rounded-circle shadow" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
+                        <img class="animal-details-img rounded-circle shadow" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
                     </div>
                     <div class="col-3 pe-5">
                         <div class="row align-items-start">
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                     <div class="col-md-3 ps-5 text-center">
-                        <div class="info-table shadow">
-                            <h4 class="header-info-table">Info for real scientists</h4><br>
+                        <div class="animal-details-info-table shadow">
+                            <h4 class="animal-details-info-table-header">Info for real scientists</h4><br>
                             <dl th:each="info : ${eduInfo}">
                                 <dt th:text="${info.infoCategory.getDisplayName()}" />
                                 <dd th:text="${info.eduInfo}" />

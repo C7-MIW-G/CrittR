@@ -49,8 +49,11 @@ public class AnimalSearchController {
 
         if(keywords.getStatus() == null){
             animalList = animalService.getAll(keywords.getKeyword());
-        } else {
+        } else if(keywords.getKeyword().equals("")) {
             animalList = animalService.listByStatus(keywords.getStatus());
+        } else {
+            animalList = animalService.getBySpeciesAndStatus(keywords.getKeyword(), keywords.getStatus());
+
         }
         List<AnimalDTO> animalDTOS = new ArrayList<>();
         setResponseData(animalDTOS, animalList, response);
@@ -60,9 +63,7 @@ public class AnimalSearchController {
     }
 
     public void setResponseData(List<AnimalDTO> animalDTOS, List<Animal> animals, AnimalSearchResponse response) {
-        for (Animal animal : animals) {
-            animalDTOS.add(new AnimalDTO(animal));
-        }
+        animals.forEach(animal -> animalDTOS.add(new AnimalDTO(animal)));
         if(animalDTOS.isEmpty()){
             response.setMsg("No animals found");
         } else {
@@ -73,14 +74,10 @@ public class AnimalSearchController {
 
     public void setFavouritedStatus(CrittrUser user,
                                     AnimalSearchResponse response){
-
         if(user != null){
-            List<UserAnimalFavourites> favourites = userAnimalFavouritesService.getByUser(user);
-            List<Long> animalIds = getIdsFromFavourites(favourites);
+            List<Long> animalIds = getIdsFromFavourites(userAnimalFavouritesService.getByUser(user));
 
-            for (AnimalDTO dto : response.getDtos()) {
-                setFavourites(animalIds, dto);
-            }
+            response.getDtos().forEach(dto -> setFavourites(animalIds, dto));
         }
     }
 
@@ -92,9 +89,8 @@ public class AnimalSearchController {
 
     private List<Long> getIdsFromFavourites (List<UserAnimalFavourites> favourites){
         List<Long> animalIds = new ArrayList<>();
-        for (UserAnimalFavourites favourite : favourites) {
-            animalIds.add(favourite.getAnimal().getAnimalId());
-        }
+
+        favourites.forEach(favourite -> animalIds.add(favourite.getAnimal().getAnimalId()));
         return animalIds;
     }
 
