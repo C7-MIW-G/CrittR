@@ -272,6 +272,18 @@ li.active{
     padding: 0;
 }
 
+/*
+ * Animal Details Comments
+ */
+
+.animal-comments{
+    background-color: #ACD199;
+    border-radius: 25px;
+    padding: 20px;
+    width: 400px;
+    height: 150px;
+}
+
 
 /*
  * Report Details Page
@@ -375,9 +387,35 @@ li.active{
 }
 
 .aboutText {
-    padding-left: 50px;
+    padding-left: 40px;
 }
 
+.about-background-card {
+    background-color: #d6edca;
+}
+
+.about-info-table-header {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.about-img {
+    object-fit: cover;
+    width:400px;
+    height:400px;
+}
+
+.about-info-header {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.about-info-content {
+    background-color: #c8e3ba;
+    border: #ACD199;
+    border-radius: 1px;
+    padding: 0;
+}
 
 /*
  * Modal Page
@@ -532,6 +570,10 @@ li.active{
 }
 
 .style-caretaker .animal-details-info-table {
+    background-color: #dcecf5;
+}
+
+.style-caretaker .animal-comments{
     background-color: #dcecf5;
 }
 

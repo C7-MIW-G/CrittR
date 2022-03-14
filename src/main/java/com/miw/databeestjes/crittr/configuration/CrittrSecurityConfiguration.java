@@ -52,7 +52,7 @@ public class CrittrSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/webjars/**", "/favicon.ico", "/assets/**", "/api/**").permitAll()
-                .antMatchers("/", "/home", "/about", "/animals", "/animals/details/**", "/animals/results/**", "/users/new", "/users/login").permitAll()
+                .antMatchers("/", "/home", "/about", "/animals", "/animals/details/**", "/animals/results/**", "/users/new", "/users/login", "comments/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().usernameParameter("email").permitAll()
