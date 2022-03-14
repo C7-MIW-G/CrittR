@@ -1,12 +1,31 @@
 let chosenSpecies = "";
 let chosenStatus = null;
 
+function setChosenSpecies(element) {
+    let clickedSpecies = element.find('a').html();
+    if (chosenSpecies !== clickedSpecies) {
+        chosenSpecies = clickedSpecies;
+    } else {
+        chosenSpecies = "";
+       element.removeClass('active')
+    }
+}
+
+function setChosenStatus(element) {
+    let clickedStatus = element.find('a').attr('value');
+    if (chosenStatus !== clickedStatus) {
+        chosenStatus = clickedStatus;
+    } else {
+        chosenStatus = null;
+        element.removeClass('active');
+    }
+}
+
 $('#species-list li').click(function() {
     $('#species-list').find('li.active').removeClass('active');
     $(this).addClass('active')
 
-    chosenSpecies = $(this).find('a').html();
-    console.log(chosenSpecies)
+    setChosenSpecies($(this));
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
@@ -14,8 +33,7 @@ $('#status-list li').click(function() {
     $('#status-list').find('li.active').removeClass('active');
     $(this).addClass('active');
 
-    chosenStatus = $(this).find('a').attr('value');
-    console.log(chosenStatus);
+    setChosenStatus($(this));
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
@@ -30,10 +48,7 @@ function searchAnimals(status, keyword) {
     const searchObject = {}
     searchObject['status'] = status;
     searchObject['keyword'] = keyword
-    doAnimalSearch(searchObject);
-}
 
-function doAnimalSearch(searchObject) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
