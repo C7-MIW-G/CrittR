@@ -86,9 +86,7 @@ public class FavouriteRestController {
 
     private List<Animal> getAnimalsFromAnimalFavourites(List<UserAnimalFavourites> userAnimalFavourites){
         List<Animal> animalList = new ArrayList<>();
-        for (UserAnimalFavourites userAnimalFavourite : userAnimalFavourites) {
-            animalList.add(userAnimalFavourite.getAnimal());
-        }
+        userAnimalFavourites.forEach(favourite -> animalList.add(favourite.getAnimal()));
         return animalList;
     }
 }
