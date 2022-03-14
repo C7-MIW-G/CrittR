@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -50,6 +51,9 @@ public class Animal {
 
     @OneToMany(mappedBy = "animal")
     private Set<Report> reports;
+
+    @OneToMany(mappedBy = "animal")
+    private List<Comment> comments;
 
     public int getAge() {
         return Period.between(birthDate, LocalDate.now()).getYears();

@@ -47,6 +47,9 @@ public class CrittrUser implements UserDetails {
     @OneToMany(mappedBy = "claimer")
     private List<Report> claimedReports;
 
+    @OneToMany(mappedBy = "commenter")
+    private List<Comment> comments;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
