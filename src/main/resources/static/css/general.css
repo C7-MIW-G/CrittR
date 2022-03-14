@@ -168,7 +168,7 @@ li.active{
  * Animal Cards
  */
 
-.card{
+.card {
     padding: 20px;
     text-align: center;
     margin-left: 20px;
@@ -179,6 +179,10 @@ li.active{
     background-color: #ACD199;
     color: white;
     font-size: larger;
+}
+
+.overview-card {
+    background-color: #ACD199;
 }
 
 .overview-card:hover {
@@ -482,10 +486,12 @@ li.active{
     background-color: #8FAFBF;
 }
 
-.style-caretaker .card-header {
+.style-caretaker .animal-overview-background-card {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .animal-overview-header {
     background-color: #b8d6e6;
-    color: white;
-    font-size: larger;
 }
 
 .style-caretaker .animal-overview-report-issue-btn {
@@ -496,16 +502,47 @@ li.active{
     background-color: #a7c9db;
 }
 
+.style-caretaker .card-header {
+    background-color: #b8d6e6;
+    color: white;
+    font-size: larger;
+}
+
+.style-caretaker .overview-card {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .overview-card:hover {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .animal-details-background-card {
+    background-color: #e9f2f7;
+}
+
 .style-caretaker .animal-details-info-table-header {
     background-color: #b8d6e6;
 }
 
-.style-caretaker .animal-details-info-table-header:hover {
-    background-color: #a7c9db;
+.style-caretaker .animal-details-info-table {
+    background-color: #dcecf5;
 }
 
-.style-caretaker .animal-details-info-table {
-    background-color: #a5c7d9;
+.style-caretaker .report-form-background-card {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .report-form-info-table-header {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .report-form-info-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+}
+
+.style-caretaker .account-background-card {
+    background-color: #e9f2f7;
 }
 
 .style-caretaker .account-info-table-header {
@@ -513,19 +550,16 @@ li.active{
 }
 
 .style-caretaker .account-info-table {
-    background-color: #e9f2f7;
+    background-color: #dcecf5;
     border: #a5c7d9;
 }
 
 .style-caretaker .account-list-group {
-    background-color: #e9f2f7;
+    background-color: #dcecf5;
 }
 
 .style-caretaker .account-list-group:hover {
     background-color: #fff;
 }
 
-.style-caretaker .animal-details-background-card {
-    background-color: #dcecf5;
-}
 
