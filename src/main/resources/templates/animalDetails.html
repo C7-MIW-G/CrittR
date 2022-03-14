@@ -65,23 +65,22 @@
                             <input type="hidden" th:field="${animal.animalId}"/>
                             <textarea class="form-control" placeholder="Leave a comment" id="comment" th:field="*{commentText}"></textarea>
                             <div class="col-2">
-                                <input value="Send" type="submit" class="btn btn-primary submit-button"/>
+                                <input value="Send" type="submit" class="btn btn-primary"/>
                             </div>
                         </form>
                     </div>
                     <div>
 
                         <div class="container mt-5">
-                            <div class="d-flex justify-content-start row ">
-                                <div class="col-md-8 animal-comments" style="position: relative" th:each="comment : ${allCommentsForAnimal}">
+                            <div>
+                                <div class="col-md-8 mb-2 animal-comments ms-3" style="position: relative" th:each="comment : ${allCommentsForAnimal}">
                                     <div class="d-flex flex-column comment-section" >
                                         <div>
-                                            <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name" th:text="${comment.commenter.getUsername()}"></span>
+                                            <div><span class="d-block font-weight-bold name" th:text="${comment.commenter.getUsername()}"></span>
                                                 <span class="date text-black-50" th:text="${#temporals.format(comment.dateTime, 'dd-MM-yyyy HH:mm')}"></span>
                                             </div>
                                             <p class="comment-text" th:text="${comment.commentText}"></p>
                                         </div>
-                                        <br>
                                     </div>
                                 </div>
                             </div>
