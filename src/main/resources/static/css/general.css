@@ -465,7 +465,6 @@ li.active{
     height: fit-content;
 }
 
-
 /*
  * About Page
  */
@@ -526,8 +525,21 @@ li.active{
     padding: 10px;
 }
 
-.user-form-delete-btn {
+.user-form-delete-btn-margin {
     margin-left: 60px;
+}
+
+.user-form-delete-btn {
+    color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: #ACD199 solid;
+}
+
+.user-form-delete-btn:hover {
+    border-style: solid;
+    border-color: #8DAD7D;
+    color: black;
 }
 
 /*
