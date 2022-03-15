@@ -146,6 +146,7 @@ li.active{
     filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
 }
 
+
 .heart-img-clicked {
     filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
     width: 25px;
@@ -201,7 +202,6 @@ li.active{
     width:230px;
     height:230px;
 }
-
 
 /*
  * Filter and Search Bar
@@ -272,6 +272,20 @@ li.active{
     padding: 0;
 }
 
+.animal-details-report-issue-btn {
+    background-color: #ACD199;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.margin-report-btn {
+    margin-right: 120px;
+}
+
 /*
  * Animal Details Comments
  */
@@ -283,7 +297,6 @@ li.active{
     width: 400px;
     height: 150px;
 }
-
 
 /*
  * Report Details Page
