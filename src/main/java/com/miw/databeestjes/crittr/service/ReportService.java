@@ -25,5 +25,5 @@ public interface ReportService {
 
     long getNextNumber();
 
-    void addNew(String issue, Animal animal, String animalName, String species, String description, CrittrUser reporter, ReportPriority... priority);
+    void addNew(String issue, Animal animal, String animalName, String species, String description, CrittrUser reporter, ReportStatus status, ReportPriority... priority);
 }

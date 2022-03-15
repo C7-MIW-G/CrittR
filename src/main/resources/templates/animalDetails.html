@@ -8,79 +8,84 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <section class="py-3 container">
-            <div class="row py-lg-3 animal-details-background-card shadow">
-                <div class="col-lg-5 text-center mt-4 animal-details-info-table-header">
-                    <h1 class="fw"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
+        <section class="py-3 container animal-details-background-card shadow">
+            <div class="row py-lg-3  justify-content-between">
+                <div class="col-5 mt-4 animal-details-info-table-header d-flex justify-content-evenly">
+                    <h1 class="fw col-8"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
+                    <div class="col-2">
+                        <input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/>
+                    </div>
                 </div>
-                <div class="col-lg-7 mt-4 text-end">
-                    <form th:action="@{/animals/details/{animalId}(animalId=${animal.animalId})}" method="post" sec:authorize="hasRole('MEMBER') or hasRole('CARETAKER')">
-                        <input type="submit" value="favourite" class="btn btn-primary my-2"/>
+                <div class="col-2 mt-3 margin-report-btn">
+                    <a th:href="@{/reports/new}" role="button" class="btn my-2 animal-details-report-issue-btn">Report issue</a>
+                </div>
+            </div>
+            <div class="py-5 mx-2 row">
+                <div class="col-5 align-items-center text-center ">
+                    <img class="animal-details-img rounded-circle shadow" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
+                </div>
+                <div class="col-3 pe-5 ">
+                    <div class="row animal-details-info-table shadow">
+                        <div class="animal-details-info-table-header">
+                            <h4>Biography</h4>
+                        </div>
+                        <p class="border-bottom mt-2 pb-2" th:text="${animal.biography}"></p>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th class="th-sm" scope="row">Animal</th>
+                                <td th:text="${animal.species}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">Age</th>
+                                <td th:text="${animal.age}"></td>
+                            </tr>
+                            <tr>
+                                <th class="th-sm" scope="row">Birthday</th>
+                                <td th:text="${#temporals.format(comment.dateTime, 'dd-MM-yyyy')}"></td>
+                            </tr>
+                        </table>
+                    </div>
+<!--                    <div class="row mt-5 align-items-start animal-details-info-table shadow">-->
+<!--                        -->
+<!--                    </div>-->
+                    <div class="row mt-5 animal-details-info-table shadow">
+                        <div class="animal-details-info-table-header">
+                        <h4>Fun Fact</h4>
+                        </div>
+                        <p class="mt-2" th:text="${funfact.fact}"></p>
+                    </div>
+                </div>
+                <div class="col-md-3 ps-5 text-center">
+                    <div class="animal-details-info-table shadow">
+                        <h4 class="animal-details-info-table-header">Info for real scientists</h4><br>
+                        <dl th:each="info : ${eduInfo}">
+                            <dt th:text="${info.infoCategory.getDisplayName()}" />
+                            <dd th:text="${info.eduInfo}" />
+                        </dl><br>
+                    </div>
+                </div>
+                <div class="col-8 pt-3 ms-5">
+                    <h4>Comments</h4>
+                    <form class="row g-3" th:action="@{/comments/new}" method="post" th:object="${comment}">
+                        <input type="hidden" th:field="*{commentId}"/>
+                        <input type="hidden" th:field="${animal.animalId}"/>
+                        <textarea class="form-control" placeholder="Leave a comment" id="comment" th:field="*{commentText}"></textarea>
+                        <div class="col-2">
+                            <input value="Send" type="submit" class="btn btn-primary"/>
+                        </div>
                     </form>
                 </div>
-                <div class="py-5 mx-2 row">
-                    <div class="col-5 align-items-center text-center ">
-                        <img class="animal-details-img rounded-circle shadow" th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" alt="This is a picture of this animal.">
-                    </div>
-                    <div class="col-3 pe-5">
-                        <div class="row align-items-start">
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <th class="th-sm" scope="row">Animal</th>
-                                    <td th:text="${animal.species}"></td>
-                                </tr>
-                                <tr>
-                                    <th class="th-sm" scope="row">Age</th>
-                                    <td th:text="${animal.age}"></td>
-                                </tr>
-                                <tr>
-                                    <th class="th-sm" scope="row">birthdate</th>
-                                    <td th:text="${#temporals.format(comment.dateTime, 'dd-MM-yyyy')}"></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="row mt-5">
-                            <h4>Biography</h4>
-                            <p th:text="${animal.biography}"></p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ps-5 text-center">
-                        <div class="animal-details-info-table shadow">
-                            <h4 class="animal-details-info-table-header">Info for real scientists</h4><br>
-                            <dl th:each="info : ${eduInfo}">
-                                <dt th:text="${info.infoCategory.getDisplayName()}" />
-                                <dd th:text="${info.eduInfo}" />
-                            </dl><br>
-                        </div>
-                    </div>
-                    <div class="col-8 pt-3 ms-5">
-                        <h4>Fun Fact</h4>
-                        <p th:text="${funfact.fact}"></p>
-                    </div>
-                    <div class="col-8 pt-3 ms-5">
-                        <h4>Comments</h4>
-                        <form class="row g-3" th:action="@{/comments/new}" method="post" th:object="${comment}">
-                            <input type="hidden" th:field="*{commentId}"/>
-                            <input type="hidden" th:field="${animal.animalId}"/>
-                            <textarea class="form-control" placeholder="Leave a comment" id="comment" th:field="*{commentText}"></textarea>
-                            <div class="col-2">
-                                <input value="Send" type="submit" class="btn btn-primary"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div>
-
-                        <div class="container mt-5">
-                            <div>
-                                <div class="col-md-8 mb-2 animal-comments ms-3" style="position: relative" th:each="comment : ${allCommentsForAnimal}">
-                                    <div class="d-flex flex-column comment-section" >
-                                        <div>
-                                            <div><span class="d-block font-weight-bold name" th:text="${comment.commenter.getUsername()}"></span>
-                                                <span class="date text-black-50" th:text="${#temporals.format(comment.dateTime, 'dd-MM-yyyy HH:mm')}"></span>
-                                            </div>
-                                            <p class="comment-text" th:text="${comment.commentText}"></p>
+                <div>
+                    <div class="container mt-5">
+                        <div>
+                            <div class="col-md-8 mb-2 animal-comments ms-3" style="position: relative" th:each="comment : ${allCommentsForAnimal}">
+                                <div class="d-flex flex-column comment-section" >
+                                    <div>
+                                        <div><span class="d-block font-weight-bold name" th:text="${comment.commenter.getUsername()}"></span>
+                                            <span class="date text-black-50" th:text="${#temporals.format(comment.dateTime, 'dd-MM-yyyy HH:mm')}"></span>
                                         </div>
+                                        <p class="comment-text" th:text="${comment.commentText}"></p>
                                     </div>
                                 </div>
                             </div>
@@ -88,10 +93,11 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    <footer th:replace="fragments/general :: footer"></footer>
-    <div th:replace="fragments/general :: bottomscripts"></div>
+</div>
+</section>
+</main>
+<footer th:replace="fragments/general :: footer"></footer>
+<div th:replace="fragments/general :: bottomscripts"></div>
 </div>
 </body>
 </html>
