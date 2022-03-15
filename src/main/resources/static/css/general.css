@@ -179,14 +179,25 @@ li.active{
     height: 25px;
 }
 
-.heart-img:hover{
-    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
+.heart-outline:hover {
+    filter: invert(24%) sepia(90%) saturate(6826%) hue-rotate(356deg) brightness(102%) contrast(124%);;
 }
 
 .heart-img-clicked {
-    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
-    width: 25px;
-    height: 25px;
+    filter: invert(24%) sepia(90%) saturate(6826%) hue-rotate(356deg) brightness(102%) contrast(124%);
+}
+.heart-outline.heart-img-clicked:hover {
+    filter: invert(76%) sepia(1%) saturate(0%) hue-rotate(134deg) brightness(96%) contrast(89%);;
+}
+
+.heart-overlay {
+    position: absolute;
+}
+.heart-outline {
+    position: absolute;
+    bottom: 0;
+    margin-right: 25px;
+    margin-bottom: 6px;
 }
 
 .animal-overview-report-issue-btn {
@@ -339,6 +350,21 @@ li.active{
     width: 400px;
     height: 150px;
 }
+
+
+/*
+ * Report Overview Page (caretakers)
+ */
+
+.report-overview-background-card {
+    background-color: #e9f2f7;
+}
+
+.report-overview-info-table-header {
+    background-color: #b8d6e6;
+    padding: 10px;
+}
+
 
 /*
  * Report Details Page
@@ -624,6 +650,10 @@ li.active{
     background-color: #8FAFBF;
 }
 
+.style-caretaker .toggle-animal-button {
+
+}
+
 .style-caretaker .animal-details-background-card {
     background-color: #e9f2f7;
 }
@@ -674,4 +704,62 @@ li.active{
     background-color: #fff;
 }
 
+.style-caretaker .animal-overview-report-issue-btn {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .animal-overview-report-issue-btn:hover {
+    background-color: #a7c9db;
+}
+
+.caretaker-animal-search-bar {
+    display: block;
+    width: 100%;
+}
+
+.ct-animal-overview-add-animal-btn {
+    background-color: #b8d6e6;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.ct-animal-overview-add-animal-btn:hover {
+    background-color: #a7c9db;
+}
+
+.ct-report-overview-report-btn {
+    background-color: #b8d6e6;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.ct-report-overview-report-btn:hover {
+    background-color: #a7c9db;
+}
+
+.style-caretaker .about-background-card {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .about-info-table-header {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .about-info-header {
+    background-color: #b8d6e6;
+    border: #a5c7d9;
+}
+
+.style-caretaker .about-info-content {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+}
 

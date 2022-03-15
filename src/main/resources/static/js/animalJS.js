@@ -93,6 +93,8 @@ function setHearts(data) {
         if(dto.favourited){
         const heartId = '#heart-img-' + dto.animalId;
         $(heartId).toggleClass("heart-img-clicked");
+        const heartOutline = '#heart-outline-' + dto.animalId;
+        $(heartOutline).toggleClass('heart-img-clicked');
     }})
 }
 
@@ -109,7 +111,10 @@ function buildHtmlStringAnimal(data) {
         `<img class="card-img rounded-circle shadow" src="data:image/jpeg;base64,${dto.picture}">` +
         `<div class="card-body">` +
         `<div style="z-index: 2; position: relative; left: 40%" class="w-25">`+
+        `<label>` +
         `<input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/> ` +
+        `<div class="heart-overlay"><img class="heart-img mt-2 heart-outline" id="heart-outline-${dto.animalId}" src="/assets/heart.svg" alt="heart outline"/></div>` +
+        `</label>` +
         `</div>` +
         `<h4 class="card-title">${dto.name} the ${dto.species} </h4>` +
         `<a style="z-index: 1" href="/animals/details/${dto.animalId}"` +
@@ -131,10 +136,23 @@ function buildHtmlStringAnimalCaretaker(data) {
     data.dtos.forEach(dto => htmlString +=
     `<tr style="position: relative">` +
     `<td><a class="stretched-link hyperlink-no-styling"` +
-    ` href="/caretaker/animals/details/${dto.animalId}"></a>${dto.name}</td>` +
-    `<td>${dto.species}</td>` +
+    ` href="/caretaker/animals/details/${dto.animalId}"></a>${dto.species}</td>` +
+    `<td>${dto.name}</td>` +
     `<td>${dto.age}</td>` +
     `<td>${dto.status}</td></tr>`)
 
     return htmlString;
+}
+
+function setButtonColours(animalStatus) {
+   switch(animalStatus){
+       case 0 : $('#btn-incoming').addClass('btn-primary');
+           break;
+       case 1 : $('#btn-present').addClass('btn-primary');
+            break;
+       case 2 : $('#btn-relocated').addClass('btn-primary')
+           break;
+       case 3 : $('#btn-deceased').addClass('btn-primary');
+            break;
+   }
 }

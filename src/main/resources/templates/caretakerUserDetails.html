@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseheader(~{:: title}, ~{:: link})">
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
-    <title>CrittR - User Details</title>
+    <title>CrittR - Dashboard</title>
 </head>
 <body>
 <header th:replace="fragments/general :: navbar"></header>
@@ -17,32 +17,37 @@
         </section>
         <section class="py-3 container">
             <div class="row py-lg-3 account-background-card shadow justify-content-between">
-                <div class="col-lg-5 text-center mt-4 account-info-table-header">
-                    <h1 class="fw-light">Reports</h1>
+                <div class="col-lg-5 text-center text-white mt-4 account-info-table-header">
+                    <h1>Reports</h1>
+                </div>
+                <div class="col-2 mt-4">
+                    <a th:href="@{/reports}" class="btn btn-primary text-black py-2 ms-4 mt-3" role="button">All reports</a>
                 </div>
                 <div class="container row py-4 justify-content-evenly">
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header">Reports claimed by you</div>
+                        <div class="card-header text-black fw-bold">Claimed by you</div>
                         <ul class="list-group list-group-flush" th:each="report : ${user.claimedReports}">
                             <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header">Reports: critical <span class="priority-mark" id="priority-high"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                        <div class="card-header text-black fw-bold"><span class="priority-mark" id="priority-high"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                            &nbsp;&nbsp;Critical
                         </div>
                         <ul class="list-group list-group-flush" th:each="criticalReport : ${allCriticalReports}">
                             <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${criticalReport.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${criticalReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header">Reports: serious <span class="priority-mark" id="priority-medium"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                        <div class="card-header text-black fw-bold"><span class="priority-mark" id="priority-medium"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                            &nbsp;&nbsp;Serious
                         </div>
                         <ul class="list-group list-group-flush" th:each="mediumReport : ${allMediumReports}">
                             <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${mediumReport.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${mediumReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header">Reports: new</div>
+                        <div class="card-header text-black fw-bold">New</div>
                         <ul class="list-group list-group-flush" th:each="newReport : ${allNewReports}">
                             <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${newReport.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${newReport.reportNumber})}"></a></li>
                         </ul>
@@ -54,7 +59,7 @@
             <div class="row py-lg-3 account-background-card shadow justify-content-between">
                 <div class="container row py-4 justify-content-evenly">
                     <div class="account-info-table shadow col-5 text-center">
-                        <h4 class="account-info-table-header">Account details</h4>
+                        <h4 class="account-info-table-header text-white">Account details</h4>
                         <div class="mt-3 ms-4">
                             <table class="table text-start mb-2" style="font-size: large">
                                 <tbody>
@@ -70,7 +75,7 @@
                             </table>
                         </div>
                         <div class="mb-2">
-                            <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
+                            <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary text-black my-2" role="button">Edit</a>
                         </div>
                     </div>
                 </div>

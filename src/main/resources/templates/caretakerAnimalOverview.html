@@ -8,26 +8,29 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Animals</h1>
-                    <p class="lead text-muted">A list of all the animals in our care</p>
-                    <p>
-                        <a th:href="@{/animals/new}" role="button" class="btn btn-primary my-2">Add animal</a>
-                    </p>
+        <div class="toggle-animal-button d-flex justify-content-end">
+            <p class="text-muted">Toggle overview</p>
+            <a th:href="@{/animals}">
+                <img height="25" width="50" src="../static/assets/toggleoff.png" th:src="@{/assets/toggleoff.png}" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
+            </a>
+        </div>
+        <section class="py-3 container">
+            <div class="row py-lg-3 report-overview-background-card shadow justify-content-between">
+                <div class="col-lg-5 text-center text-white mt-4 report-overview-info-table-header">
+                    <h1 class="fw-light">Animal Overview</h1>
                 </div>
-            </div>
-        </section>
-        <div class="overview py-5">
-            <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="d-flex col-3 mt-4 align-items-end">
+                    <input type="text" class="caretaker-animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
+                </div>
+                <div class="d-flex col-2 mt-4 align-items-end">
+                    <a th:href="@{/animals/new}" role="button" class="btn ct-animal-overview-add-animal-btn">Add animal</a>
+                </div>
+                <div class="d-flex p-4 justify-content-center">
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th scope="col">Animal</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Species</th>
                             <th scope="col">Age</th>
                             <th scope="col">Status</th>
                         </tr>
@@ -37,7 +40,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>

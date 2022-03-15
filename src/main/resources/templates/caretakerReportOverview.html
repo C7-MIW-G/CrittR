@@ -8,23 +8,21 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Reports</h1>
-                    <p class="lead text-muted">All the reports that have been submitted</p>
-                    <p><a th:href="@{/reports/new}" role="button" class="btn btn-primary my-2">Report Issue</a></p>
+        <section class="py-3 container">
+            <div class="row py-lg-3 report-overview-background-card shadow justify-content-between">
+                <div class="col-lg-5 text-center text-white mt-4 report-overview-info-table-header">
+                    <h1>Report Overview</h1>
                 </div>
-            </div>
-        </section>
-        <div class="overview py-5">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <table class="table table-hover table-wrap align-middle">
+                <div class="d-flex col-3 mt-4 align-items-end">
+                    <a th:href="@{/reports/new}" role="button" class="btn ct-report-overview-report-btn">Report a problem</a>
+                </div>
+                <div class="d-flex p-4 justify-content-center">
+                    <table class="table table-hover align-middle">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Species</th>
+                            <th scope="col">Animal</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Issue</th>
                             <th scope="col">Date submitted</th>
                             <th scope="col">Status</th>
@@ -34,6 +32,7 @@
                         <tr style="position: relative" th:each="report : ${allReports}">
                             <td><a class="stretched-link hyperlink-no-styling" th:text="${report.reportNumber}" th:href="@{/caretaker/reports/details/{reportNumber}(reportNumber=${report.reportNumber})}"></a></td>
                             <td th:text="${report.species}"></td>
+                            <td th:text="${report.animalName}"></td>
                             <td th:text="${report.issue}"></td>
                             <td th:text="${#temporals.format(report.reportDate, 'dd-MM-yyyy HH:mm')}"></td>
                             <td th:text="${report.status.getDisplayName()}"></td>
@@ -47,7 +46,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>

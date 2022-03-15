@@ -13,6 +13,8 @@ function favouriteToggle(animalId){
         success: function(){
             const heartId = "#heart-img-" + animalId;
             $(heartId).toggleClass("heart-img-clicked");
+            const heartOutline = '#heart-outline-' + animalId;
+            $(heartOutline).toggleClass('heart-img-clicked');
         },
         error: function () {
             console.log("something went wrong")
