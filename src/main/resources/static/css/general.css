@@ -611,4 +611,21 @@ li.active{
     background-color: #fff;
 }
 
+.about-background-card {
+    background-color: #e9f2f7;
+}
+
+.about-info-table-header {
+    background-color: #b8d6e6;
+}
+
+.about-info-header {
+    background-color: #b8d6e6;
+    border: #a5c7d9;
+}
+
+.about-info-content {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+}
 
