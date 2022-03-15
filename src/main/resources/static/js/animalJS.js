@@ -105,8 +105,8 @@ function buildHtmlStringAnimal(data) {
     }
 
     data.dtos.forEach(dto => htmlString +=
-        `<div class="card col-lg-5 mt-4 overview-card justify-content-center shadow" style="width: 18rem">` +
-        `<img class="card-img rounded-circle shadow ms-3" src="data:image/jpeg;base64,${dto.picture}">` +
+        `<div class="card mt-4 overview-card justify-content-center shadow">` +
+        `<img class="card-img rounded-circle shadow" src="data:image/jpeg;base64,${dto.picture}">` +
         `<div class="card-body">` +
         `<div style="z-index: 2; position: relative; left: 40%" class="w-25">`+
         `<input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/> ` +

@@ -30,8 +30,8 @@
                     <div class="col-5 mt-4 animal-overview-header">
                         <h1 class="fw">Animals</h1>
                     </div>
-                    <div class="col-2">
-                        <a sec:authorize="isAuthenticated()" th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report issue</a>
+                    <div class="col-2 mt-3 animal-overview-report-issue-btn-margin">
+                        <a th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report issue</a>
                     </div>
                     <div class="py-5">
                         <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
