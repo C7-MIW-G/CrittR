@@ -3,6 +3,7 @@ package com.miw.databeestjes.crittr.repository;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.Report;
 import com.miw.databeestjes.crittr.model.ReportPriority;
+import com.miw.databeestjes.crittr.model.ReportStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,4 +26,7 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
 
     @Query("SELECT r FROM Report r WHERE r.priority = ?1")
     List<Report> findByReportPriority(ReportPriority priority);
+
+    @Query("SELECT r FROM Report r WHERE r.status = ?1")
+    List<Report> findByReportStatus(ReportStatus status);
 }

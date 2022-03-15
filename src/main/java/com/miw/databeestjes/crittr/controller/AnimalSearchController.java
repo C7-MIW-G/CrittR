@@ -53,7 +53,6 @@ public class AnimalSearchController {
             animalList = animalService.listByStatus(keywords.getStatus());
         } else {
             animalList = animalService.getBySpeciesAndStatus(keywords.getKeyword(), keywords.getStatus());
-
         }
         List<AnimalDTO> animalDTOS = new ArrayList<>();
         setResponseData(animalDTOS, animalList, response);

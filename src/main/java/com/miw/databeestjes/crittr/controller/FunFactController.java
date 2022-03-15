@@ -26,7 +26,7 @@ public class FunFactController {
         if(result.hasErrors()){
         return "redirect:/" ;
         }
-        funFactService.addFunFact(funfact.getFact(), funfact.getSpecies());
+        funFactService.save(funfact);
         return "redirect:/";
      }
 

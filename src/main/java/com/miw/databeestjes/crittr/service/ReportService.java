@@ -21,6 +21,8 @@ public interface ReportService {
 
     List<Report> getByReportPriority(ReportPriority priority);
 
+    List<Report> getByReportStatus(ReportStatus status);
+
     long getNextNumber();
 
     void addNew(String issue, Animal animal, String animalName, String species, String description, CrittrUser reporter, ReportPriority... priority);

@@ -24,6 +24,11 @@ public class FunFactServiceImplementation implements FunFactService {
     }
 
     @Override
+    public void save(FunFact funfact) {
+        funFactRepository.save(funfact);
+    }
+
+    @Override
     public FunFact getRandomFactBySpecies(String species) {
         List<FunFact> factListOfSpecies = funFactRepository.findBySpecies(species);
         if(factListOfSpecies.isEmpty()){
