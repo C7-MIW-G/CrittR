@@ -19,8 +19,7 @@ public class FunFactSeeder {
         this.funFactService = funFactService;
     }
 
-    @EventListener
-    public void seedFunFact(ContextRefreshedEvent event) {
+    public void seedFunFact() {
         if (funFactService.getAll().size() == 0) {
             funFactService.addFunFact("Cows can sleep standing up, but they can only dream lying down.", "Cow");
             funFactService.addFunFact("Just like you, cows have best friends. Not only does companionship make cows happier, it also makes them smarter.", "Cow");

@@ -20,8 +20,7 @@ public class EduInfoSeeder {
         this.eduInfoService = eduInfoService;
     }
 
-    @EventListener
-    public void seedEduInfo(ContextRefreshedEvent event){
+    public void seedEduInfo(){
         if (eduInfoService.getAll().size() == 0){
             eduInfoService.addNewEduInfo("Bos taurus", "Cow", EduInfoCategory.LATIN_NAME);
             eduInfoService.addNewEduInfo("Mammal", "Cow", EduInfoCategory.CLASS);

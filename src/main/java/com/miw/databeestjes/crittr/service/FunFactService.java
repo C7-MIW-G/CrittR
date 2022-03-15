@@ -11,4 +11,6 @@ public interface FunFactService {
     void addFunFact(String fact, String species);
 
     List<FunFact> getAll();
+
+    void save(FunFact funfact);
 }

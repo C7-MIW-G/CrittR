@@ -24,8 +24,7 @@ public class AnimalSeeder {
         this.animalService = animalService;
     }
 
-    @EventListener
-    public void seedAnimal(ContextRefreshedEvent event) {
+    public void seedAnimal() {
         if (animalService.getAll().size() == 0) {
             animalService.addNewAnimal("Goat", "Gary", LocalDate.parse("2008-03-08"), "It's super cute!!", getPicture("goat1.jpg"));
             animalService.addNewAnimal("Goat", "Gomez", LocalDate.parse("2013-08-03"), "", getPicture("goat2.png"));
