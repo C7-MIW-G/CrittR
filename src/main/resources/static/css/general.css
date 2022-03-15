@@ -298,6 +298,33 @@ li.active{
     height: 150px;
 }
 
+
+/*
+ * Report Overview Page (caretakers)
+ */
+
+.report-overview-background-card {
+    background-color: #e9f2f7;
+}
+
+.report-overview-info-table-header {
+    background-color: #b8d6e6;
+    padding: 10px;
+}
+
+/*.style-caretaker .account-info-table {*/
+/*    background-color: #dcecf5;*/
+/*    border: #a5c7d9;*/
+/*}*/
+
+/*.style-caretaker .account-list-group {*/
+/*    background-color: #dcecf5;*/
+/*}*/
+
+/*.style-caretaker .account-list-group:hover {*/
+/*    background-color: #fff;*/
+/*}*/
+
 /*
  * Report Details Page
  */
@@ -355,10 +382,12 @@ li.active{
 .priority-mark {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 1px;
 }
 
 .bi-exclamation-diamond-fill {
     text-shadow: 0 0 5px black;
+    margin-bottom: 2px;
 }
 
 .svg-img {

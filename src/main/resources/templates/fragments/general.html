@@ -20,14 +20,14 @@
                 <img src="../static/assets/CrittrLogoWhite.png" th:src="@{/assets/CrittrLogoWhite.png}" alt="CrittR-Logo" width="50" class="d-inline-block align-text-top">
             </a>
             <ul class="nav me-auto">
-                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="home-button" th:href="@{/home}">CrittR</a></li>
-                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="animal-link" sec:authorize="hasRole('MEMBER') or hasRole('ADMIN') or isAnonymous()" th:href="@{/animals}">Animals</a></li>
-                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="animals-caretaker-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals</a></li>
-                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="report-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a></li>
-                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" id="report-issue-link" sec:authorize="hasRole('MEMBER')" th:href="@{/reports/new}" >Report issue</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" th:href="@{/home}">CrittR</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER')" th:href="@{/account/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Dashboard</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('MEMBER') or hasRole('ADMIN') or isAnonymous()" th:href="@{/animals}">Animals</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('MEMBER')" th:href="@{/reports/new}" >Report issue</a></li>
             </ul>
             <ul class="nav">
-                <li><a sec:authorize="hasRole('CARETAKER')" class="nav-link px-2 link-dark fw-bold nav-text-link" th:href="@{/account/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Dashboard</a></li>
             </ul>
             <ul class="nav">
                 <li><a class="nav-link px-2 link-dark nav-text-link" th:href="@{/about}">About</a></li>
