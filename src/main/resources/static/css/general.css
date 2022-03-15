@@ -142,7 +142,7 @@ li.active{
     height: 25px;
 }
 
-.heart-img:hover{
+.heart-outline:hover {
     filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
 }
 
@@ -150,6 +150,16 @@ li.active{
     filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
     width: 25px;
     height: 25px;
+}
+
+.heart-overlay {
+    position: absolute;
+}
+.heart-outline {
+    position: absolute;
+    bottom: 0;
+    margin-right: 25px;
+    margin-bottom: 6px;
 }
 
 .animal-overview-report-issue-btn {
