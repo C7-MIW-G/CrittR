@@ -93,6 +93,8 @@ function setHearts(data) {
         if(dto.favourited){
         const heartId = '#heart-img-' + dto.animalId;
         $(heartId).toggleClass("heart-img-clicked");
+        const heartOutline = '#heart-outline-' + dto.animalId;
+        $(heartOutline).toggleClass('heart-img-clicked');
     }})
 }
 
