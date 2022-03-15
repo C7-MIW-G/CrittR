@@ -1,6 +1,5 @@
 package com.miw.databeestjes.crittr.seeding;
 
-import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.*;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.context.event.ContextRefreshedEvent;

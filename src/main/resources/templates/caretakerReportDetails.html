@@ -82,7 +82,7 @@
                         </form>
 
                         </div>
-                        <div  th:if="${report.status.ordinal() == 0}">
+                        <div  th:if="${report.status.ordinal() != 4 && report.status.ordinal() != 2}">
                             <a th:href="@{/reports/details/edit/{reportNumber}(reportNumber=${report.reportNumber})}" class="btn btn-primary" role="button">Edit</a>
                         </div>
                     </div>
