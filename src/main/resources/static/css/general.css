@@ -120,6 +120,43 @@ li.active{
 }
 
 /*
+ * Homepage
+ */
+
+.home-background-card {
+    background-color: #d6edca;
+}
+
+.home-card {
+    width: 200px;
+    height: 150px;
+    background-color: #ACD199;
+    padding: 20px 20px 0 20px;
+    text-align: center;
+    margin-left: 20px;
+    border: none;
+    position: relative;
+}
+
+.home-card:hover {
+    background-color: #8DAD7D;
+}
+
+.home-img {
+    width: 240px;
+    height: 240px;
+    object-fit: fill;
+}
+
+.centered-text-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+}
+/*
  * Animal Overview Page
  */
 
