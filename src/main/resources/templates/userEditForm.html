@@ -8,50 +8,65 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <div class="col-lg-8">
-            <h1>Edit Account</h1>
-            <form class="row g-3" th:action="@{/user/details/edit/{userId}(userId=${user.userId})}" method="post" th:object="${user}">
-                <input type="hidden" th:field="*{userId}"/>
-                <div class="col-8">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="username">Name*</label>
-                    <input class="form-control" placeholder="Name" id="username" type="text" th:field="*{username}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="password">Password*</label>
-                    <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}" onkeyup='checkPassword()'>
-                    <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="confirm_password">Confirm Password*</label>
-                    <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
-                </div><br>
-                <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
-                <div sec:authorize="hasRole('ADMIN')">
-                    <div class="form-check" th:each="userRole : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}">
-                        <input class="form-check-input" type="radio" name="userRoleRadio" th:id="${userRole} + '-input'" th:value="${userRole}" th:field="*{role}">
-                        <label class="form-check-label" th:for="${userRole} + '-input'" th:text="${userRole.displayName}"></label>
+        <section class="py-3 container">
+            <div class="row py-lg-3 user-form-background-card shadow">
+                <div class="py-5">
+                    <div class="container row row-cols-2 justify-content-center">
+                        <div class="user-form-info-table shadow">
+                            <div class="user-form-info-table-header">
+                                <h3 class="fw">Edit Account</h3>
+                            </div>
+                            <div>
+                                <form class="row g-3 mt-1 ps-2" th:action="@{/user/details/edit/{userId}(userId=${user.userId})}" method="post" th:object="${user}">
+                                    <input type="hidden" th:field="*{userId}"/>
+                                    <div class="col-8">
+                                        <label class="form-label" for="email">Email</label>
+                                        <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="form-label" for="username">Name*</label>
+                                        <input class="form-control" placeholder="Name" id="username" type="text" th:field="*{username}"/>
+                                        <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="form-label" for="password">Password*</label>
+                                        <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}" onkeyup='checkPassword()'>
+                                        <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="form-label" for="confirm_password">Confirm Password*</label>
+                                        <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
+                                    </div>
+                                    <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div>
+                                    <div sec:authorize="hasRole('ADMIN')">
+                                        <div class="form-check" th:each="userRole : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}">
+                                            <input class="form-check-input" type="radio" name="userRoleRadio" th:id="${userRole} + '-input'" th:value="${userRole}" th:field="*{role}">
+                                            <label class="form-check-label" th:for="${userRole} + '-input'" th:text="${userRole.displayName}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <div class="col-2">
+                                            <input id="saveButton" value="Save" type="submit" class="btn btn-primary buttonDisableable"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="text-black-50">*Mandatory</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-2 user-form-delete-btn">
+                            <form class="row g-3" th:action="@{/user/details/delete/{userId}(userId=${user.userId})}" method="get" th:object="${user}">
+                                <div>
+                                    <input value="Delete account" type="submit" class="btn btn-primary"/>
+                                </div>
+                            </form>
+                        </div>
+                        <br>
                     </div>
                 </div>
-                <div class="col-10">
-                    <input id="saveButton" value="Save" type="submit" class="btn btn-primary buttonDisableable"/>
-                </div><br>
-                <div class="col-10">
-                    <p class="text-black-50">*Mandatory</p>
-                </div>
-            </form>
-            <div class="col-10">
-                <form class="row g-3" th:action="@{/user/details/delete/{userId}(userId=${user.userId})}" method="get" th:object="${user}">
-                    <div>
-                        <input value="Delete account" type="submit" class="btn btn-primary"/>
-                    </div>
-                </form>
-            </div><br>
-        </div>
+            </div>
+        </section>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>

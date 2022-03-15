@@ -507,6 +507,30 @@ li.active{
 }
 
 /*
+ * User-form
+ */
+
+.user-form-background-card {
+    background-color: #d6edca;
+}
+
+.user-form-info-table {
+    background-color: #c8e3ba;
+    border: #ACD199;
+    border-radius: 1px;
+    padding: 0;
+}
+
+.user-form-info-table-header {
+    background-color: #ACD199;
+    padding: 10px;
+}
+
+.user-form-delete-btn {
+    margin-left: 60px;
+}
+
+/*
  * Modal Page
  */
 

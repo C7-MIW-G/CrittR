@@ -27,8 +27,17 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mb-2">
-                            <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary my-2" role="button">Edit</a>
+                        <div class="col-10 mb-2 ps-2 d-flex justify-content-between">
+                            <div class="">
+                                <form class="row g-3" th:action="@{/user/details/delete/{userId}(userId=${user.userId})}" method="get" th:object="${user}">
+                                    <div>
+                                        <input value="Delete account" type="submit" class="btn btn-primary"/>
+                                    </div>
+                                </form>
+                            </div>
+                            <div>
+                                <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary" role="button">Edit</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-4" style="width: 18rem">
