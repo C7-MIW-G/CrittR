@@ -33,10 +33,7 @@ public class DatabaseSeeder {
     public DatabaseSeeder(AnimalService animalService, CommentService commentService,
                           CrittrUserDetailsService crittrUserDetailsService,
                           EduInfoService eduInfoService, FunFactService funFactService,
-                          ReportService reportService, AnimalSeeder animalSeeder,
-                          CrittrUserSeeder crittrUserSeeder, EduInfoSeeder eduInfoSeeder,
-                          FunFactSeeder funFactSeeder, ReportSeeder reportSeeder,
-                          UserCommentSeeder userCommentSeeder) {
+                          ReportService reportService) {
         this.animalService = animalService;
         this.commentService = commentService;
         this.crittrUserDetailsService = crittrUserDetailsService;
