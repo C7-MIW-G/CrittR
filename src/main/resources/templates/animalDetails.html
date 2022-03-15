@@ -36,7 +36,7 @@
                                 </tr>
                                 <tr>
                                     <th class="th-sm" scope="row">birthdate</th>
-                                    <td th:text="${animal.birthDate}"></td>
+                                    <td th:text="${#temporals.format(comment.dateTime, 'dd-MM-yyyy')}"></td>
                                 </tr>
                             </table>
                         </div>
