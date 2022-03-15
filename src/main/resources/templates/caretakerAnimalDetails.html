@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>CrittR - Animal Details</title>
 </head>
-<body>
+<body th:onload="setButtonColours([(${animal.status.ordinal()})])">
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
@@ -40,16 +40,16 @@
                         </div><br>
                         <div class="gap-2 d-md-flex">
                             <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/incoming/{animalId}(animalId = ${animal.animalId})}">
-                                <input class="btn btn-primary" type="submit" value="Incoming"/>
+                                <input class="btn btn-secondary status-btn" id="btn-incoming" type="submit" value="Incoming"/>
                             </form>
                             <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/present/{animalId}(animalId = ${animal.animalId})}">
-                                <input class="btn btn-primary" type="submit" value="Present"/>
+                                <input class="btn btn-secondary status-btn" id="btn-present" type="submit" value="Present"/>
                             </form>
                             <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/relocated/{animalId}(animalId = ${animal.animalId})}">
-                                <input class="btn btn-secondary" type="submit" value="Relocated"/>
+                                <input class="btn btn-secondary status-btn" id="btn-relocated" type="submit" value="Relocated"/>
                             </form>
                             <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/deceased/{animalId}(animalId = ${animal.animalId})}">
-                                <input class="btn btn-secondary" type="submit" value="Deceased"/>
+                                <input class="btn btn-secondary status-btn" id="btn-deceased"  type="submit" value="Deceased"/>
                             </form>
                         </div>
                     </div>

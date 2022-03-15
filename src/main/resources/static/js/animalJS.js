@@ -143,3 +143,16 @@ function buildHtmlStringAnimalCaretaker(data) {
 
     return htmlString;
 }
+
+function setButtonColours(animalStatus) {
+   switch(animalStatus){
+       case 0 : $('#btn-incoming').addClass('btn-primary');
+           break;
+       case 1 : $('#btn-present').addClass('btn-primary');
+            break;
+       case 2 : $('#btn-relocated').addClass('btn-primary')
+           break;
+       case 3 : $('#btn-deceased').addClass('btn-primary');
+            break;
+   }
+}
