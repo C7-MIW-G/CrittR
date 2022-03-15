@@ -146,7 +146,6 @@ li.active{
     filter: invert(24%) sepia(90%) saturate(6826%) hue-rotate(356deg) brightness(102%) contrast(124%);;
 }
 
-
 .heart-img-clicked {
     filter: invert(24%) sepia(90%) saturate(6826%) hue-rotate(356deg) brightness(102%) contrast(124%);
 }
@@ -178,16 +177,21 @@ li.active{
     background-color: #8DAD7D;
 }
 
+.animal-overview-report-issue-btn-margin {
+    margin-right: 14px;
+}
+
 
 /*
  * Animal Cards
  */
 
 .card {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     text-align: center;
     margin-left: 20px;
     border: none;
+    width: 14rem;
 }
 
 .card-header {
@@ -210,8 +214,9 @@ li.active{
 
 .card-img {
     object-fit: cover;
-    width:230px;
-    height:230px;
+    width:10rem;
+    height:10rem;
+    margin-left: 12px;
 }
 
 /*
