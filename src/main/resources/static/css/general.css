@@ -328,18 +328,6 @@ li.active{
     padding: 10px;
 }
 
-/*.style-caretaker .account-info-table {*/
-/*    background-color: #dcecf5;*/
-/*    border: #a5c7d9;*/
-/*}*/
-
-/*.style-caretaker .account-list-group {*/
-/*    background-color: #dcecf5;*/
-/*}*/
-
-/*.style-caretaker .account-list-group:hover {*/
-/*    background-color: #fff;*/
-/*}*/
 
 /*
  * Report Details Page
@@ -398,12 +386,10 @@ li.active{
 .priority-mark {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 1px;
 }
 
 .bi-exclamation-diamond-fill {
     text-shadow: 0 0 5px black;
-    margin-bottom: 2px;
 }
 
 .svg-img {
@@ -681,20 +667,61 @@ li.active{
     background-color: #fff;
 }
 
-.about-background-card {
-    background-color: #e9f2f7;
-}
-
-.about-info-table-header {
+.style-caretaker .animal-overview-report-issue-btn {
     background-color: #b8d6e6;
 }
 
-.about-info-header {
+.style-caretaker .animal-overview-report-issue-btn:hover {
+    background-color: #a7c9db;
+}
+
+.caretaker-animal-search-bar {
+    display: block;
+    width: 100%;
+}
+
+.ct-animal-overview-add-animal-btn {
+    background-color: #b8d6e6;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.ct-animal-overview-add-animal-btn:hover {
+    background-color: #a7c9db;
+}
+
+.ct-report-overview-report-btn {
+    background-color: #b8d6e6;
+    border: none;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.ct-report-overview-report-btn:hover {
+    background-color: #a7c9db;
+}
+
+.style-caretaker .about-background-card {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .about-info-table-header {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .about-info-header {
     background-color: #b8d6e6;
     border: #a5c7d9;
 }
 
-.about-info-content {
+.style-caretaker .about-info-content {
     background-color: #dcecf5;
     border: #a5c7d9;
 }

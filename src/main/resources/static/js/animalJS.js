@@ -136,8 +136,8 @@ function buildHtmlStringAnimalCaretaker(data) {
     data.dtos.forEach(dto => htmlString +=
     `<tr style="position: relative">` +
     `<td><a class="stretched-link hyperlink-no-styling"` +
-    ` href="/caretaker/animals/details/${dto.animalId}"></a>${dto.name}</td>` +
-    `<td>${dto.species}</td>` +
+    ` href="/caretaker/animals/details/${dto.animalId}"></a>${dto.species}</td>` +
+    `<td>${dto.name}</td>` +
     `<td>${dto.age}</td>` +
     `<td>${dto.status}</td></tr>`)
 
