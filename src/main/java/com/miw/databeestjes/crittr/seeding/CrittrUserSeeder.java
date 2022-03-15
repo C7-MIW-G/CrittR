@@ -19,8 +19,7 @@ public class CrittrUserSeeder {
         this.crittrUserDetailsService = crittrUserDetailsService;
     }
 
-    @EventListener
-    public void seedCrittrUser(ContextRefreshedEvent event) {
+    public void seedCrittrUser() {
         if (crittrUserDetailsService.findAll().isEmpty()) {
             crittrUserDetailsService.addCrittrUser("h.smith@crittr.com", "Harry Smith", "TemporaryPassword123", UserRoleStatus.ROLE_ADMIN);
             crittrUserDetailsService.addCrittrUser("c.baker@crittr.com", "Caroline Baker", "TemporaryPassword123", UserRoleStatus.ROLE_CARETAKER);

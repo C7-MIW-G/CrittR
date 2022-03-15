@@ -63,7 +63,7 @@ public class ReportServiceImplementation implements ReportService {
 
     @Override
     public void addNew(String issue, Animal animal, String animalName, String species, String description,
-                       CrittrUser reporter, ReportPriority... priority) {
+                       CrittrUser reporter, ReportStatus status, ReportPriority... priority) {
         Report report = new Report();
         report.setIssue(issue);
         report.setAnimal(animal);
@@ -71,6 +71,7 @@ public class ReportServiceImplementation implements ReportService {
         report.setSpecies(species);
         report.setDescription(description);
         report.setReporter(reporter);
+        report.setStatus(status);
 
         if(priority.length > 0) {
             report.setPriority(priority[0]);
