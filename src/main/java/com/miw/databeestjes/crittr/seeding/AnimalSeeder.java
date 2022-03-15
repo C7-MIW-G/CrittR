@@ -28,8 +28,8 @@ public class AnimalSeeder {
 
     public void seedAnimal() {
         if (animalService.getAll().size() == 0) {
-            animalService.addNewAnimal("Goat", "Gary", LocalDate.parse("2008-03-08"), "It's super cute!!", getPicture("goat1.jpg"), AnimalStatus.INCOMING);
-            animalService.addNewAnimal("Goat", "Gomez", LocalDate.parse("2013-08-03"), "", getPicture("goat2.png"));
+            animalService.addNewAnimal("Goat", "Gary", LocalDate.parse("2008-03-08"), "It's super cute!!", getPicture("goat1.jpg"));
+            animalService.addNewAnimal("Goat", "Gomez", LocalDate.parse("2013-08-03"), "", getPicture("goat2.png"), AnimalStatus.INCOMING);
             animalService.addNewAnimal("Goat", "Gabriella", LocalDate.parse("2020-06-23"), "It's twin is Grace!", getPicture("goat3.jpg"));
             animalService.addNewAnimal("Goat", "Grace", LocalDate.parse("2020-06-23"), "It's twin is Gabriella!", getPicture("goat4.jpg"));
 

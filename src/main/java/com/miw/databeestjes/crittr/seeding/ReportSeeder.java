@@ -35,8 +35,8 @@ public class ReportSeeder {
         List<CrittrUser> allUsers = crittrUserDetailsService.findAll();
         if(reportService.getAll().isEmpty()) {
             reportService.addNew("Wounded", animalService.findByAnimalId(1).get(), "Gary", "Goat", "In the shoulder", allUsers.get(5), ReportStatus.NEW ,ReportPriority.MEDIUM);
-            reportService.addNew("Limps", null, "", "Deer", "", allUsers.get(9), ReportStatus.NEW);
-            reportService.addNew("Bit me", animalService.findByAnimalId(11).get(), "Danny", "Donkey", "I was trying to feed it and it bit me", allUsers.get(7), ReportStatus.NEW);
+            reportService.addNew("Limps", null, "", "Deer", "", allUsers.get(9), ReportStatus.CLOSED);
+            reportService.addNew("Bit me", animalService.findByAnimalId(11).get(), "Danny", "Donkey", "I was trying to feed it and it bit me", allUsers.get(7), ReportStatus.DISCARDED);
             reportService.addNew("Bit of a limp", null, "", "Sheep", "", allUsers.get(6), ReportStatus.CLOSED);
             reportService.addNew("Bleeding a little", null, "", "Goat", "", allUsers.get(9), ReportStatus.UNDER_OBSERVATION);
             reportService.addNew("Appears unhealthy", animalService.findByAnimalId(4).get(), "Grace", "Goat", "Weeping, probably an eye infection", allUsers.get(8), ReportStatus.UNDER_OBSERVATION);

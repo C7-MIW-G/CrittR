@@ -4,13 +4,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>CrittR - Report Details</title>
 </head>
-<body onload="doButtonChange()">
-<script type="text/javascript">
-    function doButtonChange () {
-        const currentStatus = [(${report.status.ordinal()})];
-        setButtons(currentStatus);
-    }
-</script>
+<body th:onload="setButtons([(${report.status.ordinal()})])">
 <header th:replace="fragments/general :: navbar"></header>
 <input type="hidden" th:value="${report.status.ordinal()}" id="reportStatusHack">
 <div class="container">
