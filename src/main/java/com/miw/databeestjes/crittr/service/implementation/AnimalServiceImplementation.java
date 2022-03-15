@@ -69,13 +69,16 @@ public class AnimalServiceImplementation implements AnimalService{
         animalRepository.delete(animal);
     }
 
-    public void addNewAnimal(String species, String name, LocalDate birthdate, String biography, byte[] picture) {
+    public void addNewAnimal(String species, String name, LocalDate birthdate, String biography, byte[] picture, AnimalStatus... status) {
         Animal animal = new Animal();
         animal.setSpecies(species);
         animal.setName(name);
         animal.setBirthDate(birthdate);
         animal.setBiography(biography);
         animal.setAnimalPicture(picture);
+        if(status.length > 0) {
+            animal.setStatus(status[0]);
+        }
 
         animalRepository.save(animal);
     }

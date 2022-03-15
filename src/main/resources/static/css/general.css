@@ -142,15 +142,25 @@ li.active{
     height: 25px;
 }
 
-.heart-img:hover{
-    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
+.heart-outline:hover {
+    filter: invert(24%) sepia(90%) saturate(6826%) hue-rotate(356deg) brightness(102%) contrast(124%);;
 }
 
-
 .heart-img-clicked {
-    filter: invert(14%) sepia(63%) saturate(6267%) hue-rotate(356deg) brightness(108%) contrast(120%);
-    width: 25px;
-    height: 25px;
+    filter: invert(24%) sepia(90%) saturate(6826%) hue-rotate(356deg) brightness(102%) contrast(124%);
+}
+.heart-outline.heart-img-clicked:hover {
+    filter: invert(76%) sepia(1%) saturate(0%) hue-rotate(134deg) brightness(96%) contrast(89%);;
+}
+
+.heart-overlay {
+    position: absolute;
+}
+.heart-outline {
+    position: absolute;
+    bottom: 0;
+    margin-right: 25px;
+    margin-bottom: 6px;
 }
 
 .animal-overview-report-issue-btn {
@@ -167,16 +177,21 @@ li.active{
     background-color: #8DAD7D;
 }
 
+.animal-overview-report-issue-btn-margin {
+    margin-right: 14px;
+}
+
 
 /*
  * Animal Cards
  */
 
 .card {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     text-align: center;
     margin-left: 20px;
     border: none;
+    width: 14rem;
 }
 
 .card-header {
@@ -199,8 +214,9 @@ li.active{
 
 .card-img {
     object-fit: cover;
-    width:230px;
-    height:230px;
+    width:10rem;
+    height:10rem;
+    margin-left: 12px;
 }
 
 /*
@@ -609,6 +625,10 @@ li.active{
 
 .style-caretaker .overview-card:hover {
     background-color: #8FAFBF;
+}
+
+.style-caretaker .toggle-animal-button {
+
 }
 
 .style-caretaker .animal-details-background-card {

@@ -93,6 +93,8 @@ function setHearts(data) {
         if(dto.favourited){
         const heartId = '#heart-img-' + dto.animalId;
         $(heartId).toggleClass("heart-img-clicked");
+        const heartOutline = '#heart-outline-' + dto.animalId;
+        $(heartOutline).toggleClass('heart-img-clicked');
     }})
 }
 
@@ -105,11 +107,14 @@ function buildHtmlStringAnimal(data) {
     }
 
     data.dtos.forEach(dto => htmlString +=
-        `<div class="card col-lg-5 mt-4 overview-card justify-content-center shadow" style="width: 18rem">` +
-        `<img class="card-img rounded-circle shadow ms-3" src="data:image/jpeg;base64,${dto.picture}">` +
+        `<div class="card mt-4 overview-card justify-content-center shadow">` +
+        `<img class="card-img rounded-circle shadow" src="data:image/jpeg;base64,${dto.picture}">` +
         `<div class="card-body">` +
         `<div style="z-index: 2; position: relative; left: 40%" class="w-25">`+
+        `<label>` +
         `<input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/> ` +
+        `<div class="heart-overlay"><img class="heart-img mt-2 heart-outline" id="heart-outline-${dto.animalId}" src="/assets/heart.svg" alt="heart outline"/></div>` +
+        `</label>` +
         `</div>` +
         `<h4 class="card-title">${dto.name} the ${dto.species} </h4>` +
         `<a style="z-index: 1" href="/animals/details/${dto.animalId}"` +

@@ -6,9 +6,16 @@
 </head>
 <body onload="searchAnimals(null, '')">
 <header th:replace="fragments/general :: navbar"></header>
+<div class="toggle-animal-button d-flex justify-content-end">
+    <p class="text-muted">Toggle overview</p>
+    <a th:href="@{/animals}">
+        <img height="25" width="50" src="../static/assets/toggleoff.png" th:src="@{/assets/toggleoff.png}" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
+    </a>
+</div>
 <div class="container">
     <main>
         <section class="py-3 text-center container">
+
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">Animals</h1>
@@ -16,6 +23,7 @@
                     <p>
                         <a th:href="@{/animals/new}" role="button" class="btn btn-primary my-2">Add animal</a>
                     </p>
+
                 </div>
             </div>
         </section>
