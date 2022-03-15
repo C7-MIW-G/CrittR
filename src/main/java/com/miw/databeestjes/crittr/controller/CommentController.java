@@ -3,14 +3,11 @@ package com.miw.databeestjes.crittr.controller;
 import com.miw.databeestjes.crittr.model.Animal;
 import com.miw.databeestjes.crittr.model.Comment;
 import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.model.FunFact;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.CommentService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,7 +17,7 @@ import java.util.Optional;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This file controls the comments section of the animal detail page
  */
 @Controller
 public class CommentController {
@@ -40,7 +37,6 @@ public class CommentController {
                                 long animalId){
 
         if(result.hasErrors()){
-            System.out.println(result.getAllErrors());
             return "redirect:/";
         }
 
