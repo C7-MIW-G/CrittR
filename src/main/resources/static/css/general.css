@@ -783,6 +783,33 @@ li.active{
     background-color: #a7c9db;
 }
 
+
+.style-caretaker .modal-content {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .modal-content-delconfirm {
+    background-color: #8FAFBF;
+}
+
+
+.style-caretaker .modal-header {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .delete-button {
+    background-color: #FF7C72;
+    border-style: solid;
+    color: black;
+    border-color: #FF6E63;
+}
+
+.style-caretaker .delete-button:hover {
+    border-color: #FF3021;
+    background-color: #FF3021;
+    color: black;
+}
+
 .caretaker-animal-search-bar {
     display: block;
     width: 100%;
@@ -802,6 +829,42 @@ li.active{
     background-color: #a7c9db;
 }
 
+.ct-animal-form-background-card {
+    background-color: #e9f2f7;
+}
+
+.ct-animal-form-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+    border-radius: 1px;
+    padding: 0;
+}
+
+.ct-animal-form-header {
+    background-color: #b8d6e6;
+    padding: 10px;
+}
+
+.ct-animal-details-background-card {
+    background-color: #e9f2f7;
+}
+
+.ct-animal-details-header {
+    background-color: #b8d6e6;
+}
+
+.ct-animal-details-info-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+}
+.ct-animal-details-list-group {
+    background-color: #dcecf5;
+}
+
+.ct-animal-details-list-group:hover {
+    background-color: #fff;
+}
+
 .ct-report-overview-report-btn {
     background-color: #b8d6e6;
     border: none;
@@ -814,6 +877,19 @@ li.active{
 
 .ct-report-overview-report-btn:hover {
     background-color: #a7c9db;
+}
+
+.ct-report-details-background-card {
+    background-color: #e9f2f7;
+}
+
+.ct-report-details-header {
+    background-color: #b8d6e6;
+}
+
+.ct-report-details-info-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
 }
 
 .style-caretaker .about-background-card {

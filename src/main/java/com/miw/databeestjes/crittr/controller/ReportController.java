@@ -74,7 +74,7 @@ public class ReportController {
         Report certainReport = report.get();
         certainReport.setClaimer(crittrUser);
         reportService.save(certainReport);
-        return "redirect:/caretaker/reports/details/" + reportNr;
+        return "redirect:/reports/ct/details/" + reportNr;
     }
 
     @GetMapping("/reports/details/{reportNr}")
@@ -94,7 +94,7 @@ public class ReportController {
         return "userReportDetails";
     }
 
-    @GetMapping("/caretaker/reports/details/{reportNr}")
+    @GetMapping("/reports/ct/details/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showCaretakerReportDetails(@PathVariable("reportNr") long reportNr, Model model) {
         Optional<Report> report = reportService.getByReportNumber(reportNr);
@@ -119,7 +119,11 @@ public class ReportController {
     private String getReport(@PathVariable("reportNr") long reportNr, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(reportNr);
         if(optionalReport.isEmpty()) {
+<<<<<<< HEAD
             return "redirect:/caretaker/reports/details/" + reportNr;
+=======
+            return "redirect:/reports/ct/details/" + report.getReportNumber();
+>>>>>>> ee4144f9d354056ee3ec408a0e783edcd186e5b7
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
@@ -170,7 +174,7 @@ public class ReportController {
             changeName(report);
             reportService.save(report);
         }
-        return "redirect:/caretaker/reports/details/" + report.getReportNumber();
+        return "redirect:/reports/ct/details/" + report.getReportNumber();
     }
 
     private void changeName(Report report) {

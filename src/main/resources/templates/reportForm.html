@@ -16,7 +16,7 @@
                             <div class="report-form-info-table-header">
                                 <h1>Report a problem</h1>
                             </div>
-                            <form class="row g-3 p-2" th:action="@{/reports/new}" method="post" th:object="${report}">
+                            <form class="row g-3 p-2 ps-4" th:action="@{/reports/new}" method="post" th:object="${report}">
                                 <input type="hidden" th:field="*{reportId}"/>
                                 <div class="col-9 pt-2">
                                     <label class="form-label fw-bold" for="SpeciesInput">Species:*</label>
