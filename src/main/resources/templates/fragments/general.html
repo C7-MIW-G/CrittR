@@ -43,8 +43,9 @@
 <main>
 
 </main>
-<footer th:fragment="footer" class="py-3 my-4">
-    <p class="text-center text-black-50 border-top">Databeestjes 2022 &copy;</p>
+<div>
+<footer th:fragment="footer" class="footer mt-1">
+    <p class="text-center text-black-50 border-top pt-2">Databeestjes 2022 &copy;</p>
 </footer>
 <div th:fragment="bottomscripts">
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -55,7 +56,7 @@
     <script type="text/javascript" th:src="@{/js/reportJS.js}" ></script>
     <script type="text/javascript" th:src="@{/js/animalJS.js}" ></script>
     <script type="text/javascript" th:src="@{/js/modalJS.js}" ></script>
-
+</div>
 </div>
 </body>
 </html>
