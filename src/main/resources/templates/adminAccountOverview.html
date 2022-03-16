@@ -13,8 +13,8 @@
         <div class="filter-column-header">
             <span>Role</span>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" th:each="role : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${role}"  onclick="searchUsers(this.getAttribute('data-id'))" th:text="${role.displayName}"></a></li>
+        <ul class="list-group list-group-flush" id="role-list">
+            <li class="list-group-item list-group-item-action" th:each="role : ${T(com.miw.databeestjes.crittr.model.UserRoleStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:data-id="${role}" th:text="${role.displayName}"></a></li>
         </ul><br>
         <a class="btn btn-secondary all-items-button"  id="all-users-button" onclick="searchUsers(null)">All</a>
     </div>
