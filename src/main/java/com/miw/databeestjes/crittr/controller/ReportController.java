@@ -74,7 +74,7 @@ public class ReportController {
         Report certainReport = report.get();
         certainReport.setClaimer(crittrUser);
         reportService.save(certainReport);
-        return "redirect:/reports/ct/details/" + reportNr;
+        return "redirect:/account/details/" + crittrUser.getUserId();
     }
 
     @GetMapping("/reports/details/{reportNr}")

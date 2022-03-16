@@ -28,7 +28,7 @@
                         <a th:href="@{/reports/new}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
-                <div sec:authorize="unauthorized" class="home-card m-2">
+                <div sec:authorize="isAnonymous()" class="home-card m-2">
                     <div class="card-body">
                         <h3 class="centered-text-home fw-light" >Become a member!</h3>
                         <a th:href="@{/users/new}" role="button" class="stretched-link"></a>
@@ -65,10 +65,10 @@
                                 <br>
                                 <div class="modal-buttons d-flex justify-content-between">
                                     <div class="modal-cancel-button">
-                                        <a class="btn btn-primary my-2 modal-cancel-btn">Cancel</a>
+                                        <a class="btn my-2 modal-cancel-btn">Cancel</a>
                                     </div>
-                                    <div class="modal-submit-button">
-                                        <input value="Add Fact" type="submit" class="btn btn-primary my-2"/>
+                                    <div class="modal-submit-button ">
+                                        <input value="Add Fact" type="submit" class="btn modal-submit-btn my-2"/>
                                     </div>
                                 </div>
                             </form>
