@@ -59,15 +59,6 @@ public class CrittrUser implements UserDetails {
         return grantedAuthorityList;
     }
 
-    public boolean hasFavourited(Animal animal) {
-        for (UserAnimalFavourites like : likes) {
-            if(like.getAnimal().getAnimalId() == animal.getAnimalId()){
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public String getUsername() {
         return this.username;
