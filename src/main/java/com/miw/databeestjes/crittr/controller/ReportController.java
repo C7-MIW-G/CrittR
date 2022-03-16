@@ -119,16 +119,12 @@ public class ReportController {
     private String getReport(@PathVariable("reportNr") long reportNr, ReportStatus reportStatus) {
         Optional<Report> optionalReport = reportService.getByReportId(reportNr);
         if(optionalReport.isEmpty()) {
-<<<<<<< HEAD
-            return "redirect:/caretaker/reports/details/" + reportNr;
-=======
-            return "redirect:/reports/ct/details/" + report.getReportNumber();
->>>>>>> ee4144f9d354056ee3ec408a0e783edcd186e5b7
+            return "redirect:/reports/ct/details/" + reportNr;
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
         reportService.save(certainReport);
-        return "redirect:/caretaker/reports/details/" + reportNr;
+        return "redirect:/reports/ct/details/" + reportNr;
     }
 
     @PostMapping("/reports/details/accept/{reportNr}")

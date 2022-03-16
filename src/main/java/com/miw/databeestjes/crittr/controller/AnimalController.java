@@ -174,7 +174,7 @@ public class AnimalController {
         Animal certainAnimal = optionalAnimal.get();
         certainAnimal.setStatus(status);
         animalService.save(certainAnimal);
-        return "redirect:/caretaker/animals";
+        return "redirect:/caretaker/animals/details/" + animal.getAnimalId();
     }
 
     @PostMapping("/caretaker/animals/details/incoming/{animalId}")
