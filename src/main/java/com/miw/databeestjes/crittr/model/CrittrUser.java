@@ -60,6 +60,15 @@ public class CrittrUser implements UserDetails {
         return grantedAuthorityList;
     }
 
+    public boolean equals(CrittrUser otherUser) {
+        return this.userId == otherUser.getUserId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
+    }
+
     @Override
     public String getUsername() {
         return this.username;

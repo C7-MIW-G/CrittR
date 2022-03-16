@@ -39,20 +39,29 @@ public class CrittrUserDetailsService implements UserDetailsService {
                         .orElseThrow(() -> new UsernameNotFoundException("User with name " + email + " was not found."));
     }
 
-    public String saveWithPassword(CrittrUser user, String passwordHash) {
+    public String saveWithPassword(CrittrUser user, String passwordHash, CrittrUser current) {
         user.setPassword(passwordHash);
         crittrUserRepository.save(user);
-        return "redirect:/user/details/" + user.getUserId();
+        return redirectResponse(user, current);
     }
 
-    public String saveWithoutPassword(CrittrUser user) {
+    public String saveWithoutPassword(CrittrUser user, CrittrUser current) {
         Optional<CrittrUser> optionalUser = crittrUserRepository.findById(user.getUserId());
         if(optionalUser.isPresent()) {
             user.setPassword(optionalUser.get().getPassword());
             crittrUserRepository.save(user);
+        }
+        return redirectResponse(user, current);
+    }
+
+    private String redirectResponse(CrittrUser user, CrittrUser current) {
+        System.out.println(current.getUserId());
+        System.out.println(user.getUserId());
+        if(current.equals(user)) {
             return "redirect:/user/details/" + user.getUserId();
         }
-        return "userEditForm";
+        return "redirect:/accounts/users";
+
     }
 
     public void save(CrittrUser user) {
