@@ -28,7 +28,7 @@
                         <a th:href="@{/reports/new}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
-                <div class="home-card m-2">
+                <div sec:authorize="unauthorized" class="home-card m-2">
                     <div class="card-body">
                         <h3 class="centered-text-home fw-light" >Become a member!</h3>
                         <a th:href="@{/users/new}" role="button" class="stretched-link"></a>

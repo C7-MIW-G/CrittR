@@ -116,40 +116,40 @@ public class ReportController {
         return "caretakerReportDetails";
     }
 
-    private String getReport(@ModelAttribute("report") Report report, ReportStatus reportStatus) {
-        Optional<Report> optionalReport = reportService.getByReportId(report.getReportId());
+    private String getReport(@PathVariable("reportNr") long reportNr, ReportStatus reportStatus) {
+        Optional<Report> optionalReport = reportService.getByReportId(reportNr);
         if(optionalReport.isEmpty()) {
-            return "redirect:/reports/ct/details/" + report.getReportNumber();
+            return "redirect:/reports/ct/details/" + reportNr;
         }
         Report certainReport = optionalReport.get();
         certainReport.setStatus(reportStatus);
         reportService.save(certainReport);
-        return "redirect:/reports";
+        return "redirect:/reports/ct/details/" + reportNr;
     }
 
-    @PostMapping("/reports/details/accept/{reportId}")
+    @PostMapping("/reports/details/accept/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String acceptReport(@ModelAttribute("report") Report report){
-        return getReport(report, ReportStatus.OPEN_ISSUE);
+    protected String acceptReport(@PathVariable("reportNr") long reportNr){
+        return getReport(reportNr, ReportStatus.OPEN_ISSUE);
     }
 
 
-    @PostMapping("/reports/details/discard/{reportId}")
+    @PostMapping("/reports/details/discard/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String discardReport(@ModelAttribute("report") Report report){
-        return getReport(report, ReportStatus.DISCARDED);
+    protected String discardReport(@PathVariable("reportNr") long reportNr){
+        return getReport(reportNr, ReportStatus.DISCARDED);
     }
 
-    @PostMapping("/reports/details/observation/{reportId}")
+    @PostMapping("/reports/details/observation/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String monitorReport(@ModelAttribute("report") Report report){
-        return getReport(report, ReportStatus.UNDER_OBSERVATION);
+    protected String monitorReport(@PathVariable("reportNr") long reportNr){
+        return getReport(reportNr, ReportStatus.UNDER_OBSERVATION);
     }
 
-    @PostMapping("/reports/details/closed/{reportId}")
+    @PostMapping("/reports/details/closed/{reportNr}")
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
-    protected String closeReport(@ModelAttribute("report") Report report){
-        return getReport(report, ReportStatus.CLOSED);
+    protected String closeReport(@PathVariable("reportNr") long reportNr){
+        return getReport(reportNr, ReportStatus.CLOSED);
     }
 
     @GetMapping("/reports/details/edit/{reportNumber}")
