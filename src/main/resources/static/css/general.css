@@ -4,6 +4,9 @@
 
 body {
     background-color: white;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 2.5rem
 }
 
 header {
@@ -44,19 +47,34 @@ header {
     background-color: #8DAD7D;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    align-content: end;
+    background-color: white;
+}
+
+.container {
+    height: 100%;
+}
+
 /*
  * General Buttons
  */
 
 .btn-primary{
     background-color: #ACD199;
-    color: white;
+    color: black;
     border: none;
     font-size: larger;
 }
 
 .btn-primary:hover {
     background-color: #8DAD7D;
+    color: black;
 }
 
 .btn-secondary {

@@ -47,13 +47,14 @@ public class FavouriteRestController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        List<UserAnimalFavourites> userFavourites = userAnimalFavouritesService.getByUser(user);
-
-        List<Animal> userFavouriteAnimals = getAnimalsFromAnimalFavourites(userFavourites);
+        if(user == null) {
+            return setLoggedInStatus(response);
+        }
 
         Optional<Animal> optionalAnimal = animalService.findByAnimalId(animalId.getAnimalId());
-
         if (optionalAnimal.isPresent()) {
+            List<UserAnimalFavourites> userFavourites = userAnimalFavouritesService.getByUser(user);
+            List<Animal> userFavouriteAnimals = getAnimalsFromAnimalFavourites(userFavourites);
             Animal animal = optionalAnimal.get();
             toggleFavourite(user, response, userFavouriteAnimals, animal);
         }
@@ -88,6 +89,12 @@ public class FavouriteRestController {
         List<Animal> animalList = new ArrayList<>();
         userAnimalFavourites.forEach(favourite -> animalList.add(favourite.getAnimal()));
         return animalList;
+    }
+
+    private ResponseEntity<?> setLoggedInStatus(AnimalFavouriteResponse response) {
+        response.setMessage("Not logged in");
+        response.setLoggedIn(false);
+        return ResponseEntity.ok(response);
     }
 }
 
