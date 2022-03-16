@@ -584,7 +584,7 @@ li.active{
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #8FAFBF;
+    background-color: #8DAD7D;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -593,7 +593,22 @@ li.active{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/* The Close Button */
+
+/* Delete Confirm Modal Content */
+.modal-content-delconfirm {
+    position: relative;
+    background-color: #8DAD7D;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+
+/* The Modal Close Button */
 .close-modal-x {
     color: white;
     float: right;
@@ -611,7 +626,7 @@ li.active{
 /* Modal Header */
 .modal-header {
     padding: 5px 16px;
-    background-color: #8FAFBF;
+    background-color: #8DAD7D;
     color: white;
 }
 
