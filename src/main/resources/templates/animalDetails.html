@@ -59,6 +59,7 @@
                 <div class="col-md-3 ps-5 text-center">
                     <div class="animal-details-info-table shadow">
                         <h4 class="animal-details-info-table-header">Info for real scientists</h4><br>
+                        <div th:if="${eduInfo.isEmpty()}">We're still studying this animal. More info will come soon!</div>
                         <dl th:each="info : ${eduInfo}">
                             <dt th:text="${info.infoCategory.getDisplayName()}" />
                             <dd th:text="${info.eduInfo}" />
