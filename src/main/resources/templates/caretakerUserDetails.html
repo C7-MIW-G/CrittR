@@ -27,7 +27,7 @@
                     <div class="col-4" style="width: 18rem">
                         <div class="card-header text-black fw-bold">Claimed by you</div>
                         <ul class="list-group list-group-flush" th:each="report : ${user.claimedReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
@@ -35,7 +35,7 @@
                             &nbsp;&nbsp;Critical
                         </div>
                         <ul class="list-group list-group-flush" th:each="criticalReport : ${allCriticalReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${criticalReport.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${criticalReport.reportNumber})}"></a></li>
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${criticalReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${criticalReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
@@ -43,13 +43,13 @@
                             &nbsp;&nbsp;Serious
                         </div>
                         <ul class="list-group list-group-flush" th:each="mediumReport : ${allMediumReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${mediumReport.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${mediumReport.reportNumber})}"></a></li>
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${mediumReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${mediumReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
                         <div class="card-header text-black fw-bold">New</div>
                         <ul class="list-group list-group-flush" th:each="newReport : ${allNewReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${newReport.issue}" th:href="@{/caretaker/reports/details/{reportNr}(reportNr=${newReport.reportNumber})}"></a></li>
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${newReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${newReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                 </div>

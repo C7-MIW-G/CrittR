@@ -59,7 +59,7 @@ class CrittrUserDetailsServiceTest {
             return null;
         }).when(testRepository).save(any(CrittrUser.class));
 
-        testService.saveWithPassword(testUser, "password");
+        testService.saveWithPassword(testUser, "password", testUser);
     }
 
 
