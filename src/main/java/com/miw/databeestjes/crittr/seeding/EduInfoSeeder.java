@@ -2,8 +2,6 @@ package com.miw.databeestjes.crittr.seeding;
 
 import com.miw.databeestjes.crittr.model.EduInfoCategory;
 import com.miw.databeestjes.crittr.service.EduInfoService;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 /**

@@ -37,7 +37,7 @@
                 <div sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" class="home-card m-2">
                     <div class="card-body">
                         <h3 class="centered-text-home fw-light">Add a fun fact</h3>
-                        <a sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" id="addFactButton" role="button" class="stretched-link" ></a>
+                        <a sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" id="modalButton" role="button" class="stretched-link" ></a>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
             <!-- The Modal -->
             <div class="container">
-                <div id="addFactModal" class="modal">
+                <div id="modal" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content">
                         <div class="modal-header">

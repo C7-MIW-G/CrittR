@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,16 +39,16 @@ public class CrittrUser implements UserDetails {
 
     private UserRoleStatus role = UserRoleStatus.ROLE_MEMBER;
 
-    @OneToMany(mappedBy = "reporter")
+    @OneToMany(mappedBy = "reporter", cascade = CascadeType.ALL)
     private List<Report> reports;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserAnimalFavourites> likes;
 
-    @OneToMany(mappedBy = "claimer")
+    @OneToMany(mappedBy = "claimer", cascade = CascadeType.ALL)
     private List<Report> claimedReports;
 
-    @OneToMany(mappedBy = "commenter")
+    @OneToMany(mappedBy = "commenter", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
     @Override
