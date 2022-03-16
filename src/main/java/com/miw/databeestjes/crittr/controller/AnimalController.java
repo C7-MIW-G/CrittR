@@ -1,11 +1,9 @@
 package com.miw.databeestjes.crittr.controller;
 
-import com.miw.databeestjes.crittr.model.Animal;
-import com.miw.databeestjes.crittr.model.AnimalStatus;
-import com.miw.databeestjes.crittr.model.Comment;
-import com.miw.databeestjes.crittr.model.EduInfo;
+import com.miw.databeestjes.crittr.model.*;
 import com.miw.databeestjes.crittr.service.*;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,15 +32,20 @@ public class AnimalController {
     private FunFactService funFactService;
     private EduInfoService eduInfoService;
     private CommentService commentService;
+    private UserAnimalFavouritesService favouritesService;
 
-    public AnimalController(AnimalService animalService, ReportService reportService,
-                            FunFactService funFactService, EduInfoService eduInfoService,
-                            CommentService commentService) {
+    public AnimalController(AnimalService animalService,
+                            ReportService reportService,
+                            FunFactService funFactService,
+                            EduInfoService eduInfoService,
+                            CommentService commentService,
+                            UserAnimalFavouritesService favouritesService) {
         this.animalService = animalService;
         this.reportService = reportService;
         this.funFactService = funFactService;
         this.eduInfoService = eduInfoService;
         this.commentService = commentService;
+        this.favouritesService = favouritesService;
     }
 
     @GetMapping("/animals")
@@ -60,7 +63,8 @@ public class AnimalController {
     }
 
     @GetMapping("/animals/details/{animalId}")
-    protected String showAnimalDetails(@PathVariable("animalId") long animalId, Model model){
+    protected String showAnimalDetails(@PathVariable("animalId") long animalId, Model model,
+                                       @AuthenticationPrincipal CrittrUser user){
         Optional<Animal> animal = animalService.findByAnimalId(animalId);
         if (animal.isEmpty()){
             return "redirect:/animals";
@@ -73,7 +77,19 @@ public class AnimalController {
         model.addAttribute("eduInfo", eduInfo);
         model.addAttribute("comment", new Comment());
         model.addAttribute("allCommentsForAnimal", commentService.getAllByAnimalId(animalId));
+        model.addAttribute("favourited", getFavourStatus(user, animal.get()));
+
         return "animalDetails";
+    }
+
+    private boolean getFavourStatus(CrittrUser user, Animal animal) {
+        List<UserAnimalFavourites> favourites = favouritesService.getByUser(user);
+        for (UserAnimalFavourites favourite : favourites) {
+            if(favourite.hasAnimal(animal)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @PostMapping("/animals/new")
