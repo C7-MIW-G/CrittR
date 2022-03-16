@@ -79,7 +79,7 @@ header {
 }
 
 .cancel-button {
-    background-color: transparent;
+    background-color: #d6edca;
     border-color: #ACD199;
     border-style: solid;
     color: black;
@@ -90,6 +90,19 @@ header {
     border-color: #8DAD7D;
     color: black;
     background-color: transparent;
+}
+
+.delete-button {
+    background-color: #FF7C72;
+    border-style: solid;
+    color: black;
+    border-color: #FF6E63;
+}
+
+.delete-button:hover {
+    border-color: #FF3021;
+    background-color: #FF3021;
+    color: black;
 }
 
 
@@ -516,10 +529,6 @@ li.active{
 .user-form-info-table-header {
     background-color: #ACD199;
     padding: 10px;
-}
-
-.user-form-delete-btn-margin {
-    margin-left: 60px;
 }
 
 .user-form-delete-btn {
