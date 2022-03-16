@@ -20,26 +20,3 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-// // Delete account confirmation modal scripts
-//
-// const deleteAccModal = document.getElementById("deleteAccountModal");
-//
-// $("#deleteAccountButton").click(function(){
-//     deleteAccModal.style.display = "block";
-// })
-//
-//
-// $(".close-delconfirm-modal-x").click(function() {
-//     deleteAccModal.style.display = "none";
-// })
-//
-// $(".delconfirm-modal-cancel-button").click(function() {
-//     deleteAccModal.style.display = "none";
-// })
-//
-// window.onclick = function(event) {
-//     if (event.target == deleteAccModal) {
-//         deleteAccModal.style.display = "none";
-//     }
-// }
