@@ -8,51 +8,68 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <div class="col-lg-8">
-            <h1>New animal</h1>
-            <form class="row g-3" th:action="@{/animals/new}" method="post" th:object="${animal}" enctype="multipart/form-data">
-                <input type="hidden" th:field="*{animalId}"/>
-                <div class="col-8">
-                    <label class="form-label" for="animalName">Name:*</label>
-                    <input class="form-control" placeholder="Name" id="animalName" type="text" th:field="*{name}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('name')}">Please provide a valid name</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="animalSpecies">Species:*</label>
-                    <input class="form-control" placeholder="Species" id="animalSpecies" type="text" th:field="*{species}">
-                    <p class="errormessage" th:if="${#fields.hasErrors('species')}" >Please provide the species</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="animalBirthdate">Birthdate:*</label>
-                    <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('birthDate')}" >Please provide a birthdate</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="animalBio">Biography:</label>
-                    <textarea class="form-control" id="animalBio" placeholder="Some fun facts or the entire life history of the animal" name="animalBio" th:field="*{biography}"></textarea>
-                </div><br>
-                <div th:if="${animal.animalPicture == null}">
-                    <label for="animalPicture" class="form-label">Upload a picture:</label>
-                    <input class="form-control" type="file" name="animalPictureInput" id="animalPicture" th:object="${animalPictureInput}" accept="image/png, image/jpeg, image/jpg"/>
-                    <i class="text-black-50">*The file should not exceed 1mb in size</i>
+        <section class="py-3 container">
+            <div class="row py-lg-3 ct-animal-form-background-card shadow">
+                <div class="py-5">
+                    <div class="container row row-cols-2 justify-content-center">
+                        <div class="ct-animal-form-table shadow">
+                            <div class="ct-animal-form-header">
+                                <h1>New animal</h1>
+                            </div>
+                            <div>
+                                <form class="row g-3 p-2 ps-4" th:action="@{/animals/new}" method="post" th:object="${animal}" enctype="multipart/form-data">
+                                    <input type="hidden" th:field="*{animalId}"/>
+                                    <div class="col-9 pt-2">
+                                        <label class="form-label fw-bold" for="animalName">Name:*</label>
+                                        <input class="form-control" placeholder="Name" id="animalName" type="text" th:field="*{name}"/>
+                                        <p class="errormessage" th:if="${#fields.hasErrors('name')}">Please provide a valid name</p>
+                                    </div><br>
+                                    <div class="col-9">
+                                        <label class="form-label fw-bold" for="animalSpecies">Species:*</label>
+                                        <input class="form-control" placeholder="Species" id="animalSpecies" type="text" th:field="*{species}">
+                                        <p class="errormessage" th:if="${#fields.hasErrors('species')}" >Please provide the species</p>
+                                    </div><br>
+                                    <div class="col-9">
+                                        <label class="form-label fw-bold" for="animalBirthdate">Birthdate:*</label>
+                                        <input class="form-control" id="animalBirthdate" type="date" th:field="*{birthDate}"/>
+                                        <p class="errormessage" th:if="${#fields.hasErrors('birthDate')}" >Please provide a birthdate</p>
+                                    </div><br>
+                                    <div class="col-9">
+                                        <label class="form-label fw-bold" for="animalBio">Biography:</label>
+                                        <textarea class="form-control" id="animalBio" placeholder="Some fun facts or the entire life history of the animal" name="animalBio" th:field="*{biography}"></textarea>
+                                    </div><br>
+                                    <div th:if="${animal.animalPicture == null}" class="col-9">
+                                        <label for="animalPicture" class="form-label fw-bold">Upload a picture:</label>
+                                        <input class="form-control" type="file" name="animalPictureInput" id="animalPicture" th:object="${animalPictureInput}" accept="image/png, image/jpeg, image/jpg"/>
+                                        <i class="text-black-50">*The file should not exceed 1mb in size</i>
+                                    </div>
+                                    <div th:if="${animal.animalPicture}" class="col-9">
+                                        <img th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}" style="width: 60%">
+                                        <input type="hidden" th:field="*{animalPicture}">
+                                    </div>
+                                    <div th:if="${animal.animalPicture}" class="col-9">
+                                        <label for="editAnimalPicture" class="form-label fw-bold">Change picture:</label>
+                                        <input id="editAnimalPicture" class="form-control" type="file" name="editAnimalPictureInput" th:object="${editAnimalPictureInput}" accept="image/png, image/jpeg, image/jpg">
+                                        <i class="text-black-50">*The file should not exceed 1mb in size</i>
+                                    </div><br>
+                                    <div class="col-9 d-flex justify-content-between">
+                                        <div class="col-2">
+                                            <a class="btn btn-primary cancel-button" th:href="@{/caretaker/animals}">Cancel</a>
+                                        </div>
+                                        <div class="col-2">
+                                            <input value="Send" type="submit" class="btn btn-primary submit-button"/>
+                                        </div>
+                                    </div><br>
+                                    <div class="col-10">
+                                        <p class="text-black-50">*Mandatory</p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div th:if="${animal.animalPicture}">
-                    <img th:src="@{'data:image/jpeg;base64,'+ ${currentAnimalPicture}}">
-                    <input type="hidden" th:field="*{animalPicture}">
-                </div>
-                <div th:if="${animal.animalPicture}">
-                    <label for="editAnimalPicture" class="form-label">Change picture:</label>
-                    <input id="editAnimalPicture" class="form-control" type="file" name="editAnimalPictureInput" th:object="${editAnimalPictureInput}" accept="image/png, image/jpeg, image/jpg">
-                    <i class="text-black-50">*The file should not exceed 1mb in size</i>
-                </div>
-                <div class="col-10">
-                    <input value="Save" type="submit" class="btn btn-primary"/>
-                </div>
-                <div class="col-10">
-                    <p class="text-black-50">*Mandatory</p>
-                </div>
-            </form>
-        </div>
+            </div>
+        </section>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
