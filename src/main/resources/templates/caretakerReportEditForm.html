@@ -13,7 +13,7 @@
                 <div class="py-5">
                     <div class="container row row-cols-2 justify-content-center">
                         <div class="ct-animal-form-table shadow">
-                            <div class="ct-animal-form-header">
+                            <div class="ct-animal-form-header text-center text-white">
                                 <h1>Edit Report</h1>
                             </div>
                             <form class="row g-3 p-2 ps-4" th:action="@{/reports/details/edit/{reportId}(reportId=${report.reportId})}" method="post" th:object="${report}">
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="col-9 d-flex justify-content-between">
                                     <div class="col-2">
-                                        <a class="btn btn-primary cancel-button" th:href="@{/caretaker/animals}">Cancel</a>
+                                        <a class="btn btn-primary cancel-button" th:href="@{/reports}">Cancel</a>
                                     </div>
                                     <div class="col-2 ms-auto">
                                         <input value="Send" type="submit" class="btn btn-primary submit-button"/>
