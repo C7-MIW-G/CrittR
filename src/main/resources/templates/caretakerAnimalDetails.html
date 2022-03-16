@@ -53,6 +53,9 @@
                     </div>
                     <div style="width: 18rem">
                         <div class="card-header"><span th:text="${animal.name}"></span>'s reports</div>
+                        <div th:if="${allReports.isEmpty()}">
+                            <li class="list-group-item list-group-item-action ct-animal-details-list-group"><a>No reports yet</a></li>
+                        </div>
                         <ul class="list-group list-group-flush" th:each="report : ${allReports}">
                             <li class="list-group-item list-group-item-action ct-animal-details-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                         </ul>
