@@ -20,19 +20,16 @@
     </div>
     <div class="container">
         <main>
-            <label for="user-search-input">Filter:</label>
-            <input type="text" id="user-search-input" oninput="searchUsers(null)">
-            <section class="py-3 text-center container">
-                <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                        <h1 class="fw-light">Manage Accounts</h1>
+            <section class="py-3 container">
+                <div class="row py-lg-3 animal-overview-background-card shadow justify-content-between">
+                    <div class="col-lg-5 text-center text-white mt-4 animal-overview-header">
+                        <h1 class="fw-light">Accounts</h1>
                     </div>
-                </div>
-            </section>
-            <div class="overview py-5">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <table class="table table-hover" >
+                    <div class="d-flex col-3 mt-4 align-items-center text-center">
+                        <input type="text" class="caretaker-animal-search-bar" id="user-search-input" placeholder="Filter" oninput="searchUsers(null)">
+                    </div>
+                        <div class="d-flex p-4 justify-content-center">
+                            <table class="table table-hover" >
                             <thead>
                             <tr>
                                 <th scope="col">Email</th>
@@ -43,9 +40,9 @@
                             <tbody id="accountsTable">
                             </tbody>
                         </table>
-                    </div>
+                        </div>
                 </div>
-            </div>
+            </section>
         </main>
         <footer th:replace="fragments/general :: footer"></footer>
         <div th:replace="fragments/general :: bottomscripts"></div>
