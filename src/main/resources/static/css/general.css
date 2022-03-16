@@ -721,10 +721,6 @@ li.active{
     background-color: #8FAFBF;
 }
 
-.style-caretaker .toggle-animal-button {
-
-}
-
 .style-caretaker .animal-details-background-card {
     background-color: #e9f2f7;
 }
@@ -909,4 +905,22 @@ li.active{
     background-color: #dcecf5;
     border: #a5c7d9;
 }
+
+.style-caretaker .home-background-card {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .home-card {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .home-card:hover {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .centered-text-home {
+    color: black;
+}
+
+
 
