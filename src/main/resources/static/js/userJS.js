@@ -53,7 +53,6 @@ function searchUsers(role) {
     })
 }
 
-
 function buildHtmlString(data) {
     let htmlString = "";
     if(data.dtos.length == 0) {
