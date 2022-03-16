@@ -9,80 +9,77 @@
 <input type="hidden" th:value="${report.status.ordinal()}" id="reportStatusHack">
 <div class="container">
     <main>
-        <section class="py-3 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Report nr <span th:text="${report.reportNumber}"></span></h1>
+        <section class="py-3 container">
+            <div class="row py-lg-3 ct-report-details-background-card shadow justify-content-between">
+                <div class="container d-flex py-4 justify-content-evenly">
+                    <div class="col-6 ct-report-details-info-table shadow text-start">
+                        <div class="ct-report-details-header p-2 text-center">
+                            <h1>Report nr <span th:text="${report.reportNumber}"></span></h1>
+                        </div>
+                        <div class="mt-3 mx-4">
+                            <table class="table align-middle mb-2">
+                                <tbody>
+                                <tr>
+                                    <th class="th-sm" scope="row">Species</th>
+                                    <td th:text="${report.species}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="th-sm" scope="row">Animal</th>
+                                    <td th:text="${animalName}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="th-sm" scope="row">Issue</th>
+                                    <td th:text="${report.issue}"></td>
+                                </tr>
+                                <tr>
+                                    <th class="th-sm" scope="row">Description</th>
+                                    <td class="" th:text="${report.description}"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Status</th>
+                                    <td id="status-display" th:text="${report.status.displayName}"></td>
+                                </tr>
+                                <tr>
+                                    <th>Priority</th>
+                                    <td id="priority-display" th:switch="${report.priority.ordinal()}">
+                                        <span class="priority-mark" id="priority-low" th:case="0"></span>
+                                        <span class="priority-mark" id="priority-medium" th:case="1"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
+                                        <span class="priority-mark" id="priority-high" th:case="2"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                                    </td>
+                                </tr>
+                                <tr id="assigned-to-tablerow">
+                                    <th scope="row">Assigned to</th>
+                                    <td id="claimed-by-display" th:text="${claimer}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div sec:authorize="hasRole('CARETAKER')" class="gap-2 d-md-flex py-4">
+                                <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
+                                    <input class="btn btn-primary" type="submit" id="accept-button" value="Accept"/>
+                                </form>
+                                <form id="discard-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
+                                    <input class="btn btn-secondary" type="submit" value="Discard"/>
+                                </form>
+                                <form id="observe-form" style="display : none"  method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
+                                    <input class="btn btn-secondary" type="submit" value="Under observation"/>
+                                </form>
+                                <form id="close-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
+                                    <input class="btn btn-secondary" type="submit" value="Close"/>
+                                </form>
+                                <div class="me-auto">
+                                    <form style="display: block" class="claim-form" id="claim-form" method="post" th:object="${report}" th:action="@{/reports/claim/{reportNr}(reportNr = ${report.reportNumber})}">
+                                        <input class="btn btn-primary" type="submit" value="Assign to me"/>
+                                    </form>
+                                </div>
+                                <div  th:if="${report.status.ordinal() != 4 && report.status.ordinal() != 2}">
+                                    <a th:href="@{/reports/details/edit/{reportNumber}(reportNumber=${report.reportNumber})}" class="btn btn-primary" role="button">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <div class="overview py-5">
-            <div class="container row row-cols-2 g-3 justify-content-around">
-                <div>
-                    <div class="table-responsive">
-                    <table class="table align-middle">
-                        <tbody>
-                        <tr>
-                            <th class="th-sm" scope="row">Species</th>
-                            <td th:text="${report.species}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">Animal</th>
-                            <td th:text="${animalName}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">Issue</th>
-                            <td th:text="${report.issue}"></td>
-                        </tr>
-                        <tr>
-                            <th class="th-sm" scope="row">Description</th>
-                            <td class="" th:text="${report.description}"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Status</th>
-                            <td id="status-display" th:text="${report.status.displayName}"></td>
-                        </tr>
-                        <tr>
-                            <th>Priority</th>
-                            <td id="priority-display" th:switch="${report.priority.ordinal()}">
-                                <span class="priority-mark" id="priority-low" th:case="0"></span>
-                                <span class="priority-mark" id="priority-medium" th:case="1"><img class="svg-img" src="../static/assets/exclamation-yellow.svg" th:src="@{/assets/exclamation-yellow.svg}" alt="Yellow exclamation mark"></span>
-                                <span class="priority-mark" id="priority-high" th:case="2"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
-                            </td>
-                        </tr>
-                        <tr id="assigned-to-tablerow">
-                            <th scope="row">Assigned to</th>
-                            <td id="claimed-by-display" th:text="${claimer}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                    <div sec:authorize="hasRole('CARETAKER')" class="gap-2 d-md-flex">
-                        <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
-                            <input class="btn btn-primary" type="submit" id="accept-button" value="Accept"/>
-                        </form>
-                        <form id="discard-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
-                            <input class="btn btn-secondary" type="submit" value="Discard"/>
-                        </form>
-                        <form id="observe-form" style="display : none"  method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
-                            <input class="btn btn-secondary" type="submit" value="Under observation"/>
-                        </form>
-                        <form id="close-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
-                            <input class="btn btn-secondary" type="submit" value="Close"/>
-                        </form>
-                        <div class="me-auto">
-                        <form style="display: block" class="claim-form" id="claim-form" method="post" th:object="${report}" th:action="@{/reports/claim/{reportNr}(reportNr = ${report.reportNumber})}">
-                            <input class="btn btn-primary" type="submit" value="Assign to me"/>
-                        </form>
-
-                        </div>
-                        <div  th:if="${report.status.ordinal() != 4 && report.status.ordinal() != 2}">
-                            <a th:href="@{/reports/details/edit/{reportNumber}(reportNumber=${report.reportNumber})}" class="btn btn-primary" role="button">Edit</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>

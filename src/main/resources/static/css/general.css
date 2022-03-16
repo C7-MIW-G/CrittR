@@ -769,6 +769,22 @@ li.active{
     background-color: #a7c9db;
 }
 
+.ct-animal-form-background-card {
+    background-color: #e9f2f7;
+}
+
+.ct-animal-form-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+    border-radius: 1px;
+    padding: 0;
+}
+
+.ct-animal-form-header {
+    background-color: #b8d6e6;
+    padding: 10px;
+}
+
 .ct-report-overview-report-btn {
     background-color: #b8d6e6;
     border: none;
@@ -781,6 +797,19 @@ li.active{
 
 .ct-report-overview-report-btn:hover {
     background-color: #a7c9db;
+}
+
+.ct-report-details-background-card {
+    background-color: #e9f2f7;
+}
+
+.ct-report-details-header {
+    background-color: #b8d6e6;
+}
+
+.ct-report-details-info-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
 }
 
 .style-caretaker .about-background-card {
