@@ -13,7 +13,7 @@
             <div class="row py-lg-3 ct-report-details-background-card shadow justify-content-between">
                 <div class="container d-flex py-4 justify-content-evenly">
                     <div class="col-6 ct-report-details-info-table shadow text-start">
-                        <div class="ct-report-details-header p-2 text-center">
+                        <div class="ct-report-details-header p-2 text-center text-white">
                             <h1>Report nr <span th:text="${report.reportNumber}"></span></h1>
                         </div>
                         <div class="mt-3 mx-4">
@@ -71,7 +71,7 @@
                                         <input class="btn btn-primary" type="submit" value="Assign to me"/>
                                     </form>
                                 </div>
-                                <div  th:if="${report.status.ordinal() != 4 && report.status.ordinal() != 2}">
+                                <div th:if="${report.status.ordinal() != 4 && report.status.ordinal() != 2}">
                                     <a th:href="@{/reports/details/edit/{reportNumber}(reportNumber=${report.reportNumber})}" class="btn btn-primary" role="button">Edit</a>
                                 </div>
                             </div>
