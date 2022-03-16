@@ -584,7 +584,7 @@ li.active{
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #8FAFBF;
+    background-color: #8DAD7D;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -597,7 +597,7 @@ li.active{
 /* Delete Confirm Modal Content */
 .modal-content-delconfirm {
     position: relative;
-    background-color: #8FAFBF;
+    background-color: #8DAD7D;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -626,7 +626,7 @@ li.active{
 /* Modal Header */
 .modal-header {
     padding: 5px 16px;
-    background-color: #8FAFBF;
+    background-color: #8DAD7D;
     color: white;
 }
 
