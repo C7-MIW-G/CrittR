@@ -117,7 +117,7 @@ public class ReportController {
     }
 
     private String getReport(@PathVariable("reportNr") long reportNr, ReportStatus reportStatus) {
-        Optional<Report> optionalReport = reportService.getByReportId(reportNr);
+        Optional<Report> optionalReport = reportService.getByReportNumber(reportNr);
         if(optionalReport.isEmpty()) {
             return "redirect:/reports/ct/details/" + reportNr;
         }

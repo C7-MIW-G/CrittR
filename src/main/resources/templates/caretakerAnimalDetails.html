@@ -34,25 +34,28 @@
                             </table>
                             <div class="gap-2 d-md-flex py-4">
                                 <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/incoming/{animalId}(animalId = ${animal.animalId})}">
-                                    <input class="btn btn-secondary status-btn" id="btn-incoming" type="submit" value="Incoming"/>
+                                    <input class="btn btn-primary status-btn" id="btn-incoming" type="submit" value="Incoming"/>
                                 </form>
                                 <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/present/{animalId}(animalId = ${animal.animalId})}">
-                                    <input class="btn btn-secondary status-btn" id="btn-present" type="submit" value="Present"/>
+                                    <input class="btn btn-primary status-btn" id="btn-present" type="submit" value="Present"/>
                                 </form>
                                 <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/relocated/{animalId}(animalId = ${animal.animalId})}">
-                                    <input class="btn btn-secondary status-btn" id="btn-relocated" type="submit" value="Relocated"/>
+                                    <input class="btn btn-primary status-btn" id="btn-relocated" type="submit" value="Relocated"/>
                                 </form>
                                 <form method="post" th:object="${animal}" th:action="@{/caretaker/animals/details/deceased/{animalId}(animalId = ${animal.animalId})}">
-                                    <input class="btn btn-secondary status-btn" id="btn-deceased"  type="submit" value="Deceased"/>
+                                    <input class="btn btn-primary status-btn" id="btn-deceased"  type="submit" value="Deceased"/>
                                 </form>
                                 <div class="ms-auto">
-                                    <a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}" class="btn btn-secondary" role="button">Edit</a>
+                                    <a th:href="@{/animals/update/{animalId}(animalId=${animal.animalId})}" class="btn btn-primary" role="button">Edit</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div style="width: 18rem">
                         <div class="card-header"><span th:text="${animal.name}"></span>'s reports</div>
+                        <div th:if="${allReports.isEmpty()}">
+                            <li class="list-group-item list-group-item-action ct-animal-details-list-group"><a>No reports yet</a></li>
+                        </div>
                         <ul class="list-group list-group-flush" th:each="report : ${allReports}">
                             <li class="list-group-item list-group-item-action ct-animal-details-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                         </ul>

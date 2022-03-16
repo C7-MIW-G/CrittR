@@ -588,8 +588,8 @@ li.active{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
-    height: 70%;
+    width: 30%;
+    height: 45%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -645,11 +645,27 @@ li.active{
 
 }
 
-.modal-cancel-button{
+.modal-cancel-btn{
+    color:black;
     float: left;
+    border: none;
+    background-color: #b6d2e0;
+
 }
 
-.modal-submit-button{
+.modal-submit-btn{
+    background-color: #b6d2e0;
+    border: none;
+    float: right;
+}
+
+.modal-submit-btn:hover{
+    background-color: #4e84a9;
+    float: right;
+}
+
+.modal-cancel-btn:hover{
+    background-color: #4e84a9;
     float: right;
 }
 
@@ -685,6 +701,10 @@ li.active{
 
 .style-caretaker .btn-primary:hover {
     background-color: #8FAFBF;
+}
+
+.style-caretaker .btn-secondary {
+    background-color: #a8b4bf;
 }
 
 .style-caretaker li.active{
