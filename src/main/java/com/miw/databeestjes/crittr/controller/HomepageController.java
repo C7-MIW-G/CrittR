@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomepageController {
 
     @GetMapping({"/", "/home"})
-    protected String showHomePage (Model model) {
-        model.addAttribute("funfact", new FunFact());
+    protected String showHomePage () {
         return "index";
     }
 }

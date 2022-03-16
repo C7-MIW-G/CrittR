@@ -78,6 +78,47 @@
                             <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary text-black my-2" role="button">Edit</a>
                         </div>
                     </div>
+                    <div class="home-card m-2">
+                        <div class="card-body">
+                            <h3 class="centered-text-home fw-light">Add a fun fact</h3>
+                            <a id="modalButton" role="button" class="stretched-link" ></a>
+                        </div>
+                    </div>
+                    <!-- Trigger/Open The Modal -->
+
+                    <!-- The Modal -->
+                    <div class="container">
+                        <div id="modal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2>Add a new fact</h2>
+                                    <span class="close-modal-x">&times;</span>
+                                </div>
+                                <div class="modal-form">
+                                    <form class="row g-3" th:action="@{/facts/new}" method="post" th:object="${funfact}">
+                                        <div class="col-12">
+                                            <label  class="form-label modal-label" for="funfact">Fun Fact</label>
+                                            <textarea class="form-control" placeholder="Enter a fun fact" id="funfact" th:field="*{fact}"></textarea>
+                                        </div><br>
+                                        <div class="col-12">
+                                            <label style="color: white" class="form-label modal-label" for="species">Species</label>
+                                            <input class="form-control" placeholder="e.g. Goat" id="Species" type="text" th:field="*{species}"/>
+                                        </div>
+                                        <br>
+                                        <div class="modal-buttons d-flex justify-content-between">
+                                            <div class="modal-cancel-button">
+                                                <a class="btn my-2 modal-cancel-btn">Cancel</a>
+                                            </div>
+                                            <div class="modal-submit-button ">
+                                                <input value="Add Fact" type="submit" class="btn modal-submit-btn my-2"/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
