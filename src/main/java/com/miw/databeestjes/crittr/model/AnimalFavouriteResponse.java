@@ -14,5 +14,6 @@ public class AnimalFavouriteResponse {
 
     String message = "Failed to favourite animal";
     boolean favourited = false;
+    boolean loggedIn = true;
 
 }
