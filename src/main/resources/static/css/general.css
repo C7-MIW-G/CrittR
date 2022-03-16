@@ -703,6 +703,10 @@ li.active{
     background-color: #8FAFBF;
 }
 
+.style-caretaker .btn-secondary {
+    background-color: #a8b4bf;
+}
+
 .style-caretaker li.active{
     background-color: #e9f2f7 !important;
 }
