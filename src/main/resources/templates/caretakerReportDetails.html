@@ -58,16 +58,16 @@
                     </table>
                     </div>
                     <div sec:authorize="hasRole('CARETAKER')" class="gap-2 d-md-flex">
-                        <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportId}(reportId = ${report.reportId})}">
+                        <form id="accept-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/accept/{reportNr}(reportNr = ${report.getReportNumber()})}">
                             <input class="btn btn-primary" type="submit" id="accept-button" value="Accept"/>
                         </form>
-                        <form id="discard-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportId}(reportId = ${report.reportId})}">
+                        <form id="discard-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/discard/{reportNr}(reportNr = ${report.getReportNumber()})}">
                             <input class="btn btn-secondary" type="submit" value="Discard"/>
                         </form>
-                        <form id="observe-form" style="display : none"  method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportId}(reportId = ${report.reportId})}">
+                        <form id="observe-form" style="display : none"  method="post" th:object="${report}" th:action="@{/reports/details/observation/{reportNr}(reportNr = ${report.getReportNumber()})}">
                             <input class="btn btn-secondary" type="submit" value="Under observation"/>
                         </form>
-                        <form id="close-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportId}(reportId = ${report.reportId})}">
+                        <form id="close-form" style="display : none" method="post" th:object="${report}" th:action="@{/reports/details/closed/{reportNr}(reportNr = ${report.getReportNumber()})}">
                             <input class="btn btn-secondary" type="submit" value="Close"/>
                         </form>
                         <div class="me-auto">
