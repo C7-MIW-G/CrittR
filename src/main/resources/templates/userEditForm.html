@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="col-2">
-                                            <a class="btn btn-primary cancel-button" th:href="@{/animals}">Cancel</a>
+                                            <a class="btn btn-primary cancel-button" th:href="@{/user/details/{userId}(userId=${user.userId})}">Cancel</a>
                                         </div>
                                         <div class="col-2">
                                             <input id="saveButton" value="Save" type="submit" class="btn btn-primary submit-button buttonDisableable"/>
@@ -57,11 +57,10 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                        <div class="col-2 user-form-delete-btn-margin">
+                        <div class="col-2 ms-2 mt-5">
                             <form class="row g-3" th:action="@{/user/details/delete/{userId}(userId=${user.userId})}" method="get" th:object="${user}">
                                 <div>
-                                    <input value="Delete account" type="submit" class="btn btn-primary user-form-delete-btn"/>
+                                    <input value="Delete account" type="submit" class="btn btn-primary delete-button"/>
                                 </div>
                             </form>
                         </div>

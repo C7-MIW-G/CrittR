@@ -29,6 +29,10 @@ public class UserAnimalFavourites {
     @MapsId("animalId")
     @JoinColumn(name = "animal_id")
     private Animal animal;
+
+    public boolean hasAnimal(Animal otherAnimal) {
+        return this.animal.getAnimalId() == otherAnimal.getAnimalId();
+    }
 }
 
 

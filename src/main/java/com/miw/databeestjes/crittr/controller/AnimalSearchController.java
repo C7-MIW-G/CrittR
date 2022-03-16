@@ -75,15 +75,12 @@ public class AnimalSearchController {
                                     AnimalSearchResponse response){
         if(user != null){
             List<Long> animalIds = getIdsFromFavourites(userAnimalFavouritesService.getByUser(user));
-
             response.getDtos().forEach(dto -> setFavourites(animalIds, dto));
         }
     }
 
     private void setFavourites(List<Long> animalIds, AnimalDTO dto) {
-        if(animalIds.contains(dto.getAnimalId())){
-            dto.setFavourited(true);
-        }
+        dto.setFavourited(animalIds.contains(dto.getAnimalId()));
     }
 
     private List<Long> getIdsFromFavourites (List<UserAnimalFavourites> favourites){

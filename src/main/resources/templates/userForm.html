@@ -8,39 +8,51 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <div class="col-lg-8">
-            <h1>Create Account</h1>
-            <form class="row g-3" th:action="@{/users/new}" method="post" th:object="${user}">
-                <input type="hidden" th:field="*{userId}"/>
-                <div class="col-8">
-                    <label class="form-label" for="email">Email*</label>
-                    <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
-                    <p class="errormessage" id="uniquenessError" th:text="${uniquenessError}" />
-                    <p class="errormessage" th:if="${#fields.hasErrors('email')}">Please enter a valid email address</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="username">Name*</label>
-                    <input class="form-control" placeholder="Name" id="username" type="text" th:field="*{username}"/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="password">Password*</label>
-                    <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}" onkeyup='checkPassword()'>
-                    <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="confirm_password">Confirm Password*</label>
-                    <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
-                </div><br>
-                <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
-                <div class="col-10">
-                    <input id="signUpButton" value="Sign up" type="submit" class="btn btn-secondary buttonDisableable" disabled/>
-                </div><br>
-                <div class="col-10">
-                    <p class="text-black-50">*Mandatory</p>
-                </div>
-            </form>
-        </div>
+        <section class="py-3 container">
+            <div class="row py-lg-3 user-form-background-card shadow">
+                <div class="py-5">
+                    <div class="container row row-cols-2     justify-content-center">
+                        <div class="user-form-info-table shadow">
+                            <div class="user-form-info-table-header">
+                                <h3>Create Account</h3>
+                            </div>
+                            <div>
+                                <form class="row g-3 mt-1 ps-2" th:action="@{/users/new}" method="post" th:object="${user}">
+                                    <input type="hidden" th:field="*{userId}"/>
+                                    <div class="col-8">
+                                        <label class="form-label" for="email">Email*</label>
+                                        <input class="form-control" placeholder="Email" id="email" type="text" th:field="*{email}"/>
+                                        <p class="errormessage" id="uniquenessError" th:text="${uniquenessError}" />
+                                        <p class="errormessage" th:if="${#fields.hasErrors('email')}">Please enter a valid email address</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="form-label" for="username">Name*</label>
+                                        <input class="form-control" placeholder="Name" id="username" type="text" th:field="*{username}"/>
+                                        <p class="errormessage" th:if="${#fields.hasErrors('username')}">Please enter your name</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="form-label" for="password">Password*</label>
+                                        <input class="form-control" placeholder="Password" id="password" type="password" th:field="*{password}" onkeyup='checkPassword()'>
+                                        <p class="errormessage" th:if="${#fields.hasErrors('password')}">Please enter a strong password</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="form-label" for="confirm_password">Confirm Password*</label>
+                                        <input class="form-control" placeholder="Confirm Password" id="confirm_password" type="password" onkeyup='checkPassword()'>
+                                    </div>
+                                    <div><p id='message' class="errormessage" style="visibility: hidden">Passwords don't match, please try again.</p></div><br>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="col-2">
+                                            <a class="btn btn-primary cancel-button" th:href="@{/home}">Cancel</a>
+                                        </div>
+                                        <div class="col-2">
+                                            <input id="signUpButton" value="Sign up" type="submit" class="btn btn-secondary buttonDisableable" disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="text-black-50">*Mandatory</p>
+                                    </div>
+                                </form>
+                            </div>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>

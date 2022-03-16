@@ -28,15 +28,15 @@
                             </table>
                         </div>
                         <div class="col-10 mb-2 ps-2 d-flex justify-content-between">
-                            <div class="">
+                            <div>
                                 <form class="row g-3" th:action="@{/user/details/delete/{userId}(userId=${user.userId})}" method="get" th:object="${user}">
                                     <div>
-                                        <input value="Delete account" type="submit" class="btn btn-primary"/>
+                                        <input value="Delete account" type="submit" class="btn btn-primary delete-button"/>
                                     </div>
                                 </form>
                             </div>
-                            <div>
-                                <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary" role="button">Edit</a>
+                            <div class="">
+                                <a th:href="@{/user/details/edit/{userId}(userId=${user.userId})}" class="btn btn-primary submit-button w-100 text-black" role="button">Edit</a>
                             </div>
                         </div>
                     </div>
