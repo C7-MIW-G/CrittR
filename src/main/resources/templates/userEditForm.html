@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="col-2">
-                                            <a class="btn btn-primary cancel-button" th:href="@{/animals}">Cancel</a>
+                                            <a class="btn btn-primary cancel-button" th:href="@{/user/details/{userId}(userId=${user.userId})}">Cancel</a>
                                         </div>
                                         <div class="col-2">
                                             <input id="saveButton" value="Save" type="submit" class="btn btn-primary submit-button buttonDisableable"/>

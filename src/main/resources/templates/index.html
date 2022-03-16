@@ -18,20 +18,25 @@
             <div class="col-12 d-flex justify-content-center">
                 <div class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home">Animals</h3>
+                        <h3 class="centered-text-home fw-light">Animals</h3>
                         <a th:href="@{/animals}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
                 <div class="home-card m-2">
                     <div class="card-body">
-<!--                        <img class="home-img" src="../static/assets/teddy-bear.jpg" th:src="@{assets/teddy-bear.jpg}">-->
-                        <h3 class="centered-text-home" >Report problem</h3>
+                        <h3 class="centered-text-home fw-light" >Report a problem</h3>
                         <a th:href="@{/reports/new}" role="button" class="stretched-link"></a>
+                    </div>
+                </div>
+                <div class="home-card m-2">
+                    <div class="card-body">
+                        <h3 class="centered-text-home fw-light" >Become a member!</h3>
+                        <a th:href="@{/users/new}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home">Add a fun fact</h3>
+                        <h3 class="centered-text-home fw-light">Add a fun fact</h3>
                         <a sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" id="addFactButton" role="button" class="stretched-link" ></a>
                     </div>
                 </div>
