@@ -1,6 +1,7 @@
 function favouriteToggle(animalId){
-    const requestBody = {};
-    requestBody['animalId'] = animalId;
+    const requestBody = {
+        animalId: animalId
+    };
 
     $.ajax({
         type: "POST",
