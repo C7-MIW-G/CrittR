@@ -783,6 +783,33 @@ li.active{
     background-color: #a7c9db;
 }
 
+
+.style-caretaker .modal-content {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .modal-content-delconfirm {
+    background-color: #8FAFBF;
+}
+
+
+.style-caretaker .modal-header {
+    background-color: #8FAFBF;
+}
+
+.style-caretaker .delete-button {
+    background-color: #FF7C72;
+    border-style: solid;
+    color: black;
+    border-color: #FF6E63;
+}
+
+.style-caretaker .delete-button:hover {
+    border-color: #FF3021;
+    background-color: #FF3021;
+    color: black;
+}
+
 .caretaker-animal-search-bar {
     display: block;
     width: 100%;
