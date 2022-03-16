@@ -791,6 +791,27 @@ li.active{
     background-color: #fff;
 }
 
+.style-caretaker .user-form-background-card {
+    background-color: #e9f2f7;
+}
+
+.style-caretaker .user-form-info-table {
+    background-color: #dcecf5;
+    border: #a5c7d9;
+}
+
+.style-caretaker .user-form-info-table-header {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .user-form-delete-btn {
+    border: #b8d6e6 solid;
+}
+
+.style-caretaker .user-form-delete-btn:hover {
+    border-color: #8FAFBF;
+}
+
 .style-caretaker .animal-overview-report-issue-btn {
     background-color: #b8d6e6;
 }
