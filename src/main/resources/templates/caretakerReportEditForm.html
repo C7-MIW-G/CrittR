@@ -8,46 +8,61 @@
 <header th:replace="fragments/general :: navbar"></header>
 <div class="container">
     <main>
-        <div class="col-lg-8">
-            <h1>Edit Report</h1>
-            <form class="row g-3" th:action="@{/reports/details/edit/{reportId}(reportId=${report.reportId})}" method="post" th:object="${report}">
-                <input type="hidden" th:field="*{reportId}">
-                <input type="hidden" th:field="*{reporter.userId}">
-                <input type="hidden" th:field="*{reportNumber}" th:value="${report.reportNumber}">
-                <div class="col-8">
-                    <label class="form-label" for="SpeciesInput">Species:*</label>
-                    <input class="form-control" id="SpeciesInput" type="text" placeholder="e.g. 'Goat'" th:field="*{species}">
-                    <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please provide the species</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="animalNameInput">Animal:</label>
-                    <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
-                    </select>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="IssueInput">Issue:*</label>
-                    <input class="form-control" type="text" id="IssueInput" placeholder="e.g. 'broken leg'" th:field="*{issue}" readonly/>
-                    <p class="errormessage" th:if="${#fields.hasErrors('issue')}">Please provide the issue</p>
-                </div><br>
-                <div class="col-8">
-                    <label class="form-label" for="DescriptionInput">Description:</label>
-                    <textarea class="form-control" id="DescriptionInput" name="description" placeholder="tell us more" th:field="*{description}" readonly></textarea>
-                </div><br>
-                <h6>Priority: </h6>
-                <div>
-                    <div class="priority-radio form-check" th:each="priority : ${T(com.miw.databeestjes.crittr.model.ReportPriority).values()}">
-                        <input type="radio" class="form-check-input" th:field="*{priority}" th:value="${priority}" th:id="${priority} + '-input'">
-                        <label class="form-check-label" th:for="${priority} + '-input'" th:text="${priority.displayName}"></label>
+        <section class="py-3 container">
+            <div class="row py-lg-3 ct-animal-form-background-card shadow">
+                <div class="py-5">
+                    <div class="container row row-cols-2 justify-content-center">
+                        <div class="ct-animal-form-table shadow">
+                            <div class="ct-animal-form-header">
+                                <h1>Edit Report</h1>
+                            </div>
+                            <form class="row g-3 p-2 ps-4" th:action="@{/reports/details/edit/{reportId}(reportId=${report.reportId})}" method="post" th:object="${report}">
+                                <input type="hidden" th:field="*{reportId}">
+                                <input type="hidden" th:field="*{reporter.userId}">
+                                <input type="hidden" th:field="*{reportNumber}" th:value="${report.reportNumber}">
+                                <div class="col-9">
+                                    <label class="form-label" for="SpeciesInput">Species:*</label>
+                                    <input class="form-control" id="SpeciesInput" type="text" placeholder="e.g. 'Goat'" th:field="*{species}">
+                                    <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please provide the species</p>
+                                </div><br>
+                                <div class="col-9">
+                                    <label class="form-label" for="animalNameInput">Animal:</label>
+                                    <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
+                                    </select>
+                                </div><br>
+                                <div class="col-9">
+                                    <label class="form-label" for="IssueInput">Issue:*</label>
+                                    <input class="form-control" type="text" id="IssueInput" placeholder="e.g. 'broken leg'" th:field="*{issue}" readonly/>
+                                    <p class="errormessage" th:if="${#fields.hasErrors('issue')}">Please provide the issue</p>
+                                </div><br>
+                                <div class="col-9">
+                                    <label class="form-label" for="DescriptionInput">Description:</label>
+                                    <textarea class="form-control" id="DescriptionInput" name="description" placeholder="tell us more" th:field="*{description}" readonly></textarea>
+                                </div><br>
+                                <h6>Priority: </h6>
+                                <div>
+                                    <div class="priority-radio form-check" th:each="priority : ${T(com.miw.databeestjes.crittr.model.ReportPriority).values()}">
+                                        <input type="radio" class="form-check-input" th:field="*{priority}" th:value="${priority}" th:id="${priority} + '-input'">
+                                        <label class="form-check-label" th:for="${priority} + '-input'" th:text="${priority.displayName}"></label>
+                                    </div>
+                                </div>
+                                <div class="col-9 d-flex justify-content-between">
+                                    <div class="col-2">
+                                        <a class="btn btn-primary cancel-button" th:href="@{/caretaker/animals}">Cancel</a>
+                                    </div>
+                                    <div class="col-2 ms-auto">
+                                        <input value="Send" type="submit" class="btn btn-primary submit-button"/>
+                                    </div><br>
+                                </div>
+                                <div class="col-10">
+                                    <p class="text-black-50">*Mandatory</p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="col-10">
-                    <input value="Send" type="submit" class="btn btn-primary"/>
-                </div><br>
-                <div class="col-10">
-                    <p class="text-black-50">*Mandatory</p>
-                </div>
-            </form>
-        </div>
+            </div>
+        </section>
     </main>
     <footer th:replace="fragments/general :: footer"></footer>
     <div th:replace="fragments/general :: bottomscripts"></div>
