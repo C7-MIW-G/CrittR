@@ -55,13 +55,10 @@ public class CrittrUserDetailsService implements UserDetailsService {
     }
 
     private String redirectResponse(CrittrUser user, CrittrUser current) {
-        System.out.println(current.getUserId());
-        System.out.println(user.getUserId());
         if(current.equals(user)) {
             return "redirect:/user/details/" + user.getUserId();
         }
         return "redirect:/accounts/users";
-
     }
 
     public void save(CrittrUser user) {

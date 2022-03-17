@@ -1,8 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
 import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.model.ReportPriority;
-import com.miw.databeestjes.crittr.model.ReportStatus;
 import com.miw.databeestjes.crittr.service.AnimalService;
 import com.miw.databeestjes.crittr.service.ReportService;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
@@ -96,7 +94,6 @@ public class CrittrUserController {
     protected String updateUser(@ModelAttribute("user") @Valid CrittrUser user,
                                 BindingResult result,
                                 @AuthenticationPrincipal CrittrUser currentUser) {
-
         if (!result.hasErrors()) {
             return crittrUserDetailsService.saveWithPassword(user, passwordEncoder.encode(user.getPassword()), currentUser);
         }
