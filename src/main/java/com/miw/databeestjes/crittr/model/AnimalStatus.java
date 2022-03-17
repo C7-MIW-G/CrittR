@@ -1,5 +1,10 @@
 package com.miw.databeestjes.crittr.model;
 
+/**
+ * <p>
+ * This class describes the states an animal can be in
+ */
+
 public enum AnimalStatus {
     INCOMING("Incoming"),
     PRESENT("Present"),

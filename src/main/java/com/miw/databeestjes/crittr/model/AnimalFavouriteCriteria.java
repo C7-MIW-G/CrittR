@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class describes the criteria for liking an animal
  */
 @Getter @Setter
 public class AnimalFavouriteCriteria {

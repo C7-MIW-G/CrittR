@@ -18,8 +18,9 @@ import java.util.stream.Collectors;
 
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
+ * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
  * <p>
- * This file is part of our Crittr Project
+ * This class formulates a response to requests to favourite an animal
  */
 @RestController
 public class FavouriteRestController {

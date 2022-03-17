@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class describes educational info
  */
 
 @Entity

@@ -8,8 +8,9 @@ import javax.persistence.Lob;
 
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
+ * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class is a version of an Animal entity for display in the front-end
  */
 
 @Getter @Setter

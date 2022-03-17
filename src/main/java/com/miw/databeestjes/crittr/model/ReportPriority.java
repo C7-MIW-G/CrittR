@@ -1,5 +1,10 @@
 package com.miw.databeestjes.crittr.model;
 
+/**
+ * <p>
+ * This class describes the priorities a report can have.
+ */
+
 public enum ReportPriority {
     LOW("Normal"),
     MEDIUM("Serious"),

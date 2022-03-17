@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class is used to formulate a response to a favourite request on animal
  */
 
 @Getter @Setter

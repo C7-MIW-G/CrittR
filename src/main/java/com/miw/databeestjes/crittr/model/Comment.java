@@ -3,17 +3,15 @@ package com.miw.databeestjes.crittr.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This is an entity for our user comment system.
+
  */
 
 @Entity
@@ -22,18 +20,19 @@ public class Comment {
 
     @Id
     @GeneratedValue
-    protected long commentId;
+    private long commentId;
 
     @ManyToOne
-    protected CrittrUser commenter;
+    private CrittrUser commenter;
 
     @ManyToOne
-    protected Animal animal;
+    private Animal animal;
 
     @NotNull
-    protected String commentText;
+    @Column(length = 750)
+    private String commentText;
 
     @NotNull
-    protected LocalDateTime dateTime = LocalDateTime.now();
+    private LocalDateTime dateTime = LocalDateTime.now();
 
 }

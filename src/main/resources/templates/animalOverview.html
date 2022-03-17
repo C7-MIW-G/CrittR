@@ -4,17 +4,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>Animal overview</title>
 </head>
-<body onload="searchAnimals(null, '')">
+<body class="animal-overview-body">
 <header th:replace="fragments/general :: navbar"></header>
-<div class="toggle-animal-button d-flex justify-content-end" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
-    <p class="text-muted">Toggle overview</p>
-    <a th:href="@{/caretaker/animals}">
-        <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}">
-    </a>
-</div>
 <div class="animal-container">
     <div class="filter-column animal-search-list">
-        <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
+        <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter"/>
         <div class="card-header">
             <span>Animal</span>
         </div>
@@ -27,17 +21,23 @@
         <ul class="list-group list-group-flush" id="status-list">
             <li class="list-group-item list-group-item-action" th:each="status : ${T(com.miw.databeestjes.crittr.model.AnimalStatus).values()}"><a class="stretched-link hyperlink-no-styling" th:value="${status}" th:text="${status.displayName}"></a></li>
         </ul><br>
-        <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button" onclick="searchAnimals(null, '')">See all</a>
+        <a class="btn btn-secondary all-items-button all-animals-button" id="all-animals-button">See all</a>
     </div>
     <div class="container">
         <main>
             <section class="py-3 container">
                 <div class="row py-lg-3 animal-overview-background-card shadow justify-content-between">
-                    <div class="col-5 mt-4 animal-overview-header">
+                    <div class="d-flex align-self-start col-5 mt-4 animal-overview-header">
                         <h1 class="fw">Animals</h1>
                     </div>
-                    <div class="col-2 mt-3 animal-overview-report-issue-btn-margin">
-                        <a th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report issue</a>
+                    <div class="col-3 mt-3 animal-overview-report-issue-btn-margin">
+                        <div class="toggle-animal-button d-flex justify-content-center" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
+                            <p class="text-muted mb-0">Toggle overview</p>
+                            <a th:href="@{/caretaker/animals}">
+                                <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}">
+                            </a>
+                        </div>
+                        <a th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report a problem</a>
                     </div>
                     <div class="py-5">
                         <div id="animalsTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">

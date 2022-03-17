@@ -1,5 +1,10 @@
 package com.miw.databeestjes.crittr.model;
 
+/**
+ * <p>
+ * This class describes the states a report can be in.
+ */
+
 public enum ReportStatus {
     NEW("New"),
     OPEN_ISSUE("Open Issue"),

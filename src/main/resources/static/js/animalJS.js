@@ -1,5 +1,6 @@
 let chosenSpecies = "";
 let chosenStatus = null;
+const animalSearch = $('#animal-search-input');
 
 function setChosenSpecies(element) {
     let clickedSpecies = element.find('a').html();
@@ -39,14 +40,25 @@ $('#status-list li').click(function() {
 
 $('#all-animals-button').click(function(){
     $('.filter-column li').removeClass('active');
-    chosenSpecies = "";
-    chosenStatus = null;
+    resetFilterCriteria()
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
-$('#animal-search-input').focus(function() {
+animalSearch.focus(function() {
+    resetFilterCriteria();
     $('.filter-column li').removeClass('active');
 })
+
+animalSearch.on('input', function (){
+    searchAnimals(null, animalSearch.val());
+})
+
+$('.animal-overview-body').on('load', searchAnimals(null, ""));
+
+function resetFilterCriteria() {
+    chosenStatus = null;
+    chosenSpecies = "";
+}
 
 function searchAnimals(status, keyword) {
     const searchObject = {
@@ -64,20 +76,17 @@ function searchAnimals(status, keyword) {
         timeout : 600000,
         success: function (data) {
             const tBody = $('#animalsTable');
-            let innerhtml = '';
             const pageTitle = $('title');
+            tBody.empty();
             if (pageTitle[0].innerHTML == 'Animal overview'){
-                innerhtml = buildHtmlStringAnimal(data);
+                tBody.append(buildHtmlStringAnimal(data));
             } else if (pageTitle[0].innerHTML == "Account Details") {
                 data.msg = "You have no favourite animals yet ...";
                 data.dtos = data.dtos.filter((item) => item.favourited === true)
-                innerhtml = buildHtmlStringAnimal(data);
+                tBody.append(buildHtmlStringAnimal(data));
             } else {
-                innerhtml = buildHtmlStringAnimalCaretaker(data);
+                tBody.append(buildHtmlStringAnimalCaretaker(data))
             }
-
-            tBody.empty();
-            tBody.append(innerhtml);
             setHearts(data);
         },
         error: function () {

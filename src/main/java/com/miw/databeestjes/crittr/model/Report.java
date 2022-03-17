@@ -7,6 +7,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
+/**
+ * <p>
+ * This class describes a report.
+ */
+
 @Entity
 @Getter @Setter
 public class Report {
@@ -29,7 +34,7 @@ public class Report {
     @NotEmpty
     private String species;
 
-    @Column
+    @Column(length = 750)
     private String description;
 
     private LocalDateTime reportDate = LocalDateTime.now();

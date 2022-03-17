@@ -1,5 +1,10 @@
 package com.miw.databeestjes.crittr.model;
 
+/**
+ * <p>
+ * This class describes the roles a user can have.
+ */
+
 public enum UserRoleStatus {
     ROLE_MEMBER("Member"),
     ROLE_CARETAKER("Caretaker"),

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class is used to formulate a response to an animal Search request
  */
 @Getter @Setter
 public class AnimalSearchResponse {
