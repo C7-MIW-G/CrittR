@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-3 mt-3 animal-overview-report-issue-btn-margin">
                         <div class="toggle-animal-button d-flex justify-content-center" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
-                            <p class="text-muted">Toggle overview</p>
+                            <p class="text-muted mb-0">Toggle overview</p>
                             <a th:href="@{/caretaker/animals}">
                                 <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}">
                             </a>
