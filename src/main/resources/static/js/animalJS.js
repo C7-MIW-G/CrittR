@@ -108,15 +108,17 @@ function buildHtmlStringAnimal(data) {
 
     data.dtos.forEach(dto => htmlString +=
         `<div class="card mt-4 overview-card justify-content-center shadow">` +
-        `<img class="card-img rounded-circle shadow" src="data:image/jpeg;base64,${dto.picture}">` +
-        `<div class="card-body">` +
-        `<div class="w-25 heart-button">`+
+        `<div class="position-relative">` +
+        `<img class="card-img rounded-circle shadow block" src="data:image/jpeg;base64,${dto.picture}">` +
+        `<div class="w-25 heart-button" style="position: absolute; top:0; right:0;">`+
         `<label>` +
         `<input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/> ` +
         `<div class="heart-overlay"><img class="heart-img mt-2 heart-outline" id="heart-outline-${dto.animalId}" src="/assets/heart.svg" alt="heart outline"/></div>` +
         `</label>` +
         `</div>` +
-        `<h4 class="card-title">${dto.name} the ${dto.species} </h4>` +
+        `</div>` +
+        `<div class="card-body">` +
+        `<h4 class="card-title pt-3">${dto.name} the ${dto.species} </h4>` +
         `<a style="z-index: 1" href="/animals/details/${dto.animalId}"` +
         `class="stretched-link"></a>` +
         `</div>` +
