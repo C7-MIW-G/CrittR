@@ -6,12 +6,6 @@
 </head>
 <body onload="searchAnimals(null, '')">
 <header th:replace="fragments/general :: navbar"></header>
-<div class="toggle-animal-button d-flex justify-content-end" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
-    <p class="text-muted">Toggle overview</p>
-    <a th:href="@{/caretaker/animals}">
-        <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}">
-    </a>
-</div>
 <div class="animal-container">
     <div class="filter-column animal-search-list">
         <input type="text" class="animal-search-bar" id="animal-search-input" placeholder="Filter" oninput="searchAnimals(null, $('#animal-search-input').val())"/>
@@ -37,6 +31,12 @@
                         <h1 class="fw">Animals</h1>
                     </div>
                     <div class="col-2 mt-3 animal-overview-report-issue-btn-margin">
+                        <div class="toggle-animal-button d-flex justify-content-end" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
+                            <p class="text-muted">Toggle overview</p>
+                            <a th:href="@{/caretaker/animals}">
+                                <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}">
+                            </a>
+                        </div>
                         <a th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report issue</a>
                     </div>
                     <div class="py-5">
