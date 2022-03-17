@@ -250,7 +250,7 @@ li.active{
 }
 
 .animal-overview-report-issue-btn-margin {
-    margin-right: 14px;
+    margin-right: -40px;
 }
 
 
@@ -363,14 +363,18 @@ li.active{
     background-color: #ACD199;
     border: none;
     color: black;
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     border-radius: 0;
     font-weight: 500;
     font-size: 1.3rem;
 }
 
+.animal-details-report-issue-btn:hover {
+    background-color: #8DAD7D;
+}
+
 .margin-report-btn {
-    margin-right: 120px;
+    margin-right: 78px;
 }
 
 #edu-info-default {
