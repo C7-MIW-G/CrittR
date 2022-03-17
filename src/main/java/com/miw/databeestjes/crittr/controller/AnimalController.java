@@ -103,7 +103,7 @@ public class AnimalController {
         }
 
         if (animal.getAnimalPicture() != null) {
-            SetNewPictureIfExists(animal, editAnimalPictureInput);
+            setNewPictureIfExists(animal, editAnimalPictureInput);
         } else if (!animalPictureInput.isEmpty()) {
             setNewAnimalPicture(animal, animalPictureInput);
         } else {
@@ -114,7 +114,7 @@ public class AnimalController {
         return "redirect:/caretaker/animals";
     }
 
-    private void SetNewPictureIfExists(Animal animal, MultipartFile editAnimalPictureInput) {
+    private void setNewPictureIfExists(Animal animal, MultipartFile editAnimalPictureInput) {
         if (editAnimalPictureInput != null) {
             setNewAnimalPicture(animal, editAnimalPictureInput);
         } else {
@@ -123,7 +123,6 @@ public class AnimalController {
     }
 
     private void setNewAnimalPicture(Animal animal, MultipartFile animalPictureInput) {
-
         try {
             byte[] imageContent = animalPictureInput.getBytes();
             if (animalPictureInput.getSize() < ONE_MEGABYTE) {
