@@ -231,7 +231,7 @@ li.active{
 .heart-button {
     z-index: 2;
     position: relative;
-    left: 40%;
+    left: 80%;
     cursor: pointer;
 }
 
@@ -288,7 +288,6 @@ li.active{
     object-fit: cover;
     width:10rem;
     height:10rem;
-    margin-left: 12px;
 }
 
 /*
