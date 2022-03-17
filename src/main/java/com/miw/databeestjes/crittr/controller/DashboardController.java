@@ -1,9 +1,6 @@
 package com.miw.databeestjes.crittr.controller;
 
-import com.miw.databeestjes.crittr.model.CrittrUser;
-import com.miw.databeestjes.crittr.model.FunFact;
-import com.miw.databeestjes.crittr.model.ReportPriority;
-import com.miw.databeestjes.crittr.model.ReportStatus;
+import com.miw.databeestjes.crittr.model.*;
 import com.miw.databeestjes.crittr.service.ReportService;
 import com.miw.databeestjes.crittr.service.implementation.CrittrUserDetailsService;
 import org.springframework.security.access.annotation.Secured;
@@ -12,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -35,6 +34,8 @@ public class DashboardController {
     @Secured({"ROLE_CARETAKER", "ROLE_ADMIN"})
     protected String showCaretakerUserDetails(@PathVariable("userId") long userId, Model model) {
         Optional<CrittrUser> user = crittrUserDetailsService.findById(userId);
+        List<Report> newReports = reportService.getByReportStatus(ReportStatus.NEW);
+        Collections.reverse(newReports);
         if (user.isEmpty()) {
             return "redirect:/";
         }
@@ -42,7 +43,7 @@ public class DashboardController {
         model.addAttribute("allCriticalReports", reportService.getByReportPriority(ReportPriority.HIGH));
         model.addAttribute("allMediumReports", reportService.getByReportPriority(ReportPriority.MEDIUM));
         model.addAttribute("allNormalReports", reportService.getByReportPriority(ReportPriority.LOW));
-        model.addAttribute("allNewReports", reportService.getByReportStatus(ReportStatus.NEW));
+        model.addAttribute("allNewReports",  newReports);
         model.addAttribute("funfact", new FunFact());
         return "caretakerDashboard";
     }

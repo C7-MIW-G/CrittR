@@ -42,7 +42,7 @@
                         <a th:href="@{/reports}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
-                <div sec:authorize="hasRole('MEMBER')" class="home-card m-2">
+                <div sec:authorize="hasRole('MEMBER') or isAnonymous()" class="home-card m-2">
                     <div class="card-body">
                         <h3 class="centered-text-home fw-light" >Report a problem</h3>
                         <a th:href="@{/reports/new}" role="button" class="stretched-link"></a>

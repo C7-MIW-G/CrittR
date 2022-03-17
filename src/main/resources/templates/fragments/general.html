@@ -23,7 +23,7 @@
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" th:href="@{/home}">CrittR</a></li>
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER')" th:href="@{/account/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}">Dashboard</a></li>
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('MEMBER') or hasRole('ADMIN') or isAnonymous()" th:href="@{/animals}">Animals</a></li>
-                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/caretaker/animals}">Animals</a></li>
+                <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER')" th:href="@{/caretaker/animals}">Animals</a></li>
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')" th:href="@{/reports}">Reports</a></li>
                 <li><a class="nav-link px-2 link-dark fw-bold nav-text-link" sec:authorize="hasRole('MEMBER')" th:href="@{/reports/new}" >Report a problem</a></li>
             </ul>

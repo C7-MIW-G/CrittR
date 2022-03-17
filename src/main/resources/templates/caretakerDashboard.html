@@ -25,17 +25,15 @@
                 </div>
                 <div class="container row py-4 justify-content-evenly">
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header text-black fw-bold">Claimed by you</div>
-                        <ul class="list-group list-group-flush" th:each="report : ${user.claimedReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
+                        <div class="card-header text-black fw-bold">New</div>
+                        <ul class="list-group list-group-flush" th:each="newReport : ${allNewReports}">
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${newReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${newReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header text-black fw-bold"><span class="priority-mark" id="priority-high"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
-                            &nbsp;&nbsp;Critical
-                        </div>
-                        <ul class="list-group list-group-flush" th:each="criticalReport : ${allCriticalReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${criticalReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${criticalReport.reportNumber})}"></a></li>
+                        <div class="card-header text-black fw-bold">Claimed by you</div>
+                        <ul class="list-group list-group-flush" th:each="report : ${user.claimedReports}">
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${report.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${report.reportNumber})}"></a></li>
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
@@ -47,9 +45,11 @@
                         </ul>
                     </div>
                     <div class="col-4" style="width: 18rem">
-                        <div class="card-header text-black fw-bold">New</div>
-                        <ul class="list-group list-group-flush" th:each="newReport : ${allNewReports}">
-                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${newReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${newReport.reportNumber})}"></a></li>
+                        <div class="card-header text-black fw-bold"><span class="priority-mark" id="priority-high"><img class="svg-img" src="../static/assets/exclamation-red.svg" th:src="@{/assets/exclamation-red.svg}" alt="Red exclamation mark"></span>
+                            &nbsp;&nbsp;Critical
+                        </div>
+                        <ul class="list-group list-group-flush" th:each="criticalReport : ${allCriticalReports}">
+                            <li class="list-group-item list-group-item-action account-list-group"><a class="stretched-link hyperlink-no-styling" th:text="${criticalReport.issue}" th:href="@{/reports/ct/details/{reportNr}(reportNr=${criticalReport.reportNumber})}"></a></li>
                         </ul>
                     </div>
                 </div>
