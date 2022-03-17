@@ -53,7 +53,7 @@ animalSearch.on('input', function (){
     searchAnimals(null, animalSearch.val());
 })
 
-$('.animal-overview-body').on('load', searchAnimals(null, ""));
+$('#animal-overview-body').on('load', searchAnimals(null, ""));
 
 function resetFilterCriteria() {
     chosenStatus = null;
@@ -100,10 +100,8 @@ function searchAnimals(status, keyword) {
 function setHearts(data) {
     data.dtos.forEach(dto => {
         if(dto.favourited){
-        const heartId = '#heart-img-' + dto.animalId;
-        $(heartId).toggleClass("heart-img-clicked");
-        const heartOutline = '#heart-outline-' + dto.animalId;
-        $(heartOutline).toggleClass('heart-img-clicked');
+        $('.animal-overview-body #heart-img-' + dto.animalId).toggleClass("heart-img-clicked");
+        $('.animal-overview-body #heart-outline-' + dto.animalId).toggleClass('heart-img-clicked');
     }})
 }
 
