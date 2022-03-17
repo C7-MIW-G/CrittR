@@ -30,9 +30,7 @@ public class UserCommentSeeder {
 
     public void seedComments() {
         if (commentService.getAll().size() == 0) {
-            //Size of listOfUsers with proper names is fixed at 10
             List<CrittrUser> listOfUsers = crittrUserDetailsService.findAll();
-            //Size of listOfAnimals is fixed at 25
             List<Animal> listOfAnimals = animalService.getAll();
             commentService.addComment(listOfUsers.get(0), listOfAnimals.get(0), "So cuuuute!");
             commentService.addComment(listOfUsers.get(1), listOfAnimals.get(0), "Was so sweet to me today");
@@ -57,7 +55,7 @@ public class UserCommentSeeder {
             commentService.addComment(listOfUsers.get(0), listOfAnimals.get(8), "Careful, does NOT want to cuddled sometimes");
             commentService.addComment(listOfUsers.get(1), listOfAnimals.get(8), "Loves being cuddled. Perfect!");
             commentService.addComment(listOfUsers.get(2), listOfAnimals.get(9), "Seemed really happy today!");
-            commentService.addComment(listOfUsers.get(2), listOfAnimals.get(9), "Was super energetic today!");
+            commentService.addComment(listOfUsers.get(3), listOfAnimals.get(9), "Was super energetic today!");
             commentService.addComment(listOfUsers.get(3), listOfAnimals.get(10), "Was being a bully to the animals today, very mean!");
             commentService.addComment(listOfUsers.get(4), listOfAnimals.get(10), "Seems to really enjoy the company of visitors! Fun :)");
             commentService.addComment(listOfUsers.get(5), listOfAnimals.get(10), "Grumpy today, watch out!!");

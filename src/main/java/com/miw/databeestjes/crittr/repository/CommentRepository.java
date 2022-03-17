@@ -11,5 +11,4 @@ public interface CommentRepository extends JpaRepository <Comment, Long> {
     @Query("SELECT c FROM Comment c WHERE c.animal.animalId=?1")
     List<Comment> findAllByAnimalId (long animalId);
 
-
 }

@@ -68,12 +68,12 @@
                 </div>
                 <div class="col-8 pt-3 ms-5">
                     <h4>Comments</h4>
-                    <form class="row g-3" th:action="@{/comments/new}" method="post" th:object="${comment}">
+                    <form class="col-8 row g-3 pt-2" th:action="@{/comments/new}" method="post" th:object="${comment}">
                         <input type="hidden" th:field="*{commentId}"/>
                         <input type="hidden" th:field="${animal.animalId}"/>
-                        <textarea class="form-control" placeholder="Leave a comment" id="comment" th:field="*{commentText}"></textarea>
-                        <div class="col-2">
-                            <input value="Post comment" type="submit" class="btn btn-primary"/>
+                        <textarea class="col-2 form-control comment-textarea" placeholder="Leave a comment" id="comment" th:field="*{commentText}"></textarea>
+                        <div class="flex">
+                            <input value="Post comment" type="submit" class="btn btn-primary comment-post-btn"/>
                         </div>
                     </form>
                 </div>

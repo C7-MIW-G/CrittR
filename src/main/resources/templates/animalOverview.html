@@ -34,7 +34,7 @@
                         <div class="toggle-animal-button d-flex justify-content-center" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
                             <p class="text-muted mb-0">Toggle overview</p>
                             <a th:href="@{/caretaker/animals}">
-                                <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}">
+                                <img height="25" width="50" src="../static/assets/toggleoff.png" th:src="@{/assets/toggleoff.png}">
                             </a>
                         </div>
                         <a th:href="@{/reports/new}" role="button" class="btn animal-overview-report-issue-btn my-2">Report a problem</a>

@@ -434,6 +434,16 @@ li.active{
     filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
+.comment-textarea{
+    width: 533px;
+}
+
+.comment-post-btn{
+    font-weight: 500;
+    font-size: 1.3rem;
+    float: right;
+}
+
 
 /*
  * Report Overview Page (caretakers)
