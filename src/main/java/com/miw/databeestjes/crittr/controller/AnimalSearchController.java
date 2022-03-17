@@ -45,20 +45,22 @@ public class AnimalSearchController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        List<Animal> animalList;
-
-        if(keywords.getStatus() == null){
-            animalList = animalService.getAll(keywords.getKeyword());
-        } else if(keywords.getKeyword().equals("")) {
-            animalList = animalService.listByStatus(keywords.getStatus());
-        } else {
-            animalList = animalService.getBySpeciesAndStatus(keywords.getKeyword(), keywords.getStatus());
-        }
+        List<Animal> animalList = getAnimals(keywords);
         List<AnimalDTO> animalDTOS = new ArrayList<>();
         setResponseData(animalDTOS, animalList, response);
         setFavouritedStatus(user, response);
 
         return ResponseEntity.ok(response);
+    }
+
+    private List<Animal> getAnimals(AnimalCriteria criteria) {
+        if(criteria.getStatus() == null){
+            return animalService.getAll(criteria.getKeyword());
+        } else if (criteria.getKeyword().equals("")) {
+            return animalService.listByStatus(criteria.getStatus());
+        } else {
+            return animalService.getBySpeciesAndStatus(criteria.getKeyword(), criteria.getStatus());
+        }
     }
 
     public void setResponseData(List<AnimalDTO> animalDTOS, List<Animal> animals, AnimalSearchResponse response) {
