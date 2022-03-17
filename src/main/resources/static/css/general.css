@@ -371,6 +371,10 @@ li.active{
     margin-right: 120px;
 }
 
+#edu-info-default {
+    margin-top: -25px;
+}
+
 /*
  * Animal Details Comments
  */
