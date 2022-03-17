@@ -64,20 +64,17 @@ function searchAnimals(status, keyword) {
         timeout : 600000,
         success: function (data) {
             const tBody = $('#animalsTable');
-            let innerhtml = '';
             const pageTitle = $('title');
+            tBody.empty();
             if (pageTitle[0].innerHTML == 'Animal overview'){
-                innerhtml = buildHtmlStringAnimal(data);
+                tBody.append(buildHtmlStringAnimal(data));
             } else if (pageTitle[0].innerHTML == "Account Details") {
                 data.msg = "You have no favourite animals yet ...";
                 data.dtos = data.dtos.filter((item) => item.favourited === true)
-                innerhtml = buildHtmlStringAnimal(data);
+                tBody.append(buildHtmlStringAnimal(data));
             } else {
-                innerhtml = buildHtmlStringAnimalCaretaker(data);
+                tBody.append(buildHtmlStringAnimalCaretaker(data))
             }
-
-            tBody.empty();
-            tBody.append(innerhtml);
             setHearts(data);
         },
         error: function () {
