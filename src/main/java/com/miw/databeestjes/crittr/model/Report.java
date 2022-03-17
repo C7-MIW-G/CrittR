@@ -29,7 +29,7 @@ public class Report {
     @NotEmpty
     private String species;
 
-    @Column
+    @Column(length = 750)
     private String description;
 
     private LocalDateTime reportDate = LocalDateTime.now();

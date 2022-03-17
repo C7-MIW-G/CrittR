@@ -390,7 +390,35 @@ li.active{
     border-radius: 25px;
     padding: 20px;
     width: 400px;
-    height: 150px;
+    height: 100%;
+}
+
+.profilePic {
+    background-color: #c8e3ba;
+}
+
+.comment-text {
+
+    position: relative;
+    max-width: fit-content;
+    background-color: #c8e3ba;
+    padding: 0.6em 0.6em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.comment-text::before {
+
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    left: 2em;
+    border: .75rem solid transparent;
+    border-top: none;
+    border-bottom-color: #c8e3ba;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
 
@@ -765,7 +793,21 @@ li.active{
 }
 
 .style-caretaker .animal-comments{
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .profilePic {
     background-color: #dcecf5;
+}
+
+.style-caretaker .comment-text {
+
+    background-color: #dcecf5;
+}
+
+.style-caretaker .comment-text::before {
+
+    border-bottom-color: #dcecf5;
 }
 
 .style-caretaker .report-form-background-card {
