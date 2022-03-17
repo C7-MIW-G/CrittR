@@ -1,5 +1,6 @@
 let chosenSpecies = "";
 let chosenStatus = null;
+const animalSearch = $('#animal-search-input');
 
 function setChosenSpecies(element) {
     let clickedSpecies = element.find('a').html();
@@ -44,8 +45,14 @@ $('#all-animals-button').click(function(){
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
-$('#animal-search-input').focus(function() {
+animalSearch.focus(function() {
     $('.filter-column li').removeClass('active');
+})
+
+animalSearch.on('input', function (){
+    chosenStatus = null;
+    chosenSpecies = "";
+    searchAnimals(null, animalSearch.val());
 })
 
 function searchAnimals(status, keyword) {
