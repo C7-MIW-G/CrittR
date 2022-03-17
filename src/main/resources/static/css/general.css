@@ -232,6 +232,19 @@ li.active{
     cursor: pointer;
 }
 
+.heart-img-large {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.heart-outline-large {
+    position: absolute;
+    bottom: 0;
+    margin-right: 25px;
+    margin-bottom: 6px;
+}
+
 .animal-overview-report-issue-btn {
     background-color: #ACD199;
     border: none;
