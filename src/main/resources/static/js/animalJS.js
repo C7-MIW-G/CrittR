@@ -40,20 +40,25 @@ $('#status-list li').click(function() {
 
 $('#all-animals-button').click(function(){
     $('.filter-column li').removeClass('active');
-    chosenSpecies = "";
-    chosenStatus = null;
+    resetFilterCriteria()
     searchAnimals(chosenStatus, chosenSpecies);
 })
 
 animalSearch.focus(function() {
+    resetFilterCriteria();
     $('.filter-column li').removeClass('active');
 })
 
 animalSearch.on('input', function (){
-    chosenStatus = null;
-    chosenSpecies = "";
     searchAnimals(null, animalSearch.val());
 })
+
+$('.animal-overview-body').on('load', searchAnimals(null, ""));
+
+function resetFilterCriteria() {
+    chosenStatus = null;
+    chosenSpecies = "";
+}
 
 function searchAnimals(status, keyword) {
     const searchObject = {
