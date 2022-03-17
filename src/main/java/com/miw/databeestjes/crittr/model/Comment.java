@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This class describes a comment
+ * This is an entity for our user comment system.
+
  */
 
 @Entity
@@ -19,19 +20,19 @@ public class Comment {
 
     @Id
     @GeneratedValue
-    protected long commentId;
+    private long commentId;
 
     @ManyToOne
-    protected CrittrUser commenter;
+    private CrittrUser commenter;
 
     @ManyToOne
-    protected Animal animal;
+    private Animal animal;
 
     @NotNull
     @Column(length = 750)
-    protected String commentText;
+    private String commentText;
 
     @NotNull
-    protected LocalDateTime dateTime = LocalDateTime.now();
+    private LocalDateTime dateTime = LocalDateTime.now();
 
 }
