@@ -597,7 +597,7 @@ li.active{
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
-    height: 45%;
+    height: 48%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
@@ -639,44 +639,37 @@ li.active{
 }
 
 /* Modal Body */
-.modal-body {padding: 20px 30px;}
+.modal-body {
+    padding: 20px 30px;
+}
 
 .modal-buttons {
     display: flex;
     flex-direction: row;
-    color: #b6d2e0;
 }
 
 .modal-label{
     color: white;
     float: left;
+}
 
+.button-modal {
+    color:black;
+    border: none;
+    background-color: #b6d2e0;
+}
+
+.button-modal:hover {
+    background-color: #4e84a9;
 }
 
 .modal-cancel-btn{
-    color:black;
     float: left;
-    border: none;
-    background-color: #b6d2e0;
-
 }
 
 .modal-submit-btn{
-    background-color: #b6d2e0;
-    border: none;
     float: right;
 }
-
-.modal-submit-btn:hover{
-    background-color: #4e84a9;
-    float: right;
-}
-
-.modal-cancel-btn:hover{
-    background-color: #4e84a9;
-    float: right;
-}
-
 
 /*
  * Caretaker styling
