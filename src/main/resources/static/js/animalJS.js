@@ -110,7 +110,7 @@ function buildHtmlStringAnimal(data) {
         `<div class="card mt-4 overview-card justify-content-center shadow">` +
         `<img class="card-img rounded-circle shadow" src="data:image/jpeg;base64,${dto.picture}">` +
         `<div class="card-body">` +
-        `<div style="z-index: 2; position: relative; left: 40%" class="w-25">`+
+        `<div class="w-25 heart-button">`+
         `<label>` +
         `<input class="heart-img mt-2" id="heart-img-${dto.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" onclick="favouriteToggle(${dto.animalId})"/> ` +
         `<div class="heart-overlay"><img class="heart-img mt-2 heart-outline" id="heart-outline-${dto.animalId}" src="/assets/heart.svg" alt="heart outline"/></div>` +
