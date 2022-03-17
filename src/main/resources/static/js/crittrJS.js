@@ -1,5 +1,4 @@
 function setButtons(currentStatus) {
-    console.log(currentStatus)
     switch (currentStatus) {
         case 0 : document.getElementById('accept-form').style.display = 'block';
             document.getElementById('discard-form').style.display = 'block';
@@ -14,7 +13,6 @@ function setButtons(currentStatus) {
             setReopenButton();
             break;
         case 4 :
-            document.getElementById('assigned-to-tablerow').style.display = 'none';
             setReopenButton();
             break;
     }

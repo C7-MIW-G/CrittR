@@ -110,7 +110,8 @@ public class ReportController {
         if(certainReport.getClaimer() == null){
             model.addAttribute("claimer", "No one yet");
         } else {
-            model.addAttribute("claimer", certainReport.getClaimer().getEmail());
+            model.addAttribute("claimer", String.format("%s (%s)",
+                    certainReport.getClaimer().getUsername(), certainReport.getClaimer().getEmail()));
         }
         model.addAttribute("report", certainReport);
         return "caretakerReportDetails";

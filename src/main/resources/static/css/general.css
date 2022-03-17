@@ -159,7 +159,7 @@ li.active{
 }
 
 .home-card {
-    width: 240px;
+    width: 262px;
     height: 150px;
     background-color: #ACD199;
     text-align: center;
@@ -201,6 +201,7 @@ li.active{
 .heart-img{
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
 .heart-outline:hover {
@@ -222,6 +223,13 @@ li.active{
     bottom: 0;
     margin-right: 25px;
     margin-bottom: 6px;
+}
+
+.heart-button {
+    z-index: 2;
+    position: relative;
+    left: 40%;
+    cursor: pointer;
 }
 
 .animal-overview-report-issue-btn {
@@ -817,7 +825,6 @@ li.active{
     background-color: #a7c9db;
 }
 
-
 .style-caretaker .modal-content {
     background-color: #8FAFBF;
 }
@@ -825,7 +832,6 @@ li.active{
 .style-caretaker .modal-content-delconfirm {
     background-color: #8FAFBF;
 }
-
 
 .style-caretaker .modal-header {
     background-color: #8FAFBF;
@@ -952,6 +958,20 @@ li.active{
     background-color: #b8d6e6;
 }
 
+.style-caretaker .home-card-big {
+    width: 540px;
+    height: 150px;
+    background-color: #b8d6e6;
+    text-align: center;
+    margin-left: 20px;
+    border: none;
+    position: relative;
+}
+
+.style-caretaker .home-card-big:hover {
+    background-color: #8FAFBF;
+}
+
 .style-caretaker .home-card:hover {
     background-color: #8FAFBF;
 }
@@ -959,6 +979,19 @@ li.active{
 .style-caretaker .centered-text-home {
     color: black;
 }
+
+.style-caretaker .home-info-table-header {
+    background-color: #a7c9db;
+}
+
+.style-caretaker .animal-details-report-issue-btn {
+    background-color: #b8d6e6;
+}
+
+.style-caretaker .animal-details-report-issue-btn:hover {
+    background-color: #a7c9db;
+}
+
 
 
 
