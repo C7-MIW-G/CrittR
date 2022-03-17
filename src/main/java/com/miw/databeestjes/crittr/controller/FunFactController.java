@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 /**
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class regulates interactions with Fun Facts objects
  */
 @Controller
 public class FunFactController {

@@ -1,5 +1,10 @@
 package com.miw.databeestjes.crittr.model;
 
+/**
+ * <p>
+ * This class describes the categories that educational info can belong to
+ */
+
 public enum EduInfoCategory {
     LATIN_NAME ("Latin name: "),
     CLASS("Class: "),

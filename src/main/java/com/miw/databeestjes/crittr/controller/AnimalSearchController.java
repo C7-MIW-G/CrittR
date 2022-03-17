@@ -17,9 +17,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl>
  * @author Ivo Didden <i.l.didden@st.hanze.nl>
  * <p>
- * This file is part of our Crittr Project
+ * This class formulates the response to a SearchAnimal request
  */
 @RestController
 public class AnimalSearchController {

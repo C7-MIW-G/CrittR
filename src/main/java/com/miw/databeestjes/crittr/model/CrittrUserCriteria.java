@@ -7,7 +7,7 @@ import org.springframework.security.access.annotation.Secured;
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
  * <p>
- * This class, if it remains, configures search data for an ajax request
+ * This class configures search data for an ajax request
  */
 
 @Getter @Setter

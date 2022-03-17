@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author Milo Ottenhoff <m.a.ottenhoff@st.hanze.nl
  * <p>
- * Вот, что программа делает
+ * This class formulates a response to a search request for a user
  */
 
 @Getter @Setter
