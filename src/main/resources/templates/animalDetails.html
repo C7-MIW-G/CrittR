@@ -11,8 +11,8 @@
         <section class="py-3 container animal-details-background-card shadow">
             <div class="row py-lg-3  justify-content-between">
                 <div class="col-5 mt-4 animal-details-info-table-header d-flex justify-content-evenly">
-                    <h1 class="fw col-8"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
-                    <div class="col-2">
+                    <h1 class="fw col-9"><span th:text="${animal.name}"></span> the <span th:text="${animal.species}"></span></h1>
+                    <div class="col-1">
                         <label>
                             <input class="heart-img mt-2" th:classappend="${favourited} ? 'heart-img-clicked' : ''" th:id="'heart-img-' + ${animal.animalId}" type="image" src="/assets/heart-fill.svg" alt="FavouriteHeart" th:onclick="favouriteToggle([(${animal.animalId})])"/>
                             <div class="heart-overlay"><img class="heart-img mt-2 heart-outline" th:classappend="${favourited} ? 'heart-img-clicked' : ''" th:id="'heart-outline-' + ${animalId}" src="/assets/heart.svg" alt="heart outline"/></div>
