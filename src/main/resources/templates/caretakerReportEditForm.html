@@ -21,12 +21,12 @@
                                 <input type="hidden" th:field="*{reporter.userId}">
                                 <input type="hidden" th:field="*{reportNumber}" th:value="${report.reportNumber}">
                                 <div class="col-9">
-                                    <label class="form-label" for="SpeciesInput">Species:*</label>
+                                    <label class="form-label" for="SpeciesInput">Animal:*</label>
                                     <input class="form-control" id="SpeciesInput" type="text" placeholder="e.g. 'Goat'" th:field="*{species}">
                                     <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please provide the species</p>
                                 </div><br>
                                 <div class="col-9">
-                                    <label class="form-label" for="animalNameInput">Animal:</label>
+                                    <label class="form-label" for="animalNameInput">Name:</label>
                                     <select class="form-select" size="5" aria-label="size 5 select example" id="AnimalNameInput" th:field="*{animal}">
                                     </select>
                                 </div><br>

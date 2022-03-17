@@ -19,18 +19,18 @@
                             <form class="row g-3 p-2 ps-4" th:action="@{/reports/new}" method="post" th:object="${report}">
                                 <input type="hidden" th:field="*{reportId}"/>
                                 <div class="col-9 pt-2">
-                                    <label class="form-label fw-bold" for="SpeciesInput">Species:*</label>
+                                    <label class="form-label fw-bold" for="SpeciesInput">Animal:*</label>
                                     <input class="form-control" id="SpeciesInput" type="text" placeholder="e.g. 'Goat'" th:field="*{species}">
-                                    <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please provide the species</p>
+                                    <p class="errormessage" th:if="${#fields.hasErrors('species')}">Please provide the Animal</p>
                                 </div><br>
                                 <div class="col-9">
-                                    <label class="form-label fw-bold" for="animalNameInput">Animal:</label>
+                                    <label class="form-label fw-bold" for="animalNameInput">Name:</label>
                                     <input class="form-control" type="text" id="animalNameInput" th:field="*{animalName}" placeholder="leave empty if unknown">
                                 </div><br>
                                 <div class="col-9">
                                     <label class="form-label fw-bold" for="IssueInput">Issue:*</label>
                                     <input class="form-control" type="text" id="IssueInput" placeholder="e.g. 'broken leg'" th:field="*{issue}"/>
-                                    <p class="errormessage" th:if="${#fields.hasErrors('issue')}">Please provide the issue</p>
+                                    <p class="errormessage" th:if="${#fields.hasErrors('issue')}">Please describe the problem</p>
                                 </div><br>
                                 <div class="col-9">
                                     <label class="form-label fw-bold" for="DescriptionInput">Description:</label>
