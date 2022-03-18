@@ -52,7 +52,7 @@ class CommentServiceImplementationTest {
     @Test
     public void testGetAll() {
         when(testCommentServiceImp.getAll()).thenReturn(new ArrayList<>());
-        List<Comment> usersFound = testCommentServiceImp.getAll();
-        assertNotNull(usersFound, "No comments found");
+        List<Comment> commentsFound = testCommentServiceImp.getAll();
+        assertNotNull(commentsFound, "No comments found");
     }
 }
