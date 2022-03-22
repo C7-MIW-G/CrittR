@@ -11,14 +11,14 @@
         <section class="py-3 container home-background-card shadow">
             <div class="row py-lg-3  justify-content-center">
                 <div class="col-5 pt-3 my-4 home-info-table-header text-center">
-                    <h1 class="fw">CrittR</h1>
+                    <h1>CrittR</h1>
                     <h3 class="fw-light">Welcome to your CrittR Petting Zoo!</h3><br>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div sec:authorize="hasRole('CARETAKER')" class="home-card-big m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light">Go to dashboard</h3>
+                        <h3 class="centered-text-home">Go to dashboard</h3>
                         <a th:href="@{/account/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
@@ -26,37 +26,37 @@
             <div class="col-12 d-flex justify-content-center">
                 <div sec:authorize="hasRole('CARETAKER')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light">Animals</h3>
+                        <h3 class="centered-text-home">Animals</h3>
                         <a th:href="@{/caretaker/animals}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('MEMBER') or isAnonymous()"  class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light">Meet our animals!</h3>
+                        <h3 class="centered-text-home">Meet our animals!</h3>
                         <a th:href="@{/animals}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('CARETAKER')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light">Reports</h3>
+                        <h3 class="centered-text-home">Reports</h3>
                         <a th:href="@{/reports}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('MEMBER') or isAnonymous()" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light" >Report a problem</h3>
+                        <h3 class="centered-text-home" >Report a problem</h3>
                         <a th:href="@{/reports/new}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
                 <div sec:authorize="isAnonymous()" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light" >Become a member!</h3>
+                        <h3 class="centered-text-home" >Become a member!</h3>
                         <a th:href="@{/users/new}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('MEMBER')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light" >Go to your account</h3>
+                        <h3 class="centered-text-home" >Go to your account</h3>
                         <a th:href="@{/user/details/{userId}(userId=${#authentication.getPrincipal().getUserId()})}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
@@ -64,19 +64,19 @@
             <div class="col-12 d-flex justify-content-center">
                 <div sec:authorize="hasRole('CARETAKER')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light">Add new animal</h3>
+                        <h3 class="centered-text-home">Add new animal</h3>
                         <a th:href="@{/animals/new}" class="stretched-link" role="button"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('CARETAKER')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light" >Report a problem</h3>
+                        <h3 class="centered-text-home" >Report a problem</h3>
                         <a th:href="@{/reports/new}" role="button" class="stretched-link"></a>
                     </div>
                 </div>
                 <div sec:authorize="hasRole('ADMIN')" class="home-card m-2">
                     <div class="card-body">
-                        <h3 class="centered-text-home fw-light">Manage accounts</h3>
+                        <h3 class="centered-text-home">Manage accounts</h3>
                         <a th:href="@{/accounts/users}" role="button" class="stretched-link"></a>
                     </div>
                 </div>

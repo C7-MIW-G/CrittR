@@ -168,7 +168,7 @@ li.active{
 .home-card {
     width: 262px;
     height: 150px;
-    background-color: #ACD199;
+    background-color: #a5d68b;
     text-align: center;
     margin-left: 20px;
     border: none;
@@ -176,7 +176,7 @@ li.active{
 }
 
 .home-card:hover {
-    background-color: #8DAD7D;
+    background-color: #81ad6a;
 }
 
 .centered-text-home {
@@ -1030,13 +1030,13 @@ li.active{
 }
 
 .style-caretaker .home-card {
-    background-color: #b8d6e6;
+    background-color: #a7c9db;
 }
 
 .style-caretaker .home-card-big {
     width: 540px;
     height: 150px;
-    background-color: #b8d6e6;
+    background-color: #a7c9db;
     text-align: center;
     margin-left: 20px;
     border: none;
