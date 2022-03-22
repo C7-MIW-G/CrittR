@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-2 mt-4 align-items-end toggle-column">
                     <div class="toggle-animal-button d-flex justify-content-end">
-                        <p class="text-muted">Toggle overview</p>
+                        <p class="text-muted">Caretaker view&nbsp;&nbsp;</p>
                         <a th:href="@{/animals}">
                             <img height="25" width="50" src="../static/assets/toggleon.png" th:src="@{/assets/toggleon.png}" sec:authorize="hasRole('CARETAKER') or hasRole('ADMIN')">
                         </a>

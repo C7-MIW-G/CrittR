@@ -10,7 +10,11 @@ body {
 }
 
 header {
-    background-color: #ACD199;
+    background-color: #86b86c;
+}
+
+.nav-link-text {
+    font-size: larger;
 }
 
 .nav-link {
@@ -21,8 +25,12 @@ header {
 }
 
 .nav-link:hover{
-    background-color: #8DAD7D;
+    background-color: #648f4d;
     color: white;
+}
+
+.link-highlighted {
+    background-color: #648f4d;
 }
 
 .container::after {
@@ -41,10 +49,6 @@ header {
 
 .hyperlink-no-styling:hover {
     color: black;
-}
-
-.link-highlighted {
-    background-color: #8DAD7D;
 }
 
 .footer {
@@ -737,7 +741,7 @@ li.active{
  */
 
 .style-caretaker header {
-    background-color: #b6d2e0;
+    background-color: #77a8bf;
 }
 
 .style-caretaker .nav-link {
@@ -748,12 +752,12 @@ li.active{
 }
 
 .style-caretaker .nav-link:hover{
-    background-color: #8FAFBF;
+    background-color: #5f8699;
     color: white;
 }
 
 .style-caretaker .link-highlighted {
-    background-color: #8FAFBF;
+    background-color: #5f8699;
 }
 
 .style-caretaker .btn-primary{
