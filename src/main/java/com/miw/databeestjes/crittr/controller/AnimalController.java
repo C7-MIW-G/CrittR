@@ -111,7 +111,7 @@ public class AnimalController {
         }
 
         animalService.save(animal);
-        return "redirect:/caretaker/animals";
+        return "redirect:/caretaker/animals/details/" + animal.getAnimalId();
     }
 
     private void setNewPictureIfExists(Animal animal, MultipartFile editAnimalPictureInput) {
